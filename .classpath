@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-13">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="C:/Users/gpdld/Downloads/ojdbc8.jar"/>
+	<classpathentry kind="lib" path="C:/Users/gpdld/Downloads/slf4j-api-1.7.30.jar"/>
+	<classpathentry kind="lib" path="C:/Users/gpdld/Downloads/HikariCP-3.4.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/gpdld/Downloads/orai18n.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
