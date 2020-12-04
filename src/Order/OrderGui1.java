@@ -16,11 +16,11 @@ import javax.swing.JTextArea;
 public class OrderGui1 extends JFrame implements ActionListener{
 	JButton order_button = new JButton("물품주문");
 	JButton cancel_button = new JButton("취소");
-	JTextArea txtResult = new JTextArea();
+	static JTextArea txtResult = new JTextArea();
 	
-	Connection conn;
-	Statement stmt;
-	ResultSet rs;
+	static Connection conn;
+	static Statement stmt;
+	static ResultSet rs;
 	
 	public OrderGui1() {
 		setTitle("물품주문");
@@ -60,6 +60,14 @@ public class OrderGui1 extends JFrame implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == order_button) {
+			
+		} else if(e.getSource() == cancel_button) {	
+			System.exit(0);
+		}
+	}
+	
+	public static void main(String[] args) {
 		try {
 			//Driver 연결
 			conn = DriverManager.getConnection(
@@ -68,12 +76,6 @@ public class OrderGui1 extends JFrame implements ActionListener{
 					"12341234");
 			stmt = conn.createStatement();
 			String sql = "SELECT * FROM product";
-			
-			if(e.getSource() == order_button) {
-				
-			} else if(e.getSource() == cancel_button) {	
-				System.exit(0);
-			}
 			
 			//읽기
 			rs = stmt.executeQuery(sql);
@@ -98,9 +100,6 @@ public class OrderGui1 extends JFrame implements ActionListener{
 				e2.printStackTrace();
 			}
 		}
-	}
-	
-	public static void main(String[] args) {
 		new OrderGui1();
 	}
 }
