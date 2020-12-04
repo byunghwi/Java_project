@@ -11,8 +11,9 @@ import com.zaxxer.hikari.HikariDataSource;
 public class Add_Account {
 	
 	
-	public Add_Account() {
-		Member new_mem = new Member("mem_issd", "mem_pw", "mem_nm", "res_no", "phone", "address", 's', "mail");
+	public Add_Account(Member new_mem) {
+		// Member new_mem = new Member("mem_issd", "mem_pw", "mem_nm", "res_no", "phone", "address", 's', "mail");
+		
 		
 		
 		HikariDataSource ds = new HikariDataSource();

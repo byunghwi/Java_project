@@ -1,19 +1,27 @@
 package account;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import account.action.Join_Action;
+
 public class Insert_info extends JFrame {
+	
+	public JTextField[] infos = new JTextField[8]; 
+	String [] info_names = {"ID","PW","NAME","RES_NO","PHONE","ADDRESS","SEX","MAIL_ADD"};
+	String [] info_data = new String[8];
+	JLabel[] names = new JLabel[8];
+	JButton join = new JButton("JOIN");
+	Join_Action ja = new Join_Action(this);
 	
 	
 	public Insert_info() {
 		
-		JTextField[] infos = new JTextField[8]; 
-		String [] info_names = {"ID","PW","NAME","RES_NO","PHONE","ADDRESS","SEX","MAIL_ADD"};
-		JLabel[] names = new JLabel[8];
-		JButton join = new JButton("JOIN");
 		
 		for (int i = 0; i<8; i++) {
 			infos[i] = new JTextField(10);
@@ -28,6 +36,8 @@ public class Insert_info extends JFrame {
 		join.setBounds(110, 420, 90, 20);
 		add(join);
 		
+		join.addActionListener(ja);
+		
 		setTitle("회원 가입");
 		setLayout(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -36,9 +46,12 @@ public class Insert_info extends JFrame {
 		setVisible(true);
 	}
 	
+
+	
 	public static void main(String[] args) {
 		
 		new Insert_info();
+		
 	}
 	
 	
