@@ -1,4 +1,5 @@
 package Order;
+import java.awt.Color;
 // hikaricp로 하지않은거
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,8 +13,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
-public class OrderGui1 extends JFrame implements ActionListener{
+public class OrderGui1 extends JFrame implements ActionListener{	
 	JButton order_button = new JButton("물품주문");
 	JButton cancel_button = new JButton("취소");
 	static JTextArea txtResult = new JTextArea();
@@ -35,6 +37,7 @@ public class OrderGui1 extends JFrame implements ActionListener{
 	
 	//레이아웃
 	private void layInit() {
+		
 		JPanel panel = new JPanel();		
 		panel.add(order_button); 
 		panel.add(cancel_button); 
