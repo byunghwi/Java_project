@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import db.DatabaseConnect;
 
 public class OrderMain {
-
+//
 	public static void main(String[] args) throws SQLException {
 		String product_list = "SELECT * FROM product";
 		DatabaseConnect db = new DatabaseConnect(product_list);	
