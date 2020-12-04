@@ -45,7 +45,7 @@ public class ProductMain extends JFrame {
 
 	//쿼리 실행
 	public void excutequerys() throws SQLException {
-		String query = "SELECT * FROM PRODUCT";
+		String query = "SELECT * FROM PRODUCT ORDER BY product_id ASC";
 
 		DatabaseConnect db = new DatabaseConnect(query);
 		ResultSet rs = db.getRs();
@@ -83,12 +83,12 @@ public class ProductMain extends JFrame {
 	//컬럼값들 추출 후 테이블 로우에 추가하기.
 	public void columnVal(ResultSet rs, ResultSetMetaData rsmd, int columnCnt) {
 		try {
-			columnVals = new String[columnCnt];
+
 			while (rs.next()) {
+				columnVals = new String[columnCnt];
 				for (int i = 0; i < columnCnt; i++) {
 					columnVals[i] = rs.getString(rsmd.getColumnName(i + 1));
 				}
-				System.out.println(Arrays.toString(columnVals));
 				tmodel.addRow(columnVals);
 			}
 			
