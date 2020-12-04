@@ -1,6 +1,7 @@
 package Order;
-
+//hikaricp로 해야되는거
 import java.awt.event.ActionEvent;
+
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -46,31 +47,32 @@ public class OrderGui extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		String sql = "SELECT * FROM product";
-		
-		DatabaseConnect db = new DatabaseConnect(sql);	
-		ResultSet rs = db.getRs();
-		
-		if (e.getSource() == order_button) {
-			
-		} else if (e.getSource() == cancel_button) {
-			System.exit(0);
-		}
-		
-		product_list.setText("고객번호\t고객명\t주민번호\n");
 		try {
-			while(rs.next()) {
+			String sql = "SELECT * FROM product";
+			
+			if(e.getSource() == order_button) { // 주문버튼
+				
+			} else if(e.getSource() == cancel_button) { // 취소버튼
+				System.exit(0);
+			}
+			
+			DatabaseConnect db = new DatabaseConnect(sql);	
+			ResultSet rs = db.getRs();
+			product_list.setText("물품번호\t물품이름\t가격\n");
+			while (rs.next()) {
+				System.out.println(rs.getString(3));
 				String str = rs.getString("product_id") 
-						+ "\t" + rs.getString("product_name") 
-						+ "\t" + rs.getInt("price") 
+						+ "\t" 
+						+ rs.getString("product_name") 
+						+ "\t" 
+						+ rs.getString("price") 
 						+ "\n";  
-				product_list.append(str);
+				product_list.append(str);							
 			}
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
-		
-		} 
+	} 
 	
 
 	public static void main(String[] args) {
