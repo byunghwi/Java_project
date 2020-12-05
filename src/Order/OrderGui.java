@@ -20,8 +20,8 @@ import com.zaxxer.hikari.HikariDataSource;
 public class OrderGui extends JFrame implements ActionListener{	
 	JButton order_button = new JButton("물품주문");
 	JButton cancel_button = new JButton("취소");
-	static JTextArea txtResult = new JTextArea();
-	static ResultSet rs;
+	JTextArea txtResult = new JTextArea();
+	ResultSet rs;
 	
 	public OrderGui() {
 		setTitle("물품주문");
@@ -29,28 +29,31 @@ public class OrderGui extends JFrame implements ActionListener{
 		layInit();	//레이아웃 메소드
 		
 		HikariDataSource ds = new HikariDataSource();
-		ds.setJdbcUrl("jdbc:oracle:thin:@175.115.175.207:1521/orcl.115.175.144");
-		ds.setUsername("puser");
-		ds.setPassword("12341234");
+		ds.setJdbcUrl("jdbc:oracle:thin:@localhost:1521/XEPDB1");
+		ds.setUsername("hr");
+		ds.setPassword("1234");
 		
-		String sql = "SELECT * FROM product";
 		try {
+			String sql = "SELECT * FROM product";
 			Connection conn = ds.getConnection();
-			
-			PreparedStatement pstmt = 
-					conn.prepareStatement(sql);
+			PreparedStatement pstmt = conn.prepareStatement(sql);
 			
 			//읽기
-			rs = pstmt.executeQuery(sql);
-			txtResult.setText("물품번호\t물품이름\t가격\n");
+			rs = pstmt.executeQuery();
+//			txtResult.setText("물품번호\t물품이름\t가격\n");
 			while(rs.next()) {
-				String str = rs.getString("product_id") 
-						+ "\t" 
-						+ rs.getString("product_name") 
-						+ "\t" 
-						+ rs.getString("price") 
-						+ "\n";  
-				txtResult.append(str);
+//				String str = rs.getString("product_id") 
+//						+ "\t" 
+//						+ rs.getString("product_name") 
+//						+ "\t" 
+//						+ rs.getString("price") 
+//						+ "\n";  
+//				txtResult.append(str);
+				System.out.printf("%s\t%s\t%d\n",
+						rs.getString("product_id"),
+						rs.getString("product_name"),
+						rs.getInt("price")
+				);
 			}
 		} catch (Exception e2) {
 			e2.printStackTrace();
