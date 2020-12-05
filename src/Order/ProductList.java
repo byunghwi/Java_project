@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import db.DatabaseConnect;
 
-public class OrderMain {
+public class ProductList {
 //
 	public static void main(String[] args) {
 		try {
