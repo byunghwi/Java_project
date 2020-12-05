@@ -21,7 +21,6 @@ public class OrderGui extends JFrame implements ActionListener{
 	JButton order_button = new JButton("물품주문");
 	JButton cancel_button = new JButton("취소");
 	static JTextArea txtResult = new JTextArea();
-	
 	static ResultSet rs;
 	
 	public OrderGui() {
@@ -68,9 +67,9 @@ public class OrderGui extends JFrame implements ActionListener{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
+	
 	//레이아웃
 	private void layInit() {
-		
 		JPanel panel = new JPanel();		
 		panel.add(order_button); 
 		panel.add(cancel_button); 
