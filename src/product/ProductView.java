@@ -26,7 +26,7 @@ public class ProductView extends JPanel {
 	public ProductView(){
 		setLayout(null);
 	
-		productsScrollPane.setBounds(30, 30, 1000, 600);
+		productsScrollPane.setBounds(12, 10, 1133, 532);
 		add(productsScrollPane);
 		
 		productTable.setRowMargin(10);
@@ -36,8 +36,9 @@ public class ProductView extends JPanel {
 		//테이블 로우 중 한 줄만 선택 가능.
 		productTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
-		
 		addProductLine(pdao.products); 
+	
+		productsScrollPane.setViewportView(productTable);
 	}
 
 	//Jtable에 로우 하나씩 추가하기.
