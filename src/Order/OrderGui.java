@@ -3,7 +3,6 @@ package Order;
 import java.awt.Container;
 
 import java.awt.FlowLayout;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -22,9 +21,10 @@ import javax.swing.JTextField;
 import com.zaxxer.hikari.HikariDataSource;
 
 public class OrderGui extends JFrame implements ActionListener {
-	JTextArea product_list = new JTextArea(10, 30);
+	JTextArea product_list = new JTextArea(10, 25);
 	JLabel product_label, amount_label; // 물품id, 수량 라벨
-	JTextField ptoduct_text, amount_text;
+	JTextField ptoduct_text;
+	JTextField amount_text;
 	JPanel product_panel, amount_panel, select; // id,수량,선택(주문할지 취소할지) 패널
 	JButton order_button, cancel_button; // 주문,취소 버튼
 
@@ -36,7 +36,7 @@ public class OrderGui extends JFrame implements ActionListener {
 		c.setLayout(new FlowLayout());
 		
 		// 물품목록 테이블
-		product_list.setEditable(false); // read only
+		product_list.setEditable(false); // 읽기만
 		JScrollPane pane = new JScrollPane(product_list); // ScrollBar 추가
 		
 		add("Center", pane);
@@ -47,8 +47,9 @@ public class OrderGui extends JFrame implements ActionListener {
 			ds.setUsername("hr");
 			ds.setPassword("1234");
 			Connection conn = ds.getConnection();
-			PreparedStatement pstmt = 
-					conn.prepareStatement("SELECT * FROM employees");
+			
+			String sql = "SELECT * FROM employees";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
 			
 			product_list.setText("물품번호\t물품이름\t가격\n");
@@ -96,8 +97,9 @@ public class OrderGui extends JFrame implements ActionListener {
 		c.add(product_panel);
         c.add(amount_panel);
         c.add(select);
-	        
+        
 		setBounds(200, 200, 350, 500);
+		setResizable(false); //크기 고정
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
@@ -106,13 +108,32 @@ public class OrderGui extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == order_button) {	// 주문버튼실행
+			HikariDataSource ds = new HikariDataSource();
+			ds.setJdbcUrl("jdbc:oracle:thin:@localhost:1521/XEPDB1");
+			ds.setUsername("hr");
+			ds.setPassword("1234");
+
+			try {
+				String product = ptoduct_text.getText();
+				int amount = Integer.parseInt(amount_text.getText());
+				Connection conn = ds.getConnection();
+				
+				String sql = "UPDATE employees SET salary = salary + "+amount+" WHERE first_name = '"+product+"'";
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+				pstmt.executeUpdate();
+				
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
 			OrderCheck();
 		} else if(e.getSource() == cancel_button) {	//취소버튼실행
 			System.exit(0);
 		}
 	}
 
-
+	
 	public void OrderCheck() { // 주문후 완료창
 		setTitle("완료");
 
