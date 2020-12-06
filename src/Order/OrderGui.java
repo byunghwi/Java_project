@@ -43,9 +43,9 @@ public class OrderGui extends JFrame implements ActionListener {
 		try {
 			//hikaricp 접속
 			HikariDataSource ds = new HikariDataSource();
-			ds.setJdbcUrl("jdbc:oracle:thin:@localhost:1521/XEPDB1");
-			ds.setUsername("hr");
-			ds.setPassword("1234");
+			ds.setJdbcUrl("jdbc:oracle:thin:@175.115.175.207:1521/orcl.115.175.144");
+			ds.setUsername("puser");
+			ds.setPassword("12341234");
 			Connection conn = ds.getConnection();
 			
 			String sql = "SELECT * FROM employees";
@@ -107,11 +107,11 @@ public class OrderGui extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		HikariDataSource ds = new HikariDataSource();
+		ds.setJdbcUrl("jdbc:oracle:thin:@175.115.175.207:1521/orcl.115.175.144");
+		ds.setUsername("puser");
+		ds.setPassword("12341234");
 		if(e.getSource() == order_button) {	// 주문버튼실행
-			HikariDataSource ds = new HikariDataSource();
-			ds.setJdbcUrl("jdbc:oracle:thin:@localhost:1521/XEPDB1");
-			ds.setUsername("hr");
-			ds.setPassword("1234");
 
 			try {
 				String product = ptoduct_text.getText();
