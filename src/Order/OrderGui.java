@@ -48,17 +48,17 @@ public class OrderGui extends JFrame implements ActionListener {
 			ds.setPassword("12341234");
 			Connection conn = ds.getConnection();
 			
-			String sql = "SELECT * FROM employees";
+			String sql = "SELECT * FROM product";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
 			
 			product_list.setText("물품번호\t물품이름\t가격\n");
 			while(rs.next()) {
-				String str = rs.getString("first_name") 
+				String str = rs.getString("product_id") 
 						+ "\t" 
-						+ rs.getString("last_name") 
+						+ rs.getString("product_name") 
 						+ "\t" 
-						+ rs.getInt("salary") 
+						+ rs.getInt("price") 
 						+ "\n";  
 				product_list.append(str);
 			}
@@ -118,7 +118,7 @@ public class OrderGui extends JFrame implements ActionListener {
 				int amount = Integer.parseInt(amount_text.getText());
 				Connection conn = ds.getConnection();
 				
-				String sql = "UPDATE employees SET salary = salary + "+amount+" WHERE first_name = '"+product+"'";
+				String sql = "UPDATE product SET quantity = quantity + "+amount+" WHERE product_id = '"+product+"'";
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 				pstmt.executeUpdate();
 				

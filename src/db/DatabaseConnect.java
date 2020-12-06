@@ -5,44 +5,37 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.sql.DataSource;
+
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
 public class DatabaseConnect {
-	String query;
-	static HikariConfig config;
-	static HikariDataSource ds;
-	static Connection conn;
-	static PreparedStatement pstmt;
-	static ResultSet rs;
-	
-	static {
-		config  = new HikariConfig("jdbc/hikari.properties");
-		ds = new HikariDataSource(config);
+	//DB연결
+	public static Connection getConnection() {
+		Connection conn = null;
+		HikariConfig config  = new HikariConfig("jdbc/hikari.properties");
+		DataSource ds = new HikariDataSource(config);
+		
 		try {
 			conn = ds.getConnection();
+			System.out.println("[DB 연결 성공]\n");
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("[DB 연결 실패]\n" + e.toString());
 		}
 		
+		return conn;	
 	}
 	
-	public DatabaseConnect(String query) {
-		this.query = query;
-
-		try {
-			pstmt = conn.prepareStatement(this.query);		
-			rs = pstmt.executeQuery();
-
-		} catch (SQLException e) {
-			System.err.println("연결에 실패했습니다.");
-			e.printStackTrace();
-		}
-	}
-
-	public ResultSet getRs() {
-		return rs;
-	}
-
-	
+	//DB연결해제
+	public static void dbClose(ResultSet rs, PreparedStatement ps, Connection conn) throws SQLException {
+		if (rs != null)
+			rs.close();
+		if (ps != null)
+			ps.close();
+		if (conn != null)
+			conn.close();
+		System.out.println("[DB 자원 반납, DB 연결 해제]\n");
+		
+	}	
 }
