@@ -30,8 +30,8 @@ public class ProductDao {
 		
 		conn = DatabaseConnect.getConnection();
 		
-		String query = "SELECT product_id, product_name, to_char(manu_date, 'YYYY-MM-dd') as \"MANU_DATE\" "
-				+ ", to_char(dis_date, 'YYYY-MM-dd') as \"DIS_DATE\", quantity, price "
+		String query = "SELECT product_id as \"상품코드\", product_name as \"상품명\", to_char(manu_date, 'YYYY-MM-dd') as \"제조일\" "
+				+ ", to_char(dis_date, 'YYYY-MM-dd') as \"폐기일\", quantity as \"수량\", price \"가격\" "
 				+ " FROM product ORDER BY product_id";
 		//System.out.println("쿼리 > " + query);
 		try {
@@ -44,7 +44,7 @@ public class ProductDao {
 			//컬럼네임 ArrayList 세팅
 			for (int i = 0; i < columCnt; i++) {
 				columnNames.add(i, rsmd.getColumnName(i+1));
-				System.out.printf("[컬럼네임 세팅] %d번째 ->  %s\n", i, rsmd.getColumnName(i+1));
+				//System.out.printf("[컬럼네임 세팅] %d번째 ->  %s\n", i, rsmd.getColumnName(i+1));
 			}
 			
 			
