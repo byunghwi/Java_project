@@ -24,7 +24,7 @@ public class Join_Action implements ActionListener {
 		for (int i=0; i<new_info_data.length; i++) {
 			new_info_data[i] = new_info.infos[i].getText();
 		}
-		
+	 	
 		new_mem = new Member(
 				new_info_data[0],
 				new_info_data[1],
