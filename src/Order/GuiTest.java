@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
+
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -22,7 +22,7 @@ import javax.swing.JTextField;
 import com.zaxxer.hikari.HikariDataSource;
 
 public class GuiTest extends JFrame implements ActionListener {
-	JTextArea product_list = new JTextArea(5, 30);
+	JTextArea product_list = new JTextArea(10, 30);
 	JLabel product_label, amount_label; // 물품id, 수량 라벨
 	JTextField ptoduct_text, amount_text;
 	JPanel product_panel, amount_panel, select; // id,수량,선택(주문할지 취소할지) 패널
@@ -57,7 +57,7 @@ public class GuiTest extends JFrame implements ActionListener {
 						+ "\t" 
 						+ rs.getString("last_name") 
 						+ "\t" 
-						+ rs.getString("salary") 
+						+ rs.getInt("salary") 
 						+ "\n";  
 				product_list.append(str);
 			}
@@ -97,7 +97,7 @@ public class GuiTest extends JFrame implements ActionListener {
         c.add(amount_panel);
         c.add(select);
 	        
-		setBounds(200, 200, 300, 250);
+		setBounds(200, 200, 350, 500);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
