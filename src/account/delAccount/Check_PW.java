@@ -45,7 +45,7 @@ public class Check_PW {
 			
 			
 			
-			
+			result.close();
 			pstmt.close();
 			conn.close();
 			ds.close();
