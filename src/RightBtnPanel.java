@@ -1,3 +1,4 @@
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
@@ -6,6 +7,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class RightBtnPanel extends JPanel{
@@ -58,20 +60,40 @@ public class RightBtnPanel extends JPanel{
 		 * 
 		 */
 		JButton regBtn;
-		JButton cancleBtn;
-		Container contentPanel;
+		JButton cancelBtn;
+		JPanel contentPanel;
+		String[] fieldNames = new String[]{"상품코드", "상품명", "제조일", "폐기일", "가격"};
+		JLabel[] labels;
 		
 		private static final long serialVersionUID = 1L;
 		
 		public OpenSubFrame() {
-			contentPanel = new Container();
+			contentPanel = new JPanel(new BorderLayout());
+			
 			setFont(new Font("맑은 고딕", Font.BOLD, 20));
 			setTitle("상품등록");
 			setResizable(false);
-			setSize(300,300);
+			setSize(500,700);
 			
 			setContentPane(contentPanel);
 			
+			
+			for (int i = 0; i < fieldNames.length; i++) {
+				System.out.println(fieldNames[i]);
+				labels[i] = new JLabel(fieldNames[i]);
+				labels[i].setBounds(100, 70, 100 , (i+1)*20);
+				contentPanel.add(labels[i]);
+			}
+
+			regBtn = new JButton("등록");
+			regBtn.setBounds(166, 600, 70, 30);
+			cancelBtn = new JButton("취소");
+			cancelBtn.setBounds(253, 600, 70, 30);
+			
+			contentPanel.add(regBtn, BorderLayout.SOUTH);
+			contentPanel.add(cancelBtn, BorderLayout.SOUTH);
+			contentPanel.setLayout(null);
+			contentPanel.setBounds(0, 0, 300, 300);
 
 			setLocationRelativeTo(null);
 			setVisible(true);	
