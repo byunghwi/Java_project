@@ -10,7 +10,7 @@ import javax.swing.JTextField;
 
 import account.action.Join_Action;
 
-public class Insert_info extends JFrame {
+public class Join extends JFrame {
 	
 	public JTextField[] infos = new JTextField[8]; 
 	String [] info_names = {"ID","PW","NAME","RES_NO","PHONE","ADDRESS","SEX","MAIL_ADD"};
@@ -19,7 +19,7 @@ public class Insert_info extends JFrame {
 	JButton join = new JButton("JOIN");
 	
 	
-	public Insert_info() {
+	public Join() {
 		
 		
 		for (int i = 0; i<8; i++) {
