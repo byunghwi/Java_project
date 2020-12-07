@@ -1,17 +1,24 @@
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class RightBtnPanel extends JPanel{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public JButton registProdBtn;
 	public JButton delProdBtn;
 
 	public RightBtnPanel() {
 		setBackground(Color.WHITE);
 		setLayout(null);
-		
 		registProdBtn = new JButton("상품등록");
 		delProdBtn = new JButton("상품삭제");
 		registProdBtn.setBounds(0, 0, 164, 120);
@@ -22,9 +29,52 @@ public class RightBtnPanel extends JPanel{
 		registProdBtn.setForeground(Color.WHITE);
 		registProdBtn.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		registProdBtn.setBackground(new Color(204, 204, 204));
+		registProdBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new OpenSubFrame();
+				
+			}
+		});
 		
 		delProdBtn.setForeground(Color.WHITE);
 		delProdBtn.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		delProdBtn.setBackground(new Color(153, 153, 153));
+		delProdBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//new OpenSubFrame();
+			}
+		});
+		
+	}
+	
+	
+	class OpenSubFrame extends JFrame{
+
+		/**
+		 * 
+		 */
+		JButton regBtn;
+		JButton cancleBtn;
+		Container contentPanel;
+		
+		private static final long serialVersionUID = 1L;
+		
+		public OpenSubFrame() {
+			contentPanel = new Container();
+			setFont(new Font("맑은 고딕", Font.BOLD, 20));
+			setTitle("상품등록");
+			setResizable(false);
+			setSize(300,300);
+			
+			setContentPane(contentPanel);
+			
+
+			setLocationRelativeTo(null);
+			setVisible(true);	
+		}
 	}
 }
