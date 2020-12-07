@@ -24,7 +24,7 @@ public class Add_Account {
 		ds.setUsername("puser");
 		ds.setPassword("12341234");
 		
-		String sql = "INSERT INTO member VALUES (mem_no_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)";
+		String sql = "INSERT INTO member VALUES (mem_no_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, default,default)";
 		
 		
 		try {
@@ -50,8 +50,10 @@ public class Add_Account {
 			conn.close();
 			ds.close();
 			
+			System.out.println("계정 생성 완료");
+			
 		} catch (SQLException e) {
-			e.getSQLState();
+			System.out.println(e.getMessage());
 		}
 		
 	}	

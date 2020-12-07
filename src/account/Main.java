@@ -5,7 +5,8 @@ import account.delAccount.Secession;
 
 public class Main {
 	public static void main(String[] args) {
-		new Join();
+		new Secession();
+		
 		
 	}
 }

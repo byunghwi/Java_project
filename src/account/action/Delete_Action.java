@@ -27,7 +27,7 @@ public class Delete_Action implements ActionListener {
 		
 		if (cp.check) {
 			new Del_Account(info_data[0]);
-			System.out.println("»èÁ¦ ¿Ï·á!!!!");
+			System.out.println("Å»Åð ¿Ï·á!!!!");
 		}
 		
 	}

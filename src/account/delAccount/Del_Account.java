@@ -15,7 +15,7 @@ public class Del_Account {
 		ds.setUsername("puser");
 		ds.setPassword("12341234");
 		
-		String sql = "DELETE FROM member WHERE mem_id = ? ";
+		String sql = "UPDATE member SET save_status = 'N' WHERE mem_id = ? ";
 		
 		try {
 			Connection conn = ds.getConnection();
