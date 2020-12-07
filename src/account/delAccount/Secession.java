@@ -1,4 +1,4 @@
-package account;
+package account.delAccount;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -9,7 +9,7 @@ import account.action.Delete_Action;
 
 
 
-public class Delete_info extends JFrame{
+public class Secession extends JFrame{
 	
 	public JTextField[] infos = new JTextField[2]; 
 	String [] info_names = {"ID","PW"};
@@ -17,7 +17,7 @@ public class Delete_info extends JFrame{
 	JLabel[] names = new JLabel[2];
 	JButton delete = new JButton("DELETE");
 	
-	public Delete_info() {
+	public Secession() {
 		
 		
 		for (int i = 0; i<2; i++) {

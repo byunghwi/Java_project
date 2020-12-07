@@ -4,15 +4,15 @@ import java.util.Date;
 
 public class Member {
 	
-	String mem_id;
-	String mem_pwd;
-	String mem_nm;
-	String premit_id;
-	String res_no;
-	String phone;
-	String address;
-	char sex;
-	String mail;
+	public String mem_id;
+	public String mem_pwd;
+	public String mem_nm;
+	public String premit_id;
+	public String res_no;
+	public String phone;
+	public String address;
+	public char sex;
+	public String mail;
 	
 	public Member(
 			String mem_id,

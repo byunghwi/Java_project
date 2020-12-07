@@ -1,4 +1,4 @@
-package account;
+package account.addAccount;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

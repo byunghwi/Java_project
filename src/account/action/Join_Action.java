@@ -4,10 +4,9 @@ package account.action;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import account.Add_Account;
-import account.Insert_info;
-import account.Join;
 import account.Member;
+import account.addAccount.Add_Account;
+import account.addAccount.Join;
 
 
 public class Join_Action implements ActionListener {
@@ -40,9 +39,5 @@ public class Join_Action implements ActionListener {
 		new Add_Account(this.new_mem);
 		
 	}
-
-	
-	
-	
 	
 }

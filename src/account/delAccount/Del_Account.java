@@ -1,4 +1,4 @@
-package account;
+package account.delAccount;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,7 +10,6 @@ public class Del_Account {
 	
 	public Del_Account(String mem_id) {
 		
-		// asdfasdf
 		HikariDataSource ds = new HikariDataSource();
 		ds.setJdbcUrl("jdbc:oracle:thin:@175.115.175.207:1521/orcl.115.175.144");
 		ds.setUsername("puser");
@@ -31,6 +30,7 @@ public class Del_Account {
 			
 			pstmt.close();
 			conn.close();
+			ds.close();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

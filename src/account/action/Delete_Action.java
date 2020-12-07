@@ -3,17 +3,17 @@ package account.action;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import account.Check_PW;
-import account.Del_Account;
-import account.Delete_info;
+import account.delAccount.Check_PW;
+import account.delAccount.Del_Account;
+import account.delAccount.Secession;
 
 public class Delete_Action implements ActionListener {
 	
-	Delete_info info;
+	Secession info;
 	public String [] info_data = new String[2];
 	boolean check_can_del = false;
 	
-	public Delete_Action(Delete_info info) {
+	public Delete_Action(Secession info) {
 		this.info = info;
 	}
 

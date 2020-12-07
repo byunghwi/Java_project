@@ -1,12 +1,15 @@
-package account;
+package account.addAccount;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
+import account.*;
 
 import com.zaxxer.hikari.HikariDataSource;
+
+import account.Member;
 
 public class Add_Account {
 	
@@ -45,9 +48,10 @@ public class Add_Account {
 			
 			pstmt.close();
 			conn.close();
+			ds.close();
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			e.getSQLState();
 		}
 		
 	}	

@@ -1,4 +1,4 @@
-package account;
+package account.delAccount;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -48,6 +48,7 @@ public class Check_PW {
 			
 			pstmt.close();
 			conn.close();
+			ds.close();
 			
 		} catch (SQLException e) {
 			System.err.println("잘못된 ID 정보 입니다.");
