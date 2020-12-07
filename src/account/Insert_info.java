@@ -17,7 +17,6 @@ public class Insert_info extends JFrame {
 	String [] info_data = new String[8];
 	JLabel[] names = new JLabel[8];
 	JButton join = new JButton("JOIN");
-	Join_Action ja = new Join_Action(this);
 	
 	
 	public Insert_info() {
@@ -36,7 +35,7 @@ public class Insert_info extends JFrame {
 		join.setBounds(110, 420, 90, 20);
 		add(join);
 		
-		join.addActionListener(ja);
+		join.addActionListener(new Join_Action(this));
 		
 		setTitle("회원 가입");
 		setLayout(null);
@@ -45,14 +44,5 @@ public class Insert_info extends JFrame {
 		setSize(300, 500);
 		setVisible(true);
 	}
-	
-
-	
-	public static void main(String[] args) {
-		
-		new Insert_info();
-		
-	}
-	
 	
 }
