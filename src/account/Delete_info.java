@@ -42,8 +42,5 @@ public class Delete_info extends JFrame{
 		setSize(250, 180);
 		setVisible(true);
 	}
-	
-	public static void main(String[] args) {
-		new Delete_info();
-	}
+
 }
