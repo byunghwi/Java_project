@@ -1,138 +1,167 @@
 package Order;
 
-import java.awt.Container;
+import java.awt.BorderLayout;
 
-import java.awt.FlowLayout;
+import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
+import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 import com.zaxxer.hikari.HikariDataSource;
 
-public class OrderGui extends JFrame implements ActionListener {
-	JTextArea product_list = new JTextArea(10, 25);
-	JLabel product_label, amount_label; // 물품id, 수량 라벨
-	JTextField ptoduct_text;
-	JTextField amount_text;
-	JPanel product_panel, amount_panel, select; // id,수량,선택(주문할지 취소할지) 패널
-	JButton order_button, cancel_button; // 주문,취소 버튼
+public class OrderGui extends JFrame {
+
+	private static final long serialVersionUID = 1L;
+	Vector data, title;
+	JTable table;
+	DefaultTableModel model;
+
+	JButton order_button, cancel_button;
+	JTextField ptoduct_text, amount_text;
+	JLabel product_label, amount_label;
+
+	public OrderGui() {
+		super("발주 시스템");
+		
+		data = new Vector<>();
+		title = new Vector<>();
+		title.add("물품ID");
+		title.add("물품명");
+		title.add("재고");
+		title.add("가격");
+
+		model = new DefaultTableModel();
+		Vector result = selectAll();
+		model.setDataVector(result, title);
+		table = new JTable(model);
+		JScrollPane sp = new JScrollPane(table);
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int index = table.getSelectedRow();
+				Vector in = (Vector) data.get(index);
+
+				String id = (String)in.get(0);
+				String name = (String)in.get(1);
+				int quantity = (int) in.get(3);
+				int price = (int) in.get(4);
+
+				ptoduct_text.setText(id);
+			}
+		});
+
+		JPanel panel = new JPanel();
+		
+		ptoduct_text = new JTextField(20);
+		amount_text = new JTextField(10);
+
+		product_label = new JLabel("물품id");
+		amount_label = new JLabel("수량");
+
+		order_button = new JButton("물품주문");
+		cancel_button = new JButton("취소");
+
+		order_button.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				HikariDataSource ds = new HikariDataSource();
+				ds.setJdbcUrl("jdbc:oracle:thin:@175.115.175.207:1521/orcl.115.175.144");
+				ds.setUsername("puser");
+				ds.setPassword("12341234");
+				try {
+					String product = ptoduct_text.getText();
+					int amount = Integer.parseInt(amount_text.getText());
+					Connection conn = ds.getConnection();
+					
+					String sql = "UPDATE product SET quantity = quantity + "+amount+" WHERE product_id = '"+product+"'";
+					PreparedStatement pstmt = conn.prepareStatement(sql);
+					pstmt.executeUpdate();
+					
+					if(pstmt != null) pstmt.close();
+					if(conn != null) conn.close();
+					if(ds != null) conn.close();
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+				OrderCheck();
+			}
+		});
+
+		cancel_button.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		
+		panel.add(product_label);
+		panel.add(ptoduct_text);
+		
+		panel.add(amount_label);
+		panel.add(amount_text);
+
+		panel.add(order_button);
+		panel.add(cancel_button);
+
+		Container c = getContentPane();
+
+		c.add(new JLabel("물품목록", JLabel.CENTER),"North");
+		c.add(sp,BorderLayout.CENTER);
+		c.add(panel, BorderLayout.SOUTH);
+
+	}
 
 	
-	public OrderGui() {
-		setTitle("물품주문"); // 타이틀 제목
-		
-		Container c = getContentPane();
-		c.setLayout(new FlowLayout());
-		
-		// 물품목록 테이블
-		product_list.setEditable(false); // 읽기만
-		JScrollPane pane = new JScrollPane(product_list); // ScrollBar 추가
-		
-		add("Center", pane);
-		try {
-			//hikaricp 접속
+	public Vector selectAll() {
+		try{
 			HikariDataSource ds = new HikariDataSource();
 			ds.setJdbcUrl("jdbc:oracle:thin:@175.115.175.207:1521/orcl.115.175.144");
 			ds.setUsername("puser");
 			ds.setPassword("12341234");
 			Connection conn = ds.getConnection();
-			
-			String sql = "SELECT * FROM product";
+			String sql = "select * from product";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
 			
-			product_list.setText("물품번호\t물품이름\t가격\n");
-			while(rs.next()) {
-				String str = rs.getString("product_id") 
-						+ "\t" 
-						+ rs.getString("product_name") 
-						+ "\t" 
-						+ rs.getInt("price") 
-						+ "\n";  
-				product_list.append(str);
+			while(rs.next()){
+				Vector in = new Vector<String>();
+				
+				String id = rs.getString(1); 
+				String name = rs.getString(2); 
+				int quantity = rs.getInt(5); 
+				int price = rs.getInt(6); 
+				
+				in.add(id);
+				in.add(name);
+				in.add(quantity);
+				in.add(price);
+				
+				data.add(in);
 			}
-			
 			if(rs != null) rs.close();
 			if(pstmt != null) pstmt.close();
 			if(conn != null) conn.close();
-		} catch (Exception e2) {
-			e2.printStackTrace();
-		} 
-			
-		//물품id 패널
-		product_panel = new JPanel();
-		product_label = new JLabel("물품id:");
-		ptoduct_text = new JTextField(10);
-		product_panel.add(product_label);
-		product_panel.add(ptoduct_text);
-		
-		//수량 패널
-		amount_panel = new JPanel();
-		amount_label = new JLabel("수량:");
-		amount_text = new JTextField(10);
-		amount_panel.add(amount_label);
-		amount_panel.add(amount_text);
-		
-		//버튼
-		select = new JPanel();		
-		order_button = new JButton("물품주문"); // 수량확인후 주문버튼
-		cancel_button = new JButton("취소"); // 취소버튼
-		select.add(order_button);
-		select.add(cancel_button);
-		order_button.addActionListener(this);
-		cancel_button.addActionListener(this);
-		
-		// 패널추가
-		c.add(product_panel);
-        c.add(amount_panel);
-        c.add(select);
-        
-		setBounds(200, 200, 350, 500);
-		setResizable(false); //크기 고정
-		setVisible(true);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			if(ds != null) ds.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return data; // 전체 데이터 저장하는 data 벡터 리턴
 	}
 	
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		HikariDataSource ds = new HikariDataSource();
-		ds.setJdbcUrl("jdbc:oracle:thin:@175.115.175.207:1521/orcl.115.175.144");
-		ds.setUsername("puser");
-		ds.setPassword("12341234");
-		if(e.getSource() == order_button) {	// 주문버튼실행
-
-			try {
-				String product = ptoduct_text.getText();
-				int amount = Integer.parseInt(amount_text.getText());
-				Connection conn = ds.getConnection();
-				
-				String sql = "UPDATE product SET quantity = quantity + "+amount+" WHERE product_id = '"+product+"'";
-				PreparedStatement pstmt = conn.prepareStatement(sql);
-				pstmt.executeUpdate();
-				
-				if(pstmt != null) pstmt.close();
-				if(conn != null) conn.close();
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
-			OrderCheck();
-		} else if(e.getSource() == cancel_button) {	//취소버튼실행
-			System.exit(0);
-		}
-	}
-
 	
 	public void OrderCheck() { // 주문후 완료창
 		setTitle("완료");
@@ -147,5 +176,10 @@ public class OrderGui extends JFrame implements ActionListener {
         setResizable(false);
         setVisible(true);
 	}
-	
+
+	public static void main(String[] args) {
+		OrderGui frame = new OrderGui();
+		frame.pack();
+		frame.setVisible(true);
+	}
 }
