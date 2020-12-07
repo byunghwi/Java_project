@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import product.HintTextField;
 import product.ProductAction;
 
 public class RightBtnPanel extends JPanel{
@@ -73,6 +74,7 @@ public class RightBtnPanel extends JPanel{
 		JPanel contentPanel;
 		
 		String[] fieldNames = new String[]{"상품코드", "상품명", "제조일", "폐기일", "가격"};
+		String[] textHints = new String[] {"상품코드를 입력하세요.",  "상품명을 입력하세요." , "YYYYmmdd", "YYYYmmdd", "가격을 입력하세요"};
 		JLabel[] labels;
 		JLabel titleLabel;
 		JTextField[] fields;
@@ -103,8 +105,8 @@ public class RightBtnPanel extends JPanel{
 				labels[i].setFont(new Font("맑은 고딕", Font.BOLD, 12));
 				labels[i].setBounds(30, (i+1)*50, 50 , 30);
 				
-				fields[i] = new JTextField();
-				fields[i].setFont(new Font("맑은 고딕", Font.BOLD, 12));
+				fields[i] = new HintTextField(textHints[i]);
+				//fields[i].setFont(new Font("맑은 고딕", Font.BOLD, 12));
 				fields[i].setBounds(130, (i+1)*50, 170 , 30);
 				
 				contentPanel.add(labels[i]);
@@ -114,9 +116,9 @@ public class RightBtnPanel extends JPanel{
 			regBtn = new JButton("등록");
 			regBtn.setFont(new Font("맑은 고딕", Font.BOLD, 12));
 			regBtn.setBounds(90, 320, 70, 30);
-			regBtn.addMouseListener(new ProductAction(fields));
+			regBtn.addMouseListener(new ProductAction(fields, "Regist", this));
 			cancelBtn = new JButton("취소");
-			cancelBtn.addMouseListener(new ProductAction(fields));
+			cancelBtn.addMouseListener(new ProductAction(fields, "Cancel", this));
 			cancelBtn.setFont(new Font("맑은 고딕", Font.BOLD, 12));
 			cancelBtn.setBounds(190, 320, 70, 30);
 			
@@ -124,6 +126,7 @@ public class RightBtnPanel extends JPanel{
 			contentPanel.add(cancelBtn, BorderLayout.SOUTH);
 			contentPanel.setLayout(null);
 			contentPanel.setBounds(0, 0, 300, 300);
+			
 
 			setLocationRelativeTo(null);
 			setVisible(true);	
