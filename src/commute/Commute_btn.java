@@ -13,19 +13,12 @@ import javax.swing.JFrame;
 
 public class Commute_btn extends JFrame{
 
+	JButton on_time= new JButton("출근");
+	JButton off_time= new JButton("퇴근");
+	
 	public Commute_btn() {
 	
-		SimpleDateFormat simple=new SimpleDateFormat("yyyy년 MM월 dd일 HH:mm:ss");
-		Date now=new Date();
-		Date now2=new Date();
-		
-		Calendar korea_time=Calendar.getInstance();
-	//System.out.println(simple.format(now));
-		
-		JButton on_time= new JButton("출근");
-		JButton off_time= new JButton("퇴근");
-		
-		
+
 		on_time.setBounds(50,50,100,50);
 		off_time.setBounds(200,50,100,50);
 		
@@ -41,9 +34,9 @@ public class Commute_btn extends JFrame{
 				JButton clicked_btn =(JButton)e.getSource();
 				
 				if(clicked_btn==on_time) {
-					System.out.println("출근시간:"+simple.format(now));
+					new Add_Commute_On_Time();
 				}else if(clicked_btn==off_time) {
-					System.out.println("퇴근시간:"+simple.format(now2));
+					new Add_Commute_Off_Time();
 				}
 			}
 		};
