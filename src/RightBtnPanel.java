@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class RightBtnPanel extends JPanel{
 	/**
@@ -62,33 +63,52 @@ public class RightBtnPanel extends JPanel{
 		JButton regBtn;
 		JButton cancelBtn;
 		JPanel contentPanel;
+		
 		String[] fieldNames = new String[]{"상품코드", "상품명", "제조일", "폐기일", "가격"};
 		JLabel[] labels;
+		JLabel titleLabel;
+		JTextField[] fields;
 		
 		private static final long serialVersionUID = 1L;
 		
 		public OpenSubFrame() {
 			contentPanel = new JPanel(new BorderLayout());
 			
+			titleLabel = new JLabel("[ 상품 등록 ]");
+			titleLabel.setFont(new Font("맑은 고딕", Font.BOLD, 20));
+			titleLabel.setBounds(0,20, 100, 50);
+			
+			
 			setFont(new Font("맑은 고딕", Font.BOLD, 20));
 			setTitle("상품등록");
 			setResizable(false);
-			setSize(500,700);
+			setSize(400,470);
 			
 			setContentPane(contentPanel);
 			
+			labels = new JLabel[fieldNames.length];
+			fields = new JTextField[fieldNames.length];
 			
 			for (int i = 0; i < fieldNames.length; i++) {
 				System.out.println(fieldNames[i]);
 				labels[i] = new JLabel(fieldNames[i]);
-				labels[i].setBounds(100, 70, 100 , (i+1)*20);
+				labels[i].setFont(new Font("맑은 고딕", Font.BOLD, 12));
+				labels[i].setBounds(50, (i+1)*50, 50 , 30);
+				
+				fields[i] = new JTextField();
+				fields[i].setFont(new Font("맑은 고딕", Font.BOLD, 12));
+				fields[i].setBounds(150, (i+1)*50, 170 , 30);
+				
 				contentPanel.add(labels[i]);
+				contentPanel.add(fields[i]);
 			}
 
 			regBtn = new JButton("등록");
-			regBtn.setBounds(166, 600, 70, 30);
+			regBtn.setFont(new Font("맑은 고딕", Font.BOLD, 12));
+			regBtn.setBounds(114, 350, 70, 30);
 			cancelBtn = new JButton("취소");
-			cancelBtn.setBounds(253, 600, 70, 30);
+			cancelBtn.setFont(new Font("맑은 고딕", Font.BOLD, 12));
+			cancelBtn.setBounds(207, 350, 70, 30);
 			
 			contentPanel.add(regBtn, BorderLayout.SOUTH);
 			contentPanel.add(cancelBtn, BorderLayout.SOUTH);
