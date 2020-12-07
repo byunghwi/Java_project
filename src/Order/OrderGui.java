@@ -36,7 +36,6 @@ public class OrderGui extends JFrame {
 
 	public OrderGui() {
 		super("발주 시스템");
-		
 		data = new Vector<>();
 		title = new Vector<>();
 		title.add("물품ID");
@@ -49,20 +48,6 @@ public class OrderGui extends JFrame {
 		model.setDataVector(result, title);
 		table = new JTable(model);
 		JScrollPane sp = new JScrollPane(table);
-		table.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				int index = table.getSelectedRow();
-				Vector in = (Vector) data.get(index);
-
-				String id = (String)in.get(0);
-				String name = (String)in.get(1);
-				int quantity = (int) in.get(3);
-				int price = (int) in.get(4);
-
-				ptoduct_text.setText(id);
-			}
-		});
 
 		JPanel panel = new JPanel();
 		
@@ -91,9 +76,9 @@ public class OrderGui extends JFrame {
 					PreparedStatement pstmt = conn.prepareStatement(sql);
 					pstmt.executeUpdate();
 					
-					if(pstmt != null) pstmt.close();
-					if(conn != null) conn.close();
-					if(ds != null) conn.close();
+					pstmt.close();
+					conn.close();
+					ds.close();
 				} catch (Exception e2) {
 					e2.printStackTrace();
 				}
@@ -120,9 +105,8 @@ public class OrderGui extends JFrame {
 		Container c = getContentPane();
 
 		c.add(new JLabel("물품목록", JLabel.CENTER),"North");
-		c.add(sp,BorderLayout.CENTER);
+		c.add(sp, BorderLayout.CENTER);
 		c.add(panel, BorderLayout.SOUTH);
-
 	}
 
 	
@@ -152,14 +136,15 @@ public class OrderGui extends JFrame {
 				
 				data.add(in);
 			}
-			if(rs != null) rs.close();
-			if(pstmt != null) pstmt.close();
-			if(conn != null) conn.close();
-			if(ds != null) ds.close();
+			
+			rs.close();
+			pstmt.close();
+			conn.close();
+			ds.close();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		return data; // 전체 데이터 저장하는 data 벡터 리턴
+		return data;
 	}
 	
 	
@@ -177,9 +162,4 @@ public class OrderGui extends JFrame {
         setVisible(true);
 	}
 
-	public static void main(String[] args) {
-		OrderGui frame = new OrderGui();
-		frame.pack();
-		frame.setVisible(true);
-	}
 }
