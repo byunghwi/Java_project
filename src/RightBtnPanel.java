@@ -4,12 +4,15 @@ import java.awt.Container;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import product.ProductAction;
 
 public class RightBtnPanel extends JPanel{
 	/**
@@ -36,7 +39,12 @@ public class RightBtnPanel extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new OpenSubFrame();
+				try {
+					new OpenSubFrame();
+				} catch (ParseException e1) {
+					System.out.println("[parse error]\n");
+					e1.printStackTrace();
+				}
 				
 			}
 		});
@@ -71,7 +79,7 @@ public class RightBtnPanel extends JPanel{
 		
 		private static final long serialVersionUID = 1L;
 		
-		public OpenSubFrame() {
+		public OpenSubFrame() throws ParseException {
 			contentPanel = new JPanel(new BorderLayout());
 			
 			titleLabel = new JLabel("[ 상품 등록 ]");
@@ -82,7 +90,7 @@ public class RightBtnPanel extends JPanel{
 			setFont(new Font("맑은 고딕", Font.BOLD, 20));
 			setTitle("상품등록");
 			setResizable(false);
-			setSize(400,470);
+			setSize(360,420);
 			
 			setContentPane(contentPanel);
 			
@@ -93,11 +101,11 @@ public class RightBtnPanel extends JPanel{
 				System.out.println(fieldNames[i]);
 				labels[i] = new JLabel(fieldNames[i]);
 				labels[i].setFont(new Font("맑은 고딕", Font.BOLD, 12));
-				labels[i].setBounds(50, (i+1)*50, 50 , 30);
+				labels[i].setBounds(30, (i+1)*50, 50 , 30);
 				
 				fields[i] = new JTextField();
 				fields[i].setFont(new Font("맑은 고딕", Font.BOLD, 12));
-				fields[i].setBounds(150, (i+1)*50, 170 , 30);
+				fields[i].setBounds(130, (i+1)*50, 170 , 30);
 				
 				contentPanel.add(labels[i]);
 				contentPanel.add(fields[i]);
@@ -105,10 +113,12 @@ public class RightBtnPanel extends JPanel{
 
 			regBtn = new JButton("등록");
 			regBtn.setFont(new Font("맑은 고딕", Font.BOLD, 12));
-			regBtn.setBounds(114, 350, 70, 30);
+			regBtn.setBounds(90, 320, 70, 30);
+			regBtn.addMouseListener(new ProductAction(fields));
 			cancelBtn = new JButton("취소");
+			cancelBtn.addMouseListener(new ProductAction(fields));
 			cancelBtn.setFont(new Font("맑은 고딕", Font.BOLD, 12));
-			cancelBtn.setBounds(207, 350, 70, 30);
+			cancelBtn.setBounds(190, 320, 70, 30);
 			
 			contentPanel.add(regBtn, BorderLayout.SOUTH);
 			contentPanel.add(cancelBtn, BorderLayout.SOUTH);
