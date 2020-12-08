@@ -23,7 +23,15 @@ public class Join_Action implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		for (int i=0; i<new_join_data.length; i++) {
+			if (i == 6) {
+				if(new_join.rb1.isSelected())
+					new_join_data[i] = "M";
+				else
+					new_join_data[i] = "F";
+				continue;
+			}
 			new_join_data[i] = new_join.infos[i].getText();
+			
 		}
 	 	
 		new_mem = new Member(
