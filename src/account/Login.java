@@ -9,7 +9,7 @@ import javax.swing.JTextField;
 import account.action.Login_Action;
 
 
-
+// 로그인 정보를 받아올 클래스(Swing 구현)
 public class Login extends JFrame {
 	
 	public JTextField[] infos = new JTextField[2]; 
@@ -43,6 +43,7 @@ public class Login extends JFrame {
 		add(login);
 		
 		login.addActionListener(new Login_Action(this));
+		
 		
 		setTitle("로그인");
 		setLayout(null);

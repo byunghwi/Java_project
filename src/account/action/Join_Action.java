@@ -8,7 +8,7 @@ import account.Member;
 import account.addAccount.Add_Account;
 import account.addAccount.Join;
 
-
+// 회원 가입 액션 리스너
 public class Join_Action implements ActionListener {
 	
 	Join new_join;
@@ -19,6 +19,7 @@ public class Join_Action implements ActionListener {
 		this.new_join = new_join;
 	}
 	
+	// 입력창에서 입력받은 정보를 통해 새 Member클래스를 만든 후 DB에 저장
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		for (int i=0; i<new_join_data.length; i++) {

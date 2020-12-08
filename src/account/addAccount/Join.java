@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 
 import account.action.Join_Action;
 
+// DB로 보낼 정보를 입력하는 클래스(Swing으로 구현)
 public class Join extends JFrame {
 	
 	public JTextField[] infos = new JTextField[8]; 
@@ -18,9 +19,7 @@ public class Join extends JFrame {
 	JLabel[] names = new JLabel[8];
 	JButton join = new JButton("JOIN");
 	
-	
 	public Join() {
-		
 		
 		for (int i = 0; i<8; i++) {
 			infos[i] = new JTextField(10);

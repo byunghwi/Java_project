@@ -11,6 +11,7 @@ import com.zaxxer.hikari.HikariDataSource;
 
 import account.Member;
 
+// 실제로 DB에 데이터를 보내는 클래스
 public class Add_Account {
 	
 	

@@ -9,6 +9,7 @@ import com.zaxxer.hikari.HikariDataSource;
 
 import account.check.Check_SaveStatus;
 
+// 입력받은 ID에 대한 PW가 맞는지 확인하는 클래스
 public class Check_PW {
 	
 	String mem_id;
@@ -21,8 +22,10 @@ public class Check_PW {
 		this.mem_id = mem_id;
 		this.mem_pwd = mem_pwd;
 		
+		// 먼저 퇴사자의 정보인지 확인
 		c_ss = new Check_SaveStatus(mem_id,mem_pwd);
 		
+		// 퇴사자도 아니고 ID의 정보도 존재한다면 이하의 조건문 실행
 		if(c_ss.check) {
 			HikariDataSource ds = new HikariDataSource();
 			ds.setJdbcUrl("jdbc:oracle:thin:@175.115.175.207:1521/orcl.115.175.144");
@@ -42,6 +45,7 @@ public class Check_PW {
 				
 				result.next();
 				
+				// ID에 대한 PW가 맞다면 check를 true로 변경
 				if(result.getString(1).equals(mem_pwd)) {
 					check = true;
 				} else {
@@ -60,9 +64,7 @@ public class Check_PW {
 			}
 		
 		}
-		else {
-			System.err.println("잘못된 ID 정보 입니다.");
-		}
+		
 		
 	}
 

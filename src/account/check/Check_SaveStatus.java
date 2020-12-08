@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 import com.zaxxer.hikari.HikariDataSource;
 
+// SaveStatus(퇴사 여부)를 확인하는 클래스
 public class Check_SaveStatus {
 	
 	String mem_id;
@@ -37,6 +38,7 @@ public class Check_SaveStatus {
 			
 			result.next();
 			
+			// 퇴사 여부를 파악하여 퇴사자가 아니라면 판별용 변수 check를 true로 변경
 			if(result.getString(1).equals("Y")) {
 				check = true;
 			} else {
@@ -49,9 +51,10 @@ public class Check_SaveStatus {
 			pstmt.close();
 			conn.close();
 			ds.close();
-			
+		
+			// 잘못된 ID 인지의 여부도 이 클래스에서 파악
 		} catch (SQLException e) {
-			System.err.println("");
+			System.err.println("잘못된 ID 정보 입니다.");
 		}
 		
 	}

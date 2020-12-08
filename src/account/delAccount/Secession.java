@@ -8,7 +8,7 @@ import javax.swing.JTextField;
 import account.action.Delete_Action;
 
 
-
+// 삭제할 계정의 정보를 받아오는 클래스(Swing 구현)
 public class Secession extends JFrame{
 	
 	public JTextField[] infos = new JTextField[2]; 
