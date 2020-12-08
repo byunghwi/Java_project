@@ -23,7 +23,7 @@ public class ProductView extends JPanel {
 	public JScrollPane productsScrollPane = new JScrollPane();
 	public Vector<String> colNames = pdao.columnNames;
 	public DefaultTableModel tblModel = new DefaultTableModel(colNames, 0);
-	public JTable productTable;
+	public static JTable productTable;
 	//행 정보들 담을 벡터
 	public Vector<String> rows;
 	
@@ -33,7 +33,6 @@ public class ProductView extends JPanel {
 		productsScrollPane.setBounds(12, 10, 1133, 532);
 		add(productsScrollPane);
 		
-		tblModel.fireTableDataChanged();
 		productTable = new JTable(tblModel);
 
 		productTable.setRowMargin(10);
@@ -43,7 +42,7 @@ public class ProductView extends JPanel {
 		//테이블 로우 중 한 줄만 선택 가능.
 		productTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-		addProductLine(pdao.products); 
+		addProductLine(pdao.productAll()); 
 		
 		productsScrollPane.setViewportView(productTable);
 	}

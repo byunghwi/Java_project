@@ -2,7 +2,6 @@ package product;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,6 +17,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import db.DatabaseConnect;
+
+
 
 public class ProductAction extends MouseAdapter{
 	
@@ -82,7 +83,7 @@ public class ProductAction extends MouseAdapter{
 					//메서드 호출한 클래스의 서브프레임 닫아주기.
 					subOpenFrame.dispose();
 					
-					new ProductView().productTable.repaint();
+					
 					
 				}else {
 					System.out.println("[DB] insert error!!\n");
