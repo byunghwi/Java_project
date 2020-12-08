@@ -48,7 +48,7 @@ public class OrderGui extends JFrame {
 		model.setDataVector(result, title);
 		table = new JTable(model);
 		JScrollPane sp = new JScrollPane(table);
-		table.setEnabled(false);
+//		table.setEnabled(false);
 		JPanel panel = new JPanel();
 		
 		ptoduct_text = new JTextField(20);
@@ -59,7 +59,8 @@ public class OrderGui extends JFrame {
 
 		order_button = new JButton("물품주문");
 		cancel_button = new JButton("취소");
-
+		
+		// 물품주문버튼실행
 		order_button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -75,6 +76,9 @@ public class OrderGui extends JFrame {
 					String sql = "UPDATE product SET quantity = quantity + "+amount+" WHERE product_id = '"+product+"'";
 					PreparedStatement pstmt = conn.prepareStatement(sql);
 					pstmt.executeUpdate();
+					model.fireTableDataChanged(); // 테이블 내용 갱신
+					model.setNumRows(0); // 테이블 날리고 
+					selectAll(); // 새로 받아와서 갱신
 					
 					pstmt.close();
 					conn.close();
@@ -84,7 +88,8 @@ public class OrderGui extends JFrame {
 				}
 			}
 		});
-
+		
+		// 취소버튼실행
 		cancel_button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -116,11 +121,16 @@ public class OrderGui extends JFrame {
 			ds.setUsername("puser");
 			ds.setPassword("12341234");
 			Connection conn = ds.getConnection();
+			
+			String nullsql = "update product set quantity = 0 where quantity = null"; //null값 상품수량->0으로
+			PreparedStatement nullpstmt = conn.prepareStatement(nullsql);
+			nullpstmt.executeQuery();
+			
 			String sql = "select * from product";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
 			
-			while(rs.next()){
+			while(rs.next()){ // 그래프에서 값 가져와 정렬
 				Vector in = new Vector<String>();
 				
 				String id = rs.getString(1); 
@@ -138,6 +148,9 @@ public class OrderGui extends JFrame {
 			
 			rs.close();
 			pstmt.close();
+			
+			nullpstmt.close();
+			
 			conn.close();
 			ds.close();
 		}catch(Exception e){
@@ -145,6 +158,5 @@ public class OrderGui extends JFrame {
 		}
 		return data;
 	}
-
 
 }

@@ -1,15 +1,15 @@
 package Order;
 
-public class ProductList { // id, 이름, 수량, 가격만 가져오도록
+public class OrderProductList { // id, 이름, 수량, 가격만 가져오도록
 	String product_id;
 	String product_name;
 	int quantity;
 	int price;
 	
-	public ProductList() {
+	public OrderProductList() {
 	}
 	
-	public ProductList(String product_id, String product_name, int quantity, int price) {
+	public OrderProductList(String product_id, String product_name, int quantity, int price) {
 		super();
 		this.product_id = product_id;
 		this.product_name = product_name;
