@@ -23,7 +23,7 @@ public class ProductView extends JPanel {
 	public JScrollPane productsScrollPane = new JScrollPane();
 	public Vector<String> colNames = pdao.columnNames;
 	public DefaultTableModel tblModel = new DefaultTableModel(colNames, 0);
-	public static JTable productTable;
+	public JTable productTable = new JTable(tblModel);
 	//행 정보들 담을 벡터
 	public Vector<String> rows;
 	
@@ -33,8 +33,6 @@ public class ProductView extends JPanel {
 		productsScrollPane.setBounds(12, 10, 1133, 532);
 		add(productsScrollPane);
 		
-		productTable = new JTable(tblModel);
-
 		productTable.setRowMargin(10);
 		productTable.setRowHeight(30);		
 		productTable.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
@@ -59,6 +57,16 @@ public class ProductView extends JPanel {
 			rows.addElement(Integer.toString(products.get(i).getQuantity()));
 			rows.addElement(Integer.toString(products.get(i).getPrice()));
 			
+//			System.out.printf("%s\t %s\t %s\t %s\t %s\t %s \n", 
+//					products.get(i).getProduct_id(), 
+//					products.get(i).getProduct_name(), 
+//					products.get(i).getManu_date().toString(), 
+//					products.get(i).getDis_date().toString(), 
+//					Integer.toString(products.get(i).getQuantity()), 
+//					Integer.toString(products.get(i).getPrice()) );
+//			
+//			System.out.println("한 줄 정보 > " +rows);
+//			
 			//로우마다 테이블에 뿌려주기.
 			tblModel.addRow(rows);
 		}

@@ -14,7 +14,7 @@ import javax.swing.border.EmptyBorder;
 
 import product.ProductView;
 
-public class MainFrame extends JFrame implements ActionListener, Runnable {
+public class MainFrame extends JFrame implements ActionListener{
 
 	/**
 	 * 
@@ -24,7 +24,7 @@ public class MainFrame extends JFrame implements ActionListener, Runnable {
 	TopPanel topPanel = new TopPanel();
 
 	// 가운데 상품 보여줄 패널
-	ProductView productView;
+	ProductView productView = new ProductView();
 
 	// 오른쪽 버튼들 보여줄 패널
 	RightBtnPanel rightBtnPanel = new RightBtnPanel();
@@ -64,10 +64,8 @@ public class MainFrame extends JFrame implements ActionListener, Runnable {
 
 		// 가운데 패널부분
 		pView = new JPanel();
-		productView = new ProductView();
 		pView.add(productView, "productView");
 		pView.setBackground(Color.WHITE);
-
 		pView.setBounds(0, 50, 1157, 552);
 		pView.setLayout(cardlayout);
 		contentPanel.add(pView);
@@ -80,7 +78,6 @@ public class MainFrame extends JFrame implements ActionListener, Runnable {
 		pBtnView.setLayout(cardlayout);
 		contentPanel.add(pBtnView);
 
-		this.repaint();
 	}
 
 	@Override
@@ -89,23 +86,7 @@ public class MainFrame extends JFrame implements ActionListener, Runnable {
 
 	}
 
-	@Override
-	public void run() {
-		while (true) {
-			
-			System.out.println("스레드 동작하나");
-			try {
-				Thread.sleep(500);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-	}
-
 	public static void main(String[] args) {
-//		Thread thread = new Thread(new MainFrame());
-//		thread.start();
 		new MainFrame();
 	}
 }
