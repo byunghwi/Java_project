@@ -97,12 +97,11 @@ public class OrderGui extends JFrame {
 			}
 		});
 		
+		// JLabel,JTextField(물품id, 수량), 주문,취소 버튼 add
 		panel.add(product_label);
 		panel.add(ptoduct_text);
-		
 		panel.add(amount_label);
 		panel.add(amount_text);
-
 		panel.add(order_button);
 		panel.add(cancel_button);
 
