@@ -26,11 +26,11 @@ import com.zaxxer.hikari.HikariDataSource;
 public class OrderGui extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	Vector data, title;
+	Vector data, title; // 배열역할
 	JTable table;
-	DefaultTableModel model;
+	DefaultTableModel model; // 테이블 데이터 설정할 수 있게 설정
 
-	JButton order_button, cancel_button;
+	JButton order_button, cancel_button; // 주문,취소 버튼
 	JTextField ptoduct_text, amount_text;
 	JLabel product_label, amount_label;
 
@@ -44,11 +44,11 @@ public class OrderGui extends JFrame {
 		title.add("가격");
 
 		model = new DefaultTableModel();
-		Vector result = selectAll();
-		model.setDataVector(result, title);
+		Vector result = selectAll(); // Vector data(product테이블 물품) 가져올 배열
+		model.setDataVector(result, title); // 2차원 배열
 		table = new JTable(model);
-		JScrollPane sp = new JScrollPane(table);
-//		table.setEnabled(false);
+		JScrollPane sp = new JScrollPane(table); // 스크롤 설정
+		table.setEnabled(false); // 그래프 더블클릭 편집 못하게 설정
 		JPanel panel = new JPanel();
 		
 		ptoduct_text = new JTextField(20);
@@ -114,7 +114,7 @@ public class OrderGui extends JFrame {
 	}
 
 	
-	public Vector selectAll() {
+	public Vector selectAll() { // selectAll() : product 테이블에 있는 모든 데이터를 가지고 오는 메소드
 		try{
 			HikariDataSource ds = new HikariDataSource();
 			ds.setJdbcUrl("jdbc:oracle:thin:@175.115.175.207:1521/orcl.115.175.144");
@@ -122,9 +122,10 @@ public class OrderGui extends JFrame {
 			ds.setPassword("12341234");
 			Connection conn = ds.getConnection();
 			
-			String nullsql = "update product set quantity = 0 where quantity = null"; //null값 상품수량->0으로
+			// product테이블에 null값인 상품수량 -> 0부터 시작할수 있게 바꿔줌
+			String nullsql = "update product set quantity = 0 where quantity is null";
 			PreparedStatement nullpstmt = conn.prepareStatement(nullsql);
-			nullpstmt.executeQuery();
+			nullpstmt.executeUpdate();
 			
 			String sql = "select * from product";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -133,10 +134,10 @@ public class OrderGui extends JFrame {
 			while(rs.next()){ // 그래프에서 값 가져와 정렬
 				Vector in = new Vector<String>();
 				
-				String id = rs.getString(1); 
-				String name = rs.getString(2); 
-				int quantity = rs.getInt(5); 
-				int price = rs.getInt(6); 
+				String id = rs.getString(1); // product_id
+				String name = rs.getString(2); // product_name
+				int quantity = rs.getInt(5); // quantity
+				int price = rs.getInt(6); // price
 				
 				in.add(id);
 				in.add(name);
@@ -156,7 +157,7 @@ public class OrderGui extends JFrame {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		return data;
+		return data; 
 	}
 
 }
