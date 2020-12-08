@@ -21,7 +21,7 @@ public class List_Input extends JFrame {
 	public List_Input() {
 		
 		JButton button = new JButton("확인");
-		JLabel label=new JLabel("날짜입력");
+		JLabel label=new JLabel("정보입력");
 		
 		this.setLayout(new GridLayout(5,2));
 		
