@@ -43,17 +43,22 @@ public class List_Input extends JFrame {
 	      
 	  button.addActionListener(new ActionListener() {
 
+		  
+		  
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			
 			String st_date =start_date.getText();
-	           System.out.println("시작날짜:"+st_date);
 	        String en_date =end_date.getText();
-            System.out.println("종료날짜:"+en_date);
-         String name=mem_name.getText();
-            System.out.println("사원이름:"+name);
+            String name=mem_name.getText();
+            
+			new Commute_list(st_date,en_date,name);
+			
+			
+         
 		}  
 	  });
-	  	  
+	  
 	      add(label);
 		  add(panel1);
 	      add(panel2);
