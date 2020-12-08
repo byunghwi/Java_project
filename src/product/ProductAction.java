@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Vector;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -37,6 +38,8 @@ public class ProductAction extends MouseAdapter{
 	DateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
 	
 	JFrame subOpenFrame;
+	
+	Vector<String> rows;
 
 	
 	public ProductAction(JTextField[] fields, String chkBtn, JFrame subOpenFrame) throws ParseException {
@@ -78,6 +81,8 @@ public class ProductAction extends MouseAdapter{
 					
 					//메서드 호출한 클래스의 서브프레임 닫아주기.
 					subOpenFrame.dispose();
+					
+					new ProductView().productTable.repaint();
 					
 				}else {
 					System.out.println("[DB] insert error!!\n");
