@@ -47,10 +47,10 @@ public class ProductDao {
 			int columCnt = rsmd.getColumnCount();
 			
 			//컬럼네임 ArrayList 세팅
-//			for (int i = 0; i < columCnt; i++) {
-//				columnNames.add(i, rsmd.getColumnName(i+1));
-//				System.out.printf("[컬럼네임 세팅] %d번째 ->  %s\n", i, rsmd.getColumnName(i+1));
-//			}
+			for (int i = 0; i < columCnt; i++) {
+				columnNames.add(i, rsmd.getColumnName(i+1));
+				//System.out.printf("[컬럼네임 세팅] %d번째 ->  %s\n", i, rsmd.getColumnName(i+1));
+			}
 			
 			while(rs.next()) {
 				product = new Product();

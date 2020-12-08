@@ -48,6 +48,7 @@ public class ProductView extends JPanel {
 	//Jtable에 로우 하나씩 추가하기.
 	public void addProductLine(ArrayList<Product> products) {
 		int size = products.size();
+		//System.out.println("상품들 arraylist 사이즈 > " + size);
 		for (int i = 0; i < size; i++) {
 			rows = new Vector<String>();
 			rows.addElement(products.get(i).getProduct_id());

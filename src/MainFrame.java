@@ -14,6 +14,7 @@ import javax.swing.border.EmptyBorder;
 
 import product.ProductView;
 
+
 public class MainFrame extends JFrame implements ActionListener{
 
 	/**
