@@ -32,11 +32,14 @@ public class Commute_list {
 			Connection conn=ds.getConnection();
 			PreparedStatement pstmt=
 					conn.prepareStatement(sql);
-			ResultSet rs = pstmt.executeQuery();	
 			
 			pstmt.setString(1,start_date);
 			pstmt.setString(2,end_date);
 			pstmt.setString(3,mem_name);
+			
+			ResultSet rs = pstmt.executeQuery();	
+			
+			
 			
 			
 			
