@@ -6,17 +6,17 @@ import java.sql.SQLException;
 
 import com.zaxxer.hikari.HikariDataSource;
 
-public class Del_Account {
+public class testA {
 	
-	public Del_Account(String mem_id) {
+	public static void main(String[] args) {
 		
-		// asdfasdf
 		HikariDataSource ds = new HikariDataSource();
 		ds.setJdbcUrl("jdbc:oracle:thin:@175.115.175.207:1521/orcl.115.175.144");
 		ds.setUsername("puser");
 		ds.setPassword("12341234");
+		String dat = "test";
 		
-		String sql = "DELETE FROM member WHERE mem_id = ? ";
+		String sql = "UPDATE daily_check SET OFF_TIME = sysdate WHERE mem_no = ?";
 		
 		try {
 			Connection conn = ds.getConnection();
@@ -24,13 +24,14 @@ public class Del_Account {
 			PreparedStatement pstmt = 
 					conn.prepareStatement(sql);
 			
-			pstmt.setString(1, mem_id);
+			pstmt.setString(1, dat);
 			
 			pstmt.execute();
 			
 			
 			pstmt.close();
 			conn.close();
+			ds.close();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -38,4 +39,5 @@ public class Del_Account {
 		
 		
 	}
+
 }

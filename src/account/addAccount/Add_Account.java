@@ -1,12 +1,15 @@
-package account;
+package account.addAccount;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
+import account.*;
 
 import com.zaxxer.hikari.HikariDataSource;
+
+import account.Member;
 
 public class Add_Account {
 	
@@ -21,7 +24,7 @@ public class Add_Account {
 		ds.setUsername("puser");
 		ds.setPassword("12341234");
 		
-		String sql = "INSERT INTO member VALUES (mem_no_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)";
+		String sql = "INSERT INTO member VALUES (mem_no_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, default,default)";
 		
 		
 		try {
@@ -45,9 +48,12 @@ public class Add_Account {
 			
 			pstmt.close();
 			conn.close();
+			ds.close();
+			
+			System.out.println("계정 생성 완료");
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 		
 	}	
