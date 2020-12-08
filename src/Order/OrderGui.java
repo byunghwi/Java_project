@@ -48,7 +48,7 @@ public class OrderGui extends JFrame {
 		model.setDataVector(result, title);
 		table = new JTable(model);
 		JScrollPane sp = new JScrollPane(table);
-
+		table.setEnabled(false);
 		JPanel panel = new JPanel();
 		
 		ptoduct_text = new JTextField(20);
@@ -82,7 +82,6 @@ public class OrderGui extends JFrame {
 				} catch (Exception e2) {
 					e2.printStackTrace();
 				}
-				OrderCheck();
 			}
 		});
 
@@ -146,20 +145,6 @@ public class OrderGui extends JFrame {
 		}
 		return data;
 	}
-	
-	
-	public void OrderCheck() { // 주문후 완료창
-		setTitle("완료");
 
-        JPanel check = new JPanel();
-        setContentPane(check);
-        
-        JLabel NewLabel = new JLabel("새주문완료!");
-        check.add(NewLabel);
-        
-        setSize(300,100);
-        setResizable(false);
-        setVisible(true);
-	}
 
 }
