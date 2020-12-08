@@ -17,17 +17,17 @@ public class Commute_list {
 		ds.setUsername("puser");
 		ds.setPassword("12341234");
 		
-		String sql = "SELECT * FROM daily_check WHERE dc_date between '2020-01-01' and '2020-12-31'";
-		
+		String sql = "SELECT * FROM daily_check WHERE dc_date between '?'and'?' and mem_no='?'";
 		
 		try {
-			
 			Connection conn=ds.getConnection();
 			PreparedStatement pstmt=
 					conn.prepareStatement(sql);
-			
 			ResultSet rs = pstmt.executeQuery();	
 			
+			
+			
+	
 			while(rs.next()) {
 					System.out.printf("%s\t%s\t%s\t%s\n",
 							rs.getString("dc_date"),
@@ -41,14 +41,11 @@ public class Commute_list {
 			pstmt.close();
 			conn.close();
 			rs.close();
+			
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
 		}
-	}
-
-	public static void main(String[] args) {
 		
-		new Commute_list();
 	}
 }
