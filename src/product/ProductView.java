@@ -21,7 +21,7 @@ public class ProductView extends JPanel {
 	
 	ProductDao pdao = new ProductDao();
 	public JScrollPane productsScrollPane = new JScrollPane();
-	public Vector<String> colNames = pdao.columnNames;
+	public Vector<String> colNames = getColum();
 	public DefaultTableModel tblModel = new DefaultTableModel(colNames, 0);
 	public JTable productTable = new JTable(tblModel);
 	//행 정보들 담을 벡터
@@ -73,6 +73,27 @@ public class ProductView extends JPanel {
 		}
 		
 		productsScrollPane.setViewportView(productTable);
+	}
+	
+	private Vector<String> getColum() {
+		colNames = new Vector<String>();
+		colNames.add("상품코드");
+		colNames.add("상품명");
+		colNames.add("제조일");
+		colNames.add("폐기일");
+		colNames.add("수량");
+		colNames.add("가격");
+
+		return colNames;
+	}
+	
+	//테이블 행 지우기. 화면단에서만
+	public void clearRows(int rowSize, DefaultTableModel dtm) {
+		if (rowSize > 0) {
+			for (int i = rowSize - 1; i >= 0; i--) {
+				dtm.removeRow(i);
+			}
+		}
 	}
 
 }

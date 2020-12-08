@@ -2,16 +2,17 @@ import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
+
 import javax.swing.JFrame;
-import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import product.ProdRegistFrame;
+import product.ProductDao;
 import product.ProductView;
 
 
@@ -29,6 +30,9 @@ public class MainFrame extends JFrame implements ActionListener{
 
 	// 오른쪽 버튼들 보여줄 패널
 	RightBtnPanel rightBtnPanel = new RightBtnPanel();
+	
+	// 상품 등록 팝업 프레임
+	ProdRegistFrame prodRegistFrame = new ProdRegistFrame();
 
 	public CardLayout cardlayout;
 	public CardLayout btn;
@@ -38,6 +42,8 @@ public class MainFrame extends JFrame implements ActionListener{
 	public JPanel pView;
 	public JPanel pBtnView;
 	public JPanel topView;
+	
+	ProductDao pdao = new ProductDao();
 
 	public MainFrame() {
 
@@ -78,13 +84,45 @@ public class MainFrame extends JFrame implements ActionListener{
 		pBtnView.add(rightBtnPanel, "rightBtnPanel");
 		pBtnView.setLayout(cardlayout);
 		contentPanel.add(pBtnView);
+		
+		//버튼들 액션 달기 start
+		rightBtnPanel.registProdBtn.addActionListener(this); 	//우측패널 상품등록 버튼
+		prodRegistFrame.regBtn.addActionListener(this); 		//팝업 상품등록 프레임 등록 버튼
+		prodRegistFrame.cancelBtn.addActionListener(this); 		//팝업 상품등록 프레임 취소 버튼
 
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-
+		Object ob = e.getSource();
+		Object obb = e.getActionCommand();
+		
+		if(ob == rightBtnPanel.registProdBtn) {
+			prodRegistFrame.setVisible(true);
+		}else if (ob == prodRegistFrame.regBtn) {
+			pdao.productAdd(prodRegistFrame.fields);
+			
+			//상품목록J테이블 초기화 해주기.
+			productView.tblModel.setNumRows(0);
+			
+			//상품목록J테이블 새로 채우기
+			productView.addProductLine(pdao.productAll());
+				
+			//텍스트 필드에 채워진 값 초기화 해주기.
+			for(int i = 0; i< prodRegistFrame.fields.length; i++) {
+				prodRegistFrame.fields[i].setText("");
+			}
+			
+			//확인 팝업창
+			JOptionPane.showMessageDialog(null, "[SYSTEM] 등록이 완료되었습니다.", "확인", JOptionPane.CLOSED_OPTION);
+			
+			//창 안보이게 
+			prodRegistFrame.setVisible(false);
+			
+		}else if (ob == prodRegistFrame.cancelBtn) {
+			prodRegistFrame.setVisible(false);
+		}
+		
 	}
 
 	public static void main(String[] args) {

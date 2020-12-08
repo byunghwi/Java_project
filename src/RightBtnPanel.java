@@ -14,7 +14,6 @@ import javax.swing.JTextField;
 
 import product.HintTextField;
 import product.ProdRegistFrame;
-import product.ProductAction;
 
 public class RightBtnPanel extends JPanel{
 	/**
@@ -37,34 +36,12 @@ public class RightBtnPanel extends JPanel{
 		registProdBtn.setForeground(Color.WHITE);
 		registProdBtn.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		registProdBtn.setBackground(new Color(204, 204, 204));
-		registProdBtn.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				try {
-					//상품 정보 입력 폼 프레임창 새로 열기.
-					new ProdRegistFrame();
-				} catch (ParseException e1) {
-					System.out.println("[parse error]\n");
-					e1.printStackTrace();
-				}
-				
-			}
-		});
+
 		
 		delProdBtn.setForeground(Color.WHITE);
 		delProdBtn.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		delProdBtn.setBackground(new Color(153, 153, 153));
-		delProdBtn.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				//new OpenSubFrame();
-			}
-		});
-		
+	
 	}
-	
-	
 
 }
