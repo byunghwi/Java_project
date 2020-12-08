@@ -3,12 +3,15 @@ package account.action;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JFrame;
+
 import account.Login;
 import account.delAccount.Check_PW;
-import product.ProductView;
 
 
-public class Login_Action implements ActionListener {
+
+
+public class Login_Action extends JFrame implements ActionListener {
 	
 	Login info;
 	public String [] info_data = new String[2];
