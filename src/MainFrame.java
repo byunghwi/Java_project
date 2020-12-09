@@ -109,9 +109,7 @@ public class MainFrame extends JFrame implements ActionListener{
 			productView.addProductLine(pdao.productAll());
 				
 			//텍스트 필드에 채워진 값 초기화 해주기.
-			for(int i = 0; i< prodRegistFrame.fields.length; i++) {
-				prodRegistFrame.fields[i].setText("");
-			}
+			prodRegistFrame.resetText(prodRegistFrame.fields);
 			
 			//확인 팝업창
 			JOptionPane.showMessageDialog(null, "[SYSTEM] 등록이 완료되었습니다.", "확인", JOptionPane.CLOSED_OPTION);

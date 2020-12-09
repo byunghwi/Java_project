@@ -84,4 +84,13 @@ public class ProdRegistFrame extends JFrame{
 			pIn.setBounds(0, 0, 300, 400);
 
 		}
+		
+		//텍스트필드 초기화 해주기.
+		public void resetText(JTextField[] fields) {
+			if(fields.length > 0) {
+				for (int i = 0; i < fields.length; i++) {
+					fields[i].setText("");
+				}
+			}
+		}
 }
