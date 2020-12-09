@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Vector;
 
+import javax.swing.JTextField;
+
 import db.DatabaseConnect;
 
 public class ProductDao {
@@ -20,33 +22,26 @@ public class ProductDao {
 	
 	ResultSetMetaData rsmd = null;
 	
-	//Product 객체를 담을 ArrayList생성.
-	public ArrayList<Product> products = new ArrayList<Product>();
-	public Vector<String>columnNames = new Vector<String>();
+	String query = null;
 	
 	Product product = null;
 	
-	public ProductDao(){
+	//상품 전체 목록
+	public ArrayList<Product> productAll(){
 		
 		conn = DatabaseConnect.getConnection();
+		//상품들 담을 ArrayList 생성
+		ArrayList<Product> products = new ArrayList<Product>();
 		
-		String query = "SELECT product_id as \"상품코드\", product_name as \"상품명\", to_char(manu_date, 'YYYY-MM-dd') as \"제조일\" "
+		query = "SELECT product_id as \"상품코드\", product_name as \"상품명\", to_char(manu_date, 'YYYY-MM-dd') as \"제조일\" "
 				+ ", to_char(dis_date, 'YYYY-MM-dd') as \"폐기일\", quantity as \"수량\", price \"가격\" "
-				+ " FROM product ORDER BY product_id";
-		//System.out.println("쿼리 > " + query);
+				+ " FROM product WHERE save_status = \'Y\' ORDER BY product_id";
 		try {
 			ps = conn.prepareStatement(query);
 			rs = ps.executeQuery();
 			rsmd = rs.getMetaData();
 			
 			int columCnt = rsmd.getColumnCount();
-			
-			//컬럼네임 ArrayList 세팅
-			for (int i = 0; i < columCnt; i++) {
-				columnNames.add(i, rsmd.getColumnName(i+1));
-				//System.out.printf("[컬럼네임 세팅] %d번째 ->  %s\n", i, rsmd.getColumnName(i+1));
-			}
-			
 			
 			while(rs.next()) {
 				product = new Product();
@@ -60,12 +55,62 @@ public class ProductDao {
 				
 				products.add(product);
 			}
-			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
+		//DB사용 종료
+		try {
+			DatabaseConnect.dbClose(rs, ps, conn);
+		} catch (SQLException e) {
+			System.out.println("[DB] 자원 반납 중 오류 발생\n");
+			e.printStackTrace();
+		}
+
+		return products;
+
 	}
+	
+	//상품 등록
+	public void productAdd(JTextField[] fields) {
+		conn = DatabaseConnect.getConnection();
+		
+		
+		query = "insert into product (product_id, product_name, manu_date, dis_date, price) values (?, ? ,? ,?, ?)";
+		
+		try {
+			ps = conn.prepareStatement(query);
+			
+			ps.setString(1, fields[0].getText());
+			ps.setString(2, fields[1].getText());
+			ps.setString(3, fields[2].getText());
+			ps.setString(4, fields[3].getText());
+			ps.setInt(5, Integer.parseInt(fields[4].getText()));
+
+			int rsCnt = ps.executeUpdate();
+		
+		} catch (SQLException e) {
+			System.out.println("[DB] Insert 중 오류 발생\n");
+			e.printStackTrace();
+		}
+		
+		//DB사용 종료
+		try {
+			DatabaseConnect.dbClose(rs, ps, conn);
+		} catch (SQLException e) {
+			System.out.println("[DB] 자원 반납 중 오류 발생\n");
+			e.printStackTrace();
+		}
+
+	}
+	
+	
+	public void productDel() {
+		
+	}
+	
+	
+	
 	
 }

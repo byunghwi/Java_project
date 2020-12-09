@@ -1,4 +1,4 @@
-package commute;
+package commute.Action;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,7 +15,7 @@ public class Add_Commute_On_Time {
 	ds.setUsername("puser");
 	ds.setPassword("12341234");
 	
-	String sql = "INSERT INTO daily_check VALUES (sysdate,'test',sysdate,default)";
+	String sql = "INSERT INTO daily_check VALUES (sysdate,'test2',sysdate,default)";
 	
 	try {
 		Connection conn=ds.getConnection();

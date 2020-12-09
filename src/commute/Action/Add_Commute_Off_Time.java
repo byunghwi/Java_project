@@ -1,4 +1,4 @@
-package commute;
+package commute.Action;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,7 +17,7 @@ public class Add_Commute_Off_Time {
 	
 	
 	
-	String sql = "UPDATE daily_check SET OFF_TIME = sysdate WHERE mem_no = 'test'";
+	String sql = "UPDATE daily_check SET OFF_TIME = sysdate WHERE mem_no = 'test3'";
 	
 	
 	try {

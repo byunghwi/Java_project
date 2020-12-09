@@ -27,16 +27,5 @@ public class Commute {
 		this.off_time=off_time;
 		
 	}
-	public String setOntime() {
-		
-		return on_time;
-	}
-	
-	public String setOfftime() {
-		return off_time;
-	}
-	
-	
-	
 	
 }
