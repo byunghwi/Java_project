@@ -22,7 +22,7 @@ public class Commute_list {
 	String end_date;
 	String mem_name;
 	
-	public JScrollPane productsScrollPane = new JScrollPane();
+	public JScrollPane CommutesScrollPane = new JScrollPane();
 	public Vector<String> colNames = getColum();
 	public DefaultTableModel tblModel = new DefaultTableModel(colNames, 0);
 	public JTable commuteTable = new JTable(tblModel);
@@ -84,7 +84,7 @@ public class Commute_list {
 			tblModel.addRow(rows);
 		}
 		
-		productsScrollPane.setViewportView(commuteTable);
+		CommutesScrollPane.setViewportView(commuteTable);
 	}
 	
 	private Vector<String> getColum() {
