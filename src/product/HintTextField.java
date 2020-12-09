@@ -7,6 +7,7 @@ import java.awt.event.FocusListener;
 
 import javax.swing.JTextField;
 
+// Swing에 placeholder 기능없어서 따로 만듦
 public class HintTextField extends JTextField {
 	
 	
@@ -23,14 +24,13 @@ public class HintTextField extends JTextField {
 
 			@Override
 			public void focusLost(FocusEvent e) {
-				if (getText().equals(hint)) {
-					setText("");
-					setFont(gainFont);
+				if (getText().equals(hint) || getText().length() == 0) {
+					setText(hint);
+					setFont(lostFont);
 				} else {
 					setForeground(Color.BLACK);
 					setText(getText());
 					setFont(gainFont);
-
 				}
 			}
 
@@ -43,8 +43,7 @@ public class HintTextField extends JTextField {
 				} else {
 					setForeground(Color.BLACK);
 					setText(getText());
-					setFont(gainFont);
-					
+					setFont(gainFont);					
 				}
 			}
 		});
