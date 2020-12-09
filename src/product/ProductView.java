@@ -48,7 +48,7 @@ public class ProductView extends JPanel {
 	//Jtable에 로우 하나씩 추가하기.
 	public void addProductLine(ArrayList<Product> products) {
 		int size = products.size();
-		//System.out.println("상품들 arraylist 사이즈 > " + size);
+
 		for (int i = 0; i < size; i++) {
 			rows = new Vector<String>();
 			rows.addElement(products.get(i).getProduct_id());
@@ -57,17 +57,7 @@ public class ProductView extends JPanel {
 			rows.addElement(products.get(i).getDis_date().toString());
 			rows.addElement(Integer.toString(products.get(i).getQuantity()));
 			rows.addElement(Integer.toString(products.get(i).getPrice()));
-			
-//			System.out.printf("%s\t %s\t %s\t %s\t %s\t %s \n", 
-//					products.get(i).getProduct_id(), 
-//					products.get(i).getProduct_name(), 
-//					products.get(i).getManu_date().toString(), 
-//					products.get(i).getDis_date().toString(), 
-//					Integer.toString(products.get(i).getQuantity()), 
-//					Integer.toString(products.get(i).getPrice()) );
-//			
-//			System.out.println("한 줄 정보 > " +rows);
-//			
+
 			//로우마다 테이블에 뿌려주기.
 			tblModel.addRow(rows);
 		}
@@ -86,14 +76,4 @@ public class ProductView extends JPanel {
 
 		return colNames;
 	}
-	
-	//테이블 행 지우기. 화면단에서만
-	public void clearRows(int rowSize, DefaultTableModel dtm) {
-		if (rowSize > 0) {
-			for (int i = rowSize - 1; i >= 0; i--) {
-				dtm.removeRow(i);
-			}
-		}
-	}
-
 }
