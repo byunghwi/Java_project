@@ -11,21 +11,22 @@ import com.zaxxer.hikari.HikariDataSource;
 public class Commute {
 
 	String dc_date;
-	int mem_no;
+	String mem_no;
 	String on_time;
 	String off_time;
 	
-	public Commute(
-			String dc_date,
-			int mem_no,
-			String on_time,
-			String off_time) {
+	public Commute() {
 		
+	}
+	
+	public Commute(String dc_date,String mem_no,String on_time,String off_time) {
 		this.dc_date=dc_date;
 		this.mem_no=mem_no;
 		this.on_time=on_time;
 		this.off_time=off_time;
-		
 	}
+	
+	
+	
 	
 }

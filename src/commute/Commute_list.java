@@ -8,8 +8,21 @@ import java.sql.SQLException;
 
 import com.zaxxer.hikari.HikariDataSource;
 
+import product.Product;
+
 public class Commute_list {
 
+	Connection conn =null;
+	
+	PreparedStatement ps = null;
+	
+	ResultSet rs = null;
+	
+	String sql = null;
+	
+	Product product = null;
+	
+	
 	String start_date;
 	String end_date;
 	String mem_name;
