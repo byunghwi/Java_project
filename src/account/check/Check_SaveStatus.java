@@ -7,6 +7,8 @@ import java.sql.SQLException;
 
 import com.zaxxer.hikari.HikariDataSource;
 
+import db.DatabaseConnect;
+
 // SaveStatus(퇴사 여부)를 확인하는 클래스
 public class Check_SaveStatus {
 	
@@ -19,16 +21,10 @@ public class Check_SaveStatus {
 		this.mem_id = mem_id;
 		this.mem_pwd = mem_pwd;
 		
-		
-		HikariDataSource ds = new HikariDataSource();
-		ds.setJdbcUrl("jdbc:oracle:thin:@175.115.175.207:1521/orcl.115.175.144");
-		ds.setUsername("puser");
-		ds.setPassword("12341234");
-		
 		String sql = "SELECT save_status FROM member WHERE mem_id = ?";
 		
 		try {
-			Connection conn = ds.getConnection();
+			Connection conn = DatabaseConnect.getConnection();
 			
 			PreparedStatement pstmt = 
 					conn.prepareStatement(sql);
@@ -45,12 +41,7 @@ public class Check_SaveStatus {
 				System.err.println("탈퇴한 회원 ID입니다.");
 			}
 			
-			
-			
-			result.close();
-			pstmt.close();
-			conn.close();
-			ds.close();
+			DatabaseConnect.dbClose(result, pstmt, conn);
 		
 			// 잘못된 ID 인지의 여부도 이 클래스에서 파악
 		} catch (SQLException e) {

@@ -10,6 +10,7 @@ import account.*;
 import com.zaxxer.hikari.HikariDataSource;
 
 import account.Member;
+import db.DatabaseConnect;
 
 // 실제로 DB에 데이터를 보내는 클래스
 public class Add_Account {
@@ -19,17 +20,11 @@ public class Add_Account {
 		// Member new_mem = new Member("mem_issd", "mem_pw", "mem_nm", "res_no", "phone", "address", 's', "mail");
 		
 		
-		
-		HikariDataSource ds = new HikariDataSource();
-		ds.setJdbcUrl("jdbc:oracle:thin:@175.115.175.207:1521/orcl.115.175.144");
-		ds.setUsername("puser");
-		ds.setPassword("12341234");
-		
 		String sql = "INSERT INTO member VALUES (mem_no_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, default,default)";
 		
 		
 		try {
-			Connection conn = ds.getConnection();
+			Connection conn = DatabaseConnect.getConnection();
 			
 			PreparedStatement pstmt = 
 					conn.prepareStatement(sql);
@@ -46,11 +41,9 @@ public class Add_Account {
 			
 			pstmt.execute();
 			
-			pstmt.close();
-			conn.close();
-			ds.close();
-			
 			System.out.println("계정 생성 완료");
+			
+			DatabaseConnect.dbClose(null, pstmt, conn);
 			
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());

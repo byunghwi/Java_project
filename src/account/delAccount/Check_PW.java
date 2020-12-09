@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import com.zaxxer.hikari.HikariDataSource;
 
 import account.check.Check_SaveStatus;
+import db.DatabaseConnect;
 
 // 입력받은 ID에 대한 PW가 맞는지 확인하는 클래스
 public class Check_PW {
@@ -27,15 +28,12 @@ public class Check_PW {
 		
 		// 퇴사자도 아니고 ID의 정보도 존재한다면 이하의 조건문 실행
 		if(c_ss.check) {
-			HikariDataSource ds = new HikariDataSource();
-			ds.setJdbcUrl("jdbc:oracle:thin:@175.115.175.207:1521/orcl.115.175.144");
-			ds.setUsername("puser");
-			ds.setPassword("12341234");
+			
 			
 			String sql = "SELECT mem_pwd FROM member WHERE mem_id = ?";
 			
 			try {
-				Connection conn = ds.getConnection();
+				Connection conn = DatabaseConnect.getConnection();
 				
 				PreparedStatement pstmt = 
 						conn.prepareStatement(sql);
@@ -53,11 +51,8 @@ public class Check_PW {
 				}
 				
 				
+				DatabaseConnect.dbClose(result, pstmt, conn);
 				
-				result.close();
-				pstmt.close();
-				conn.close();
-				ds.close();
 				
 			} catch (SQLException e) {
 				

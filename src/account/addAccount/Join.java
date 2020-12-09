@@ -72,7 +72,7 @@ public class Join extends JFrame {
 	    add(rb1);
 	    add(rb2);
 		
-		join.setBounds(110, 370, 90, 20);
+		join.setBounds(110, 370, 110, 20);
 		add(join);
 		
 		join.addActionListener(new Join_Action(this));
