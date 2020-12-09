@@ -30,8 +30,6 @@ public class Edit_Account extends JFrame {
 	JButton cancel = new JButton("√Îº“");
 	
 	
-	
-	
 	public Edit_Account(String mem_id) {
 		
 		this.mem_id = mem_id;
