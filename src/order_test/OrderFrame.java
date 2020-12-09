@@ -1,15 +1,15 @@
-package Order;
+package order_test;
 
 import java.awt.BorderLayout;
 
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.util.Vector;
 
 import javax.swing.JButton;
@@ -21,20 +21,23 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import com.zaxxer.hikari.HikariDataSource;
+import db.DatabaseConnect;
 
-public class OrderGui extends JFrame {
+public class OrderFrame extends JFrame {
+	Connection conn;
+	PreparedStatement ps;
+	ResultSet rs;
+	ResultSetMetaData rsmd;
 
 	private static final long serialVersionUID = 1L;
 	Vector data, title; // 배열역할
 	JTable table;
 	DefaultTableModel model; // 테이블 데이터 설정할 수 있게 설정
-
 	JButton order_button, cancel_button; // 주문,취소 버튼
-	JTextField ptoduct_text, amount_text;
+	JTextField product_text, amount_text;
 	JLabel product_label, amount_label;
 
-	public OrderGui() {
+	public OrderFrame() {
 		super("발주 시스템");
 		data = new Vector<>();
 		title = new Vector<>();
@@ -49,14 +52,14 @@ public class OrderGui extends JFrame {
 		table = new JTable(model);
 		JScrollPane sp = new JScrollPane(table); // 스크롤 설정
 		table.setEnabled(false); // 그래프 더블클릭 편집 못하게 설정
-		JPanel panel = new JPanel();
 		
-		ptoduct_text = new JTextField(20);
-		amount_text = new JTextField(10);
-
+		JPanel panel = new JPanel();
 		product_label = new JLabel("물품id");
+//		product_text = new HintTextField("id 입력");
+		product_text = new JTextField(20);
 		amount_label = new JLabel("수량");
-
+//		amount_text = new HintTextField("수량 입력");
+		amount_text = new JTextField(20);
 		order_button = new JButton("물품주문");
 		cancel_button = new JButton("취소");
 		
@@ -64,27 +67,25 @@ public class OrderGui extends JFrame {
 		order_button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				HikariDataSource ds = new HikariDataSource();
-				ds.setJdbcUrl("jdbc:oracle:thin:@175.115.175.207:1521/orcl.115.175.144");
-				ds.setUsername("puser");
-				ds.setPassword("12341234");
+				conn = DatabaseConnect.getConnection();
+				String product = product_text.getText();
+				int amount = Integer.parseInt(amount_text.getText());
+				
+				String sql = "UPDATE product SET quantity = quantity + "+amount+" WHERE product_id = '"+product+"'";
 				try {
-					String product = ptoduct_text.getText();
-					int amount = Integer.parseInt(amount_text.getText());
-					Connection conn = ds.getConnection();
-					
-					String sql = "UPDATE product SET quantity = quantity + "+amount+" WHERE product_id = '"+product+"'";
 					PreparedStatement pstmt = conn.prepareStatement(sql);
 					pstmt.executeUpdate();
 					model.fireTableDataChanged(); // 테이블 내용 갱신
 					model.setNumRows(0); // 테이블 날리고 
 					selectAll(); // 새로 받아와서 갱신
-					
-					pstmt.close();
-					conn.close();
-					ds.close();
 				} catch (Exception e2) {
 					e2.printStackTrace();
+				}
+				try {
+					DatabaseConnect.dbClose(rs, ps, conn);
+				} catch (SQLException e1) {
+					System.out.println("[DB] 자원 반납 중 오류 발생\n");
+					e1.printStackTrace();
 				}
 			}
 		});
@@ -99,7 +100,7 @@ public class OrderGui extends JFrame {
 		
 		// JLabel,JTextField(물품id, 수량), 주문,취소 버튼 add
 		panel.add(product_label);
-		panel.add(ptoduct_text);
+		panel.add(product_text);
 		panel.add(amount_label);
 		panel.add(amount_text);
 		panel.add(order_button);
@@ -114,21 +115,17 @@ public class OrderGui extends JFrame {
 
 	
 	public Vector selectAll() { // selectAll() : product 테이블에 있는 모든 데이터를 가지고 오는 메소드
+		conn = DatabaseConnect.getConnection();
+		String sql = "select * from product";
 		try{
-			HikariDataSource ds = new HikariDataSource();
-			ds.setJdbcUrl("jdbc:oracle:thin:@175.115.175.207:1521/orcl.115.175.144");
-			ds.setUsername("puser");
-			ds.setPassword("12341234");
-			Connection conn = ds.getConnection();
-			
 			// product테이블에 null값인 상품수량 -> 0부터 시작할수 있게 바꿔줌
-			String nullsql = "update product set quantity = 0 where quantity is null";
-			PreparedStatement nullpstmt = conn.prepareStatement(nullsql);
-			nullpstmt.executeUpdate();
+//			String nullsql = "update product set quantity = 0 where quantity is null";
+//			PreparedStatement nullpstmt = conn.prepareStatement(nullsql);
+//			nullpstmt.executeUpdate();
 			
-			String sql = "select * from product";
-			PreparedStatement pstmt = conn.prepareStatement(sql);
-			ResultSet rs = pstmt.executeQuery();
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			rsmd = rs.getMetaData();
 			
 			while(rs.next()){ // 그래프에서 값 가져와 정렬
 				Vector in = new Vector<String>();
@@ -145,15 +142,13 @@ public class OrderGui extends JFrame {
 				
 				data.add(in);
 			}
-			
-			rs.close();
-			pstmt.close();
-			
-			nullpstmt.close();
-			
-			conn.close();
-			ds.close();
 		}catch(Exception e){
+			e.printStackTrace();
+		}
+		try {
+			DatabaseConnect.dbClose(rs, ps, conn);
+		} catch (SQLException e) {
+			System.out.println("[DB] 자원 반납 중 오류 발생\n");
 			e.printStackTrace();
 		}
 		return data; 
