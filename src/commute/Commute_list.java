@@ -14,6 +14,7 @@ import javax.swing.table.DefaultTableModel;
 
 import com.zaxxer.hikari.HikariDataSource;
 
+import db.DatabaseConnect;
 import product.Product;
 
 public class Commute_list {
@@ -36,18 +37,15 @@ public class Commute_list {
 		this.mem_name=mem_name;
 		
 		
-		HikariDataSource ds = new HikariDataSource();
-		ds.setJdbcUrl("jdbc:oracle:thin:@175.115.175.207:1521/orcl.115.175.144");
-		ds.setUsername("puser");
-		ds.setPassword("12341234");
+		
 		
 		String sql = "SELECT * FROM daily_check WHERE dc_date between ? and ? and mem_no= ?";
 		
 		ArrayList<Commute> commutes = new ArrayList<Commute>();
 		
 		try {
-			Connection conn=ds.getConnection();
-			PreparedStatement pstmt=
+			Connection conn = DatabaseConnect.getConnection();
+			PreparedStatement pstmt = 
 					conn.prepareStatement(sql);
 			
 			pstmt.setString(1,start_date);
@@ -61,10 +59,7 @@ public class Commute_list {
 				commutes.add(commute);	
 			}
 			
-			pstmt.execute();
-			pstmt.close();
-			conn.close();
-			rs.close();
+			DatabaseConnect.dbClose(null, pstmt, conn);
 			
 		} catch (SQLException e) {
 			

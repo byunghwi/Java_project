@@ -6,29 +6,25 @@ import java.sql.SQLException;
 
 import com.zaxxer.hikari.HikariDataSource;
 
+import db.DatabaseConnect;
+
 public class Add_Commute_Off_Time {
 
 	public Add_Commute_Off_Time() {
 	
-	HikariDataSource ds = new HikariDataSource();
-	ds.setJdbcUrl("jdbc:oracle:thin:@175.115.175.207:1521/orcl.115.175.144");
-	ds.setUsername("puser");
-	ds.setPassword("12341234");
+
 	
 	
 	
-	String sql = "UPDATE daily_check SET OFF_TIME = sysdate WHERE mem_no = 'test3'";
+	String sql = "UPDATE daily_check SET OFF_TIME = sysdate WHERE mem_no = 'test2'";
 	
 	
 	try {
-		Connection conn=ds.getConnection();
-		
-		PreparedStatement pstmt=
+		Connection conn = DatabaseConnect.getConnection();
+		PreparedStatement pstmt = 
 				conn.prepareStatement(sql);
 		
-		pstmt.execute();
-		pstmt.close();
-		conn.close();
+		DatabaseConnect.dbClose(null, pstmt, conn);
 		
 	} catch (SQLException e) {
 		
