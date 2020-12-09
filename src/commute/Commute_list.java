@@ -39,10 +39,6 @@ public class Commute_list {
 			
 			ResultSet rs = pstmt.executeQuery();	
 			
-			
-			
-			
-			
 	
 			while(rs.next()) {
 					System.out.printf("%s\t%s\t%s\t%s\n",

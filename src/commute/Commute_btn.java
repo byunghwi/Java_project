@@ -62,7 +62,7 @@ public class Commute_btn extends JFrame{
 		
 		frame.setLayout(null);
 		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		frame.setLocation(3000,100);
+		frame.setLocation(300,100);
 		frame.setSize(500,500);
 		frame.setVisible(true);
 		

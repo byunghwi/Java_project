@@ -2,6 +2,9 @@ package account;
 
 import java.util.Date;
 
+
+// 멤버 정보에 대한 클래스
+// getter setter 탑재 예정
 public class Member {
 	
 	public String mem_id;
