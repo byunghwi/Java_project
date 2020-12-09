@@ -32,6 +32,7 @@ public class Read_Account {
 			result.next();
 			for(int i = 0; i<read_info.length; i++) {
 				read_info[i] = result.getString(i+1);
+				
 			}
 			
 			
