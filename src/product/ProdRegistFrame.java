@@ -11,6 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import com.toedter.calendar.JDateChooser;
+
 //상품 등록 버튼 누를시 Sub 프레임 생성 및 입력해주기.
 public class ProdRegistFrame extends JFrame{
 		/**
@@ -30,7 +32,6 @@ public class ProdRegistFrame extends JFrame{
 		public Product product = new Product();
 		
 		public ProdRegistFrame(){
-			
 			
 			titleLabel = new JLabel("[ 상품 등록 ]");
 			titleLabel.setFont(new Font("맑은 고딕", Font.BOLD, 20));
@@ -82,6 +83,10 @@ public class ProdRegistFrame extends JFrame{
 			pIn.add(regBtn, BorderLayout.SOUTH);
 			pIn.add(cancelBtn, BorderLayout.SOUTH);
 			pIn.setBounds(0, 0, 300, 400);
+			
+//			JDateChooser dateChooser = new JDateChooser();
+//			dateChooser.setBounds(0, 0, 170, 30);
+//			pIn.add(dateChooser);
 
 		}
 		
