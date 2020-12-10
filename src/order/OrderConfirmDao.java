@@ -13,7 +13,7 @@ import db.DatabaseConnect;
 
 public class OrderConfirmDao {
 	Connection conn;
-	PreparedStatement ps;
+	PreparedStatement ps, pstmt;
 	ResultSet rs;
 	ResultSetMetaData rsmd;
 	String sql;
@@ -50,12 +50,14 @@ public class OrderConfirmDao {
 	}
 	
 	// 발주 승인
-	public void moveconfirm(JTextField[] fields) {
+	public void confirmCheck(JTextField[] fields) {
 		conn = DatabaseConnect.getConnection();
-		sql = "insert into order_product VALUES(ORDER_PRODUCT_NO_SEQ.nextval, ?, ?, ?, to_char(sysdate,'yyyy.mm.dd'))";
+		sql = "UPDATE product SET quantity = quantity + ? WHERE product_id = \'?\'";
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.executeQuery();
+			ps.setInt(1, Integer.parseInt(fields[2].getText()));
+			ps.setString(2, fields[1].getText());
+			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -74,6 +76,7 @@ public class OrderConfirmDao {
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, Integer.parseInt(fields[0].getText()));
 			ps.executeUpdate();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -83,5 +86,6 @@ public class OrderConfirmDao {
 			e.printStackTrace();
 		}
 	}
+	
 	
 }

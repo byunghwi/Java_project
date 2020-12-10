@@ -54,8 +54,10 @@ public class MainFrame extends JFrame implements ActionListener{
 	public JPanel topView;
 	
 	ProductDao pdao = new ProductDao();
+	
 	OrderConfirmDao ocd = new OrderConfirmDao();
 	OrderDao od = new OrderDao();
+	OrderConfirmView ocv = new OrderConfirmView();
 
 	public MainFrame() {
 
@@ -150,7 +152,8 @@ public class MainFrame extends JFrame implements ActionListener{
 		} else if (ob == orderConfirmFrame.order_btn) {
 			orderFrame.setVisible(true);
 		} else if (ob == orderConfirmFrame.confirm_btn) { // 승인대기 - 승인
-			
+			ocd.confirmCheck(orderConfirmFrame.fields);
+			ocd.confirmCancle(orderConfirmFrame.fields);
 		} else if (ob == orderConfirmFrame.delete_btn) { // 승인대기 - 삭제
 			ocd.confirmCancle(orderConfirmFrame.fields);
 		} else if (ob == orderConfirmFrame.cancel_btn) { // 승인대기 - 취소
