@@ -73,7 +73,7 @@ public class ProductDao {
 	}
 
 	// 상품 등록
-	public void productAdd(JTextField[] fields) {
+	public void productAdd(String tf1, String tf2, String date1, String date2, String tf3) {
 		conn = DatabaseConnect.getConnection();
 
 		query = "insert into product (product_id, product_name, manu_date, dis_date, price) values (?, ? ,? ,?, ?)";
@@ -81,11 +81,11 @@ public class ProductDao {
 		try {
 			ps = conn.prepareStatement(query);
 
-			ps.setString(1, fields[0].getText());
-			ps.setString(2, fields[1].getText());
-			ps.setString(3, fields[2].getText());
-			ps.setString(4, fields[3].getText());
-			ps.setInt(5, Integer.parseInt(fields[4].getText()));
+			ps.setString(1, tf1);
+			ps.setString(2, tf2);
+			ps.setString(3, date1);
+			ps.setString(4, date2);
+			ps.setInt(5, Integer.parseInt(tf3));
 
 			int rsCnt = ps.executeUpdate();
 
@@ -105,7 +105,7 @@ public class ProductDao {
 	}
 
 	// 상품 수정
-	public void productEdit(JTextField[] fields, String product_id) {
+	public void productEdit(String tf1, String date1, String date2, String tf2, String tf3, String product_id) {
 		conn = DatabaseConnect.getConnection();
 
 		query = "UPDATE product SET product_name = ?, manu_date = ?, dis_date = ?, quantity = ?, price = ? WHERE product_id = ?";
@@ -113,11 +113,11 @@ public class ProductDao {
 		try {
 			ps = conn.prepareStatement(query);
 
-			ps.setString(1, fields[0].getText());
-			ps.setString(2, fields[1].getText());
-			ps.setString(3, fields[2].getText());
-			ps.setString(4, fields[3].getText());
-			ps.setString(5, fields[4].getText());
+			ps.setString(1, tf1);
+			ps.setString(2, date1);
+			ps.setString(3, date2);
+			ps.setString(4, tf2);
+			ps.setString(5, tf3);
 			ps.setString(6, product_id);
 
 			int rsCnt = ps.executeUpdate();

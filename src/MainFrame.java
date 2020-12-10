@@ -4,7 +4,10 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -95,7 +98,7 @@ public class MainFrame extends JFrame implements ActionListener {
 
 		prodRegistFrame.regBtn.addActionListener(this); // 팝업 상품등록 프레임 등록 버튼
 		prodRegistFrame.cancelBtn.addActionListener(this); // 팝업 상품등록 프레임 취소 버튼
-		
+
 		prodEditFrame.compEditBtn.addActionListener(this);
 		prodEditFrame.cancelEidtBtn.addActionListener(this);
 		// 버튼들 액션 달기 End
@@ -109,7 +112,15 @@ public class MainFrame extends JFrame implements ActionListener {
 		if (ob == rightBtnPanel.registProdBtn) {
 			prodRegistFrame.setVisible(true);
 		} else if (ob == prodRegistFrame.regBtn) {
-			pdao.productAdd(prodRegistFrame.fields);
+
+			String tf1 = prodRegistFrame.tf1.getText();
+			String tf2 = prodRegistFrame.tf2.getText();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			String theDate1 = sdf.format(prodRegistFrame.dateChooser1.getDate());
+			String theDate2 = sdf.format(prodRegistFrame.dateChooser2.getDate());
+			String tf3 = prodRegistFrame.tf3.getText();
+
+			pdao.productAdd(tf1, tf2, theDate1, theDate2, tf3);
 
 			// 상품목록J테이블 초기화 해주기.
 			productView.tblModel.setNumRows(0);
@@ -118,7 +129,7 @@ public class MainFrame extends JFrame implements ActionListener {
 			productView.addProductLine(pdao.productAll());
 
 			// 텍스트 필드에 채워진 값 초기화 해주기.
-			prodRegistFrame.resetText(prodRegistFrame.fields);
+			prodRegistFrame.resetText();
 
 			// 확인 팝업창
 			JOptionPane.showMessageDialog(null, "[SYSTEM] 등록이 완료되었습니다.", "확인", JOptionPane.CLOSED_OPTION);
@@ -134,11 +145,21 @@ public class MainFrame extends JFrame implements ActionListener {
 
 				// 선택한 행
 				int row = productView.productTable.getSelectedRow();
-				
+
 				// 선택한 행 내용 수정 프레임창에 세팅해주기
-				for (int i = 0; i < 5; i++) {
-					prodEditFrame.fields[i].setText((String) productView.tblModel.getValueAt(row, (i + 1)));
+				prodEditFrame.tf1.setText((String) productView.tblModel.getValueAt(row, 1));
+				try {
+					Date date1 = new SimpleDateFormat("yyyy-MM-dd").parse((String) productView.tblModel.getValueAt(row, 2));
+					Date date2 = new SimpleDateFormat("yyyy-MM-dd").parse((String) productView.tblModel.getValueAt(row, 3));
+					prodEditFrame.dateChooser1.setDate(date1);
+					prodEditFrame.dateChooser2.setDate(date2);
+				} catch (ParseException e1) {
+					System.out.println("Date Parser error!\n");
+					e1.printStackTrace();
 				}
+
+				prodEditFrame.tf2.setText((String) productView.tblModel.getValueAt(row, 4));
+				prodEditFrame.tf3.setText((String) productView.tblModel.getValueAt(row, 5));
 
 			} else {
 				JOptionPane.showMessageDialog(null, "[SYSTEM] 수정하시려는 상품을 선택해주세요.", "확인", JOptionPane.CLOSED_OPTION);
@@ -149,24 +170,31 @@ public class MainFrame extends JFrame implements ActionListener {
 				int row = productView.productTable.getSelectedRow();
 				String product_id = (String) productView.tblModel.getValueAt(row, 0);
 				pdao.productDel(product_id);
-				
+
 				// 상품목록 화면테이블 초기화 해주기.
 				productView.tblModel.setNumRows(0);
 
 				// 상품목록 화면테이블 새로 채우기
 				productView.addProductLine(pdao.productAll());
-				
+
 				JOptionPane.showMessageDialog(null, "\t[SYSTEM] 삭제가 완료되었습니다.", "확인", JOptionPane.CLOSED_OPTION);
-				
+
 			} else {
 				JOptionPane.showMessageDialog(null, "\t[SYSTEM] 삭제하시려는 상품을 선택해주세요.", "확인", JOptionPane.CLOSED_OPTION);
 			}
-		}else if (ob == prodEditFrame.compEditBtn) {
-			
+		} else if (ob == prodEditFrame.compEditBtn) {
+
 			int row = productView.productTable.getSelectedRow();
 			String product_id = (String) productView.tblModel.getValueAt(row, 0);
 			
-			pdao.productEdit(prodEditFrame.fields, product_id);
+			String tf1 = prodEditFrame.tf1.getText();
+			String tf2 = prodEditFrame.tf2.getText();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			String theDate1 = sdf.format(prodEditFrame.dateChooser1.getDate());
+			String theDate2 = sdf.format(prodEditFrame.dateChooser2.getDate());
+			String tf3 = prodEditFrame.tf3.getText();
+
+			pdao.productEdit(tf1, theDate1, theDate2, tf2,  tf3, product_id);
 
 			// 상품목록 화면테이블 초기화 해주기.
 			productView.tblModel.setNumRows(0);
@@ -175,15 +203,15 @@ public class MainFrame extends JFrame implements ActionListener {
 			productView.addProductLine(pdao.productAll());
 
 			// 텍스트 필드에 채워진 값 초기화 해주기.
-			prodEditFrame.resetText(prodEditFrame.fields);
+			prodEditFrame.resetText();
 
 			// 확인 팝업창
 			JOptionPane.showMessageDialog(null, "\t[SYSTEM] 수정이 완료되었습니다.", "확인", JOptionPane.CLOSED_OPTION);
 
 			// 창 안보이게
 			prodEditFrame.setVisible(false);
-		} else if(ob == prodEditFrame.cancelEidtBtn) {
-			prodEditFrame.resetText(prodEditFrame.fields);
+		} else if (ob == prodEditFrame.cancelEidtBtn) {
+			prodEditFrame.resetText();
 			prodEditFrame.setVisible(false);
 		}
 

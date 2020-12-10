@@ -24,20 +24,25 @@ public class ProdRegistFrame extends JFrame{
 		JPanel pIn;
 		
 		String[] fieldNames = new String[]{"상품코드", "상품명", "제조일", "폐기일", "가격"};
-		String[] textHints = new String[] {"상품코드를 입력하세요.",  "상품명을 입력하세요." , "YYYYmmdd", "YYYYmmdd", "가격을 입력하세요"};
+		String[] textHints = new String[] {"상품코드를 입력하세요.",  "상품명을 입력하세요.", "가격을 입력하세요"};
 		
 		public JLabel[] labels;
 		public JLabel titleLabel;
-		public JTextField[] fields;
 		public Product product = new Product();
 		
+		public JTextField tf1;
+		public JTextField tf2;
+		public JTextField tf3;
+		
+		public JDateChooser dateChooser1 = new JDateChooser();
+		public JDateChooser dateChooser2 = new JDateChooser();
+		
 		public ProdRegistFrame(){
-			
+
 			titleLabel = new JLabel("[ 상품 등록 ]");
 			titleLabel.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 			titleLabel.setBounds(0,20, 100, 50);
-			
-			
+						
 			setFont(new Font("맑은 고딕", Font.BOLD, 20));
 			setTitle("상품등록");		
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -56,21 +61,35 @@ public class ProdRegistFrame extends JFrame{
 			pIn.setLayout(null);
 			
 			labels = new JLabel[fieldNames.length];
-			fields = new JTextField[fieldNames.length];
 			
-			for (int i = 0; i < fieldNames.length; i++) {
-				//System.out.println(fieldNames[i]);
-				labels[i] = new JLabel(fieldNames[i]);
-				labels[i].setFont(new Font("맑은 고딕", Font.BOLD, 12));
-				labels[i].setBounds(30, (i+1)*50, 50 , 30);
-				
-				fields[i] = new HintTextField(textHints[i]);
-				//fields[i].setFont(new Font("맑은 고딕", Font.BOLD, 12));
-				fields[i].setBounds(130, (i+1)*50, 170 , 30);
-				
-				pIn.add(labels[i]);
-				pIn.add(fields[i]);
+			tf1 = new JTextField();
+			tf1.add(new HintTextField(textHints[0]));
+			tf1.setBounds(130, 50, 170 , 30);
+			
+			tf2 = new JTextField();
+			tf2 = new HintTextField(textHints[1]);
+			tf2.setBounds(130, 100, 170 , 30);
+					
+			dateChooser1.setBounds(130, 150, 170 , 30);
+			dateChooser2.setBounds(130, 200, 170 , 30);
+			
+			tf3 = new JTextField();
+			tf3.add(new HintTextField(textHints[2]));
+			tf3.setBounds(130, 250, 170 , 30);
+			
+			for (int j = 0; j < fieldNames.length; j++) {
+				labels[j] = new JLabel(fieldNames[j]);
+				labels[j].setFont(new Font("맑은 고딕", Font.BOLD, 12));
+				labels[j].setBounds(30, (j+1)*50, 50 , 30);
+				pIn.add(labels[j]);
 			}
+			
+			
+			pIn.add(tf1);
+			pIn.add(tf2);
+			pIn.add(dateChooser1);
+			pIn.add(dateChooser2);
+			pIn.add(tf3);
 
 			regBtn = new JButton("등록");
 			regBtn.setFont(new Font("맑은 고딕", Font.BOLD, 12));
@@ -83,19 +102,15 @@ public class ProdRegistFrame extends JFrame{
 			pIn.add(regBtn, BorderLayout.SOUTH);
 			pIn.add(cancelBtn, BorderLayout.SOUTH);
 			pIn.setBounds(0, 0, 300, 400);
-			
-//			JDateChooser dateChooser = new JDateChooser();
-//			dateChooser.setBounds(0, 0, 170, 30);
-//			pIn.add(dateChooser);
 
 		}
 		
-		//텍스트필드 초기화 해주기.
-		public void resetText(JTextField[] fields) {
-			if(fields.length > 0) {
-				for (int i = 0; i < fields.length; i++) {
-					fields[i].setText("");
-				}
-			}
+		//필드값 초기화 해주기.
+		public void resetText() {
+			tf1.setText("");
+			tf2.setText("");
+			tf3.setText("");
+			dateChooser1.setDate(null);
+			dateChooser2.setDate(null);
 		}
 }
