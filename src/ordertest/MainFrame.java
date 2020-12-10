@@ -13,9 +13,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import order.OrderConfirmDao;
+import order.OrderConfirmFrame;
 import order.OrderConfirmView;
 import order.OrderDao;
-import order.OrderView;
+import order.OrderFrame;
 import product.ProdRegistFrame;
 import product.ProductDao;
 import product.ProductView;
@@ -23,9 +25,6 @@ import product.ProductView;
 
 public class MainFrame extends JFrame implements ActionListener{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	// 상단 정보 보여줄 패널
 	TopPanel topPanel = new TopPanel();
@@ -39,11 +38,11 @@ public class MainFrame extends JFrame implements ActionListener{
 	// 상품 등록 팝업 프레임
 	ProdRegistFrame prodRegistFrame = new ProdRegistFrame();
 	
-	// 상품 발주승인 뷰
-	OrderConfirmView orderConfirmView = new OrderConfirmView();
+	// 상품발주승인
+	OrderConfirmFrame orderConfirmFrame = new OrderConfirmFrame();
 	
-	// 상품주문 뷰
-	OrderView orderView = new OrderView();
+	// 상품주문
+	OrderFrame orderFrame = new OrderFrame();
 
 	public CardLayout cardlayout;
 	public CardLayout btn;
@@ -55,6 +54,8 @@ public class MainFrame extends JFrame implements ActionListener{
 	public JPanel topView;
 	
 	ProductDao pdao = new ProductDao();
+	OrderConfirmDao ocd = new OrderConfirmDao();
+	OrderDao od = new OrderDao();
 
 	public MainFrame() {
 
@@ -99,9 +100,17 @@ public class MainFrame extends JFrame implements ActionListener{
 		//버튼들 액션 달기 start
 		rightBtnPanel.registProdBtn.addActionListener(this); 	//우측패널 상품등록 버튼
 		rightBtnPanel.orderProdBtn.addActionListener(this); 	//우측패널 상품주문 버튼
+		
 		prodRegistFrame.regBtn.addActionListener(this); 		//팝업 상품등록 프레임 등록 버튼
 		prodRegistFrame.cancelBtn.addActionListener(this); 		//팝업 상품등록 프레임 취소 버튼
-
+		
+		orderConfirmFrame.order_btn.addActionListener(this);	// 승인목록 주문목록 활성버튼
+		orderConfirmFrame.confirm_btn.addActionListener(this); // 승인목록 승인버튼
+		orderConfirmFrame.delete_btn.addActionListener(this); // 승인목록 삭제버튼
+		orderConfirmFrame.cancel_btn.addActionListener(this); // 승인버튼 취소버튼
+		
+		orderFrame.order_btn.addActionListener(this);	// 주문목록 주문버튼(승인대기창으로 이동)
+		orderFrame.cancel_btn.addActionListener(this); // 주문목록 취소버튼
 	}
 
 	@Override
@@ -136,22 +145,23 @@ public class MainFrame extends JFrame implements ActionListener{
 		} 
 		
 		// 오른쪽 상품발주버튼 클릭
-		if (ob == rightBtnPanel.orderProdBtn) {
-			orderConfirmView.setVisible(true);
-		} else if (ob == orderConfirmView.order_btn) {
-			orderView.setVisible(true);
-			if (ob == orderView.order_btn) {
-				OrderDao od = new OrderDao();
-			} else if (ob == orderView.cancel_btn) {
-				orderView.setVisible(false);
-			}
-		} else if (ob == orderConfirmView.confirm_btn) {
+		if (ob == rightBtnPanel.orderProdBtn) { // 승인대기 - 주문
+			orderConfirmFrame.setVisible(true);
+		} else if (ob == orderConfirmFrame.order_btn) {
+			orderFrame.setVisible(true);
+		} else if (ob == orderConfirmFrame.confirm_btn) { // 승인대기 - 승인
 			
-		} else if (ob == orderConfirmView.delete_btn) {
-			
-		} else if (ob == orderConfirmView.cancel_btn) {
-			orderConfirmView.setVisible(false);
-		}
+		} else if (ob == orderConfirmFrame.delete_btn) { // 승인대기 - 삭제
+			ocd.confirmCancle(orderConfirmFrame.fields);
+		} else if (ob == orderConfirmFrame.cancel_btn) { // 승인대기 - 취소
+			orderConfirmFrame.setVisible(false);
+		} 
+		
+		if (ob == orderFrame.order_btn) { // 물품주문 - 발주테이블로 이동
+			od.moveconfirm(orderFrame.fields);
+		} else if (ob == orderFrame.cancel_btn) { // 취소
+			orderFrame.setVisible(false);
+		} 
 		
 	}
 

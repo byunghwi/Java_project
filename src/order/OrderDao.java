@@ -7,6 +7,8 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.swing.JTextField;
+
 import db.DatabaseConnect;
 
 public class OrderDao {
@@ -21,7 +23,7 @@ public class OrderDao {
 	public ArrayList<Order> productAll() {
 		conn = DatabaseConnect.getConnection();
 		ArrayList<Order> products = new ArrayList<Order>();
-		sql = "SELECT * FROM order_product WHERE save_status = \'N\'";
+		sql = "SELECT * FROM product";
 		try {
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
@@ -32,8 +34,8 @@ public class OrderDao {
 
 				order.setProduct_id(rs.getString(1));
 				order.setProduct_name(rs.getString(2));
-				order.setQuantity(rs.getInt(3));
-				order.setPrice(rs.getInt(4));
+				order.setQuantity(rs.getInt(5));
+				order.setPrice(rs.getInt(6));
 
 				products.add(order);
 			}
@@ -48,15 +50,18 @@ public class OrderDao {
 		return products;
 	}
 	
-	
-	// 상품 주문
-	public void productOrder() {
+	// 승인테이블로 이동
+	public void moveconfirm(JTextField[] fields) {
 		conn = DatabaseConnect.getConnection();
-
-		sql = "UPDATE product SET quantity = quantity +  WHERE product_id = ''";
-
+		sql = "insert into order_product VALUES(ORDER_PRODUCT_NO_SEQ.nextval, ?, ?, ?, to_char(sysdate,'yyyy.mm.dd'))";
 		try {
 			ps = conn.prepareStatement(sql);
+
+			ps.setString(1, fields[0].getText());
+			ps.setInt(2, Integer.parseInt(fields[1].getText()));
+			ps.setString(3, fields[2].getText());
+			
+			ps.executeQuery();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
