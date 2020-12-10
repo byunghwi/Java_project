@@ -5,6 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 import account.*;
 
 import com.zaxxer.hikari.HikariDataSource;
@@ -13,20 +17,27 @@ import account.Member;
 import db.DatabaseConnect;
 
 // 실제로 DB에 데이터를 보내는 클래스
-public class Add_Account {
+public class Add_Account extends JFrame {
 	
+	String errorCode;
+	String[] errorNames = new String[7];
+	String[] messages = new String[7];
 	
 	public Add_Account(Member new_mem) {
 		// Member new_mem = new Member("mem_issd", "mem_pw", "mem_nm", "res_no", "phone", "address", 's', "mail");
-		
+		String[] errorNames = {"ID","PW","_NM","res","phone","SEX","MAIL"};
+		String[] messages = {
+				"아이디를 확인해주세요!","패스워드를 확인해주세요","이름을 확인해주세요","주민등록번호를 확인해주세요",
+				"전화번호를 확인해주세요!","성별을 확인해주세요","메일을 확인해주세요"};
 		
 		String sql = "INSERT INTO member VALUES (mem_no_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, default,default)";
-		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
 		
 		try {
-			Connection conn = DatabaseConnect.getConnection();
+			conn = DatabaseConnect.getConnection();
 			
-			PreparedStatement pstmt = 
+			pstmt = 
 					conn.prepareStatement(sql);
 			
 			pstmt.setString(1, new_mem.mem_id);
@@ -43,12 +54,26 @@ public class Add_Account {
 			
 			System.out.println("계정 생성 완료");
 			
-			DatabaseConnect.dbClose(null, pstmt, conn);
-			
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
-			int start = e.getMessage().indexOf("(");
-			System.out.println(start);
+			errorCode = e.getMessage();
+			System.out.println(errorCode);
+			
+			int cnt = 0;
+			for (String errorname : errorNames ) {
+				if (errorCode.contains(errorname)) {
+					JOptionPane.showMessageDialog(null, messages[cnt]);
+				}
+				cnt++;
+			}
+			cnt = 0;
+			
+		} finally {
+			try {
+				DatabaseConnect.dbClose(null, pstmt, conn);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 	}	
