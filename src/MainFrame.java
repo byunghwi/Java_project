@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -28,6 +27,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	// 가운데 상품 보여줄 패널
 	ProductView productView = new ProductView();
 
+
 	// 오른쪽 버튼들 보여줄 패널
 	RightBtnPanel rightBtnPanel = new RightBtnPanel();
 
@@ -49,7 +49,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	ProductDao pdao = new ProductDao();
 
 	public MainFrame() {
-
+		
 		cardlayout = new CardLayout();
 
 		setFont(new Font("맑은 고딕", Font.BOLD, 20));
@@ -74,7 +74,7 @@ public class MainFrame extends JFrame implements ActionListener {
 
 		// 가운데 패널부분
 		pView = new JPanel();
-		pView.add(productView, "productView");
+		pView.add(productView , "productView");
 		pView.setBackground(Color.WHITE);
 		pView.setBounds(0, 50, 1157, 552);
 		pView.setLayout(cardlayout);
@@ -189,7 +189,5 @@ public class MainFrame extends JFrame implements ActionListener {
 
 	}
 
-	public static void main(String[] args) {
-		new MainFrame();
-	}
+
 }
