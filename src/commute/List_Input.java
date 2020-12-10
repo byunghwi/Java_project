@@ -2,6 +2,7 @@ package commute;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,6 +20,12 @@ public class List_Input extends JFrame {
 	JTextField start_date,end_date,mem_name;
 	
 	public List_Input() {
+		
+		setTitle("월별근태목록");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setVisible(true);
+		
+		
 		
 		JButton button = new JButton("확인");
 		JLabel label=new JLabel("정보입력");
@@ -55,6 +62,7 @@ public class List_Input extends JFrame {
 			new Commute_list(st_date,en_date,name);
 			
 			
+			
          
 		}  
 	  });
@@ -73,11 +81,7 @@ public class List_Input extends JFrame {
 		
 		
 	}
-	
-    public static void main(String[] args) {
-	        new List_Input();
-	        
-    }      
+   
 }
 	
 
