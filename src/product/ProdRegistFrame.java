@@ -46,7 +46,7 @@ public class ProdRegistFrame extends JFrame{
 			setFont(new Font("맑은 고딕", Font.BOLD, 20));
 			setTitle("상품등록");		
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-			setBounds(100, 100, 340, 400);
+			setBounds(100, 100, 340, 420);
 			contentPanel = new JPanel(new BorderLayout());
 			contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 			setContentPane(contentPanel);
@@ -56,25 +56,28 @@ public class ProdRegistFrame extends JFrame{
 			contentPanel.setLayout(null);
 			
 			pIn = new JPanel();
-			pIn.setBounds(5, 5, 300, 400);
+			pIn.setBounds(5, 5, 310, 400);
 			contentPanel.add(pIn);
 			pIn.setLayout(null);
+			pIn.setFocusable(false);
 			
 			labels = new JLabel[fieldNames.length];
 			
-			tf1 = new JTextField();
-			tf1.add(new HintTextField(textHints[0]));
+			//상품코드
+			tf1 = new HintTextField(textHints[0]);
 			tf1.setBounds(130, 50, 170 , 30);
 			
-			tf2 = new JTextField();
+			//상품명
 			tf2 = new HintTextField(textHints[1]);
 			tf2.setBounds(130, 100, 170 , 30);
-					
+			
+			//제조일
 			dateChooser1.setBounds(130, 150, 170 , 30);
+			//폐기일
 			dateChooser2.setBounds(130, 200, 170 , 30);
 			
-			tf3 = new JTextField();
-			tf3.add(new HintTextField(textHints[2]));
+			//가격
+			tf3 = new HintTextField(textHints[2]);
 			tf3.setBounds(130, 250, 170 , 30);
 			
 			for (int j = 0; j < fieldNames.length; j++) {
@@ -83,7 +86,6 @@ public class ProdRegistFrame extends JFrame{
 				labels[j].setBounds(30, (j+1)*50, 50 , 30);
 				pIn.add(labels[j]);
 			}
-			
 			
 			pIn.add(tf1);
 			pIn.add(tf2);
@@ -101,7 +103,6 @@ public class ProdRegistFrame extends JFrame{
 			
 			pIn.add(regBtn, BorderLayout.SOUTH);
 			pIn.add(cancelBtn, BorderLayout.SOUTH);
-			pIn.setBounds(0, 0, 300, 400);
 
 		}
 		

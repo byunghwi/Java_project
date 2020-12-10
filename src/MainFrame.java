@@ -16,6 +16,7 @@ import javax.swing.border.EmptyBorder;
 
 import product.ProdEditFrame;
 import product.ProdRegistFrame;
+import product.Product;
 import product.ProductDao;
 import product.ProductView;
 
@@ -39,6 +40,9 @@ public class MainFrame extends JFrame implements ActionListener {
 
 	// 상품 수정 팝업 프레임
 	ProdEditFrame prodEditFrame = new ProdEditFrame();
+
+	// 상품
+	Product product;
 
 	public CardLayout cardlayout;
 	public CardLayout btn;
@@ -113,14 +117,15 @@ public class MainFrame extends JFrame implements ActionListener {
 			prodRegistFrame.setVisible(true);
 		} else if (ob == prodRegistFrame.regBtn) {
 
-			String tf1 = prodRegistFrame.tf1.getText();
-			String tf2 = prodRegistFrame.tf2.getText();
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-			String theDate1 = sdf.format(prodRegistFrame.dateChooser1.getDate());
-			String theDate2 = sdf.format(prodRegistFrame.dateChooser2.getDate());
-			String tf3 = prodRegistFrame.tf3.getText();
+			product = new Product();
 
-			pdao.productAdd(tf1, tf2, theDate1, theDate2, tf3);
+			product.setProduct_id(prodRegistFrame.tf1.getText());
+			product.setProduct_name(prodRegistFrame.tf2.getText());
+			product.setManu_date(prodRegistFrame.dateChooser1.getDate());
+			product.setDis_date(prodRegistFrame.dateChooser2.getDate());
+			product.setPrice(Integer.parseInt(prodRegistFrame.tf3.getText()));
+
+			pdao.productAdd(product);
 
 			// 상품목록J테이블 초기화 해주기.
 			productView.tblModel.setNumRows(0);
@@ -149,8 +154,11 @@ public class MainFrame extends JFrame implements ActionListener {
 				// 선택한 행 내용 수정 프레임창에 세팅해주기
 				prodEditFrame.tf1.setText((String) productView.tblModel.getValueAt(row, 1));
 				try {
-					Date date1 = new SimpleDateFormat("yyyy-MM-dd").parse((String) productView.tblModel.getValueAt(row, 2));
-					Date date2 = new SimpleDateFormat("yyyy-MM-dd").parse((String) productView.tblModel.getValueAt(row, 3));
+					Date date1 = new SimpleDateFormat("yyyy-MM-dd")
+							.parse((String) productView.tblModel.getValueAt(row, 2));			
+					Date date2 = new SimpleDateFormat("yyyy-MM-dd")
+							.parse((String) productView.tblModel.getValueAt(row, 3));
+
 					prodEditFrame.dateChooser1.setDate(date1);
 					prodEditFrame.dateChooser2.setDate(date2);
 				} catch (ParseException e1) {
@@ -169,6 +177,8 @@ public class MainFrame extends JFrame implements ActionListener {
 			if (productView.productTable.getSelectedRow() != -1) {
 				int row = productView.productTable.getSelectedRow();
 				String product_id = (String) productView.tblModel.getValueAt(row, 0);
+
+				// DB 삭제
 				pdao.productDel(product_id);
 
 				// 상품목록 화면테이블 초기화 해주기.
@@ -186,15 +196,16 @@ public class MainFrame extends JFrame implements ActionListener {
 
 			int row = productView.productTable.getSelectedRow();
 			String product_id = (String) productView.tblModel.getValueAt(row, 0);
-			
-			String tf1 = prodEditFrame.tf1.getText();
-			String tf2 = prodEditFrame.tf2.getText();
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-			String theDate1 = sdf.format(prodEditFrame.dateChooser1.getDate());
-			String theDate2 = sdf.format(prodEditFrame.dateChooser2.getDate());
-			String tf3 = prodEditFrame.tf3.getText();
+			product = new Product();
+			product.setProduct_id(product_id);
+			product.setProduct_name(prodEditFrame.tf1.getText());
+			product.setManu_date(prodEditFrame.dateChooser1.getDate());
+			product.setDis_date(prodEditFrame.dateChooser2.getDate());
+			product.setQuantity(Integer.parseInt(prodEditFrame.tf2.getText()));
+			product.setPrice(Integer.parseInt(prodEditFrame.tf3.getText()));
 
-			pdao.productEdit(tf1, theDate1, theDate2, tf2,  tf3, product_id);
+			// DB 수정
+			pdao.productEdit(product);
 
 			// 상품목록 화면테이블 초기화 해주기.
 			productView.tblModel.setNumRows(0);
