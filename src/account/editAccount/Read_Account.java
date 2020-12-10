@@ -35,7 +35,6 @@ public class Read_Account {
 				
 			}
 			
-			
 			DatabaseConnect.dbClose(result, pstmt, conn);
 			
 			

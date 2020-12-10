@@ -52,7 +52,7 @@ public class Join_Action implements ActionListener {
 				new_join_data[3],
 				new_join_data[4],
 				new_join_data[5],
-				new_join_data[6].charAt(0),
+				new_join_data[6],
 				new_join_data[7]
 		);
 		

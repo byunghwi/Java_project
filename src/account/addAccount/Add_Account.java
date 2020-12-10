@@ -36,7 +36,7 @@ public class Add_Account {
 			pstmt.setString(5, new_mem.res_no);
 			pstmt.setString(6, new_mem.phone);
 			pstmt.setString(7, new_mem.address);
-			pstmt.setString(8, Character.toString(new_mem.sex));
+			pstmt.setString(8, new_mem.sex);
 			pstmt.setString(9, new_mem.mail);
 			
 			pstmt.execute();

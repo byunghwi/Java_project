@@ -14,7 +14,7 @@ public class Member {
 	public String res_no;
 	public String phone;
 	public String address;
-	public char sex;
+	public String sex;
 	public String mail;
 	
 	public Member(
@@ -24,7 +24,7 @@ public class Member {
 			String res_no,
 			String phone,
 			String address,
-			char sex,
+			String sex,
 			String mail
 			) {
 		

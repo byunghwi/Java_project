@@ -9,17 +9,15 @@ import java.sql.SQLException;
 import com.zaxxer.hikari.HikariDataSource;
 import account.addAccount.Join;
 import account.delAccount.Secession;
-import account.editAccount.Edit_Account;
+import account.editAccount.Edit;
 import account.editAccount.Read_Account;
 
 
 // 실행용 메인 클래스
 public class Main {
 	public static void main(String[] args) {
-		//new Join();
-		//new Login();
-		//new Secession();
-		//new Edit_Account("admin");
+
+		new Edit("admin");
 		
 	}	
 }
