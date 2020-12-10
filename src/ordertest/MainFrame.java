@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import order.OrderConfirmView;
+import order.OrderDao;
 import order.OrderView;
 import product.ProdRegistFrame;
 import product.ProductDao;
@@ -140,7 +141,7 @@ public class MainFrame extends JFrame implements ActionListener{
 		} else if (ob == orderConfirmView.order_btn) {
 			orderView.setVisible(true);
 			if (ob == orderView.order_btn) {
-				
+				OrderDao od = new OrderDao();
 			} else if (ob == orderView.cancel_btn) {
 				orderView.setVisible(false);
 			}
