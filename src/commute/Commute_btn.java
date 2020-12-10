@@ -67,9 +67,5 @@ public class Commute_btn extends JFrame{
 		frame.setVisible(true);
 		
 	}
-	public static void main(String[] args) {
-		
-		new Commute_btn();
-		
-	}
+
 }
