@@ -1,4 +1,4 @@
-package order_test_main;
+package ordertest;
 import java.awt.Color;
 import java.awt.Font;
 import java.text.SimpleDateFormat;

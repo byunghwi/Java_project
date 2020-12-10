@@ -1,15 +1,15 @@
-package order_test;
+package order;
 
-public class OrderProductList {
+public class Order {
 	String product_id;
 	String product_name;
 	int quantity;
 	int price;
 	
-	public OrderProductList() {
+	public Order() {
 	}
 	
-	public OrderProductList(String product_id, String product_name, int quantity, int price) {
+	public Order(String product_id, String product_name, int quantity, int price) {
 		super();
 		this.product_id = product_id;
 		this.product_name = product_name;
@@ -48,5 +48,5 @@ public class OrderProductList {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-
+	
 }

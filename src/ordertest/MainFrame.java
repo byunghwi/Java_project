@@ -1,6 +1,5 @@
-package order_test_main;
+package ordertest;
 import java.awt.BorderLayout;
-
 
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -14,7 +13,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import order_test.OrderFrame;
+import order.OrderConfirmView;
+import order.OrderView;
 import product.ProdRegistFrame;
 import product.ProductDao;
 import product.ProductView;
@@ -38,8 +38,11 @@ public class MainFrame extends JFrame implements ActionListener{
 	// 상품 등록 팝업 프레임
 	ProdRegistFrame prodRegistFrame = new ProdRegistFrame();
 	
-	// 상품 발주 팝업 프레임
-	OrderFrame prodOrderFrame = new OrderFrame();
+	// 상품 발주승인 뷰
+	OrderConfirmView orderConfirmView = new OrderConfirmView();
+	
+	// 상품주문 뷰
+	OrderView orderView = new OrderView();
 
 	public CardLayout cardlayout;
 	public CardLayout btn;
@@ -133,9 +136,21 @@ public class MainFrame extends JFrame implements ActionListener{
 		
 		// 오른쪽 상품발주버튼 클릭
 		if (ob == rightBtnPanel.orderProdBtn) {
-			prodOrderFrame.pack(); //frame에 맞게 크기조절
-			prodOrderFrame.setVisible(true);
-		} 
+			orderConfirmView.setVisible(true);
+		} else if (ob == orderConfirmView.order_btn) {
+			orderView.setVisible(true);
+			if (ob == orderView.order_btn) {
+				
+			} else if (ob == orderView.cancel_btn) {
+				orderView.setVisible(false);
+			}
+		} else if (ob == orderConfirmView.confirm_btn) {
+			
+		} else if (ob == orderConfirmView.delete_btn) {
+			
+		} else if (ob == orderConfirmView.cancel_btn) {
+			orderConfirmView.setVisible(false);
+		}
 		
 	}
 
