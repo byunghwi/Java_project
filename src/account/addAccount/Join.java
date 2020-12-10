@@ -23,7 +23,7 @@ public class Join extends JFrame {
 
 	String [] info_names = {"아이디","패스워드","이름","주민등록번호","전화번호","주소","성별","메일주소"};
 	JLabel[] names = new JLabel[8];
-	JButton join = new JButton("JOIN");
+	JButton join = new JButton("회원 가입");
 	
 	
 	public Join() {
@@ -72,7 +72,7 @@ public class Join extends JFrame {
 	    add(rb1);
 	    add(rb2);
 		
-		join.setBounds(110, 370, 110, 20);
+		join.setBounds(100, 370, 110, 20);
 		add(join);
 		
 		join.addActionListener(new Join_Action(this));

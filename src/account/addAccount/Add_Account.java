@@ -47,6 +47,8 @@ public class Add_Account {
 			
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
+			int start = e.getMessage().indexOf("(");
+			System.out.println(start);
 		}
 		
 	}	
