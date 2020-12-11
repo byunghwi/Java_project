@@ -55,12 +55,10 @@ public class OrderDao {
 		sql = "insert into order_product VALUES(ORDER_PRODUCT_NO_SEQ.nextval, ?, ?, ?, to_char(sysdate,'yyyy.mm.dd'))";
 		try {
 			ps = conn.prepareStatement(sql);
-
 			ps.setString(1, fields[0].getText());
 			ps.setInt(2, Integer.parseInt(fields[1].getText()));
 			ps.setString(3, fields[2].getText());
-			
-			ps.executeQuery();
+			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
