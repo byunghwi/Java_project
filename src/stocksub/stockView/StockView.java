@@ -1,4 +1,4 @@
-package stocksub;
+package stocksub.stockView;
 
 import java.awt.Font;
 import java.util.ArrayList;
@@ -9,6 +9,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
+
+import stocksub.Stock;
+import stocksub.StockDao;
 
 
 public class StockView extends JPanel {

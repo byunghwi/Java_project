@@ -1,4 +1,4 @@
-package stocksub;
+package stocksub.stockView;
 
 import java.awt.Font;
 import java.util.ArrayList;
@@ -9,6 +9,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
+
+import stocksub.StockDao;
+import stocksub.Stock_info;
 
 public class StockInfoView extends JPanel {
 
@@ -51,7 +54,7 @@ private static final long serialVersionUID = 1L;
 			rows.addElement(stock_infos.get(i).getProduct_id());
 			rows.addElement(stock_infos.get(i).getProduct_name());
 			rows.addElement(Integer.toString(stock_infos.get(i).getQuantity()));
-			rows.addElement(Integer.toString(stock_infos.get(i).getPrice()));
+			rows.addElement(stock_infos.get(i).getManu_date().toString());
 			rows.addElement(stock_infos.get(i).getDis_date().toString());
 			
 
@@ -67,7 +70,7 @@ private static final long serialVersionUID = 1L;
 		colNames.add("상품코드");
 		colNames.add("상품명");
 		colNames.add("수량");
-		colNames.add("가격");
+		colNames.add("제조일");
 		colNames.add("폐기일");
 
 

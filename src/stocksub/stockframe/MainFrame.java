@@ -1,4 +1,4 @@
-package account.fr;
+package stocksub.stockframe;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -8,11 +8,11 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import stocksub.MoreInfoAction;
 import stocksub.Stock;
 import stocksub.StockDao;
 import stocksub.StockInfoFrame;
-import stocksub.StockView;
+import stocksub.stockAction.MoreInfoAction;
+import stocksub.stockView.StockView;
 
 public class MainFrame extends JFrame {
 
@@ -31,7 +31,6 @@ public class MainFrame extends JFrame {
 
 
 	// 상품 정보 팝업 프레임
-	public StockInfoFrame stockInfoFrame = new StockInfoFrame();
 
 	// 상품
 	Stock stock;

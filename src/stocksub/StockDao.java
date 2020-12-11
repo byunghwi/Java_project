@@ -67,7 +67,7 @@ public class StockDao {
 		
 		ArrayList<Stock_info> stock_infos = new ArrayList<Stock_info>();
 		
-		query2 = "SELECT product_id AS 상품코드 ,product_name AS 상품명, quantity AS 수량, price AS 가격, dis_date AS 폐기일 FROM stock where product_id = ?";
+		query2 = "SELECT product_id AS 상품코드 ,product_name AS 상품명, quantity AS 수량,manu_date AS 제조일, dis_date AS 폐기일 FROM stock where product_id = ? AND save_status = 'Y'";
 		try {
 			pstmt = conn.prepareStatement(query2);
 			pstmt.setString(1, product_id);
@@ -83,7 +83,7 @@ public class StockDao {
 				stock_info.setProduct_id(rs.getString(1));
 				stock_info.setProduct_name(rs.getString(2));
 				stock_info.setQuantity(rs.getInt(3));
-				stock_info.setPrice(rs.getInt(4));
+				stock_info.setManu_date(rs.getDate(4));
 				stock_info.setDis_date(rs.getDate(5));
 				
 				stock_infos.add(stock_info);
