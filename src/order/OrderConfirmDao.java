@@ -52,11 +52,11 @@ public class OrderConfirmDao {
 	// 발주 승인
 	public void confirmCheck(JTextField[] fields) {
 		conn = DatabaseConnect.getConnection();
-		sql = "UPDATE product SET quantity = quantity + ? WHERE product_id = \'?\'";
+		sql = "UPDATE product SET quantity = quantity + ? WHERE product_id = ?";
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, Integer.parseInt(fields[2].getText()));
-			ps.setString(2, fields[1].getText());
+			
+			
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
