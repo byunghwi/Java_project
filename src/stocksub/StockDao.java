@@ -17,6 +17,7 @@ public class StockDao {
 
 	String query1 = null;
 	String query2 = null;
+	String query3 = null;
 	
 	Stock stock = null;
 	Stock_info stock_info = null;
@@ -102,6 +103,35 @@ public class StockDao {
 		}
 
 		return stock_infos;
+		
+	}
+	public void Disposal_product(String product_id, String dis_date) {
+		
+		conn = DatabaseConnect.getConnection();
+		query3 = "UPDATE stock SET quantity = 0 WHERE product_id = ? AND dis_date = ?";
+		try {
+			pstmt = conn.prepareStatement(query3);
+			pstmt.setString(1, product_id);
+			pstmt.setString(2, dis_date);
+			
+			pstmt.executeQuery();
+			
+			
+
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		// DB사용 종료
+		try {
+			DatabaseConnect.dbClose(null, pstmt, conn);
+		} catch (SQLException e) {
+			System.out.println("[DB] 자원 반납 중 오류 발생\n");
+			e.printStackTrace();
+		}
+		
 		
 	}
 	
