@@ -25,13 +25,10 @@ public class List_Input extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
-		
-		
-		JButton button = new JButton("확인");
+		JButton check = new JButton("확인");
 		JLabel label=new JLabel("정보입력");
 		
 		this.setLayout(new GridLayout(5,2));
-		
 		
 		JPanel panel1 = new JPanel();
 		panel1 .add(new JLabel("시작날짜"));
@@ -48,10 +45,8 @@ public class List_Input extends JFrame {
 		mem_name=new JTextField(20);
 		panel2.add(mem_name);
 	      
-	  button.addActionListener(new ActionListener() {
+		check.addActionListener(new ActionListener() {
 
-		  
-		  
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			
@@ -59,11 +54,8 @@ public class List_Input extends JFrame {
 	        String en_date =end_date.getText();
             String name=mem_name.getText();
             
-			new Commute_list(st_date,en_date,name);
+            new Commute_Table(st_date,en_date,name); 
 			
-			
-			
-         
 		}  
 	  });
 	  
@@ -71,11 +63,11 @@ public class List_Input extends JFrame {
 		  add(panel1);
 	      add(panel2);
 	      add(panel3);
-	      add(button);
+	      add(check);
 	  
 	    this.setVisible(true);
-	    this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setLocation(3000,100);
+	    this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		this.setLocation(300,100);
 		this.setSize(500,500);
 		this.setVisible(true);
 		
@@ -83,6 +75,7 @@ public class List_Input extends JFrame {
 	}
    
 }
+
 	
 
 

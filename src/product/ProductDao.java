@@ -5,11 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Vector;
-
-import javax.swing.JTextField;
+import java.util.Date;
 
 import db.DatabaseConnect;
 
@@ -23,6 +21,7 @@ public class ProductDao {
 	ResultSetMetaData rsmd = null;
 
 	String query = null;
+	String query2 = null;
 
 	Product product = null;
 
@@ -73,21 +72,40 @@ public class ProductDao {
 	}
 
 	// 상품 등록
-	public void productAdd(JTextField[] fields) {
+	public void productAdd(Product product) {
 		conn = DatabaseConnect.getConnection();
 
 		query = "insert into product (product_id, product_name, manu_date, dis_date, price) values (?, ? ,? ,?, ?)";
+		
+		//상품등록하면 수량 0으로 세팅되고 발주승인대기 테이블에 추가된다.
+		query2 =  "insert into order_product values (ORDER_PRODUCT_NO_SEQ.nextval, ?, ?, ?, ?)";
 
 		try {
 			ps = conn.prepareStatement(query);
 
-			ps.setString(1, fields[0].getText());
-			ps.setString(2, fields[1].getText());
-			ps.setString(3, fields[2].getText());
-			ps.setString(4, fields[3].getText());
-			ps.setInt(5, Integer.parseInt(fields[4].getText()));
+			ps.setString(1, product.getProduct_id());
+			ps.setString(2, product.getProduct_name());
+			ps.setString(3, dateToStr(product.getManu_date()));
+			ps.setString(4, dateToStr(product.getDis_date()));
+			ps.setInt(5, product.getPrice());
 
 			int rsCnt = ps.executeUpdate();
+			
+			PreparedStatement ps2 = null;
+			ps2 = conn.prepareStatement(query2);
+			ps2.setString(1, product.getProduct_id());
+			ps2.setInt(2, product.getQuantity());
+			ps2.setString(3, "test"); 			// 추후에 로그인한 작업자 값 받아와서 넣어줄 것.
+			ps2.setString(4, dateToStr(new Date()));
+			
+			int rsCnt2 = ps2.executeUpdate();
+			
+			if(rsCnt==1 && rsCnt2==1) {
+				System.out.println("[DB] 상품, 발주승인대기 insert 완료\n");
+				if(ps2 != null) {
+					ps2.close();
+				}
+			}
 
 		} catch (SQLException e) {
 			System.out.println("[DB] Insert 중 오류 발생\n");
@@ -105,20 +123,20 @@ public class ProductDao {
 	}
 
 	// 상품 수정
-	public void productEdit(JTextField[] fields, String product_id) {
+	public void productEdit(Product product) {
 		conn = DatabaseConnect.getConnection();
 
 		query = "UPDATE product SET product_name = ?, manu_date = ?, dis_date = ?, quantity = ?, price = ? WHERE product_id = ?";
 		System.out.println(query);
-		try {
+		try {			
 			ps = conn.prepareStatement(query);
 
-			ps.setString(1, fields[0].getText());
-			ps.setString(2, fields[1].getText());
-			ps.setString(3, fields[2].getText());
-			ps.setString(4, fields[3].getText());
-			ps.setString(5, fields[4].getText());
-			ps.setString(6, product_id);
+			ps.setString(1, product.getProduct_name());
+			ps.setString(2, dateToStr(product.getManu_date()));
+			ps.setString(3, dateToStr(product.getDis_date()));
+			ps.setInt(4, product.getQuantity());
+			ps.setInt(5, product.getPrice());
+			ps.setString(6, product.getProduct_id());
 
 			int rsCnt = ps.executeUpdate();
 			
@@ -168,6 +186,14 @@ public class ProductDao {
 			System.out.println("[DB] 자원 반납 중 오류 발생\n");
 			e.printStackTrace();
 		}
+	}
+	
+	//날짜 변경 메서드
+	public String dateToStr (Date date) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String strDate = sdf.format(date);
+		
+		return strDate;
 	}
 
 }
