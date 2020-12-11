@@ -9,6 +9,9 @@ public class Cancel_Action implements ActionListener {
 	
 	Edit edit_info;
 	
+	public Cancel_Action() {
+		
+	}
 	public Cancel_Action(Edit edit_info) {
 		this.edit_info = edit_info;
 	}

@@ -21,6 +21,8 @@ public class Add_Commute_On_Time {
 		PreparedStatement pstmt = 
 				conn.prepareStatement(sql);
 		
+		pstmt.execute();
+		
 		DatabaseConnect.dbClose(null, pstmt, conn);
 		
 			
