@@ -1,4 +1,4 @@
-package stock;
+package stocksub;
 
 public class Main {
 

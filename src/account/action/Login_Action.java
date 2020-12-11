@@ -7,11 +7,11 @@ import javax.swing.JFrame;
 
 import account.Login;
 import account.delAccount.Check_PW;
-//import account.fr.MainFrame;
+import account.fr.MainFrame;
 
 
 
-// �α��� �׼� ������
+// 占싸깍옙占쏙옙 占쌓쇽옙 占쏙옙占쏙옙占쏙옙
 public class Login_Action extends JFrame implements ActionListener {
 	
 	Login info;
@@ -22,7 +22,7 @@ public class Login_Action extends JFrame implements ActionListener {
 	}
 
 	
-	// ���̵�� ��й�ȣ�� �´ٸ� �α��� ���� �� ���� ������ �˾�
+	// 占쏙옙占싱듸옙占� 占쏙옙橘占싫ｏ옙占� 占승다몌옙 占싸깍옙占쏙옙 占쏙옙占쏙옙 占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 占싯억옙
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		for (int i=0; i<info_data.length; i++) {
@@ -32,10 +32,10 @@ public class Login_Action extends JFrame implements ActionListener {
 		Check_PW cp = new Check_PW(info_data[0],info_data[1]);
 		
 		if (cp.check) {
-			System.out.println("�α��� ����!!!!");
+			System.out.println("占싸깍옙占쏙옙 占쏙옙占쏙옙!!!!");
 			info.dispose();
 			
-			//new MainFrame();
+			new MainFrame();
 			
 		}
 		
