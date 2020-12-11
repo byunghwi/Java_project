@@ -1,4 +1,4 @@
-package stocksub;
+package stocksub.stockframe;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
@@ -6,6 +6,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import stocksub.Stock;
 import stocksub.stockView.StockInfoView;
 
 public class StockInfoFrame extends JFrame{

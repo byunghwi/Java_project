@@ -10,7 +10,6 @@ import javax.swing.border.EmptyBorder;
 
 import stocksub.Stock;
 import stocksub.StockDao;
-import stocksub.StockInfoFrame;
 import stocksub.stockAction.MoreInfoAction;
 import stocksub.stockView.StockView;
 

@@ -8,9 +8,9 @@ import java.util.Date;
 
 import javax.swing.JOptionPane;
 
-import stocksub.StockInfoFrame;
 import stocksub.stockView.StockInfoView;
 import stocksub.stockframe.MainFrame;
+import stocksub.stockframe.StockInfoFrame;
 
 public class MoreInfoAction implements ActionListener {
 	
