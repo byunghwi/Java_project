@@ -3,17 +3,15 @@ package order;
 public class Order {
 	String product_id;
 	String product_name;
-	int quantity;
 	int price;
 	
 	public Order() {
 	}
 	
-	public Order(String product_id, String product_name, int quantity, int price) {
+	public Order(String product_id, String product_name, int price) {
 		super();
 		this.product_id = product_id;
 		this.product_name = product_name;
-		this.quantity = quantity;
 		this.price = price;
 	}
 
@@ -31,14 +29,6 @@ public class Order {
 
 	public void setProduct_name(String product_name) {
 		this.product_name = product_name;
-	}
-
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
 	}
 
 	public int getPrice() {

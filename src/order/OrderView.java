@@ -57,7 +57,6 @@ public class OrderView extends JPanel {
 			rows = new Vector<String>();
 			rows.addElement(products.get(i).getProduct_id());
 			rows.addElement(products.get(i).getProduct_name());
-			rows.addElement(Integer.toString(products.get(i).getQuantity()));
 			rows.addElement(Integer.toString(products.get(i).getPrice()));
 
 			model.addRow(rows);
@@ -69,7 +68,6 @@ public class OrderView extends JPanel {
 		colNames = new Vector<String>();
 		colNames.add("상품번호");
 		colNames.add("상품명");
-		colNames.add("수량");
 		colNames.add("가격");
 
 		return colNames;

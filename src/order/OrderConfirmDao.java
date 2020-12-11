@@ -23,7 +23,7 @@ public class OrderConfirmDao {
 	public ArrayList<OrderConfirm> productAll() {
 		conn = DatabaseConnect.getConnection();
 		ArrayList<OrderConfirm> products = new ArrayList<OrderConfirm>();
-		sql = "SELECT product_name, SUM(quantity) FROM product group by product_name";
+		sql = "SELECT product_name, SUM(quantity) FROM stock group by product_name";
 		try {
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
@@ -32,9 +32,8 @@ public class OrderConfirmDao {
 
 				order.setOrder_product_no(rs.getInt(1));
 				order.setProduct_id(rs.getString(2));
-				order.setQuantity(rs.getInt(3));
-				order.setWorker_no(rs.getString(4));
-				order.setSave_time(rs.getDate(5));
+				order.setProduct_name(rs.getString(3));
+				order.setQuantity(rs.getInt(4));
 
 				products.add(order);
 			}
@@ -52,9 +51,11 @@ public class OrderConfirmDao {
 	// 발주 승인
 	public void confirmCheck(JTextField[] fields) {
 		conn = DatabaseConnect.getConnection();
-		sql = "UPDATE product SET quantity = quantity + ? WHERE product_id = ?";
+		sql = "UPDATE stock SET quantity = quantity + ? WHERE product_id = ?";
 		try {
 			ps = conn.prepareStatement(sql);
+			ps.setInt(1, Integer.parseInt(fields[1].getText()));
+			ps.setString(2, fields[0].getText());
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -69,10 +70,10 @@ public class OrderConfirmDao {
 	// 발주 삭제
 	public void confirmCancle(JTextField[] fields) {
 		conn = DatabaseConnect.getConnection();
-		sql = "DELETE FROM order_product WHERE order_product_no = ?";
+		sql = "DELETE FROM order_product WHERE product_id = ?";
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, Integer.parseInt(fields[0].getText()));
+			ps.setString(1, fields[0].getText());
 			ps.executeUpdate();
 			
 		} catch (SQLException e) {

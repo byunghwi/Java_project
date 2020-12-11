@@ -7,18 +7,19 @@ public class OrderConfirm { // 발주테이블
 	String product_id;
 	String product_name;
 	int quantity;
-	String worker_no;
+//	String worker_no;
 	Date save_time;
 	
 	public OrderConfirm() {
 	}
 	
-	public OrderConfirm(int order_product_no, String product_id, int quantity, String worker_no, Date save_time) {
+	public OrderConfirm(int order_product_no, String product_id, String product_name, int quantity, Date save_time) {
 		super();
 		this.order_product_no = order_product_no;
 		this.product_id = product_id;
+		this.product_name = product_name;
 		this.quantity = quantity;
-		this.worker_no = worker_no;
+//		this.worker_no = worker_no;
 		this.save_time = save_time;
 	}
 	
@@ -37,6 +38,14 @@ public class OrderConfirm { // 발주테이블
 	public void setProduct_id(String product_id) {
 		this.product_id = product_id;
 	}
+	
+	public String getProduct_name() {
+		return product_name;
+	}
+
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
+	}
 
 	public int getQuantity() {
 		return quantity;
@@ -46,14 +55,14 @@ public class OrderConfirm { // 발주테이블
 		this.quantity = quantity;
 	}
 
-	public String getWorker_no() {
-		return worker_no;
-	}
-
-	public void setWorker_no(String worker_no) {
-		this.worker_no = worker_no;
-	}
-	
+//	public String getWorker_no() {
+//		return worker_no;
+//	}
+//
+//	public void setWorker_no(String worker_no) {
+//		this.worker_no = worker_no;
+//	}
+//	
 	public Date getSave_time() {
 		return save_time;
 	}

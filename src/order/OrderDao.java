@@ -34,8 +34,7 @@ public class OrderDao {
 
 				order.setProduct_id(rs.getString(1));
 				order.setProduct_name(rs.getString(2));
-				order.setQuantity(rs.getInt(5));
-				order.setPrice(rs.getInt(6));
+				order.setPrice(rs.getInt(3));
 
 				products.add(order);
 			}

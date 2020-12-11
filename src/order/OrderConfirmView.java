@@ -40,8 +40,8 @@ public class OrderConfirmView extends JPanel {
 			rows = new Vector<String>();
 			rows.addElement(Integer.toString(products.get(i).getOrder_product_no()));
 			rows.addElement(products.get(i).getProduct_id());
+			rows.addElement(products.get(i).getProduct_name());
 			rows.addElement(Integer.toString(products.get(i).getQuantity()));
-			rows.addElement(products.get(i).getWorker_no());
 			rows.addElement(products.get(i).getSave_time().toString());
 
 			model.addRow(rows);
@@ -52,9 +52,9 @@ public class OrderConfirmView extends JPanel {
 	private Vector<String> getColum() {
 		colNames = new Vector<String>();
 		colNames.add("발주번호");
-		colNames.add("상품번호");
+		colNames.add("상품id");
+		colNames.add("상품명");
 		colNames.add("수량");
-		colNames.add("처리자");
 		colNames.add("처리시간");
 
 		return colNames;
