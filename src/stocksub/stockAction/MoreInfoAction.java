@@ -2,34 +2,31 @@ package stocksub.stockAction;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.swing.JOptionPane;
 
 import stocksub.stockView.StockInfoView;
-import stocksub.stockframe.MainFrame;
+import stocksub.stockframe.StockFrame;
 import stocksub.stockframe.StockInfoFrame;
 
 public class MoreInfoAction implements ActionListener {
 	
-	MainFrame m1;
+	StockFrame sf;
 	StockInfoView siv = null;
 	
-	public MoreInfoAction(MainFrame m1) {
-		this.m1 = m1;
+	public MoreInfoAction(StockFrame sf) {
+		this.sf = sf;
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		if (m1.stockView.stockTable.getSelectedRow() != -1) {
+		if (sf.stockView.stockTable.getSelectedRow() != -1) {
 			
 			// 선택한 행
-			int row = m1.stockView.stockTable.getSelectedRow();
+			int row = sf.stockView.stockTable.getSelectedRow();
 			
-			siv = new StockInfoView((String) m1.stockView.tblModel.getValueAt(row, 0));
+			siv = new StockInfoView((String) sf.stockView.tblModel.getValueAt(row, 0));
 			
 			StockInfoFrame stif = new StockInfoFrame(siv);
 			
@@ -39,7 +36,6 @@ public class MoreInfoAction implements ActionListener {
 			JOptionPane.showMessageDialog(null, "[SYSTEM] 확인하려는 상품을 선택해주세요.", "확인", JOptionPane.CLOSED_OPTION);
 		}
 
-		
 		
 	}
 

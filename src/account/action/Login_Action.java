@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 
 import account.Login;
 import account.delAccount.Check_PW;
-import stocksub.stockframe.MainFrame;
+import stocksub.stockframe.StockFrame;
 
 
 
@@ -35,7 +35,7 @@ public class Login_Action extends JFrame implements ActionListener {
 			System.out.println("로그인 성공!!!!");
 			info.dispose();
 			
-			new MainFrame();
+			new StockFrame();
 			
 		}
 		

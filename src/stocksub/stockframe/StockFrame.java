@@ -13,7 +13,7 @@ import stocksub.StockDao;
 import stocksub.stockAction.MoreInfoAction;
 import stocksub.stockView.StockView;
 
-public class MainFrame extends JFrame {
+public class StockFrame extends JFrame {
 
 	/**
 	 * 
@@ -45,7 +45,7 @@ public class MainFrame extends JFrame {
 
 	StockDao sdao = new StockDao();
 
-	public MainFrame() {
+	public StockFrame() {
 
 		cardlayout = new CardLayout();
 
@@ -93,6 +93,6 @@ public class MainFrame extends JFrame {
 
 
 	public static void main(String[] args) {
-		new MainFrame();
+		new StockFrame();
 	}
 }

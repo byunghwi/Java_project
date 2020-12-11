@@ -1,10 +1,10 @@
 package stocksub;
 
-import stocksub.stockframe.MainFrame;
+import account.Login;
 
 public class Main {
 	public static void main(String[] args) {
-		new MainFrame();
+		new Login();
 	}
 
 }
