@@ -23,7 +23,7 @@ public class OrderConfirmDao {
 	public ArrayList<OrderConfirm> productAll() {
 		conn = DatabaseConnect.getConnection();
 		ArrayList<OrderConfirm> products = new ArrayList<OrderConfirm>();
-		sql = "SELECT * FROM order_product";
+		sql = "SELECT product_name, SUM(quantity) FROM product group by product_name";
 		try {
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
@@ -55,8 +55,6 @@ public class OrderConfirmDao {
 		sql = "UPDATE product SET quantity = quantity + ? WHERE product_id = ?";
 		try {
 			ps = conn.prepareStatement(sql);
-			
-			
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

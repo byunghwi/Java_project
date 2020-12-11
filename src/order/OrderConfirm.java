@@ -5,6 +5,7 @@ import java.util.Date;
 public class OrderConfirm { // 발주테이블
 	int order_product_no;
 	String product_id;
+	String product_name;
 	int quantity;
 	String worker_no;
 	Date save_time;

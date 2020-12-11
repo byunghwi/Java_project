@@ -16,8 +16,8 @@ public class OrderConfirmFrame extends JFrame {
 	public JButton order_btn, confirm_btn, delete_btn, cancel_btn; // 주문, 승인, 삭제, 취소 버튼
 	JPanel btn_panel, tabel_panel;
 	
-	String[] fieldNames = new String[] {"발주번호"};
-	String[] textHints = new String[] {"발주번호입력"};
+	String[] fieldNames = new String[] {"물품id", "수량"};
+	String[] textHints = new String[] {"id입력", "수량입력"};
 
 	public JLabel[] labels;
 	public JTextField[] fields;

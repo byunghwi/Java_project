@@ -31,10 +31,6 @@ public class OrderConfirmView extends JPanel {
 		orderTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		addProductLine(ocd.productAll()); 
 		scrollpane.setViewportView(orderTable);
-		
-//		model.fireTableDataChanged(); // 테이블 내용 갱신
-//		model.setNumRows(0); // 테이블 날리고 
-//		addProductLine(ocd.productAll()); // 새로 받아와서 갱신
 	}
 	
 	public void addProductLine(ArrayList<OrderConfirm> products) {
