@@ -7,11 +7,11 @@ import javax.swing.JFrame;
 
 import account.Login;
 import account.delAccount.Check_PW;
-import account.fr.MainFrame;
+//import account.fr.MainFrame;
 
 
 
-// ·Î±×ÀÎ ¾×¼Ç ¸®½º³Ê
+// ï¿½Î±ï¿½ï¿½ï¿½ ï¿½×¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 public class Login_Action extends JFrame implements ActionListener {
 	
 	Login info;
@@ -22,7 +22,7 @@ public class Login_Action extends JFrame implements ActionListener {
 	}
 
 	
-	// ¾ÆÀÌµð¿Í ºñ¹Ð¹øÈ£°¡ ¸Â´Ù¸é ·Î±×ÀÎ ¼º°ø ÈÄ ¸ÞÀÎ ÇÁ·¹ÀÓ ÆË¾÷
+	// ï¿½ï¿½ï¿½Ìµï¿½ï¿½ ï¿½ï¿½Ð¹ï¿½È£ï¿½ï¿½ ï¿½Â´Ù¸ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¾ï¿½
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		for (int i=0; i<info_data.length; i++) {
@@ -32,10 +32,10 @@ public class Login_Action extends JFrame implements ActionListener {
 		Check_PW cp = new Check_PW(info_data[0],info_data[1]);
 		
 		if (cp.check) {
-			System.out.println("·Î±×ÀÎ ¼º°ø!!!!");
+			System.out.println("ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½!!!!");
 			info.dispose();
 			
-			new MainFrame();
+			//new MainFrame();
 			
 		}
 		

@@ -58,7 +58,5 @@ public class Commute {
 		this.off_time = off_time;
 	}
 	
-	
-	
-	
 }
+
