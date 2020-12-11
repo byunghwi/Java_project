@@ -143,6 +143,7 @@ public class MainFrame extends JFrame implements ActionListener {
 			prodRegistFrame.setVisible(false);
 
 		} else if (ob == prodRegistFrame.cancelBtn) {
+			prodRegistFrame.resetText();
 			prodRegistFrame.setVisible(false);
 		} else if (ob == rightBtnPanel.editProdBtn) {
 			if (productView.productTable.getSelectedRow() != -1) {
