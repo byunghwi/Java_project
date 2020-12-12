@@ -26,10 +26,10 @@ public class StockDao {
 	public ArrayList<Stock> stockAll() {
 
 		conn = DatabaseConnect.getConnection();
-		// »óÇ°µé ´ãÀ» ArrayList »ı¼º
+		// ï¿½ï¿½Ç°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ArrayList ï¿½ï¿½ï¿½ï¿½
 		ArrayList<Stock> stocks = new ArrayList<Stock>();
 
-		query1 = "SELECT product_id AS »óÇ°ÄÚµå ,product_name AS »óÇ°¸í,sum(quantity) AS ¼ö·®, price AS °¡°İ FROM stock WHERE save_status = 'Y' GROUP BY product_id, product_name,price";
+		query1 = "SELECT product_id AS ìƒí’ˆì½”ë“œ ,product_name AS ìƒí’ˆëª…,sum(quantity) AS ìˆ˜ëŸ‰, price AS ê°€ê²© FROM stock WHERE save_status = 'Y' GROUP BY product_id, product_name, price";
 		try {
 			pstmt = conn.prepareStatement(query1);
 			rs = pstmt.executeQuery();
@@ -52,11 +52,11 @@ public class StockDao {
 			e.printStackTrace();
 		}
 
-		// DB»ç¿ë Á¾·á
+		// DBï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		try {
 			DatabaseConnect.dbClose(rs, pstmt, conn);
 		} catch (SQLException e) {
-			System.out.println("[DB] ÀÚ¿ø ¹İ³³ Áß ¿À·ù ¹ß»ı\n");
+			System.out.println("[DB] ï¿½Ú¿ï¿½ ï¿½İ³ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½\n");
 			e.printStackTrace();
 		}
 
@@ -69,7 +69,7 @@ public class StockDao {
 		
 		ArrayList<Stock_info> stock_infos = new ArrayList<Stock_info>();
 		
-		query2 = "SELECT product_id AS »óÇ°ÄÚµå ,product_name AS »óÇ°¸í, quantity AS ¼ö·®,manu_date AS Á¦Á¶ÀÏ, dis_date AS Æó±âÀÏ FROM stock where product_id = ? AND save_status = 'Y'";
+		query2 = "SELECT product_id AS ìƒí’ˆì½”ë“œ,product_name AS ìƒí’ˆëª…, quantity AS ìˆ˜ëŸ‰,manu_date AS ì œì¡°ì¼, dis_date AS íê¸°ì¼ FROM stock where product_id = ? AND save_status = 'Y'";
 		try {
 			pstmt = conn.prepareStatement(query2);
 			pstmt.setString(1, product_id);
@@ -95,11 +95,11 @@ public class StockDao {
 			e.printStackTrace();
 		}
 
-		// DB»ç¿ë Á¾·á
+		// DBï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		try {
 			DatabaseConnect.dbClose(rs, pstmt, conn);
 		} catch (SQLException e) {
-			System.out.println("[DB] ÀÚ¿ø ¹İ³³ Áß ¿À·ù ¹ß»ı\n");
+			System.out.println("[DB] ï¿½Ú¿ï¿½ ï¿½İ³ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½\n");
 			e.printStackTrace();
 		}
 
@@ -124,11 +124,11 @@ public class StockDao {
 			e.printStackTrace();
 		}
 
-		// DB»ç¿ë Á¾·á
+		// DBï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		try {
 			DatabaseConnect.dbClose(null, pstmt, conn);
 		} catch (SQLException e) {
-			System.out.println("[DB] ÀÚ¿ø ¹İ³³ Áß ¿À·ù ¹ß»ı\n");
+			System.out.println("[DB] ï¿½Ú¿ï¿½ ï¿½İ³ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½\n");
 			e.printStackTrace();
 		}
 		

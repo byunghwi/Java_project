@@ -16,8 +16,8 @@ import stocksub.stockView.StockInfoView;
 import stocksub.stockView.StockView;
 
 public class StockInfoFrame extends JFrame{
-	JButton confirm = new JButton("È®ÀÎ");
-	JButton disposal = new JButton("Æó±â");
+	JButton confirm = new JButton("í™•ì¸");
+	JButton disposal = new JButton("íê¸°");
 	public StockInfoView stockInfoView = null;
 	public StockView stoview;
 
@@ -33,8 +33,8 @@ public class StockInfoFrame extends JFrame{
 		this.stockInfoView = stockInfoView;
 		
 		setLayout(null);
-		setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
-		setTitle("Á¦Ç° »ó¼¼ Á¤º¸");		
+		setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 20));
+		setTitle("ìƒí’ˆ ì •ë³´");		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(200, 100, 700, 400);
 		setVisible(true);

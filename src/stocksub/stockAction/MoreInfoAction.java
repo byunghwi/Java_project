@@ -25,8 +25,8 @@ public class MoreInfoAction implements ActionListener {
 		
 		if (sf.stockView.stockTable.getSelectedRow() != -1) {
 			stoview = sf.stockView;
+
 			
-			// ¼±ÅÃÇÑ Çà
 			int row = sf.stockView.stockTable.getSelectedRow();
 			
 			siv = new StockInfoView((String) sf.stockView.tblModel.getValueAt(row, 0));
@@ -40,7 +40,7 @@ public class MoreInfoAction implements ActionListener {
 			
 
 		} else {
-			JOptionPane.showMessageDialog(null, "[SYSTEM] È®ÀÎÇÏ·Á´Â »óÇ°À» ¼±ÅÃÇØÁÖ¼¼¿ä.", "È®ÀÎ", JOptionPane.CLOSED_OPTION);
+			JOptionPane.showMessageDialog(null, "[SYSTEM] ìƒí’ˆì„ ì„ íƒí•´ì£¼ì„¸ìš”.", "í™•ì¸", JOptionPane.CLOSED_OPTION);
 		}
 
 		
