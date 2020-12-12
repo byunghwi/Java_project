@@ -29,7 +29,7 @@ public class StockDao {
 		// 상품들 담을 ArrayList 생성
 		ArrayList<Stock> stocks = new ArrayList<Stock>();
 
-		query1 = "SELECT product_id AS 상품코드 ,product_name AS 상품명,sum(quantity) AS 수량, price AS 가격 FROM stock GROUP BY product_id, product_name,price";
+		query1 = "SELECT product_id AS 상품코드 ,product_name AS 상품명,sum(quantity) AS 수량, price AS 가격 FROM stock WHERE save_status = 'Y' GROUP BY product_id, product_name,price";
 		try {
 			pstmt = conn.prepareStatement(query1);
 			rs = pstmt.executeQuery();
