@@ -35,6 +35,8 @@ public class MoreInfoAction implements ActionListener {
 			stif.stoview = this.stoview;
 			
 			
+		
+			
 			
 
 		} else {

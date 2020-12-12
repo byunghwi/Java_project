@@ -13,6 +13,8 @@ public class Disposal_Action implements ActionListener{
 	
 	StockDao sdao =  new StockDao();
 	StockInfoFrame stockInfoF;
+	static int agree;
+	
 	public Disposal_Action(StockInfoFrame stockInfoF) {
 		this.stockInfoF = stockInfoF;
 	}
@@ -24,8 +26,10 @@ public class Disposal_Action implements ActionListener{
 			int row = stockInfoF.stockInfoView.stockTable.getSelectedRow();
 			String product_id = ((String) stockInfoF.stockInfoView.tblModel.getValueAt(row, 0));
 			String dis_date = ((String) stockInfoF.stockInfoView.tblModel.getValueAt(row, 4));
-			System.out.println(product_id);
-			System.out.println(dis_date);
+			
+			
+			//JOptionPane.showConfirmDialog(null,"[SYSTEM] 정말 폐기하시겠습니까?." )
+			//JOptionPane.showMessageDialog(null, "[SYSTEM] 정말 폐기하시겠습니까?.", "확인", JOptionPane.CLOSED_OPTION);
 			
 			sdao.Disposal_product(product_id, dis_date);
 			stockInfoF.stockInfoView.tblModel.setNumRows(0);
