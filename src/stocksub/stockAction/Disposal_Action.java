@@ -22,14 +22,11 @@ public class Disposal_Action implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if (stockInfoF.stockInfoView.stockTable.getSelectedRow() != -1) {
 			
-			// º±≈√«— «‡
+
 			int row = stockInfoF.stockInfoView.stockTable.getSelectedRow();
 			String product_id = ((String) stockInfoF.stockInfoView.tblModel.getValueAt(row, 0));
 			String dis_date = ((String) stockInfoF.stockInfoView.tblModel.getValueAt(row, 4));
 			
-			
-			//JOptionPane.showConfirmDialog(null,"[SYSTEM] ¡§∏ª ∆Û±‚«œΩ√∞⁄Ω¿¥œ±Ó?." )
-			//JOptionPane.showMessageDialog(null, "[SYSTEM] ¡§∏ª ∆Û±‚«œΩ√∞⁄Ω¿¥œ±Ó?.", "»Æ¿Œ", JOptionPane.CLOSED_OPTION);
 			
 			sdao.Disposal_product(product_id, dis_date);
 			stockInfoF.stockInfoView.tblModel.setNumRows(0);
@@ -41,7 +38,7 @@ public class Disposal_Action implements ActionListener{
 			
 
 		} else {
-			JOptionPane.showMessageDialog(null, "[SYSTEM] ∆Û±‚«œ∑¡¥¬ ªÛ«∞¿ª º±≈√«ÿ¡÷ººø‰.", "»Æ¿Œ", JOptionPane.CLOSED_OPTION);
+			JOptionPane.showMessageDialog(null, "[SYSTEM] ÏÉÅÌíàÏùÑ ÏÑ†ÌÉùÌï¥Ï£ºÏÑ∏Ïöî.", "ÌôïÏù∏", JOptionPane.CLOSED_OPTION);
 		}
 		
 	}

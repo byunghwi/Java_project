@@ -22,7 +22,7 @@ private static final long serialVersionUID = 1L;
 	public Vector<String> colNames = getColum();
 	public DefaultTableModel tblModel = new DefaultTableModel(colNames, 0);
 	public JTable stockTable = new JTable(tblModel);
-	//Çà Á¤º¸µé ´ãÀ» º¤ÅÍ
+
 	public Vector<String> rows;
 	public String product_id;
 	
@@ -35,9 +35,9 @@ private static final long serialVersionUID = 1L;
 		
 		stockTable.setRowMargin(10);
 		stockTable.setRowHeight(30);		
-		stockTable.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
+		stockTable.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 15));
 		
-		//Å×ÀÌºí ·Î¿ì Áß ÇÑ ÁÙ¸¸ ¼±ÅÃ °¡´É.
+		//ï¿½ï¿½ï¿½Ìºï¿½ ï¿½Î¿ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 		stockTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
 		addStockLine(sdao.stockInfos(product_id)); 
@@ -45,7 +45,7 @@ private static final long serialVersionUID = 1L;
 		stocksScrollPane.setViewportView(stockTable);
 	}
 
-	//Jtable¿¡ ·Î¿ì ÇÏ³ª¾¿ Ãß°¡ÇÏ±â.
+	//Jtableï¿½ï¿½ ï¿½Î¿ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½Ï±ï¿½.
 	public void addStockLine(ArrayList<Stock_info> stock_infos) {
 		int size = stock_infos.size();
 
@@ -58,7 +58,7 @@ private static final long serialVersionUID = 1L;
 			rows.addElement(stock_infos.get(i).getDis_date().toString());
 			
 
-			//·Î¿ì¸¶´Ù Å×ÀÌºí¿¡ »Ñ·ÁÁÖ±â.
+			//ï¿½Î¿ì¸¶ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ ï¿½Ñ·ï¿½ï¿½Ö±ï¿½.
 			tblModel.addRow(rows);
 		}
 		
@@ -67,11 +67,11 @@ private static final long serialVersionUID = 1L;
 	
 	private Vector<String> getColum() {
 		colNames = new Vector<String>();
-		colNames.add("»óÇ°ÄÚµå");
-		colNames.add("»óÇ°¸í");
-		colNames.add("¼ö·®");
-		colNames.add("Á¦Á¶ÀÏ");
-		colNames.add("Æó±âÀÏ");
+		colNames.add("ìƒí’ˆì½”ë“œ");
+		colNames.add("ìƒí’ˆëª…");
+		colNames.add("ìˆ˜ëŸ‰");
+		colNames.add("ì œì¡°ì¼");
+		colNames.add("íê¸°ì¼");
 
 
 		return colNames;
