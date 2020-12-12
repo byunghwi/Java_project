@@ -4,14 +4,20 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.regex.Pattern;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
+
+
 
 import product.ProdEditFrame;
 import product.ProdRegistFrame;
@@ -136,6 +142,9 @@ public class MainFrame extends JFrame implements ActionListener {
 		bottomPanel.accountBtn.addActionListener(this); // 하단패널 유저 버튼
 		bottomPanel.commuteBtn.addActionListener(this); // 하단패널 근태 버튼
 		bottomPanel.calcBtn.addActionListener(this);  	// 하단패널 정산 버튼
+		
+		salePanel.addBucketBtn.addActionListener(this);
+		salePanel.delBucketBtn.addActionListener(this);
 		// 버튼들 액션 달기 End
 	}
 
@@ -257,10 +266,51 @@ public class MainFrame extends JFrame implements ActionListener {
 			bottomPanel.selectedBtn(bottomPanel.productBtn);			
 			cardlayout.show(centerView, "productView");			
 		}else if (ob == bottomPanel.saleBtn) {
+			//필드 초기화 먼저.
+			salePanel.prodnameTf.setText("");
+			salePanel.prodQt.setText("");
 			//메인 버튼 클릭시 색 변경해주기
 			bottomPanel.selectedBtn(bottomPanel.saleBtn);
-			cardlayout.show(centerView, "salePanel");	
-			int row = salePanel.stockTable.getSelectedRow();
+			cardlayout.show(centerView, "salePanel");
+			
+			// 판매 패널의 J테이블에서 로우 선택시 발생하는 이벤트
+			salePanel.stockTable.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					JTable jt = (JTable)e.getSource();
+					int row = jt.getSelectedRow();
+					if(row != -1) {
+						String product_name = (String) salePanel.stockTable.getValueAt(row, 1);
+						salePanel.prodnameTf.setText(product_name);
+					}
+				}
+			});
+
+	
+		}else if (ob == salePanel.addBucketBtn) {
+			int row  = salePanel.stockTable.getSelectedRow();
+
+			if(salePanel.prodnameTf.getText().equals("")) {
+				// 확인 팝업창
+				JOptionPane.showMessageDialog(null, "\t[SYSTEM] 추가할 상품의 행을 선택해주세요.", "확인", JOptionPane.CLOSED_OPTION);
+			}
+			else if(salePanel.prodQt.getText().equals("") || !Pattern.matches("^[0-9]*$", salePanel.prodQt.getText())) {
+				// 확인 팝업창
+				JOptionPane.showMessageDialog(null, "\t[SYSTEM] 정확한 수량을 입력해주세요", "확인", JOptionPane.CLOSED_OPTION);
+			}else if(Integer.parseInt(salePanel.prodQt.getText()) > Integer.parseInt((String) salePanel.stockTblModel.getValueAt(row, 3))) {
+				// 확인 팝업창
+				JOptionPane.showMessageDialog(null, "\t[SYSTEM] 현 재고 수량보다 많은 양을 구매하실 수 없습니다.", "확인", JOptionPane.CLOSED_OPTION);
+			}else {
+
+				String [] arrData = new String[3];
+				arrData[0] = salePanel.prodnameTf.getText();
+				arrData[1] = salePanel.prodQt.getText();
+				arrData[2] = (String) salePanel.stockTblModel.getValueAt(row, 2);
+
+				salePanel.bucketTblModel.addRow(arrData);
+
+			}
+			
 		}else if (ob == bottomPanel.stockBtn) {
 			//메인 버튼 클릭시 색 변경해주기
 			bottomPanel.selectedBtn(bottomPanel.stockBtn);
@@ -278,7 +328,6 @@ public class MainFrame extends JFrame implements ActionListener {
 			//메인 버튼 클릭시 색 변경해주기
 			bottomPanel.selectedBtn(bottomPanel.calcBtn);
 		}
-
 	}
 
 	public static void main(String[] args) {
