@@ -27,7 +27,7 @@ public class StockDao {
 	Stock stock = null;
 	
 	public ArrayList<Stock> stockAll() {
-		query = "SELECT * FROM stock ORDER BY stock_no";
+		query = "SELECT product_id, product_name, price, sum(quantity) FROM stock GROUP BY product_id, product_name, price ORDER BY product_id ";
 		conn = DatabaseConnect.getConnection();
 		
 		// 재고들 담을 ArrayList 생성
@@ -39,15 +39,15 @@ public class StockDao {
 			while(rs.next()) {
 				stock  = new Stock();
 
-				stock.setStock_no(Integer.parseInt(rs.getString(1)));
-				stock.setProduct_id(rs.getString(2));
-				stock.setProduct_name(rs.getString(3));
-				stock.setIn_date(rs.getString(4));
-				stock.setManu_date(rs.getString(5));
-				stock.setDis_date(rs.getString(6));
-				stock.setPrice(Integer.parseInt(rs.getString(7)));
-				stock.setQuantity(Integer.parseInt(rs.getString(8)));
-				stock.setSave_status(rs.getString(9));
+				//stock.setStock_no(Integer.parseInt(rs.getString(1)));
+				stock.setProduct_id(rs.getString(1));
+				stock.setProduct_name(rs.getString(2));
+				//stock.setIn_date(rs.getString(4));
+				//stock.setManu_date(rs.getString(5));
+				//stock.setDis_date(rs.getString(6));
+				stock.setPrice(Integer.parseInt(rs.getString(3)));
+				stock.setQuantity(Integer.parseInt(rs.getString(4)));
+				//stock.setSave_status(rs.getString(9));
 				
 				stocks.add(stock);
 			}

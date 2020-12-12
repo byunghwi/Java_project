@@ -49,12 +49,9 @@ public class StockPanel extends JPanel {
 		for (int i = 0; i < size; i++) {
 
 			rows = new Vector<String>();
-			rows.addElement(Integer.toString(stocks.get(i).getStock_no()));
+			//rows.addElement(Integer.toString(stocks.get(i).getStock_no()));
 			rows.addElement(stocks.get(i).getProduct_id());
 			rows.addElement(stocks.get(i).getProduct_name());
-			rows.addElement(stocks.get(i).getIn_date());
-			rows.addElement(stocks.get(i).getManu_date());
-			rows.addElement(stocks.get(i).getDis_date());
 			rows.addElement(Integer.toString(stocks.get(i).getPrice()));
 			rows.addElement(Integer.toString(stocks.get(i).getQuantity()));
 
@@ -67,12 +64,8 @@ public class StockPanel extends JPanel {
 
 	private Vector<String> getColum() {
 		colNames = new Vector<String>();
-		colNames.add("재고번호");
 		colNames.add("상품코드");
 		colNames.add("상품명");
-		colNames.add("입고일");
-		colNames.add("제조일");
-		colNames.add("폐기일");
 		colNames.add("가격");
 		colNames.add("수량");
 

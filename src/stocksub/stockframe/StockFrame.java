@@ -87,11 +87,7 @@ public class StockFrame extends JFrame {
 		
 		rightBtnPanel.productMoreInfoBtn.addActionListener(new MoreInfoAction(this));
 		
-
 	}
-
-
-
 	public static void main(String[] args) {
 		new StockFrame();
 	}
