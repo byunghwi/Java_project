@@ -7,16 +7,19 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JTable;
 
 import stocksub.Stock;
 import stocksub.stockAction.Confirm_Action;
 import stocksub.stockAction.Disposal_Action;
 import stocksub.stockView.StockInfoView;
+import stocksub.stockView.StockView;
 
 public class StockInfoFrame extends JFrame{
 	JButton confirm = new JButton("»Æ¿Œ");
 	JButton disposal = new JButton("∆Û±‚");
 	public StockInfoView stockInfoView = null;
+	public StockView stoview;
 
 	/**
 	 * 
@@ -47,6 +50,8 @@ public class StockInfoFrame extends JFrame{
 		
 		confirm.addActionListener(new Confirm_Action(this));
 		disposal.addActionListener(new Disposal_Action(this));
+		
+		
 		
 		
 	}

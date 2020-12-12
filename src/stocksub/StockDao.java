@@ -22,6 +22,7 @@ public class StockDao {
 	Stock stock = null;
 	Stock_info stock_info = null;
 	
+	
 	public ArrayList<Stock> stockAll() {
 
 		conn = DatabaseConnect.getConnection();
@@ -108,14 +109,13 @@ public class StockDao {
 	public void Disposal_product(String product_id, String dis_date) {
 		
 		conn = DatabaseConnect.getConnection();
-		query3 = "UPDATE stock SET quantity = 0 WHERE product_id = ? AND dis_date = ?";
+		query3 = "UPDATE stock SET quantity = 0, save_status = 'N' WHERE product_id = ? AND TO_CHAR(dis_date,'YYYY-MM-DD') = ?";
 		try {
 			pstmt = conn.prepareStatement(query3);
 			pstmt.setString(1, product_id);
 			pstmt.setString(2, dis_date);
 			
 			pstmt.executeQuery();
-			
 			
 
 			

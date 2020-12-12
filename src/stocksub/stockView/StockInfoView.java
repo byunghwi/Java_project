@@ -24,7 +24,7 @@ private static final long serialVersionUID = 1L;
 	public JTable stockTable = new JTable(tblModel);
 	//행 정보들 담을 벡터
 	public Vector<String> rows;
-	String product_id;
+	public String product_id;
 	
 	public StockInfoView(String product_id){
 		this.product_id = product_id;

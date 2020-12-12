@@ -11,6 +11,7 @@ import stocksub.stockframe.StockInfoFrame;
 
 public class Disposal_Action implements ActionListener{
 	
+	StockDao sdao =  new StockDao();
 	StockInfoFrame stockInfoF;
 	public Disposal_Action(StockInfoFrame stockInfoF) {
 		this.stockInfoF = stockInfoF;
@@ -26,7 +27,12 @@ public class Disposal_Action implements ActionListener{
 			System.out.println(product_id);
 			System.out.println(dis_date);
 			
-			new StockDao().Disposal_product(product_id, dis_date);
+			sdao.Disposal_product(product_id, dis_date);
+			stockInfoF.stockInfoView.tblModel.setNumRows(0);
+			stockInfoF.stockInfoView.addStockLine(sdao.stockInfos(stockInfoF.stockInfoView.product_id));
+			
+			stockInfoF.stoview.tblModel.setNumRows(0);
+			stockInfoF.stoview.addStockLine(sdao.stockAll());
 			
 			
 
