@@ -2,7 +2,6 @@ package product;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
-import java.text.ParseException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -12,6 +11,8 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import com.toedter.calendar.JDateChooser;
+
+
 
 //상품 등록 버튼 누를시 Sub 프레임 생성 및 입력해주기.
 public class ProdRegistFrame extends JFrame{
