@@ -16,7 +16,7 @@ public class TopPanel extends JPanel {
 	public TopPanel() {
 
 		setLayout(null);
-		setBounds(0, 0, 1326, 50);
+		setBounds(0, 0, 1300, 50);
 		setBackground(new Color(051,255,255));
 		
 		titleLabel = new JLabel();

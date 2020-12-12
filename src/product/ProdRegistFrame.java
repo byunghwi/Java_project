@@ -23,7 +23,7 @@ public class ProdRegistFrame extends JFrame{
 		JPanel contentPanel;
 		JPanel pIn;
 		
-		String[] fieldNames = new String[]{"상품코드", "상품명", "제조일", "폐기일", "가격"};
+		String[] fieldNames = new String[]{"상품코드", "상품명", "가격"};
 		String[] textHints = new String[] {"상품코드를 입력하세요.",  "상품명을 입력하세요.", "가격을 입력하세요"};
 		
 		public JLabel[] labels;
@@ -71,14 +71,14 @@ public class ProdRegistFrame extends JFrame{
 			tf2 = new HintTextField(textHints[1]);
 			tf2.setBounds(130, 100, 170 , 30);
 			
-			//제조일
-			dateChooser1.setBounds(130, 150, 170 , 30);
-			//폐기일
-			dateChooser2.setBounds(130, 200, 170 , 30);
+//			//제조일
+//			dateChooser1.setBounds(130, 150, 170 , 30);
+//			//폐기일
+//			dateChooser2.setBounds(130, 200, 170 , 30);
 			
 			//가격
 			tf3 = new HintTextField(textHints[2]);
-			tf3.setBounds(130, 250, 170 , 30);
+			tf3.setBounds(130, 150, 170 , 30);
 			
 			for (int j = 0; j < fieldNames.length; j++) {
 				labels[j] = new JLabel(fieldNames[j]);
@@ -111,7 +111,7 @@ public class ProdRegistFrame extends JFrame{
 			tf1.setText("");
 			tf2.setText("");
 			tf3.setText("");
-			dateChooser1.setDate(null);
-			dateChooser2.setDate(null);
+//			dateChooser1.setDate(null);
+//			dateChooser2.setDate(null);
 		}
 }
