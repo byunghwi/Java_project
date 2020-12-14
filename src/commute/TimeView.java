@@ -10,26 +10,25 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
-import product.ProductDao;
+public class TimeView extends JPanel {
 
-public class Commute_ListView extends JPanel {
-
-	private static final long serialVersionUID = 1L;
+private static final long serialVersionUID = 1L;
 	
 
-	public JScrollPane CommutesScrollPane = new JScrollPane();
+	public  JScrollPane CommutesScrollPane = new JScrollPane();
 	public Vector<String> colNames = getColum();
-	public DefaultTableModel tblModel = new DefaultTableModel(colNames, 0);
-	public JTable commuteTable = new JTable(tblModel);
-	public Vector<String> rows;
-	Commute_Dao clist = null;
+	public  DefaultTableModel tblModel = new DefaultTableModel(colNames, 0);
+	public  JTable commuteTable = new JTable(tblModel);
+	public  Vector<String> rows;
+	TimeDao tlist = null;
 	
-	public Commute_ListView(String start_date,String end_date,String mem_name) {
+	public TimeView() {
 		
-		clist = new Commute_Dao(start_date, end_date, mem_name);
+		tlist = new TimeDao();
+	
 		setLayout(null);
 		
-		CommutesScrollPane.setBounds(12, 10, 1133, 532);
+		CommutesScrollPane.setBounds(12, 10, 600, 532);
 		add(CommutesScrollPane);
 		
 		commuteTable.setRowMargin(10);
@@ -39,21 +38,27 @@ public class Commute_ListView extends JPanel {
 		//테이블 로우 중 한 줄만 선택 가능.
 		
 		commuteTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		addCommuteLine(clist.commutelist()); 
+		addCommuteLine(tlist.commute_Time()); 
 		CommutesScrollPane.setViewportView(commuteTable);
 		
 	}
 	
-		public void addCommuteLine(ArrayList<Commute> commutes) {
+		public  void addCommuteLine(ArrayList<Commute> commutes) {
 			int size = commutes.size();
 			for (int i = 0; i < size; i++) {
 				rows = new Vector<String>();
 				rows.addElement(commutes.get(i).getDc_date().toString());
 				rows.addElement(commutes.get(i).getMem_no().toString());
 				rows.addElement(commutes.get(i).getOn_time().toString());
+				if(commutes.get(i).getOff_time()==null) {
+					rows.addElement(" ");
+				}else {
 				rows.addElement(commutes.get(i).getOff_time().toString());
+				}
 				tblModel.addRow(rows);
+				
 			}
+			
 			
 			CommutesScrollPane.setViewportView(commuteTable);
 		}
@@ -66,4 +71,6 @@ public class Commute_ListView extends JPanel {
 			colNames.add("퇴근시간");
 			return colNames;
 		}
+	
+	
 }
