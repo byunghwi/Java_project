@@ -28,7 +28,7 @@ private static final long serialVersionUID = 1L;
 	
 		setLayout(null);
 		
-		CommutesScrollPane.setBounds(12, 10, 600, 532);
+		CommutesScrollPane.setBounds(12, 10, 500, 532);
 		add(CommutesScrollPane);
 		
 		commuteTable.setRowMargin(10);
@@ -65,7 +65,7 @@ private static final long serialVersionUID = 1L;
 		
 		private Vector<String> getColum() {
 			colNames = new Vector<String>();
-			colNames.add("날짜");
+			colNames.add("출근날짜");
 			colNames.add("사원명");
 			colNames.add("출근시간");
 			colNames.add("퇴근시간");

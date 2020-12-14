@@ -79,14 +79,14 @@ public class MainFrame extends JFrame implements ActionListener {
 		tView = new JPanel();
 		tView.add(tv , "TimeView");
 		tView.setBackground(Color.WHITE);
-		tView.setBounds(0, 50, 650, 800);
+		tView.setBounds(0, 50, 550, 800);
 		tView.setLayout(cardlayout);
 		contentPanel.add(tView);
 		
 		lView = new JPanel();
 		lView.add(lv , "Commuite_ListView");
 		lView.setBackground(Color.WHITE);
-		lView.setBounds(650, 50, 600, 800);
+		lView.setBounds(600, 50, 550, 800);
 		lView.setLayout(cardlayout);
 		contentPanel.add(lView);
 		

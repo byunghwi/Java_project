@@ -42,7 +42,7 @@ public class Commute_ListView extends JPanel {
 		CommutesScrollPane.setBounds(12, 10, 500, 550);
 		add(CommutesScrollPane);
 		
-		commuteTable.setRowMargin(5);
+		commuteTable.setRowMargin(10);
 		commuteTable.setRowHeight(30);		
 		commuteTable.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
 		
@@ -70,7 +70,7 @@ public class Commute_ListView extends JPanel {
 		
 		private Vector<String> getColum() {
 			colNames = new Vector<String>();
-			colNames.add("날짜");
+			colNames.add("출근날짜");
 			colNames.add("사원명");
 			colNames.add("출근시간");
 			colNames.add("퇴근시간");
