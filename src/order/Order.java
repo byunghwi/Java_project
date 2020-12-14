@@ -5,14 +5,17 @@ public class Order {
 	String product_name;
 	int price;
 	
+	int quantity;
+	
 	public Order() {
 	}
 	
-	public Order(String product_id, String product_name, int price) {
+	public Order(String product_id, String product_name, int price, int quantity) {
 		super();
 		this.product_id = product_id;
 		this.product_name = product_name;
 		this.price = price;
+		this.quantity = quantity;
 	}
 
 	public String getProduct_id() {
@@ -37,6 +40,14 @@ public class Order {
 
 	public void setPrice(int price) {
 		this.price = price;
+	}
+	
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 	
 }

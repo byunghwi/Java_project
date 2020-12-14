@@ -23,7 +23,11 @@ public class OrderDao {
 	public ArrayList<Order> productAll() {
 		conn = DatabaseConnect.getConnection();
 		ArrayList<Order> products = new ArrayList<Order>();
-		sql = "SELECT * FROM product";
+		sql = "SELECT product.product_id, product.product_name, product.price, SUM(stock.quantity)\r\n"
+				+ "FROM product\r\n"
+				+ "INNER JOIN stock\r\n"
+				+ "ON product.product_id = stock.product_id\r\n"
+				+ "WHERE product.save_status = 'Y' group by product.product_id, product.product_name, product.price";
 		try {
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
@@ -35,6 +39,7 @@ public class OrderDao {
 				order.setProduct_id(rs.getString(1));
 				order.setProduct_name(rs.getString(2));
 				order.setPrice(rs.getInt(3));
+				order.setQuantity(rs.getInt(4));;
 
 				products.add(order);
 			}

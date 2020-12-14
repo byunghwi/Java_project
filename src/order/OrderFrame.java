@@ -16,12 +16,12 @@ public class OrderFrame extends JFrame {
 	public JPanel tabel_panel, btn_panel;
 	
 	String[] fieldNames = new String[] {"상품id", "수량", "사용자"};
-	String[] textHints = new String[] {"id입력",  "수량입력" , "사용자id입력"};
+	String[] textHints = new String[] {"id입력		",  "수량입력" , "사용자id입력"};
 	
 	public JLabel[] labels;
 	public JTextField[] fields;
 
-	OrderView ov = new OrderView();
+	public OrderView ov = new OrderView();
 	public CardLayout cardlayout;
 	
 	public OrderFrame() {

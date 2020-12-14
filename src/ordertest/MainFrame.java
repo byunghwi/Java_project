@@ -285,6 +285,21 @@ public class MainFrame extends JFrame implements ActionListener {
 			});
 		} else if (ob == orderConfirmFrame.order_btn) { // 승인 주문버튼
 			orderframe.setVisible(true);
+			orderframe.ov.model.setNumRows(0);
+			orderframe.ov.addProductLine(od.productAll());
+			
+			// 그래프 행 선택시
+			orderframe.ov.orderTable.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					JTable j = (JTable) e.getSource();
+					int row = j.getSelectedRow();
+					if (row != -1) {
+						String id = (String) orderframe.ov.orderTable.getValueAt(row, 0);
+						orderframe.fields[0].setText(id);
+					}
+				}
+			});
 		} else if (ob == orderConfirmFrame.confirm_btn) { // 승인 승인버튼
 			ocd.confirmCheck(orderConfirmFrame.fields);
 			
@@ -310,9 +325,6 @@ public class MainFrame extends JFrame implements ActionListener {
 		if (ob == orderframe.order_btn) { // 주문 주문버튼
 			od.moveconfirm(orderframe.fields);
 			JOptionPane.showMessageDialog(null, "주문 완료", "확인", JOptionPane.CLOSED_OPTION);
-			
-			orderConfirmFrame.ocv.model.setNumRows(0);
-			orderConfirmFrame.ocv.addProductLine(ocd.productAll());
 		} else if (ob == orderframe.cancel_btn) { // 주문 취소버튼
 			orderframe.setVisible(false);
 		}
