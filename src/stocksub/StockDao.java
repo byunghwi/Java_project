@@ -6,9 +6,12 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import db.DatabaseConnect;
 
+
+// 재고와 폐기 전반에 관련된 모든 데이터 입출력을 모아놓은 클래스
 public class StockDao {
 	Connection conn = null;
 	PreparedStatement pstmt = null;
@@ -18,15 +21,19 @@ public class StockDao {
 	String query1 = null;
 	String query2 = null;
 	String query3 = null;
+	String query4 = null;
+	String query5 = null;
+	String query5_sub = null;
 	
 	Stock stock = null;
 	Stock_info stock_info = null;
+	Disposal disposal = null;
 	
 	
 	public ArrayList<Stock> stockAll() {
 
 		conn = DatabaseConnect.getConnection();
-		// ��ǰ�� ���� ArrayList ����
+
 		ArrayList<Stock> stocks = new ArrayList<Stock>();
 
 		query1 = "SELECT product_id AS 상품코드 ,product_name AS 상품명,sum(quantity) AS 수량, price AS 가격 FROM stock WHERE save_status = 'Y' GROUP BY product_id, product_name, price";
@@ -52,11 +59,11 @@ public class StockDao {
 			e.printStackTrace();
 		}
 
-		// DB��� ����
+
 		try {
 			DatabaseConnect.dbClose(rs, pstmt, conn);
 		} catch (SQLException e) {
-			System.out.println("[DB] �ڿ� �ݳ� �� ���� �߻�\n");
+			System.out.println("[DB] 자원 반납 중 오류 발생\n");
 			e.printStackTrace();
 		}
 
@@ -95,18 +102,18 @@ public class StockDao {
 			e.printStackTrace();
 		}
 
-		// DB��� ����
+
 		try {
 			DatabaseConnect.dbClose(rs, pstmt, conn);
 		} catch (SQLException e) {
-			System.out.println("[DB] �ڿ� �ݳ� �� ���� �߻�\n");
+			System.out.println("[DB] 자원 반납 중 오류 발생\n");
 			e.printStackTrace();
 		}
 
 		return stock_infos;
 		
 	}
-	public void Disposal_product(String product_id, String dis_date) {
+	public void disposal_product(String product_id, String dis_date) {
 		
 		conn = DatabaseConnect.getConnection();
 		query3 = "UPDATE stock SET quantity = 0, save_status = 'N' WHERE product_id = ? AND TO_CHAR(dis_date,'YYYY-MM-DD') = ?";
@@ -124,15 +131,95 @@ public class StockDao {
 			e.printStackTrace();
 		}
 
-		// DB��� ����
+
 		try {
 			DatabaseConnect.dbClose(null, pstmt, conn);
 		} catch (SQLException e) {
-			System.out.println("[DB] �ڿ� �ݳ� �� ���� �߻�\n");
+			System.out.println("[DB] 자원 반납 중 오류 발생\n");
 			e.printStackTrace();
 		}
+	}
+	
+	public void send_disposal_table(String product_id, String manu_date, String dis_date,String quantity) {
+		conn = DatabaseConnect.getConnection();
+		query4 = "INSERT INTO dis_product VALUES(DIS_PD_NO_SEQ.nextval, ?, TO_DATE(?, 'YYYY-MM-DD'), TO_DATE(?, 'YYYY-MM-DD'), ?,'admin',sysdate)";
 		
+		try {
+			pstmt = conn.prepareStatement(query4);
+			pstmt.setString(1, product_id);
+			pstmt.setString(2,manu_date);
+			pstmt.setString(3, dis_date);
+			pstmt.setInt(4, Integer.parseInt(quantity));
+			
+			pstmt.executeQuery();
+			
+
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+
+		try {
+			DatabaseConnect.dbClose(null, pstmt, conn);
+		} catch (SQLException e) {
+			System.out.println("[DB] 자원 반납 중 오류 발생\n");
+			e.printStackTrace();
+		}
+	}
+	
+	public ArrayList<Disposal> disposals(String save_time){
 		
+		ArrayList<Disposal> disposals = new ArrayList<Disposal>();
+		
+		conn = DatabaseConnect.getConnection();
+		query5 = "select * from dis_product WHERE TO_DATE(save_time) = TO_DATE(sysdate,'YY-MM-DD')";
+		query5_sub = "select * from dis_product WHERE TO_DATE(save_time) = TO_DATE(? ,'YYYY-MM-DD')";
+		try {
+			
+			if (save_time.equals("default"))
+				pstmt = conn.prepareStatement(query5);
+			else {
+				pstmt = conn.prepareStatement(query5_sub);
+				pstmt.setString(1, save_time);
+		
+			}
+			
+			rs = pstmt.executeQuery();
+			rsmd = rs.getMetaData();
+			
+			
+			
+			int columCnt = rsmd.getColumnCount();
+			
+			while (rs.next()) {
+				disposal = new Disposal();
+				
+				disposal.setDisposalcode(rs.getString(1));
+				disposal.setProduct_id(rs.getString(2));
+				disposal.setManu_date(rs.getDate(3));
+				disposal.setDis_date(rs.getDate(4));
+				disposal.setQuantity(rs.getInt(5));
+				disposal.setMem_id(rs.getString(6));
+				disposal.setSave_time(rs.getDate(7));
+				
+				disposals.add(disposal);
+			}
+			
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			DatabaseConnect.dbClose(rs, pstmt, conn);
+		} catch (SQLException e) {
+			System.out.println("[DB] 자원 반납 중 오류 발생\n");
+			e.printStackTrace();
+		}
+		return disposals;
 	}
 	
 

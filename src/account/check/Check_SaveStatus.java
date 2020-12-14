@@ -9,7 +9,8 @@ import com.zaxxer.hikari.HikariDataSource;
 
 import db.DatabaseConnect;
 
-// SaveStatus(Åğ»ç ¿©ºÎ)¸¦ È®ÀÎÇÏ´Â Å¬·¡½º
+// íšŒì›ì˜ ì¡´ì¬ ì—¬ë¶€ì™€ SaveStatus(íƒˆí‡´ ì—¬ë¶€ íŒë³„)ë¥¼ í™•ì¸í•˜ëŠ” í´ë˜ìŠ¤
+// íšŒì› ì •ë³´ë¥¼ í™•ì¸í•˜ëŠ” ëª¨ë“  ê³¼ì •ì—ì„œ ì‹¤í–‰
 public class Check_SaveStatus {
 	
 	String mem_id;
@@ -34,18 +35,19 @@ public class Check_SaveStatus {
 			
 			result.next();
 			
-			// Åğ»ç ¿©ºÎ¸¦ ÆÄ¾ÇÇÏ¿© Åğ»çÀÚ°¡ ¾Æ´Ï¶ó¸é ÆÇº°¿ë º¯¼ö check¸¦ true·Î º¯°æ
+			// íšŒì›ì •ë³´ê°€ ì¡´ì¬í•˜ê³  Savestatusê°€ Yë¼ë©´ checkë¥¼ trueë¡œ ë°˜í™˜í•˜ì—¬ ì´í›„ì˜ ì‘ì—…ì´ ì •ìƒ ì§„í–‰ë˜ë„ë¡ í•œë‹¤
 			if(result.getString(1).equals("Y")) {
 				check = true;
+			// íšŒì›ì •ë³´ê°€ ì¡´ì¬í•˜ì§€ë§Œ Savestatusê°€ Nì´ë¼ë©´ ì´í›„ì˜ ì‘ì—…ì€ ì •ìƒ ì‘ë™í•˜ì§€ ì•ŠëŠ”ë‹¤
 			} else {
-				System.err.println("Å»ÅğÇÑ È¸¿ø IDÀÔ´Ï´Ù.");
+				System.err.println("íƒˆí‡´í•œ íšŒì›ì…ë‹ˆë‹¤.");
 			}
 			
 			DatabaseConnect.dbClose(result, pstmt, conn);
 		
-			// Àß¸øµÈ ID ÀÎÁöÀÇ ¿©ºÎµµ ÀÌ Å¬·¡½º¿¡¼­ ÆÄ¾Ç
+		// ì•„ì˜ˆ íšŒì›ì •ë³´ê°€ ì—†ëŠ” ê²½ìš° ì•„ì´ë””ê°€ ì˜ëª»ë˜ì—ˆìŒì„ ì•Œë¦°ë‹¤
 		} catch (SQLException e) {
-			System.err.println("Àß¸øµÈ ID Á¤º¸ ÀÔ´Ï´Ù.");
+			System.err.println("ì˜ëª»ëœ IDì…ë‹ˆë‹¤");
 		}
 		
 	}

@@ -14,7 +14,7 @@ public class Add_Commute_On_Time {
 	
 
 	
-	String sql = "INSERT INTO daily_check VALUES (sysdate,'test2',sysdate,default)";
+	String sql = "INSERT INTO daily_check VALUES (sysdate,'test3',sysdate,default)";
 	
 	try {
 		Connection conn = DatabaseConnect.getConnection();

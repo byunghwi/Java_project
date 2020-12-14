@@ -2,73 +2,106 @@ package stocksub;
 
 import java.util.Date;
 
-// 재고 상세정보 객채
-public class Stock_info {
+// 폐기 객채
+public class Disposal {
+	
+	String disposalcode;
 	String product_id;
-	String product_name;
-	int price;
+	String mem_id;
 	int quantity;
 	Date manu_date;
 	Date dis_date;
-	Date in_date;
+	Date save_time;
 	
-	public Stock_info() {}
-	
+	public String getDisposalcode() {
+		return disposalcode;
+	}
+
+
+
+	public void setDisposalcode(String disposalcode) {
+		this.disposalcode = disposalcode;
+	}
+
+
+
 	public String getProduct_id() {
 		return product_id;
 	}
+
+
 
 	public void setProduct_id(String product_id) {
 		this.product_id = product_id;
 	}
 
-	public String getProduct_name() {
-		return product_name;
+
+
+	public String getMem_id() {
+		return mem_id;
 	}
 
-	public void setProduct_name(String product_name) {
-		this.product_name = product_name;
+
+
+	public void setMem_id(String mem_id) {
+		this.mem_id = mem_id;
 	}
 
-	public int getPrice() {
-		return price;
-	}
 
-	public void setPrice(int price) {
-		this.price = price;
-	}
 
 	public int getQuantity() {
 		return quantity;
 	}
 
+
+
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
+
+
 
 	public Date getManu_date() {
 		return manu_date;
 	}
 
+
+
 	public void setManu_date(Date manu_date) {
 		this.manu_date = manu_date;
 	}
+
+
 
 	public Date getDis_date() {
 		return dis_date;
 	}
 
+
+
 	public void setDis_date(Date dis_date) {
 		this.dis_date = dis_date;
 	}
 
-	public Date getIn_date() {
-		return in_date;
+
+
+	public Date getSave_time() {
+		return save_time;
 	}
 
-	public void setIn_date(Date in_date) {
-		this.in_date = in_date;
+
+
+	public void setSave_time(Date save_time) {
+		this.save_time = save_time;
 	}
+
+
+
 
 	
+	
+	
+	public Disposal() {
+		// TODO Auto-generated constructor stub
+	}
 }

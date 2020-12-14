@@ -8,6 +8,7 @@ import java.util.Date;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+// 메인프레임 상단 정보에 대한 패널
 public class TopPanel extends JPanel {
 	public JLabel clockLabel;
 	public JLabel titleLabel;

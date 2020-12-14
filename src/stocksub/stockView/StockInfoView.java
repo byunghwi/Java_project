@@ -13,6 +13,8 @@ import javax.swing.table.DefaultTableModel;
 import stocksub.StockDao;
 import stocksub.Stock_info;
 
+
+// 상품 상세 정보에 대응하는 패널
 public class StockInfoView extends JPanel {
 
 private static final long serialVersionUID = 1L;
@@ -20,7 +22,11 @@ private static final long serialVersionUID = 1L;
 	public StockDao sdao = new StockDao();
 	public JScrollPane stocksScrollPane = new JScrollPane();
 	public Vector<String> colNames = getColum();
-	public DefaultTableModel tblModel = new DefaultTableModel(colNames, 0);
+	public DefaultTableModel tblModel = new DefaultTableModel(colNames, 0){ 
+		public boolean isCellEditable(int i, int c)
+		{ 
+			return false; 
+		}};
 	public JTable stockTable = new JTable(tblModel);
 
 	public Vector<String> rows;
@@ -37,7 +43,7 @@ private static final long serialVersionUID = 1L;
 		stockTable.setRowHeight(30);		
 		stockTable.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
 		
-		//���̺� �ο� �� �� �ٸ� ���� ����.
+
 		stockTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
 		addStockLine(sdao.stockInfos(product_id)); 
@@ -45,7 +51,7 @@ private static final long serialVersionUID = 1L;
 		stocksScrollPane.setViewportView(stockTable);
 	}
 
-	//Jtable�� �ο� �ϳ��� �߰��ϱ�.
+
 	public void addStockLine(ArrayList<Stock_info> stock_infos) {
 		int size = stock_infos.size();
 
@@ -58,7 +64,6 @@ private static final long serialVersionUID = 1L;
 			rows.addElement(stock_infos.get(i).getDis_date().toString());
 			
 
-			//�ο츶�� ���̺� �ѷ��ֱ�.
 			tblModel.addRow(rows);
 		}
 		

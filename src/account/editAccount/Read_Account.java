@@ -9,6 +9,8 @@ import java.util.Arrays;
 
 import db.DatabaseConnect;
 
+// DB에서 회원 아이디를 사용하여 회원의 정보를 받아오는 클래스
+// 단순히 배열에 순서대로 정보를 받아오기때문에 수정 필요
 public class Read_Account {
 	public String[] read_info = null;
 	

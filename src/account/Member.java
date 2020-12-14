@@ -3,8 +3,7 @@ package account;
 import java.util.Date;
 
 
-// ¸â¹ö Á¤º¸¿¡ ´ëÇÑ Å¬·¡½º
-// getter setter Å¾Àç ¿¹Á¤
+// ë§´ë²„ì— ëŒ€í•œ ê°ì²´
 public class Member {
 	
 	public String mem_id;

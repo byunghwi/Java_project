@@ -10,9 +10,11 @@ import javax.swing.border.EmptyBorder;
 
 import stocksub.Stock;
 import stocksub.StockDao;
+import stocksub.stockAction.DisposalInfoAction;
 import stocksub.stockAction.MoreInfoAction;
 import stocksub.stockView.StockView;
 
+// 재고에 대한 메인 프레임 
 public class StockFrame extends JFrame {
 
 	/**
@@ -27,9 +29,7 @@ public class StockFrame extends JFrame {
 
 	// 오른쪽 버튼들 보여줄 패널
 	RightBtnPanel rightBtnPanel = new RightBtnPanel();
-
-
-	// 상품 정보 팝업 프레임
+	
 
 	// 상품
 	Stock stock;
@@ -86,7 +86,10 @@ public class StockFrame extends JFrame {
 		contentPanel.add(sBtnView);
 		
 		rightBtnPanel.productMoreInfoBtn.addActionListener(new MoreInfoAction(this));
-		
+
+		rightBtnPanel.disposalInfoBtn.addActionListener(new DisposalInfoAction(this));
+
+
 	}
 	public static void main(String[] args) {
 		new StockFrame();
