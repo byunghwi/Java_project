@@ -286,7 +286,6 @@ public class MainFrame extends JFrame implements ActionListener {
 				}
 			});
 
-	
 		}else if (ob == salePanel.addBucketBtn) {
 			int row  = salePanel.stockTable.getSelectedRow();
 
@@ -294,7 +293,7 @@ public class MainFrame extends JFrame implements ActionListener {
 				// 확인 팝업창
 				JOptionPane.showMessageDialog(null, "\t[SYSTEM] 추가할 상품의 행을 선택해주세요.", "확인", JOptionPane.CLOSED_OPTION);
 			}
-			else if(salePanel.prodQt.getText().equals("") || !Pattern.matches("^[0-9]*$", salePanel.prodQt.getText())) {
+			else if(salePanel.prodQt.getText().equals("") || !Pattern.matches("^[1-9]*$", salePanel.prodQt.getText())) {
 				// 확인 팝업창
 				JOptionPane.showMessageDialog(null, "\t[SYSTEM] 정확한 수량을 입력해주세요", "확인", JOptionPane.CLOSED_OPTION);
 			}else if(Integer.parseInt(salePanel.prodQt.getText()) > Integer.parseInt((String) salePanel.stockTblModel.getValueAt(row, 3))) {
@@ -308,7 +307,9 @@ public class MainFrame extends JFrame implements ActionListener {
 				arrData[2] = (String) salePanel.stockTblModel.getValueAt(row, 2);
 
 				salePanel.bucketTblModel.addRow(arrData);
-
+				//Object aValue, int row, int column
+				salePanel.stockTblModel.setValueAt(salePanel.prodQt.getText(), row, 3);
+				
 			}
 			
 		}else if (ob == bottomPanel.stockBtn) {

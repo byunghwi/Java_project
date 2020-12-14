@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -37,10 +38,15 @@ public class SalePanel extends JPanel {
 	public JTable stockTable = new JTable(stockTblModel);
 	public JTable bucketTable = new JTable(bucketTblModel);
 	
-	public JTextField prodnameTf; 	//상품코드 텍스트필드
+	public JTextField prodnameTf; 	//상품이름 텍스트필드
 	public JTextField prodQt;		//상품수량 텍스트필드
+	
+	public JLabel prodnameLb; 		//상품이름 라벨
+	public JLabel prodQtLb;			//상품수량 라벨
+	
 	public JButton addBucketBtn;	//장바구니 추가 버튼
 	public JButton delBucketBtn;	//장바구니 삭제 버튼
+	
 	
 	// 행 정보들 담을 벡터
 	public Vector<String> rows;
@@ -51,14 +57,24 @@ public class SalePanel extends JPanel {
 	
 		prodnameTf = new JTextField();
 		prodQt = new JTextField();
+		
+		prodnameLb = new JLabel("상품명");
+		prodnameLb.setFont(new Font("맑은 고딕", Font.PLAIN, 13));
+		prodQtLb = new JLabel("상품수량");
+		prodQtLb.setFont(new Font("맑은 고딕", Font.PLAIN, 13));
+			
 		addBucketBtn =  new JButton("추가");
 		delBucketBtn = new JButton("삭제");
 		
-		prodnameTf.setBounds(480, 510, 70, 30);
-		prodQt.setBounds(570, 510, 70, 30);
+		prodnameLb.setBounds(470, 490, 70, 20);
+		prodQtLb.setBounds(560, 490, 70, 20);
+		prodnameTf.setBounds(470, 510, 90, 30);
+		prodQt.setBounds(560, 510, 70, 30);
 		addBucketBtn.setBounds(660, 510, 70, 30);
 		delBucketBtn.setBounds(735, 510, 70, 30);
 
+		add(prodnameLb);
+		add(prodQtLb);
 		add(prodnameTf);
 		add(prodQt);
 		add(addBucketBtn);
