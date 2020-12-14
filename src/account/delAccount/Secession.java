@@ -8,7 +8,7 @@ import javax.swing.JTextField;
 import account.action.Delete_Action;
 
 
-// »èÁ¦ÇÒ °èÁ¤ÀÇ Á¤º¸¸¦ ¹Ş¾Æ¿À´Â Å¬·¡½º(Swing ±¸Çö)
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ş¾Æ¿ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½(Swing ï¿½ï¿½ï¿½ï¿½)
 public class Secession extends JFrame{
 	
 	public JTextField[] infos = new JTextField[2]; 
@@ -35,7 +35,7 @@ public class Secession extends JFrame{
 		
 		delete.addActionListener(new Delete_Action(this));
 		
-		setTitle("È¸¿ø Å»Åğ");
+		setTitle("íšŒì› íƒˆí‡´");
 		setLayout(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocation(400,80);

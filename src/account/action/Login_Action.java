@@ -37,6 +37,7 @@ public class Login_Action extends JFrame implements ActionListener {
 			
 			new StockFrame();
 			
+			
 		}
 		
 	}

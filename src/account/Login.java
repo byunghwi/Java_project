@@ -9,7 +9,7 @@ import javax.swing.JTextField;
 import account.action.Login_Action;
 
 
-// ·Î±×ÀÎ Á¤º¸¸¦ ¹Ş¾Æ¿Ã Å¬·¡½º(Swing ±¸Çö)
+// ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ş¾Æ¿ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½(Swing ï¿½ï¿½ï¿½ï¿½)
 public class Login extends JFrame {
 	
 	public JTextField[] infos = new JTextField[2]; 
@@ -45,7 +45,7 @@ public class Login extends JFrame {
 		login.addActionListener(new Login_Action(this));
 		
 		
-		setTitle("·Î±×ÀÎ");
+		setTitle("ë¡œê·¸ì¸");
 		setLayout(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocation(400,80);

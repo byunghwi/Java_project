@@ -40,7 +40,7 @@ public class Edit_Account {
 			
 			pstmt.execute();
 			
-			System.out.println("Á¤º¸ ¼öÁ¤ ¿Ï·á!");
+			System.out.println("ìˆ˜ì • ì„±ê³µ!!");
 			edit_suc = true;
 			
 			DatabaseConnect.dbClose(null, pstmt, conn);

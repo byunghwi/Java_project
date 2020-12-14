@@ -8,8 +8,7 @@ import com.zaxxer.hikari.HikariDataSource;
 
 import db.DatabaseConnect;
 
-// 실제로 회원 탈퇴를 DB에 반영하는 클래스
-// 탈퇴자는 실제로 DB에서 정보가 삭제되는것이 아닌 save_status만 변화된다(정보는 남아있음)
+
 public class Del_Account {
 	
 	public Del_Account(String mem_id) {

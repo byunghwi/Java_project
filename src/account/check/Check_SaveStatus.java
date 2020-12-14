@@ -9,7 +9,7 @@ import com.zaxxer.hikari.HikariDataSource;
 
 import db.DatabaseConnect;
 
-// SaveStatus(Åğ»ç ¿©ºÎ)¸¦ È®ÀÎÇÏ´Â Å¬·¡½º
+// SaveStatus(ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½ È®ï¿½ï¿½ï¿½Ï´ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½
 public class Check_SaveStatus {
 	
 	String mem_id;
@@ -34,18 +34,18 @@ public class Check_SaveStatus {
 			
 			result.next();
 			
-			// Åğ»ç ¿©ºÎ¸¦ ÆÄ¾ÇÇÏ¿© Åğ»çÀÚ°¡ ¾Æ´Ï¶ó¸é ÆÇº°¿ë º¯¼ö check¸¦ true·Î º¯°æ
+			// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î¸ï¿½ ï¿½Ä¾ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½Æ´Ï¶ï¿½ï¿½ ï¿½Çºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ checkï¿½ï¿½ trueï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			if(result.getString(1).equals("Y")) {
 				check = true;
 			} else {
-				System.err.println("Å»ÅğÇÑ È¸¿ø IDÀÔ´Ï´Ù.");
+				System.err.println("íƒˆí‡´í•œ íšŒì›ì…ë‹ˆë‹¤.");
 			}
 			
 			DatabaseConnect.dbClose(result, pstmt, conn);
 		
-			// Àß¸øµÈ ID ÀÎÁöÀÇ ¿©ºÎµµ ÀÌ Å¬·¡½º¿¡¼­ ÆÄ¾Ç
+			// ï¿½ß¸ï¿½ï¿½ï¿½ ID ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¾ï¿½
 		} catch (SQLException e) {
-			System.err.println("Àß¸øµÈ ID Á¤º¸ ÀÔ´Ï´Ù.");
+			System.err.println("ì˜ëª»ëœ IDì…ë‹ˆë‹¤");
 		}
 		
 	}

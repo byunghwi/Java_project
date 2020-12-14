@@ -27,10 +27,18 @@ public class Disposal_Action implements ActionListener{
 
 			int row = stockInfoF.stockInfoView.stockTable.getSelectedRow();
 			String product_id = ((String) stockInfoF.stockInfoView.tblModel.getValueAt(row, 0));
+			String quantity = ((String) stockInfoF.stockInfoView.tblModel.getValueAt(row, 2));
+			String manu_date = ((String) stockInfoF.stockInfoView.tblModel.getValueAt(row, 3));
 			String dis_date = ((String) stockInfoF.stockInfoView.tblModel.getValueAt(row, 4));
+			System.out.println(manu_date);
+			
 			
 			if (agree == JOptionPane.YES_OPTION) {
-				sdao.Disposal_product(product_id, dis_date);
+				sdao.send_disposal_table(product_id,manu_date,dis_date,quantity);
+				
+				
+				sdao.disposal_product(product_id, dis_date);
+				
 				stockInfoF.stockInfoView.tblModel.setNumRows(0);
 				stockInfoF.stockInfoView.addStockLine(sdao.stockInfos(stockInfoF.stockInfoView.product_id));
 				
@@ -49,3 +57,5 @@ public class Disposal_Action implements ActionListener{
 	}
 
 }
+
+

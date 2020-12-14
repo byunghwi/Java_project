@@ -16,7 +16,7 @@ import com.zaxxer.hikari.HikariDataSource;
 import account.Member;
 import db.DatabaseConnect;
 
-// ½ÇÁ¦·Î DB¿¡ µ¥ÀÌÅÍ¸¦ º¸³»´Â Å¬·¡½º
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ DBï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½
 public class Add_Account extends JFrame {
 	
 	String errorCode;
@@ -27,8 +27,8 @@ public class Add_Account extends JFrame {
 		// Member new_mem = new Member("mem_issd", "mem_pw", "mem_nm", "res_no", "phone", "address", 's', "mail");
 		String[] errorNames = {"ID","PW","_NM","res","phone","SEX","MAIL"};
 		String[] messages = {
-				"¾ÆÀÌµğ¸¦ È®ÀÎÇØÁÖ¼¼¿ä!","ÆĞ½º¿öµå¸¦ È®ÀÎÇØÁÖ¼¼¿ä","ÀÌ¸§À» È®ÀÎÇØÁÖ¼¼¿ä","ÁÖ¹Îµî·Ï¹øÈ£¸¦ È®ÀÎÇØÁÖ¼¼¿ä",
-				"ÀüÈ­¹øÈ£¸¦ È®ÀÎÇØÁÖ¼¼¿ä!","¼ºº°À» È®ÀÎÇØÁÖ¼¼¿ä","¸ŞÀÏÀ» È®ÀÎÇØÁÖ¼¼¿ä"};
+				"ì•„ì´ë””ë¥¼ í™•ì¸í•´ì£¼ì„¸ìš”!!","íŒ¨ìŠ¤ì›Œë“œë¥¼ í™•ì¸í•´ì£¼ì„¸ìš”!","ì´ë¦„ì„ í™•ì¸í•´ì£¼ì„¸ìš”!","ì£¼ë¯¼ë“±ë¡ë²ˆí˜¸ë¥¼ í™•ì¸í•´ì£¼ì„¸ìš”!",
+				"ì „í™”ë²ˆí˜¸ë¥¼ í™•ì¸í•´ì£¼ì„¸ìš”!","ì„±ë³„ì„ í™•ì¸í•´ì£¼ì„¸ìš”!","ë©”ì¼ ì£¼ì†Œë¥¼ í™•ì¸í•´ì£¼ì„¸ìš”!"};
 		
 		String sql = "INSERT INTO member VALUES (mem_no_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, default,default)";
 		Connection conn = null;
@@ -52,7 +52,7 @@ public class Add_Account extends JFrame {
 			
 			pstmt.execute();
 			
-			System.out.println("°èÁ¤ »ı¼º ¿Ï·á");
+			System.out.println("ê°€ì… ì™„ë£Œ!");
 			
 		} catch (SQLException e) {
 			errorCode = e.getMessage();

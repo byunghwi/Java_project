@@ -24,10 +24,10 @@ public class Edit extends JFrame {
 	public JTextField[] phone_infos = new JTextField[3];
 	JLabel minus[] = {new JLabel("-"),new JLabel("-"),new JLabel("-")};
 
-	String [] info_names = {"ÆĞ½º¿öµå","ÆĞ½º¿öµå È®ÀÎ","ÀÌ¸§","ÁÖ¹Îµî·Ï¹øÈ£","ÀüÈ­¹øÈ£","ÁÖ¼Ò","¼ºº°","¸ŞÀÏÁÖ¼Ò"};
+	String [] info_names = {"ë¹„ë°€ë²ˆí˜¸","ë¹„ë°€ë²ˆí˜¸ í™•ì¸","ì´ë¦„","ì£¼ë¯¼ë“±ë¡ë²ˆí˜¸","ì „í™”ë²ˆí˜¸","ì£¼ì†Œ","ì„±ë³„","ë©”ì¼ì£¼ì†Œ"};
 	JLabel[] names = new JLabel[8];
-	JButton edit = new JButton("¼öÁ¤");
-	JButton cancel = new JButton("Ãë¼Ò");
+	JButton edit = new JButton("ìˆ˜ì •");
+	JButton cancel = new JButton("ì·¨ì†Œ");
 	
 	
 	public Edit(String mem_id) {
@@ -35,7 +35,7 @@ public class Edit extends JFrame {
 		this.mem_id = mem_id;
 		
 		ra = new Read_Account(mem_id);
-		id_label = new JLabel(mem_id.toUpperCase() +" ´ÔÀÇ È¸¿øÁ¤º¸");
+		id_label = new JLabel(mem_id.toUpperCase() +"ë‹˜ì˜ íšŒì›ì •ë³´");
 		int pnl = ra.read_info[6].length();
 		
 		for (int i = 0; i < info_names.length; i++) {
@@ -118,7 +118,7 @@ public class Edit extends JFrame {
 		edit.addActionListener(new Edit_Action(this));
 		cancel.addActionListener(new Cancel_Action(this));
 		
-		setTitle("È¸¿ø Á¤º¸ ¼öÁ¤");
+		setTitle("íšŒì› ì •ë³´ ìˆ˜ì •");
 		setLayout(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocation(800,100);

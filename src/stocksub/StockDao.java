@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import db.DatabaseConnect;
 
@@ -18,6 +19,7 @@ public class StockDao {
 	String query1 = null;
 	String query2 = null;
 	String query3 = null;
+	String query4 = null;
 	
 	Stock stock = null;
 	Stock_info stock_info = null;
@@ -26,7 +28,7 @@ public class StockDao {
 	public ArrayList<Stock> stockAll() {
 
 		conn = DatabaseConnect.getConnection();
-		// ��ǰ�� ���� ArrayList ����
+
 		ArrayList<Stock> stocks = new ArrayList<Stock>();
 
 		query1 = "SELECT product_id AS 상품코드 ,product_name AS 상품명,sum(quantity) AS 수량, price AS 가격 FROM stock WHERE save_status = 'Y' GROUP BY product_id, product_name, price";
@@ -52,11 +54,11 @@ public class StockDao {
 			e.printStackTrace();
 		}
 
-		// DB��� ����
+
 		try {
 			DatabaseConnect.dbClose(rs, pstmt, conn);
 		} catch (SQLException e) {
-			System.out.println("[DB] �ڿ� �ݳ� �� ���� �߻�\n");
+			System.out.println("[DB] 자원 반납 중 오류 발생\n");
 			e.printStackTrace();
 		}
 
@@ -95,18 +97,18 @@ public class StockDao {
 			e.printStackTrace();
 		}
 
-		// DB��� ����
+
 		try {
 			DatabaseConnect.dbClose(rs, pstmt, conn);
 		} catch (SQLException e) {
-			System.out.println("[DB] �ڿ� �ݳ� �� ���� �߻�\n");
+			System.out.println("[DB] 자원 반납 중 오류 발생\n");
 			e.printStackTrace();
 		}
 
 		return stock_infos;
 		
 	}
-	public void Disposal_product(String product_id, String dis_date) {
+	public void disposal_product(String product_id, String dis_date) {
 		
 		conn = DatabaseConnect.getConnection();
 		query3 = "UPDATE stock SET quantity = 0, save_status = 'N' WHERE product_id = ? AND TO_CHAR(dis_date,'YYYY-MM-DD') = ?";
@@ -124,15 +126,42 @@ public class StockDao {
 			e.printStackTrace();
 		}
 
-		// DB��� ����
+
 		try {
 			DatabaseConnect.dbClose(null, pstmt, conn);
 		} catch (SQLException e) {
-			System.out.println("[DB] �ڿ� �ݳ� �� ���� �߻�\n");
+			System.out.println("[DB] 자원 반납 중 오류 발생\n");
 			e.printStackTrace();
 		}
+	}
+	
+	public void send_disposal_table(String product_id, String manu_date, String dis_date,String quantity) {
+		conn = DatabaseConnect.getConnection();
+		query4 = "INSERT INTO dis_product VALUES(DIS_PD_NO_SEQ.nextval, ?, TO_DATE(?, 'YYYY-MM-DD'), TO_DATE(?, 'YYYY-MM-DD'), ?,'admin',default)";
 		
-		
+		try {
+			pstmt = conn.prepareStatement(query4);
+			pstmt.setString(1, product_id);
+			pstmt.setString(2,manu_date);
+			pstmt.setString(3, dis_date);
+			pstmt.setInt(4, Integer.parseInt(quantity));
+			
+			pstmt.executeQuery();
+			
+
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+
+		try {
+			DatabaseConnect.dbClose(null, pstmt, conn);
+		} catch (SQLException e) {
+			System.out.println("[DB] 자원 반납 중 오류 발생\n");
+			e.printStackTrace();
+		}
 	}
 	
 

@@ -7,38 +7,38 @@ import account.delAccount.Check_PW;
 import account.delAccount.Del_Account;
 import account.delAccount.Secession;
 
-// È¸¿ø Å»Åð ¾×¼Ç ¸®½º³Ê
+
 public class Delete_Action implements ActionListener {
 	
 	
 	Secession info;
 	
-	// ¹Þ¾Æ¿Â Á¤º¸°¡ ÀúÀåµÉ ¹è¿­
+
 	public String [] info_data = new String[2];
 	
-	// »èÁ¦ °¡´É ¿©ºÎ¸¦ ÆÄ¾ÇÇÒ º¯¼ö
+	
 	boolean check_can_del = false;
 	
 	
 	public Delete_Action(Secession info) {
-		// Secession Å¬·¡½º¸¦ ¹Þ¾Æ¿È
+		
 		this.info = info;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// ¹Þ¾Æ¿Â Secession Å¬·¡½ºÀÇ id pw Á¤º¸¸¦ ¹è¿­·Î ÀúÀå
+		
 		for (int i=0; i<info_data.length; i++) {
 			info_data[i] = info.infos[i].getText();
 		}
 		
-		// ¹Þ¾Æ¿Â ID¿Í PW¸¦ Check_PW·Î °ËÁõ(delAccount ÆÐÅ°Áö¿¡ Á¸ÀçÇÏ´Â Å¬·¡½º)
+		
 		Check_PW cp = new Check_PW(info_data[0],info_data[1]);
 		
-		// È¸¿ø ID¿Í PW°¡ ÀÏÄ¡ÇÑ´Ù¸é ÀÛµ¿
+		
 		if (cp.check) {
 			new Del_Account(info_data[0]);
-			System.out.println("Å»Åð ¿Ï·á!!!!");
+			System.out.println("ì‚­ì œ ì„±ê³µ!!!!");
 		}
 		
 	}

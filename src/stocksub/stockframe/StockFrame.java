@@ -27,7 +27,7 @@ public class StockFrame extends JFrame {
 
 	// 오른쪽 버튼들 보여줄 패널
 	RightBtnPanel rightBtnPanel = new RightBtnPanel();
-
+	
 
 	// 상품 정보 팝업 프레임
 

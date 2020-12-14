@@ -10,7 +10,7 @@ import com.zaxxer.hikari.HikariDataSource;
 import account.check.Check_SaveStatus;
 import db.DatabaseConnect;
 
-// ÀÔ·Â¹ŞÀº ID¿¡ ´ëÇÑ PW°¡ ¸Â´ÂÁö È®ÀÎÇÏ´Â Å¬·¡½º
+// ï¿½Ô·Â¹ï¿½ï¿½ï¿½ IDï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ PWï¿½ï¿½ ï¿½Â´ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½Ï´ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½
 public class Check_PW {
 	
 	String mem_id;
@@ -23,10 +23,8 @@ public class Check_PW {
 		this.mem_id = mem_id;
 		this.mem_pwd = mem_pwd;
 		
-		// ¸ÕÀú Åğ»çÀÚÀÇ Á¤º¸ÀÎÁö È®ÀÎ
 		c_ss = new Check_SaveStatus(mem_id,mem_pwd);
-		
-		// Åğ»çÀÚµµ ¾Æ´Ï°í IDÀÇ Á¤º¸µµ Á¸ÀçÇÑ´Ù¸é ÀÌÇÏÀÇ Á¶°Ç¹® ½ÇÇà
+
 		if(c_ss.check) {
 			
 			
@@ -43,11 +41,10 @@ public class Check_PW {
 				
 				result.next();
 				
-				// ID¿¡ ´ëÇÑ PW°¡ ¸Â´Ù¸é check¸¦ true·Î º¯°æ
 				if(result.getString(1).equals(mem_pwd)) {
 					check = true;
 				} else {
-					System.err.println("Àß¸øµÈ PW Á¤º¸ ÀÔ´Ï´Ù.");
+					System.err.println("ì˜ëª»ëœ PW ì…ë‹ˆë‹¤!");
 				}
 				
 				
