@@ -49,15 +49,15 @@ public class OrderDao {
 		return products;
 	}
 	
-	// 승인테이블로 이동
+	// 주문(승인테이블로 이동)
 	public void moveconfirm(JTextField[] fields) {
 		conn = DatabaseConnect.getConnection();
 		sql = "insert into order_product VALUES(ORDER_PRODUCT_NO_SEQ.nextval, ?, ?, ?, to_char(sysdate,'yyyy.mm.dd'))";
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, fields[0].getText());
-			ps.setInt(2, Integer.parseInt(fields[1].getText()));
-			ps.setString(3, fields[2].getText());
+			ps.setString(1, fields[0].getText()); // 물품id
+			ps.setInt(2, Integer.parseInt(fields[1].getText())); // 수량
+			ps.setString(3, fields[2].getText()); // 처리자명
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -68,5 +68,23 @@ public class OrderDao {
 			e.printStackTrace();
 		}
 	}
+	
+	// 삭제(등록했던 상품삭제) - 필요하면 쓰려고 만들어둠
+//	public void deleteproduct(JTextField[] fields) {
+//		conn = DatabaseConnect.getConnection();
+//		sql = "DELETE FROM product WHERE product_id = ?";
+//		try {
+//			ps = conn.prepareStatement(sql);
+//			ps.setString(1, fields[0].getText());
+//			ps.executeUpdate();
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//		try {
+//			DatabaseConnect.dbClose(rs, ps, conn);
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//	}
 	
 }

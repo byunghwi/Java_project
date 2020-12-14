@@ -29,13 +29,16 @@ public class OrderConfirmView extends JPanel {
 		orderTable.setRowHeight(30);
 		
 		orderTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		addProductLine(ocd.productAll()); 
+		addProductLine(ocd.productAll());
 		scrollpane.setViewportView(orderTable);
+		
+		// 그래프 편집 못하게
+//		orderTable.setEnabled(false);
 	}
 	
 	public void addProductLine(ArrayList<OrderConfirm> products) {
 		int size = products.size();
-
+		
 		for (int i = 0; i < size; i++) {
 			rows = new Vector<String>();
 			rows.addElement(Integer.toString(products.get(i).getOrder_product_no()));

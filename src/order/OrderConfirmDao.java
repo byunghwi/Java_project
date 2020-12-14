@@ -1,6 +1,7 @@
 package order;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -13,13 +14,12 @@ import db.DatabaseConnect;
 
 public class OrderConfirmDao {
 	Connection conn;
-	PreparedStatement ps, pstmt;
+	PreparedStatement ps, ps2;
 	ResultSet rs;
 	ResultSetMetaData rsmd;
-	String sql;
+	String sql, sql2;
 	OrderConfirm order;
 	
-	OrderConfirmView ocv = new OrderConfirmView();
 	// 발주 테이블 목록
 	public ArrayList<OrderConfirm> productAll() {
 		conn = DatabaseConnect.getConnection();
@@ -53,14 +53,26 @@ public class OrderConfirmDao {
 	// 발주 승인
 	public void confirmCheck(JTextField[] fields) {
 		conn = DatabaseConnect.getConnection();
-		sql = "insert into stock VALUES("
-				+ "STOCK_NO_SEQ.nextval, ?, \'testitem01\', "
-				+ "\'20/12/11\', \'20/12/11\', \'20/12/12\', 10000, ?, \'Y\')";
+		
+		String manu_date = RandomDay.randomDOB();
+		String dis_date = RandomDay.randomDOB();
+		
+		sql = "INSERT INTO stock VALUES(STOCK_NO_SEQ.nextval, ?, ?, SYSDATE, ?, ?, ?, ?, 'Y')";
+		sql2 = "DELETE FROM order_product WHERE ORDER_PRODUCT_NO = ? AND product_id = ?";
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, fields[1].getText());
-			ps.setInt(2, Integer.parseInt(fields[2].getText()));
+			ps.setString(1, fields[2].getText()); // 물품id
+			ps.setString(2, fields[1].getText()); // 물품명
+			ps.setString(3, manu_date.toString()); // 제조일
+			ps.setString(4, dis_date.toString()); // 폐기일
+			ps.setInt(5, Integer.parseInt(fields[3].getText())); // 가격
+			ps.setInt(6, Integer.parseInt(fields[4].getText())); // 수량
 			ps.executeUpdate();
+			
+			ps2 = conn.prepareStatement(sql2);
+			ps2.setString(1, fields[0].getText()); // 발주번호
+			ps2.setString(2, fields[2].getText()); // 물품id
+			ps2.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -78,7 +90,7 @@ public class OrderConfirmDao {
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, fields[0].getText());
-			ps.setString(2, fields[1].getText());
+			ps.setString(2, fields[2].getText());
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

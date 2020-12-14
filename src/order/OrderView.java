@@ -1,17 +1,14 @@
 package order;
 
 import java.awt.BorderLayout;
-import java.awt.Container;
 import java.awt.Font;
 import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
@@ -48,6 +45,9 @@ public class OrderView extends JPanel {
 		panel.add(cancel_btn);
 		
 		add(panel, BorderLayout.SOUTH);
+		
+		// 그래프 편집 못하게
+//		orderTable.setEnabled(false);
 	}
 	
 	public void addProductLine(ArrayList<Order> products) {

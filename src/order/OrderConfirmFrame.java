@@ -20,15 +20,17 @@ public class OrderConfirmFrame extends JFrame {
 	public JButton delete_btn;
 
 	public JButton cancel_btn;
-	JPanel btn_panel, tabel_panel;
+	public JPanel btn_panel;
+
+	public JPanel tabel_panel;
 	
-	String[] fieldNames = new String[] {"발주번호", "물품id", "수량"};
-	String[] textHints = new String[] {"발주번호입력", "id입력", "수량입력"};
+	String[] fieldNames = new String[] {"발주번호", "상품명", "물품id", "가격", "수량"};
+	String[] textHints = new String[] {"번호입력", "상품명 입력", "id 입력", "가격 입력","수량 입력"};
 
 	public JLabel[] labels;
 	public JTextField[] fields;
 	
-	OrderConfirmView ocv = new OrderConfirmView(); // 가운데 들어갈예정
+	public OrderConfirmView ocv = new OrderConfirmView(); // 가운데 들어갈예정
 	public CardLayout cardlayout;
 	
 	public OrderConfirmFrame() {
@@ -50,6 +52,9 @@ public class OrderConfirmFrame extends JFrame {
 			btn_panel.add(labels[i]);
 			btn_panel.add(fields[i]);
 		}
+		
+		
+		
 		order_btn = new JButton("주문");
 		confirm_btn = new JButton("승인");
 		delete_btn = new JButton("삭제");
@@ -64,6 +69,15 @@ public class OrderConfirmFrame extends JFrame {
 		setTitle("승인대기창");
 		setResizable(true);
 		setBounds(100, 100, 1200, 400);
+	}
+	
+	//필드값 초기화 해주기.
+	public void resetText() {
+		fields[0].setText("");
+		fields[1].setText("");
+		fields[2].setText("");
+		fields[3].setText("");
+		fields[4].setText("");
 	}
 	
 }
