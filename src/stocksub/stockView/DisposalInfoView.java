@@ -19,7 +19,11 @@ public class DisposalInfoView extends JPanel {
 	public StockDao sdao = new StockDao();
 	public JScrollPane disposalInfosScrollPane = new JScrollPane();
 	public Vector<String> colNames = getColum();
-	public DefaultTableModel tblModel = new DefaultTableModel(colNames, 0);
+	public DefaultTableModel tblModel = new DefaultTableModel(colNames, 0){ 
+		public boolean isCellEditable(int i, int c)
+		{ 
+			return false; 
+		}};
 	public JTable disposalInfoTable = new JTable(tblModel);
 
 	public Vector<String> rows;

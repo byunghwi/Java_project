@@ -22,7 +22,15 @@ public class StockView extends JPanel {
 	public StockDao sdao = new StockDao();
 	public JScrollPane stocksScrollPane = new JScrollPane();
 	public Vector<String> colNames = getColum();
-	public DefaultTableModel tblModel = new DefaultTableModel(colNames, 0);
+	public DefaultTableModel tblModel = new DefaultTableModel(colNames, 0){ 
+		public boolean isCellEditable(int i, int c)
+			{ 
+				return false; 
+			}};
+
+
+
+
 	public JTable stockTable = new JTable(tblModel);
 
 	public Vector<String> rows;
@@ -37,7 +45,6 @@ public class StockView extends JPanel {
 		stockTable.setRowHeight(30);		
 		stockTable.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
 		
-		//���̺� �ο� �� �� �ٸ� ���� ����.
 		stockTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
 		addStockLine(sdao.stockAll()); 

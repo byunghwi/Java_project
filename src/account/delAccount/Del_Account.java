@@ -8,7 +8,7 @@ import com.zaxxer.hikari.HikariDataSource;
 
 import db.DatabaseConnect;
 
-
+// 데이터 베이스에 실제 회원탈퇴를 반영하는 클래스
 public class Del_Account {
 	
 	public Del_Account(String mem_id) {

@@ -8,8 +8,7 @@ import javax.swing.JTextField;
 
 import account.action.Login_Action;
 
-
-// �α��� ������ �޾ƿ� Ŭ����(Swing ����)
+// 로그인 관련 정보를 받아올 프레임
 public class Login extends JFrame {
 	
 	public JTextField[] infos = new JTextField[2]; 

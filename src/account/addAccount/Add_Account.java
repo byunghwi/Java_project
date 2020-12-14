@@ -16,8 +16,8 @@ import com.zaxxer.hikari.HikariDataSource;
 import account.Member;
 import db.DatabaseConnect;
 
-// ������ DB�� �����͸� ������ Ŭ����
-public class Add_Account extends JFrame {
+// 실제로 DB에 회원정보를 전송하는 클래스
+public class Add_Account{
 	
 	String errorCode;
 	String[] errorNames = new String[7];
@@ -25,6 +25,7 @@ public class Add_Account extends JFrame {
 	
 	public Add_Account(Member new_mem) {
 		// Member new_mem = new Member("mem_issd", "mem_pw", "mem_nm", "res_no", "phone", "address", 's', "mail");
+		// 제약조건을 바탕으로 유효성 검사를 진행
 		String[] errorNames = {"ID","PW","_NM","res","phone","SEX","MAIL"};
 		String[] messages = {
 				"아이디를 확인해주세요!!","패스워드를 확인해주세요!","이름을 확인해주세요!","주민등록번호를 확인해주세요!",

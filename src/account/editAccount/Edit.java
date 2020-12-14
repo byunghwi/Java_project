@@ -11,6 +11,7 @@ import javax.swing.JTextField;
 import account.action.Cancel_Action;
 import account.action.Edit_Action;
 
+// 수정할 회원 정보를 받아오는 프레임
 public class Edit extends JFrame {
 	
 	Read_Account ra = null;

@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 import db.DatabaseConnect;
 
+// 실제 DB에 수정된 회원 정보를 업데이트 하는 클래스
 public class Edit_Account {
 	// Member new_mem = new Member("mem_issd", "mem_pw", "mem_nm", "res_no", "phone", "address", 's', "mail");
 	String [] edit_data = new String[8];

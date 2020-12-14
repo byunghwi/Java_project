@@ -20,7 +20,11 @@ private static final long serialVersionUID = 1L;
 	public StockDao sdao = new StockDao();
 	public JScrollPane stocksScrollPane = new JScrollPane();
 	public Vector<String> colNames = getColum();
-	public DefaultTableModel tblModel = new DefaultTableModel(colNames, 0);
+	public DefaultTableModel tblModel = new DefaultTableModel(colNames, 0){ 
+		public boolean isCellEditable(int i, int c)
+		{ 
+			return false; 
+		}};
 	public JTable stockTable = new JTable(tblModel);
 
 	public Vector<String> rows;

@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import account.editAccount.Edit;
 
+// 취소에 대응하는 액션 리스너
 public class Cancel_Action implements ActionListener {
 	
 	Edit edit_info;

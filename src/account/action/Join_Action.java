@@ -8,7 +8,7 @@ import account.Member;
 import account.addAccount.Add_Account;
 import account.addAccount.Join;
 
-
+// 회원 가입에 대응하는 액션 리스너
 public class Join_Action implements ActionListener {
 	
 	Join new_join;
@@ -19,7 +19,8 @@ public class Join_Action implements ActionListener {
 		this.new_join = new_join;
 	}
 	
-
+	
+	// 받아온 회원정보 데이터를 회원가입용 배열에 삽입한다
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		for (int i=0; i<new_join_data.length; i++) {
@@ -44,7 +45,7 @@ public class Join_Action implements ActionListener {
 			
 		}
 		
-	 	
+	 	// 회원가입용 배열의 정보를 토대로 새 맴버 객채를 생성
 		new_mem = new Member(
 				new_join_data[0],
 				new_join_data[1],
@@ -56,6 +57,7 @@ public class Join_Action implements ActionListener {
 				new_join_data[7]
 		);
 		
+		// 맴버 객채를 사용해 회원을 생성한다
 		new Add_Account(this.new_mem);
 		
 	}

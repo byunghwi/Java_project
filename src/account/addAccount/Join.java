@@ -11,6 +11,7 @@ import javax.swing.JTextField;
 
 import account.action.Join_Action;
 
+// 회원 가입을 정보를 받아올 프레임 클래스
 public class Join extends JFrame {
 	
 	public JTextField[] infos = new JTextField[8]; 

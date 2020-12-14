@@ -8,7 +8,7 @@ import javax.swing.JTextField;
 import account.action.Delete_Action;
 
 
-// ������ ������ ������ �޾ƿ��� Ŭ����(Swing ����)
+// 회원 탈퇴 정보를 받아오는 프레임
 public class Secession extends JFrame{
 	
 	public JTextField[] infos = new JTextField[2]; 
