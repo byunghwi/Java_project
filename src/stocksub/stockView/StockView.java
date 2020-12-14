@@ -24,7 +24,7 @@ public class StockView extends JPanel {
 	public Vector<String> colNames = getColum();
 	public DefaultTableModel tblModel = new DefaultTableModel(colNames, 0);
 	public JTable stockTable = new JTable(tblModel);
-	//Çà Á¤º¸µé ´ãÀ» º¤ÅÍ
+
 	public Vector<String> rows;
 	
 	public StockView(){
@@ -35,9 +35,9 @@ public class StockView extends JPanel {
 		
 		stockTable.setRowMargin(10);
 		stockTable.setRowHeight(30);		
-		stockTable.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
+		stockTable.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.PLAIN, 15));
 		
-		//Å×ÀÌºí ·Î¿ì Áß ÇÑ ÁÙ¸¸ ¼±ÅÃ °¡´É.
+		//ï¿½ï¿½ï¿½Ìºï¿½ ï¿½Î¿ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 		stockTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
 		addStockLine(sdao.stockAll()); 
@@ -45,7 +45,6 @@ public class StockView extends JPanel {
 		stocksScrollPane.setViewportView(stockTable);
 	}
 
-	//Jtable¿¡ ·Î¿ì ÇÏ³ª¾¿ Ãß°¡ÇÏ±â.
 	public void addStockLine(ArrayList<Stock> stocks) {
 		int size = stocks.size();
 
@@ -56,7 +55,6 @@ public class StockView extends JPanel {
 			rows.addElement(Integer.toString(stocks.get(i).getQuantity()));
 			rows.addElement(Integer.toString(stocks.get(i).getPrice()));
 
-			//·Î¿ì¸¶´Ù Å×ÀÌºí¿¡ »Ñ·ÁÁÖ±â.
 			tblModel.addRow(rows);
 		}
 		
@@ -65,10 +63,10 @@ public class StockView extends JPanel {
 	
 	private Vector<String> getColum() {
 		colNames = new Vector<String>();
-		colNames.add("»óÇ°ÄÚµå");
-		colNames.add("»óÇ°¸í");
-		colNames.add("¼ö·®");
-		colNames.add("°¡°İ");
+		colNames.add("ìƒí’ˆì½”ë“œ");
+		colNames.add("ìƒí’ˆëª…");
+		colNames.add("ìˆ˜ëŸ‰");
+		colNames.add("ê°€ê²©");
 
 
 		return colNames;
