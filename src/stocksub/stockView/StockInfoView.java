@@ -37,7 +37,7 @@ private static final long serialVersionUID = 1L;
 		stockTable.setRowHeight(30);		
 		stockTable.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
 		
-		//���̺� �ο� �� �� �ٸ� ���� ����.
+
 		stockTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
 		addStockLine(sdao.stockInfos(product_id)); 
@@ -45,7 +45,7 @@ private static final long serialVersionUID = 1L;
 		stocksScrollPane.setViewportView(stockTable);
 	}
 
-	//Jtable�� �ο� �ϳ��� �߰��ϱ�.
+
 	public void addStockLine(ArrayList<Stock_info> stock_infos) {
 		int size = stock_infos.size();
 

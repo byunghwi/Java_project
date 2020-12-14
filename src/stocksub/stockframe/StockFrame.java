@@ -10,6 +10,7 @@ import javax.swing.border.EmptyBorder;
 
 import stocksub.Stock;
 import stocksub.StockDao;
+import stocksub.stockAction.DisposalInfoAction;
 import stocksub.stockAction.MoreInfoAction;
 import stocksub.stockView.StockView;
 
@@ -86,7 +87,7 @@ public class StockFrame extends JFrame {
 		contentPanel.add(sBtnView);
 		
 		rightBtnPanel.productMoreInfoBtn.addActionListener(new MoreInfoAction(this));
-		
+		rightBtnPanel.disposalInfoBtn.addActionListener(new DisposalInfoAction(this));
 
 	}
 
