@@ -1,10 +1,13 @@
 package sale;
 
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -12,7 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
-
+import product.Product;
 import stock.Stock;
 import stock.StockDao;
 
@@ -21,7 +24,7 @@ public class SalePanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	public Product product;
 	StockDao stockdao = new StockDao();
 	public JScrollPane stockScrollPane = new JScrollPane(); 	// 재고 보여줄 스크롤패널
 	public JScrollPane bucketScrollPane = new JScrollPane();	// 장바구니 보여줄 스크롤패널
@@ -33,12 +36,22 @@ public class SalePanel extends JPanel {
 	public DefaultTableModel bucketTblModel = new DefaultTableModel(bucketcolNames, 0);
 	
 	public JTable stockTable = new JTable(stockTblModel);
-	public JTable bucketTable = new JTable(stockTblModel);
+	public JTable bucketTable = new JTable(bucketTblModel);
 	
-	public JTextField prodIdTf; 	//상품코드 텍스트필드
+	public JTextField prodnameTf; 	//상품이름 텍스트필드
 	public JTextField prodQt;		//상품수량 텍스트필드
+	
+	public JLabel prodnameLb; 		//상품이름 라벨
+	public JLabel prodQtLb;			//상품수량 라벨
+	
+	public JLabel stockTblLb; 		//재고테이블라벨
+	public JLabel bucketTblLb;		//장바구니테이블라벨
+	
 	public JButton addBucketBtn;	//장바구니 추가 버튼
 	public JButton delBucketBtn;	//장바구니 삭제 버튼
+	
+	public JButton completeBtn; 	//장바구니 결제 버튼
+	
 	
 	// 행 정보들 담을 벡터
 	public Vector<String> rows;
@@ -46,29 +59,53 @@ public class SalePanel extends JPanel {
 	public SalePanel() {
 		setLayout(null);
 		
-		prodIdTf = new JTextField();
+	
+		prodnameTf = new JTextField();
 		prodQt = new JTextField();
+		
+		prodnameLb = new JLabel("상품명");
+		prodnameLb.setFont(new Font("맑은 고딕", Font.PLAIN, 13));
+		prodQtLb = new JLabel("상품수량");
+		prodQtLb.setFont(new Font("맑은 고딕", Font.PLAIN, 13));
+		
+		stockTblLb = new JLabel("재고목록");
+		stockTblLb.setFont(new Font("맑은 고딕", Font.PLAIN, 13));
+		bucketTblLb = new JLabel("장바구니");
+		bucketTblLb.setFont(new Font("맑은 고딕", Font.PLAIN, 13));
+			
 		addBucketBtn =  new JButton("추가");
 		delBucketBtn = new JButton("삭제");
+		completeBtn = new JButton("결제");
 		
-		prodIdTf.setBounds(480, 510, 70, 30);
-		prodQt.setBounds(570, 510, 70, 30);
+		stockTblLb.setBounds(50, 0, 70, 50);
+		bucketTblLb.setBounds(710, 0, 70, 50);
+		prodnameLb.setBounds(470, 490, 70, 20);
+		prodQtLb.setBounds(560, 490, 70, 20);
+		prodnameTf.setBounds(470, 510, 90, 30);
+		prodQt.setBounds(560, 510, 70, 30);
 		addBucketBtn.setBounds(660, 510, 70, 30);
 		delBucketBtn.setBounds(735, 510, 70, 30);
+		completeBtn.setBounds(810, 510, 70, 30);
 
-		add(prodIdTf);
+		add(stockTblLb);
+		add(bucketTblLb);
+		add(prodnameLb);
+		add(prodQtLb);
+		add(prodnameTf);
 		add(prodQt);
 		add(addBucketBtn);
 		add(delBucketBtn);
+		add(completeBtn);
 		
-		stockScrollPane.setBounds(12, 10, 600, 450);
-		bucketScrollPane.setBounds(680, 10, 450, 450);
+		stockScrollPane.setBounds(12, 44, 600, 444);
+		bucketScrollPane.setBounds(680, 44, 450, 444);
 		add(stockScrollPane);
 		add(bucketScrollPane);
 
 		stockTable.setRowMargin(10);
 		stockTable.setRowHeight(30);
 		stockTable.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
+
 		
 		bucketTable.setRowMargin(10);
 		bucketTable.setRowHeight(30);
@@ -90,7 +127,7 @@ public class SalePanel extends JPanel {
 
 		for (int i = 0; i < size; i++) {
 			rows = new Vector<String>();
-			rows.addElement(Integer.toString(stocks.get(i).getStock_no()));
+			//rows.addElement(Integer.toString(stocks.get(i).getStock_no()));
 			rows.addElement(stocks.get(i).getProduct_id());
 			rows.addElement(stocks.get(i).getProduct_name());
 			rows.addElement(Integer.toString(stocks.get(i).getPrice()));
@@ -102,25 +139,12 @@ public class SalePanel extends JPanel {
 
 		stockScrollPane.setViewportView(stockTable);
 	}
-	
-	public void addBucketLine(Stock stockOne) {
-
-			String[] stockInfo = new String[] {};
-			stockInfo[0] = stockOne.getProduct_name();
-			stockInfo[1] = Integer.toString(stockOne.getPrice());
-			stockInfo[2] = Integer.toString(stockOne.getQuantity());
-
-			// 로우마다 테이블에 뿌려주기.
-			bucketTblModel.addRow(stockInfo);
-
-			bucketScrollPane.setViewportView(bucketTable);
-	}
 
 	private Vector<String> getColum(String check) {
 		Vector<String> colNames = new Vector<String>();
 		if(check.equals("stock")) {
 			stockcolNames = new Vector<String>();
-			stockcolNames.add("재고번호");
+			//stockcolNames.add("재고번호");
 			stockcolNames.add("상품코드");
 			stockcolNames.add("상품명");
 			stockcolNames.add("가격");
@@ -129,6 +153,7 @@ public class SalePanel extends JPanel {
 			colNames =  stockcolNames;
 		}else if(check.equals("bucket")){
 			bucketcolNames = new Vector<String>();
+			bucketcolNames.add("상품코드");
 			bucketcolNames.add("상품명");
 			bucketcolNames.add("가격");
 			bucketcolNames.add("수량");

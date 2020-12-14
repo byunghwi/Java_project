@@ -27,7 +27,7 @@ public class StockDao {
 	Stock stock = null;
 	
 	public ArrayList<Stock> stockAll() {
-		query = "SELECT product_id, product_name, price, sum(quantity) FROM stock GROUP BY product_id, product_name, price ORDER BY product_id ";
+		query = "SELECT product_id, product_name, price, sum(quantity) FROM stock WHERE save_status = 'Y' GROUP BY product_id, product_name, price ORDER BY product_id ";
 		conn = DatabaseConnect.getConnection();
 		
 		// 재고들 담을 ArrayList 생성
@@ -35,7 +35,7 @@ public class StockDao {
 		try {
 			ps = conn.prepareStatement(query);
 			rs = ps.executeQuery();
-			
+
 			while(rs.next()) {
 				stock  = new Stock();
 
@@ -58,5 +58,10 @@ public class StockDao {
 		
 		
 		return stocks;
+	}
+	
+	// 판매로 인한 수량 감소
+	public void reduceStock() {
+		
 	}
 }
