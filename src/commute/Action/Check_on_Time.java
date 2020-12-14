@@ -1,42 +1,38 @@
-package commute;
+package commute.Action;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import com.zaxxer.hikari.HikariDataSource;
-
 import db.DatabaseConnect;
 
-public class Commute_Add {
+public class Check_on_Time {
 
-	public Commute_Add() {
+	public Check_on_Time() {
 		
-		
-		
-		String sql = "INSERT INTO daily_check VALUES (sysdate-13,'test3',sysdate,default)";
+		String sql = "SELECT * FROM daily_check WHERE mem_no='test3' and TO_DATE(dc_date,'YYYY-MM-DD')=TO_DATE(sysdate,'YYYY-MM-DD')";
 		
 		try {
 			Connection conn = DatabaseConnect.getConnection();
 			PreparedStatement pstmt = 
 					conn.prepareStatement(sql);
-	
+
+		
+			 
+			if(!pstmt.executeQuery().next()) {
+				new Add_Commute_On_Time();
+			}
+			
 			
 			DatabaseConnect.dbClose(null, pstmt, conn);
 			
+		
 				
 			
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
 		}
-		
-	}
-	
-	public static void main(String[] args) {
-		
-		new Commute_Add();
-		
 	}
 	
 }
