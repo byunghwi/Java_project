@@ -2,6 +2,7 @@ package stocksub;
 
 import java.util.Date;
 
+// 재고 상세정보 객채
 public class Stock_info {
 	String product_id;
 	String product_name;

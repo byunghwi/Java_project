@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import stocksub.Stock;
 import stocksub.StockDao;
 
-
+// 상품 정보에 대응하는 패널
 public class StockView extends JPanel {
 	
 	
@@ -22,7 +22,9 @@ public class StockView extends JPanel {
 	public StockDao sdao = new StockDao();
 	public JScrollPane stocksScrollPane = new JScrollPane();
 	public Vector<String> colNames = getColum();
+	
 	public DefaultTableModel tblModel = new DefaultTableModel(colNames, 0){ 
+		// 테이블의 요소 더블클릭 시 수정 되지 않도록 추가
 		public boolean isCellEditable(int i, int c)
 			{ 
 				return false; 

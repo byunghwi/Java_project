@@ -14,6 +14,7 @@ import com.toedter.calendar.JDateChooser;
 import stocksub.StockDao;
 import stocksub.stockView.DisposalInfoView;
 
+// 폐기 정보에 대한 프레임
 public class DisposalInfoFrame extends JFrame{
 
 	private static final long serialVersionUID = 1L;
@@ -36,6 +37,7 @@ public class DisposalInfoFrame extends JFrame{
 		go.setBounds(600, 10, 60, 20);
 		add(go);
 		
+		// 액션 리스너 분할 예정
 		go.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

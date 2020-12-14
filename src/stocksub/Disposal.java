@@ -2,6 +2,7 @@ package stocksub;
 
 import java.util.Date;
 
+// 폐기 객채
 public class Disposal {
 	
 	String disposalcode;

@@ -1,5 +1,6 @@
 package stocksub;
 
+// 재고 객채
 public class Stock {
 	String product_id;
 	String product_name;

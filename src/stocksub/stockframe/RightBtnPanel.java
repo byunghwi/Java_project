@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 import product.HintTextField;
 import product.ProdRegistFrame;
 
+// 메인 프레임의 우측 버튼목록에 대한 패널
 public class RightBtnPanel extends JPanel{
 	/**
 	 * 

@@ -15,15 +15,14 @@ import stocksub.stockAction.Disposal_Action;
 import stocksub.stockView.StockInfoView;
 import stocksub.stockView.StockView;
 
+// 상품 상세 정보에 대한 프레임
 public class StockInfoFrame extends JFrame{
 	JButton confirm = new JButton("확인");
 	JButton disposal = new JButton("폐기");
 	public StockInfoView stockInfoView = null;
 	public StockView stoview;
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 
 	

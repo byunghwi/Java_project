@@ -14,6 +14,7 @@ import stocksub.Disposal;
 import stocksub.StockDao;
 import stocksub.Stock_info;
 
+// 폐기 정보에 테이블에 대응하는 패널
 public class DisposalInfoView extends JPanel {
 
 	public StockDao sdao = new StockDao();

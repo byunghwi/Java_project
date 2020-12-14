@@ -13,6 +13,8 @@ import javax.swing.table.DefaultTableModel;
 import stocksub.StockDao;
 import stocksub.Stock_info;
 
+
+// 상품 상세 정보에 대응하는 패널
 public class StockInfoView extends JPanel {
 
 private static final long serialVersionUID = 1L;
@@ -62,7 +64,6 @@ private static final long serialVersionUID = 1L;
 			rows.addElement(stock_infos.get(i).getDis_date().toString());
 			
 
-			//�ο츶�� ���̺� �ѷ��ֱ�.
 			tblModel.addRow(rows);
 		}
 		
