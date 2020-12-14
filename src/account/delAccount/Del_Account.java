@@ -8,8 +8,7 @@ import com.zaxxer.hikari.HikariDataSource;
 
 import db.DatabaseConnect;
 
-// ½ÇÁ¦·Î È¸¿ø Å»Åğ¸¦ DB¿¡ ¹İ¿µÇÏ´Â Å¬·¡½º
-// Å»ÅğÀÚ´Â ½ÇÁ¦·Î DB¿¡¼­ Á¤º¸°¡ »èÁ¦µÇ´Â°ÍÀÌ ¾Æ´Ñ save_status¸¸ º¯È­µÈ´Ù(Á¤º¸´Â ³²¾ÆÀÖÀ½)
+// ë°ì´í„° ë² ì´ìŠ¤ì— ì‹¤ì œ íšŒì›íƒˆí‡´ë¥¼ ë°˜ì˜í•˜ëŠ” í´ë˜ìŠ¤
 public class Del_Account {
 	
 	public Del_Account(String mem_id) {

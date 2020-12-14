@@ -8,7 +8,7 @@ import account.Member;
 import account.addAccount.Add_Account;
 import account.addAccount.Join;
 
-// È¸¿ø °¡ÀÔ ¾×¼Ç ¸®½º³Ê
+// íšŒì› ê°€ì…ì— ëŒ€ì‘í•˜ëŠ” ì•¡ì…˜ ë¦¬ìŠ¤ë„ˆ
 public class Join_Action implements ActionListener {
 	
 	Join new_join;
@@ -19,7 +19,8 @@ public class Join_Action implements ActionListener {
 		this.new_join = new_join;
 	}
 	
-	// ÀÔ·ÂÃ¢¿¡¼­ ÀÔ·Â¹ŞÀº Á¤º¸¸¦ ÅëÇØ »õ MemberÅ¬·¡½º¸¦ ¸¸µç ÈÄ DB¿¡ ÀúÀå
+	
+	// ë°›ì•„ì˜¨ íšŒì›ì •ë³´ ë°ì´í„°ë¥¼ íšŒì›ê°€ì…ìš© ë°°ì—´ì— ì‚½ì…í•œë‹¤
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		for (int i=0; i<new_join_data.length; i++) {
@@ -44,7 +45,7 @@ public class Join_Action implements ActionListener {
 			
 		}
 		
-	 	
+	 	// íšŒì›ê°€ì…ìš© ë°°ì—´ì˜ ì •ë³´ë¥¼ í† ëŒ€ë¡œ ìƒˆ ë§´ë²„ ê°ì±„ë¥¼ ìƒì„±
 		new_mem = new Member(
 				new_join_data[0],
 				new_join_data[1],
@@ -56,6 +57,7 @@ public class Join_Action implements ActionListener {
 				new_join_data[7]
 		);
 		
+		// ë§´ë²„ ê°ì±„ë¥¼ ì‚¬ìš©í•´ íšŒì›ì„ ìƒì„±í•œë‹¤
 		new Add_Account(this.new_mem);
 		
 	}
