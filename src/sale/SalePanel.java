@@ -44,8 +44,13 @@ public class SalePanel extends JPanel {
 	public JLabel prodnameLb; 		//상품이름 라벨
 	public JLabel prodQtLb;			//상품수량 라벨
 	
+	public JLabel stockTblLb; 		//재고테이블라벨
+	public JLabel bucketTblLb;		//장바구니테이블라벨
+	
 	public JButton addBucketBtn;	//장바구니 추가 버튼
 	public JButton delBucketBtn;	//장바구니 삭제 버튼
+	
+	public JButton completeBtn; 	//장바구니 결제 버튼
 	
 	
 	// 행 정보들 담을 벡터
@@ -62,26 +67,38 @@ public class SalePanel extends JPanel {
 		prodnameLb.setFont(new Font("맑은 고딕", Font.PLAIN, 13));
 		prodQtLb = new JLabel("상품수량");
 		prodQtLb.setFont(new Font("맑은 고딕", Font.PLAIN, 13));
+		
+		stockTblLb = new JLabel("재고목록");
+		stockTblLb.setFont(new Font("맑은 고딕", Font.PLAIN, 13));
+		bucketTblLb = new JLabel("장바구니");
+		bucketTblLb.setFont(new Font("맑은 고딕", Font.PLAIN, 13));
 			
 		addBucketBtn =  new JButton("추가");
 		delBucketBtn = new JButton("삭제");
+		completeBtn = new JButton("결제");
 		
+		stockTblLb.setBounds(50, 0, 70, 50);
+		bucketTblLb.setBounds(710, 0, 70, 50);
 		prodnameLb.setBounds(470, 490, 70, 20);
 		prodQtLb.setBounds(560, 490, 70, 20);
 		prodnameTf.setBounds(470, 510, 90, 30);
 		prodQt.setBounds(560, 510, 70, 30);
 		addBucketBtn.setBounds(660, 510, 70, 30);
 		delBucketBtn.setBounds(735, 510, 70, 30);
+		completeBtn.setBounds(810, 510, 70, 30);
 
+		add(stockTblLb);
+		add(bucketTblLb);
 		add(prodnameLb);
 		add(prodQtLb);
 		add(prodnameTf);
 		add(prodQt);
 		add(addBucketBtn);
 		add(delBucketBtn);
+		add(completeBtn);
 		
-		stockScrollPane.setBounds(12, 10, 600, 450);
-		bucketScrollPane.setBounds(680, 10, 450, 450);
+		stockScrollPane.setBounds(12, 44, 600, 444);
+		bucketScrollPane.setBounds(680, 44, 450, 444);
 		add(stockScrollPane);
 		add(bucketScrollPane);
 
@@ -136,6 +153,7 @@ public class SalePanel extends JPanel {
 			colNames =  stockcolNames;
 		}else if(check.equals("bucket")){
 			bucketcolNames = new Vector<String>();
+			bucketcolNames.add("상품코드");
 			bucketcolNames.add("상품명");
 			bucketcolNames.add("가격");
 			bucketcolNames.add("수량");

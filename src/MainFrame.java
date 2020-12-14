@@ -8,6 +8,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.regex.Pattern;
 
@@ -24,7 +25,9 @@ import product.ProdRegistFrame;
 import product.Product;
 import product.ProductDao;
 import product.ProductView;
+import sale.SaleDao;
 import sale.SalePanel;
+import stock.Stock;
 import stock.StockPanel;
 
 public class MainFrame extends JFrame implements ActionListener {
@@ -71,6 +74,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	public JPanel bottomView;
 
 	ProductDao pdao = new ProductDao();
+	SaleDao sdao = new SaleDao();
 
 	public MainFrame() {
 
@@ -145,6 +149,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		
 		salePanel.addBucketBtn.addActionListener(this);
 		salePanel.delBucketBtn.addActionListener(this);
+		salePanel.completeBtn.addActionListener(this);
 		// 버튼들 액션 달기 End
 	}
 
@@ -282,6 +287,7 @@ public class MainFrame extends JFrame implements ActionListener {
 					if(row != -1) {
 						String product_name = (String) salePanel.stockTable.getValueAt(row, 1);
 						salePanel.prodnameTf.setText(product_name);
+						salePanel.prodQt.setText("");
 					}
 				}
 			});
@@ -296,19 +302,63 @@ public class MainFrame extends JFrame implements ActionListener {
 			else if(salePanel.prodQt.getText().equals("") || !Pattern.matches("^[1-9]*$", salePanel.prodQt.getText())) {
 				// 확인 팝업창
 				JOptionPane.showMessageDialog(null, "\t[SYSTEM] 정확한 수량을 입력해주세요", "확인", JOptionPane.CLOSED_OPTION);
-			}else if(Integer.parseInt(salePanel.prodQt.getText()) > Integer.parseInt((String) salePanel.stockTblModel.getValueAt(row, 3))) {
+			}else if(Integer.parseInt(String.valueOf(salePanel.prodQt.getText())) > Integer.parseInt(String.valueOf(salePanel.stockTblModel.getValueAt(row, 3)))) {
 				// 확인 팝업창
 				JOptionPane.showMessageDialog(null, "\t[SYSTEM] 현 재고 수량보다 많은 양을 구매하실 수 없습니다.", "확인", JOptionPane.CLOSED_OPTION);
 			}else {
 
-				String [] arrData = new String[3];
-				arrData[0] = salePanel.prodnameTf.getText();
-				arrData[1] = salePanel.prodQt.getText();
-				arrData[2] = (String) salePanel.stockTblModel.getValueAt(row, 2);
-
+				String [] arrData = new String[4];
+				arrData[0] = String.valueOf(salePanel.stockTblModel.getValueAt(row, 0));
+				arrData[1] = salePanel.prodnameTf.getText();
+				arrData[2] = salePanel.prodQt.getText();
+				arrData[3] = String.valueOf(salePanel.stockTblModel.getValueAt(row, 2));
+				
+				
 				salePanel.bucketTblModel.addRow(arrData);
-				//Object aValue, int row, int column
-				salePanel.stockTblModel.setValueAt(salePanel.prodQt.getText(), row, 3);
+				
+				//재고테이블에서 선택한 수량만큼 차감하고 장바구니에 넣기.
+				int rs = Integer.parseInt(String.valueOf(salePanel.stockTblModel.getValueAt(row, 3)))  - Integer.parseInt(String.valueOf(salePanel.prodQt.getText()));
+				salePanel.stockTblModel.setValueAt(rs, row, 3);
+				
+			}
+			
+		}else if (ob == salePanel.delBucketBtn) {
+			int bucketRow  = salePanel.bucketTable.getSelectedRow();
+			
+			//행이 선택되었을 때
+			if(bucketRow != -1) {
+				for(int i =0; i<salePanel.stockTable.getRowCount(); i++) {
+					if(String.valueOf(salePanel.stockTable.getValueAt(i, 0)).equals(String.valueOf(salePanel.bucketTable.getValueAt(bucketRow, 0)))){	
+						int addQT = Integer.parseInt(String.valueOf(salePanel.stockTable.getValueAt(i, 3))) + Integer.parseInt(String.valueOf(salePanel.bucketTable.getValueAt(bucketRow, 2)));
+						salePanel.stockTable.setValueAt(addQT, i, 3);
+						break;
+					}
+				}
+				
+				salePanel.bucketTblModel.removeRow(bucketRow);
+				
+				
+			}else {
+				// 확인 팝업창
+				JOptionPane.showMessageDialog(null, "\t[SYSTEM] 삭제할 행을 선택해주세요", "확인", JOptionPane.CLOSED_OPTION);
+			}
+
+		}else if (ob == salePanel.completeBtn) {
+			int count = salePanel.bucketTblModel.getRowCount();
+			ArrayList<Stock> stocks = new ArrayList<Stock>();
+			for(int i=0; i<count; i++) {
+				Stock stock = new Stock();
+				stock.setProduct_id(String.valueOf(salePanel.bucketTable.getValueAt(i, 0)));
+				stock.setQuantity(Integer.parseInt(String.valueOf(salePanel.bucketTable.getValueAt(i, 2))));
+				stock.setPrice(Integer.parseInt(String.valueOf(salePanel.bucketTable.getValueAt(i, 3))));
+				
+				stocks.add(stock);
+			}
+			
+			if(sdao.pay(stocks)) {
+				// 확인 팝업창
+				JOptionPane.showMessageDialog(null, "\t[SYSTEM] 결제가 완료 되었습니다!", "확인", JOptionPane.CLOSED_OPTION);
+				salePanel.bucketTblModel.setNumRows(0);
 				
 			}
 			
