@@ -132,7 +132,7 @@ public class SaleDao {
 				ps.setInt(3, stocks.get(i).getPrice());
 				rs2 = ps.executeUpdate();
 				if(rs2 > 0) {
-					System.out.println("[DB] sale_detail insert (" + i + ") complete\\n");
+					System.out.println("[DB] sale_detail insert (" + i + ") complete");
 				}
 			}
 
