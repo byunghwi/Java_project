@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import calc.CalcView;
+import calc.add.Calc_Add_Date;
 import commute.Action.Add_Commute_Off_Time;
 import commute.Action.Check_on_Time;
 import commute.List.List_Input;
@@ -96,13 +97,15 @@ public class MainFrame extends JFrame implements ActionListener{
 		JButton clicked_btn =(JButton)e.getSource();
 
 		if (clicked_btn == calcBtnPanel.calc_Btn) {
-			
+			new Calc_Add_Date();
 			JOptionPane.showMessageDialog(null, "[SYSTEM] 금일정산처리되었습니다.", "확인", JOptionPane.CLOSED_OPTION);
 		} 
 		
 	} 
 	
-	
+	public static void main(String[] args) {
+		new MainFrame();
+	}
 	
 	
 

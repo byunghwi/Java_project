@@ -22,7 +22,9 @@ public class Check_on_Time {
 		
 			 
 			if(!pstmt.executeQuery().next()) {
-				new Add_Commute_On_Time();
+				new Add_Commute_On_Time();//insert
+			}else {
+				//delete 
 			}
 			
 			
