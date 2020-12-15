@@ -11,6 +11,7 @@ import java.awt.event.MouseEvent;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.regex.Pattern;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -68,11 +69,11 @@ public class MainFrame extends JFrame implements ActionListener {
 
 	ProductDao pdao = new ProductDao();
 	
-	OrderConfirmDao ocd = new OrderConfirmDao();
-	OrderDao od = new OrderDao();
+	OrderConfirmDao orderConfirmDao = new OrderConfirmDao();
+	OrderDao orderDao = new OrderDao();
 	
-	OrderConfirmView ocv = new OrderConfirmView();
-	OrderView ov = new OrderView();
+	OrderConfirmView orderConfirmView = new OrderConfirmView();
+	OrderView orderView = new OrderView();
 
 	public MainFrame() {
 
@@ -128,13 +129,20 @@ public class MainFrame extends JFrame implements ActionListener {
 		
 		// 버튼들 액션 달기 Start
 		rightBtnPanel.orderProdBtn.addActionListener(this);
-		// 주문버튼
+		// 상품목록버튼
 		orderConfirmFrame.order_btn.addActionListener(this);
-		// 주문확정버튼, 취소버튼
+		// 주문확정버튼, 검색버튼, 새로고침, 취소버튼
 		orderframe.order_btn.addActionListener(this);
+		orderframe.search_btn.addActionListener(this);
+		orderframe.refresh_btn.addActionListener(this);
 		orderframe.cancel_btn.addActionListener(this);
+		
 		// 승인버튼
 		orderConfirmFrame.confirm_btn.addActionListener(this);
+		// 검색버튼
+		orderConfirmFrame.search_btn.addActionListener(this);
+		// 새로고침버튼
+		orderConfirmFrame.refresh_btn.addActionListener(this);
 		// 삭제버튼
 		orderConfirmFrame.delete_btn.addActionListener(this);
 		// 취소버튼
@@ -264,9 +272,13 @@ public class MainFrame extends JFrame implements ActionListener {
 		
 		
 		// 발주버튼기능창
-		if (ob == rightBtnPanel.orderProdBtn) { // 오른쪽 발주버튼
-			orderConfirmFrame.setVisible(true);
+		// 오른쪽 발주버튼
+		if (ob == rightBtnPanel.orderProdBtn) {
+			// 이거 2줄은 그래프 중복현상이 발생해서 넣어둠
+			orderConfirmView.model.setNumRows(0);
+			orderConfirmView.addProductLine(orderConfirmDao.productAll());
 			
+			orderConfirmFrame.setVisible(true);
 			// 그래프 행 선택시
 			orderConfirmFrame.ocv.orderTable.addMouseListener(new MouseAdapter() {
 				@Override
@@ -276,6 +288,8 @@ public class MainFrame extends JFrame implements ActionListener {
 					if (row != -1) {
 						String num = (String) orderConfirmFrame.ocv.orderTable.getValueAt(row, 0);
 						orderConfirmFrame.fields[0].setText(num);
+						String name = (String) orderConfirmFrame.ocv.orderTable.getValueAt(row, 5);
+						orderConfirmFrame.fields[1].setText(name);
 						String id = (String) orderConfirmFrame.ocv.orderTable.getValueAt(row, 1);
 						orderConfirmFrame.fields[2].setText(id);
 						String amount = (String) orderConfirmFrame.ocv.orderTable.getValueAt(row, 2);
@@ -283,11 +297,13 @@ public class MainFrame extends JFrame implements ActionListener {
 					}
 				}
 			});
-		} else if (ob == orderConfirmFrame.order_btn) { // 승인 주문버튼
+		}
+		// 승인 주문버튼
+		else if (ob == orderConfirmFrame.order_btn) { 
 			orderframe.setVisible(true);
+			// 그래프 초기화
 			orderframe.ov.model.setNumRows(0);
-			orderframe.ov.addProductLine(od.productAll());
-			
+			orderframe.ov.addProductLine(orderDao.productAll());
 			// 그래프 행 선택시
 			orderframe.ov.orderTable.addMouseListener(new MouseAdapter() {
 				@Override
@@ -300,38 +316,101 @@ public class MainFrame extends JFrame implements ActionListener {
 					}
 				}
 			});
-		} else if (ob == orderConfirmFrame.confirm_btn) { // 승인 승인버튼
-			ocd.confirmCheck(orderConfirmFrame.fields);
-			
-			// 그래프 갱신
-			orderConfirmFrame.ocv.model.setNumRows(0);
-			orderConfirmFrame.ocv.addProductLine(ocd.productAll());
-			JOptionPane.showMessageDialog(null, "승인 완료", "확인", JOptionPane.CLOSED_OPTION);
-			
+		} 
+		// 승인목록 승인버튼
+		else if (ob == orderConfirmFrame.confirm_btn) {
+			int row = orderConfirmFrame.ocv.orderTable.getSelectedRow();
+			if(orderConfirmFrame.fields[4].getText().equals("")) {
+				JOptionPane.showMessageDialog(null, "정확히 입력해 주세요", "확인", JOptionPane.CLOSED_OPTION);
+			}
+			else if(orderConfirmFrame.fields[4].getText().equals("") || 
+					!Pattern.matches("^[0-9]*$", orderConfirmFrame.fields[4].getText())) {
+				JOptionPane.showMessageDialog(null, "정확히 입력해 주세요", "확인", JOptionPane.CLOSED_OPTION);
+			}else if(Integer.parseInt(orderConfirmFrame.fields[4].getText()) > Integer.parseInt((String) orderConfirmFrame.ocv.orderTable.getValueAt(row, 2))) {
+				JOptionPane.showMessageDialog(null, "정확히 입력해 주세요", "확인", JOptionPane.CLOSED_OPTION);
+			} else {
+				orderConfirmDao.confirmCheck(orderConfirmFrame.fields);
+				// 그래프 갱신
+				orderConfirmFrame.ocv.model.setNumRows(0);
+				orderConfirmFrame.ocv.addProductLine(orderConfirmDao.productAll());
+				JOptionPane.showMessageDialog(null, "승인 완료", "확인", JOptionPane.CLOSED_OPTION);
+			}
 			// 초기화
 			orderConfirmFrame.resetText();
-			
-		} else if (ob == orderConfirmFrame.delete_btn) { // 승인 삭제버튼
-			ocd.confirmCancle(orderConfirmFrame.fields);
-			
+		} 
+		// 승인 삭제버튼
+		else if (ob == orderConfirmFrame.delete_btn) { 
+			orderConfirmDao.confirmCancle(orderConfirmFrame.fields);
 			// 그래프 갱신
 			orderConfirmFrame.ocv.model.setNumRows(0);
-			orderConfirmFrame.ocv.addProductLine(ocd.productAll());
-		} else if (ob == orderConfirmFrame.cancel_btn) { // 승인 취소버튼
+			orderConfirmFrame.ocv.addProductLine(orderConfirmDao.productAll());
+		} // 승인 취소버튼
+		else if (ob == orderConfirmFrame.cancel_btn) {
 			orderConfirmFrame.setVisible(false);	
 		}
-		
-		
-		if (ob == orderframe.order_btn) { // 주문 주문버튼
-			od.moveconfirm(orderframe.fields);
-			JOptionPane.showMessageDialog(null, "주문 완료", "확인", JOptionPane.CLOSED_OPTION);
-		} else if (ob == orderframe.cancel_btn) { // 주문 취소버튼
-			orderframe.setVisible(false);
+		// 승인대기목록 검색버튼
+		else if (ob == orderConfirmFrame.search_btn) {
+			String fieldName = orderConfirmFrame.combo.getSelectedItem().toString();
+			if (fieldName.equals("상품id")) {
+	        	fieldName = "product_id";
+	        } else if (fieldName.equals("상품명")) {
+	        	fieldName = "product_name";
+	        }
+			if (orderConfirmFrame.search_jf.getText().trim().equals("")) {
+				JOptionPane.showMessageDialog(null, "정확히 입력해 주세요", "확인", JOptionPane.CLOSED_OPTION);
+				orderConfirmFrame.search_jf.requestFocus();
+            } else {// 검색어를 입력했을경우
+            	orderConfirmDao.getUserSearch(orderConfirmView.model, fieldName, orderConfirmFrame.search_jf.getText());
+                if (orderConfirmView.model.getRowCount() > 0)
+                	orderConfirmView.orderTable.setRowSelectionInterval(0, 0);
+            }
+		}
+		// 승인대기목록 새로고침버튼
+		else if (ob == orderConfirmFrame.refresh_btn) {
+			orderConfirmView.model.setNumRows(0);
+			orderConfirmView.addProductLine(orderConfirmDao.productAll());
 		}
 		
+		// 승인목록창에서 상품조회버튼 클릭시
+		// 주문 주문버튼
+		if (ob == orderframe.order_btn) {
+			orderDao.moveconfirm(orderframe.fields);
+			JOptionPane.showMessageDialog(null, "주문 완료", "확인", JOptionPane.CLOSED_OPTION);
+			// 그래프 갱신
+			orderConfirmFrame.ocv.model.setNumRows(0);
+			orderConfirmFrame.ocv.addProductLine(orderConfirmDao.productAll());
+		} 
+		// 주문 검색버튼
+		else if (ob == orderframe.search_btn) {
+			String fieldName = orderframe.combo.getSelectedItem().toString();
+			if (fieldName.equals("상품id")) {
+	        	fieldName = "product_id";
+	        } else if (fieldName.equals("상품명")) {
+	        	fieldName = "product_name";
+	        }
+			if (orderframe.search_jf.getText().trim().equals("")) {
+				JOptionPane.showMessageDialog(null, "정확히 입력해 주세요", "확인", JOptionPane.CLOSED_OPTION);
+                orderframe.search_jf.requestFocus();
+            } else {// 검색어를 입력했을경우
+                orderDao.getUserSearch(orderView.model, fieldName, orderframe.search_jf.getText());
+                if (orderView.model.getRowCount() > 0)
+                	orderView.orderTable.setRowSelectionInterval(0, 0);
+            }
+			
+		}	
+		// 주문목록 새로고침
+		else if (ob == orderframe.refresh_btn) {
+			orderView.model.setNumRows(0);
+			orderView.addProductLine(orderDao.productAll());
+		}
+		// 주문 취소버튼
+		else if (ob == orderframe.cancel_btn) {
+			orderframe.setVisible(false);
+		}
 	}
 
 	public static void main(String[] args) {
 		new MainFrame();
 	}
+	
 }

@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 import db.DatabaseConnect;
 
@@ -23,6 +24,7 @@ public class OrderDao {
 	public ArrayList<Order> productAll() {
 		conn = DatabaseConnect.getConnection();
 		ArrayList<Order> products = new ArrayList<Order>();
+		// product테이블, stock테이블 inner Join 같은이름 상품 총재고 나오도록
 		sql = "SELECT product.product_id, product.product_name, product.price, SUM(stock.quantity)\r\n"
 				+ "FROM product\r\n"
 				+ "INNER JOIN stock\r\n"
@@ -91,5 +93,35 @@ public class OrderDao {
 //			e.printStackTrace();
 //		}
 //	}
+	
+	
+	public void getUserSearch(DefaultTableModel dt, String fieldName, String word) {
+		conn = DatabaseConnect.getConnection();
+        String sql = "SELECT * FROM stock WHERE " + fieldName.trim()
+                + " LIKE '%" + word.trim() + "%'";
+        try {
+        	ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery(sql);
+            // DefaultTableModel에 있는 기존 데이터 지우기
+            for (int i = 0; i < dt.getRowCount();) {
+                dt.removeRow(0);
+            }
+            while (rs.next()) {
+                Object data[] = { 
+                		rs.getString(2), 
+                		rs.getString(3),
+                        rs.getInt(7),
+                        rs.getInt(8) };
+                dt.addRow(data);
+            }
+        } catch (SQLException e) {
+			e.printStackTrace();
+		}
+		try {
+			DatabaseConnect.dbClose(rs, ps, conn);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    }
 	
 }

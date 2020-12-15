@@ -2,14 +2,14 @@ package order;
 
 import java.util.Calendar;
 
-public class RandomDay {
+public class Date_dis {
   public static void main(String[] args) {
 	  System.out.println(randomDOB());
   }
 
   public static String randomDOB() {
 
-    int yyyy = random(2020, 2021);
+    int yyyy = random(2021, 2021);
     int mm = random(1, 12);
     int dd = 0;
 

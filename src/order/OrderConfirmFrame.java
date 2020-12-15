@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import java.awt.CardLayout;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -13,25 +14,22 @@ import javax.swing.JTextField;
 public class OrderConfirmFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
-	public JButton order_btn; // 주문, 승인, 삭제, 취소 버튼
-
-	public JButton confirm_btn;
-
-	public JButton delete_btn;
-
-	public JButton cancel_btn;
-	public JPanel btn_panel;
-
-	public JPanel tabel_panel;
+	// 주문, 승인, 삭제, 취소, 검색, 새로고침 버튼
+	public JButton order_btn, confirm_btn, delete_btn, cancel_btn, search_btn, refresh_btn;
+	public JPanel btn_panel, tabel_panel, search_panel;
 	
 	String[] fieldNames = new String[] {"발주번호", "상품명", "물품id", "가격", "수량"};
-	String[] textHints = new String[] {"번호입력", "상품명 입력", "id 입력", "가격 입력","수량 입력"};
+	String[] textHints = new String[] {"번호입력	", "상품명입력	", "id입력	", "가격입력	","수량입력	"};
 
 	public JLabel[] labels;
 	public JTextField[] fields;
 	
 	public OrderConfirmView ocv = new OrderConfirmView(); // 가운데 들어갈예정
 	public CardLayout cardlayout;
+	
+	String[] comboName = {"상품id", "상품명"};
+	public JTextField search_jf = new JTextField(20);
+	public JComboBox combo = new JComboBox(comboName); // 검색기능
 	
 	public OrderConfirmFrame() {
 		cardlayout = new CardLayout();
@@ -53,12 +51,19 @@ public class OrderConfirmFrame extends JFrame {
 			btn_panel.add(fields[i]);
 		}
 		
-		
-		
-		order_btn = new JButton("주문");
+		order_btn = new JButton("상품조회");
 		confirm_btn = new JButton("승인");
 		delete_btn = new JButton("삭제");
 		cancel_btn = new JButton("취소");
+		
+		search_panel = new JPanel();
+		search_btn = new JButton("검색");
+		refresh_btn = new JButton("새로고침");
+		search_panel.add(combo);
+		search_panel.add(search_jf);
+		search_panel.add(search_btn);
+		search_panel.add(refresh_btn);
+		add(search_panel, BorderLayout.NORTH);
 		
 		btn_panel.add(order_btn);
 		btn_panel.add(confirm_btn);

@@ -14,8 +14,8 @@ public class OrderConfirmView extends JPanel {
 	
 	OrderConfirmDao ocd = new OrderConfirmDao();
 	public JScrollPane scrollpane = new JScrollPane();
-	public Vector<String> colNames = getColum();
-	public DefaultTableModel model = new DefaultTableModel(colNames, 0);
+	public static Vector<String> colNames = getColum();
+	public static DefaultTableModel model = new DefaultTableModel(colNames, 0);
 	public JTable orderTable = new JTable(model);
 	public Vector<String> rows;
 	
@@ -46,19 +46,21 @@ public class OrderConfirmView extends JPanel {
 			rows.addElement(Integer.toString(products.get(i).getQuantity()));
 			rows.addElement(products.get(i).getWorker_no());
 			rows.addElement(products.get(i).getSave_time().toString());
+			rows.addElement(products.get(i).getProduct_name().toString());
 
 			model.addRow(rows);
 		}
 		scrollpane.setViewportView(orderTable);
 	}
 	
-	private Vector<String> getColum() {
+	private static Vector<String> getColum() {
 		colNames = new Vector<String>();
 		colNames.add("발주번호");
 		colNames.add("상품id");
 		colNames.add("수량");
 		colNames.add("처리자");
 		colNames.add("처리시간");
+		colNames.add("상품명");
 
 		return colNames;
 	}

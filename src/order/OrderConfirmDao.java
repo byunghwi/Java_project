@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 import db.DatabaseConnect;
 
@@ -24,7 +25,8 @@ public class OrderConfirmDao {
 	public ArrayList<OrderConfirm> productAll() {
 		conn = DatabaseConnect.getConnection();
 		ArrayList<OrderConfirm> products = new ArrayList<OrderConfirm>();
-		sql = "SELECT * FROM order_product";
+		sql = "SELECT order_product.*, product.product_name "
+				+ "FROM product, order_product WHERE product.product_id = order_product.product_id";
 		try {
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
@@ -36,6 +38,7 @@ public class OrderConfirmDao {
 				order.setQuantity(rs.getInt(3));
 				order.setWorker_no(rs.getString(4));
 				order.setSave_time(rs.getDate(5));
+				order.setProduct_name(rs.getString(6));
 
 				products.add(order);
 			}
@@ -54,8 +57,8 @@ public class OrderConfirmDao {
 	public void confirmCheck(JTextField[] fields) {
 		conn = DatabaseConnect.getConnection();
 		
-		String manu_date = RandomDay.randomDOB();
-		String dis_date = RandomDay.randomDOB();
+		String manu_date = Date_manu.randomDOB();
+		String dis_date = Date_dis.randomDOB();
 		
 		sql = "INSERT INTO stock VALUES(STOCK_NO_SEQ.nextval, ?, ?, SYSDATE, ?, ?, ?, ?, 'Y')";
 		sql2 = "DELETE FROM order_product WHERE ORDER_PRODUCT_NO = ? AND product_id = ?";
@@ -102,5 +105,39 @@ public class OrderConfirmDao {
 		}
 	}
 	
+	// 승인대기 검색
+	public void getUserSearch(DefaultTableModel dt, String fieldName, String word) {
+		conn = DatabaseConnect.getConnection();
+        String sql = "SELECT\r\n"
+        		+ "    order_product.*, product.product_name\r\n"
+        		+ "FROM product, order_product\r\n"
+        		+ "WHERE product.product_id = order_product.product_id \r\n"
+        		+ "AND product."+ fieldName.trim() +" LIKE '%" + word.trim() + "%'";
+        try {
+        	ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery(sql);
+            // DefaultTableModel에 있는 기존 데이터 지우기
+            for (int i = 0; i < dt.getRowCount();) {
+                dt.removeRow(0);
+            }
+            while (rs.next()) {
+                Object data[] = { 
+                		rs.getInt(1),
+                		rs.getString(2), 
+                		rs.getInt(3),
+                        rs.getString(4),
+                        rs.getDate(5),
+                        rs.getString(6) };
+                dt.addRow(data);
+            }
+        } catch (SQLException e) {
+			e.printStackTrace();
+		}
+		try {
+			DatabaseConnect.dbClose(rs, ps, conn);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    }
 	
 }

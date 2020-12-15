@@ -1,11 +1,9 @@
 package order;
 
-import java.awt.BorderLayout;
 import java.awt.Font;
 import java.util.ArrayList;
 import java.util.Vector;
 
-import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -16,12 +14,12 @@ public class OrderView extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	OrderDao od = new OrderDao();
+	
 	JScrollPane scrollpane = new JScrollPane();
-	Vector<String> colNames = getColum();
-	public DefaultTableModel model = new DefaultTableModel(colNames, 0);
+	static Vector<String> colNames = getColum();
+	public static DefaultTableModel model = new DefaultTableModel(colNames, 0);
 	public JTable orderTable = new JTable(model);
 	public Vector<String> rows;
-	public JButton order_btn, cancel_btn; // 주문, 취소 버튼
 	JPanel panel = new JPanel();
 	
 	public OrderView() {
@@ -37,14 +35,6 @@ public class OrderView extends JPanel {
 		orderTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		addProductLine(od.productAll()); 
 		scrollpane.setViewportView(orderTable);
-		
-		order_btn = new JButton("주문");
-		cancel_btn = new JButton("취소");
-		
-		panel.add(order_btn);
-		panel.add(cancel_btn);
-		
-		add(panel, BorderLayout.SOUTH);
 		
 		// 그래프 편집 못하게
 //		orderTable.setEnabled(false);
@@ -66,7 +56,7 @@ public class OrderView extends JPanel {
 		scrollpane.setViewportView(orderTable);
 	}
 	
-	private Vector<String> getColum() {
+	private static Vector<String> getColum() {
 		colNames = new Vector<String>();
 		colNames.add("상품번호");
 		colNames.add("상품명");
