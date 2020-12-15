@@ -127,8 +127,8 @@ public class MainFrame extends JFrame implements ActionListener {
 			JOptionPane.showMessageDialog(null, "[SYSTEM] 퇴근처리되었습니다.", "확인", JOptionPane.CLOSED_OPTION);
 			
 		} else {
-			List_Input ll  = new List_Input();
-			ll.clv = this.lv;
+			List_Input Ll  = new List_Input();
+			Ll.clv = this.lv;
 		
 		} 
 	}

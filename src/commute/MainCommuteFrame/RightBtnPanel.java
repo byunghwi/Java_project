@@ -1,6 +1,6 @@
 package commute.MainCommuteFrame;
 
-import java.awt.BorderLayout; 
+import java.awt.BorderLayout;  
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
@@ -12,10 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
-import product.HintTextField;
-import product.ProdRegistFrame;
 
 public class RightBtnPanel extends JPanel{
 	/**

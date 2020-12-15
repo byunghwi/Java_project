@@ -119,6 +119,10 @@ public class List_Input extends JFrame {
 		
 		
 	}
+	public static void main(String[] args) {
+		new List_Input();
+		
+	}
    	
 }
 
