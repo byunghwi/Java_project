@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
+import account.FirstFrame;
 import account.Login;
 import account.delAccount.Check_PW;
 import stocksub.stockframe.StockFrame;
@@ -14,10 +15,10 @@ import stocksub.stockframe.StockFrame;
 // 로그인에 대응하는 액션 리스너
 public class Login_Action extends JFrame implements ActionListener {
 	
-	Login info;
+	FirstFrame info;
 	public String [] info_data = new String[2];
 	
-	public Login_Action(Login info) {
+	public Login_Action(FirstFrame info) {
 		this.info = info;
 	}
 

@@ -76,11 +76,12 @@ public class Join extends JFrame {
 		add(join);
 		
 		join.addActionListener(new Join_Action(this));
+
 		
 		setTitle("회원 가입");
 		setLayout(null);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setLocation(800,100);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		setLocation(1050,300);
 		setSize(310, 450);
 		setVisible(true);
 	

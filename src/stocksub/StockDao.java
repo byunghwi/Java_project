@@ -27,8 +27,9 @@ public class StockDao {
 	
 	Stock stock = null;
 	Stock_info stock_info = null;
-	Disposal disposal = null;
+	public Disposal disposal = null;
 	
+	public String this_date = null;
 	
 	public ArrayList<Stock> stockAll() {
 
@@ -193,6 +194,7 @@ public class StockDao {
 			
 			int columCnt = rsmd.getColumnCount();
 			
+	
 			while (rs.next()) {
 				disposal = new Disposal();
 				
@@ -204,7 +206,9 @@ public class StockDao {
 				disposal.setMem_id(rs.getString(6));
 				disposal.setSave_time(rs.getDate(7));
 				
+				
 				disposals.add(disposal);
+				
 			}
 			
 			
@@ -219,6 +223,7 @@ public class StockDao {
 			System.out.println("[DB] 자원 반납 중 오류 발생\n");
 			e.printStackTrace();
 		}
+		
 		return disposals;
 	}
 	

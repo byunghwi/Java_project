@@ -41,7 +41,7 @@ public class Login extends JFrame {
 		login.setBounds(110, 90, 90, 20);
 		add(login);
 		
-		login.addActionListener(new Login_Action(this));
+	//	login.addActionListener(new Login_Action(this));
 		
 		
 		setTitle("로그인");
