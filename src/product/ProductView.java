@@ -6,10 +6,13 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
@@ -24,16 +27,28 @@ public class ProductView extends JPanel {
 	public Vector<String> colNames = getColum();
 	public DefaultTableModel tblModel = new DefaultTableModel(colNames, 0);
 	public JTable productTable = new JTable(tblModel);
+	public String comboArr[] = new String[] {"검색항목을 선택하세요","상품코드", "상품명"};
+	public JComboBox<String> jcombo = new JComboBox<String>(comboArr);
+	public JTextField searchTf;
+	public JButton searchBtn;
+	
 	//행 정보들 담을 벡터
 	public Vector<String> rows;
-	
+
 	public ProductView(){
 		setLayout(null);
 		
-	
-		productsScrollPane.setBounds(12, 10, 1133, 532);
+		productsScrollPane.setBounds(12, 40, 1133, 532);
 		add(productsScrollPane);
-		
+	
+		jcombo.setBounds(410, 10, 150, 27);
+		searchTf = new HintTextField("검색어를 입력하세요.");
+		searchTf.setBounds(562, 10, 200, 28);
+		searchBtn = new JButton("검색");
+		searchBtn.setBounds(764, 10, 70, 28);
+		add(jcombo);
+		add(searchTf);
+		add(searchBtn);
 		productTable.setRowMargin(10);
 		productTable.setRowHeight(30);		
 		productTable.setFont(new Font("맑은 고딕", Font.PLAIN, 15));

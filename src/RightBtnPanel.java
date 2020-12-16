@@ -12,6 +12,7 @@ public class RightBtnPanel extends JPanel{
 	public JButton registProdBtn;
 	public JButton editProdBtn;
 	public JButton delProdBtn;
+	public JButton registEventBtn;
 
 	public RightBtnPanel() {
 		setBackground(Color.WHITE);
@@ -19,6 +20,7 @@ public class RightBtnPanel extends JPanel{
 		registProdBtn = new JButton("상품등록");
 		editProdBtn = new JButton("상품수정");
 		delProdBtn = new JButton("상품삭제");
+		registEventBtn = new JButton("이벤트등록");
 
 		registProdBtn.setForeground(Color.WHITE);
 		registProdBtn.setFont(new Font("맑은 고딕", Font.BOLD, 20));
@@ -34,10 +36,16 @@ public class RightBtnPanel extends JPanel{
 		delProdBtn.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		delProdBtn.setBackground(new Color(204, 206, 206));
 		delProdBtn.setBounds(0, 240, 140, 120);
+		
+		registEventBtn.setForeground(Color.WHITE);
+		registEventBtn.setFont(new Font("맑은 고딕", Font.BOLD, 20));
+		registEventBtn.setBackground(new Color(204, 206, 206));
+		registEventBtn.setBounds(0, 360, 140, 120);
 
 		add(registProdBtn);
 		add(editProdBtn);
 		add(delProdBtn);
+		add(registEventBtn);
 	}
 
 }
