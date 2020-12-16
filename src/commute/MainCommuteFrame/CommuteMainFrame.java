@@ -26,7 +26,7 @@ import product.ProductDao;
 import product.ProductView;
 
 
-public class MainFrame extends JFrame implements ActionListener {
+public class CommuteMainFrame extends JFrame implements ActionListener {
 
 	
 	private static final long serialVersionUID = 1L;
@@ -50,7 +50,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	Commute_ListView lv = null;
 	
 	
-	public MainFrame() {
+	public CommuteMainFrame() {
 		
 		lv= new Commute_ListView(null,null,null);
 		

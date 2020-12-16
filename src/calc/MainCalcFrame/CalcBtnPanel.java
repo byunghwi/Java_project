@@ -10,6 +10,7 @@ public class CalcBtnPanel extends JPanel{
 
 	private final long serialVersionUID = 1L;
 	public JButton calc_Btn;
+	public JButton calc_GraphBtn;
 	
 	public CalcBtnPanel() {
 	
@@ -21,7 +22,10 @@ public class CalcBtnPanel extends JPanel{
 		calc_Btn.setBackground(new Color(204, 206, 206));
 		calc_Btn.setBounds(0, 0, 124, 120);
 		
+
+		
 		add(calc_Btn);
+	
 		
 	}
 	
