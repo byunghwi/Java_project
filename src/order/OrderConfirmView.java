@@ -32,7 +32,7 @@ public class OrderConfirmView extends JPanel {
 		addProductLine(ocd.productAll());
 		scrollpane.setViewportView(orderTable);
 		
-		// 그래프 편집 못하게
+		// 그래프 편집 못하게 -> 근데 이러면 그래프 선택안됨 ㅎㅎ..
 //		orderTable.setEnabled(false);
 	}
 	

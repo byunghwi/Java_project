@@ -19,6 +19,9 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 
+import disposal_alert.AlertDao;
+import disposal_alert.AlertFrame;
+import disposal_alert.AlertView;
 import order.OrderConfirmDao;
 import order.OrderConfirmFrame;
 import order.OrderConfirmView;
@@ -319,16 +322,13 @@ public class MainFrame extends JFrame implements ActionListener {
 		} 
 		// 승인목록 승인버튼
 		else if (ob == orderConfirmFrame.confirm_btn) {
-			int row = orderConfirmFrame.ocv.orderTable.getSelectedRow();
-			if(orderConfirmFrame.fields[4].getText().equals("")) {
+//			int row = orderConfirmFrame.ocv.orderTable.getSelectedRow();
+			if(orderConfirmFrame.fields[3].getText().equals("")) {
 				JOptionPane.showMessageDialog(null, "정확히 입력해 주세요", "확인", JOptionPane.CLOSED_OPTION);
-			}
-			else if(orderConfirmFrame.fields[4].getText().equals("") || 
-					!Pattern.matches("^[0-9]*$", orderConfirmFrame.fields[4].getText())) {
+			} else if(orderConfirmFrame.fields[3].getText().equals("") || 
+					!Pattern.matches("^[0-9]*$", orderConfirmFrame.fields[3].getText())) {
 				JOptionPane.showMessageDialog(null, "정확히 입력해 주세요", "확인", JOptionPane.CLOSED_OPTION);
-			}else if(Integer.parseInt(orderConfirmFrame.fields[4].getText()) > Integer.parseInt((String) orderConfirmFrame.ocv.orderTable.getValueAt(row, 2))) {
-				JOptionPane.showMessageDialog(null, "정확히 입력해 주세요", "확인", JOptionPane.CLOSED_OPTION);
-			} else {
+			}  else {
 				orderConfirmDao.confirmCheck(orderConfirmFrame.fields);
 				// 그래프 갱신
 				orderConfirmFrame.ocv.model.setNumRows(0);
@@ -359,10 +359,18 @@ public class MainFrame extends JFrame implements ActionListener {
 			if (orderConfirmFrame.search_jf.getText().trim().equals("")) {
 				JOptionPane.showMessageDialog(null, "정확히 입력해 주세요", "확인", JOptionPane.CLOSED_OPTION);
 				orderConfirmFrame.search_jf.requestFocus();
+				orderConfirmView.model.setNumRows(0);
+    			orderConfirmView.addProductLine(orderConfirmDao.productAll());
             } else {// 검색어를 입력했을경우
             	orderConfirmDao.getUserSearch(orderConfirmView.model, fieldName, orderConfirmFrame.search_jf.getText());
-                if (orderConfirmView.model.getRowCount() > 0)
+                if (orderConfirmView.model.getRowCount() > 0) {
                 	orderConfirmView.orderTable.setRowSelectionInterval(0, 0);
+                }
+                else if (orderConfirmView.model.getRowCount() < 2) {
+                	JOptionPane.showMessageDialog(null, "2자이상 입력해주세요", "확인", JOptionPane.CLOSED_OPTION);
+                	orderConfirmView.model.setNumRows(0);
+        			orderConfirmView.addProductLine(orderConfirmDao.productAll());
+                }
             }
 		}
 		// 승인대기목록 새로고침버튼
@@ -379,6 +387,7 @@ public class MainFrame extends JFrame implements ActionListener {
 			// 그래프 갱신
 			orderConfirmFrame.ocv.model.setNumRows(0);
 			orderConfirmFrame.ocv.addProductLine(orderConfirmDao.productAll());
+			orderframe.resetText();
 		} 
 		// 주문 검색버튼
 		else if (ob == orderframe.search_btn) {
@@ -391,10 +400,18 @@ public class MainFrame extends JFrame implements ActionListener {
 			if (orderframe.search_jf.getText().trim().equals("")) {
 				JOptionPane.showMessageDialog(null, "정확히 입력해 주세요", "확인", JOptionPane.CLOSED_OPTION);
                 orderframe.search_jf.requestFocus();
+                orderView.model.setNumRows(0);
+    			orderView.addProductLine(orderDao.productAll());
             } else {// 검색어를 입력했을경우
                 orderDao.getUserSearch(orderView.model, fieldName, orderframe.search_jf.getText());
-                if (orderView.model.getRowCount() > 0)
+                if (orderView.model.getRowCount() > 0) {
                 	orderView.orderTable.setRowSelectionInterval(0, 0);
+                }
+                else if (orderView.model.getRowCount() < 2) {
+                	JOptionPane.showMessageDialog(null, "2자이상 입력해주세요", "확인", JOptionPane.CLOSED_OPTION);
+                	orderView.model.setNumRows(0);
+         			orderView.addProductLine(orderDao.productAll());
+                }
             }
 			
 		}	
@@ -411,6 +428,7 @@ public class MainFrame extends JFrame implements ActionListener {
 
 	public static void main(String[] args) {
 		new MainFrame();
+		new AlertFrame(); // 폐기 기간 확인
 	}
 	
 }

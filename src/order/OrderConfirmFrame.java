@@ -50,6 +50,12 @@ public class OrderConfirmFrame extends JFrame {
 			btn_panel.add(labels[i]);
 			btn_panel.add(fields[i]);
 		}
+		// 입력칸 편집못하게
+		fields[0].setEditable(false);
+		fields[1].setEditable(true);
+		fields[2].setEditable(false);
+		fields[3].setEditable(true);
+		fields[4].setEditable(false);
 		
 		order_btn = new JButton("상품조회");
 		confirm_btn = new JButton("승인");
