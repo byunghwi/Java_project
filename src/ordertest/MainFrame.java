@@ -166,8 +166,8 @@ public class MainFrame extends JFrame implements ActionListener {
 
 			product.setProduct_id(prodRegistFrame.tf1.getText());
 			product.setProduct_name(prodRegistFrame.tf2.getText());
-			product.setManu_date(prodRegistFrame.dateChooser1.getDate());
-			product.setDis_date(prodRegistFrame.dateChooser2.getDate());
+//			product.setManu_date(prodRegistFrame.dateChooser1.getDate());
+//			product.setDis_date(prodRegistFrame.dateChooser2.getDate());
 			product.setPrice(Integer.parseInt(prodRegistFrame.tf3.getText()));
 
 			pdao.productAdd(product);
@@ -245,9 +245,9 @@ public class MainFrame extends JFrame implements ActionListener {
 			product = new Product();
 			product.setProduct_id(product_id);
 			product.setProduct_name(prodEditFrame.tf1.getText());
-			product.setManu_date(prodEditFrame.dateChooser1.getDate());
-			product.setDis_date(prodEditFrame.dateChooser2.getDate());
-			product.setQuantity(Integer.parseInt(prodEditFrame.tf2.getText()));
+//			product.setManu_date(prodEditFrame.dateChooser1.getDate());
+//			product.setDis_date(prodEditFrame.dateChooser2.getDate());
+//			product.setQuantity(Integer.parseInt(prodEditFrame.tf2.getText()));
 			product.setPrice(Integer.parseInt(prodEditFrame.tf3.getText()));
 
 			// DB 수정

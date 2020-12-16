@@ -1,5 +1,6 @@
 package disposal_alert;
 
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -27,6 +28,7 @@ public class AlertView extends JPanel {
 		addProductLine(ad.productAll());
 		scrollpane.setViewportView(table);
 		
+		table.setPreferredScrollableViewportSize(new Dimension(300,100)); // 폐기기간 알려주는 창사이즈 조절
 		table.setEnabled(false);
 	}
 	

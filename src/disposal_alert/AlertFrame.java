@@ -11,9 +11,10 @@ public class AlertFrame extends JFrame {
 	public AlertView av = new AlertView();
 	
 	public AlertFrame() {
+		setLayout(null);
 		dis_panel = new JPanel();
-		dis_panel.add(av);
-		
+		dis_panel.setBounds(0, 0, 100, 100);		
+		dis_panel.add(av);		
 		JOptionPane.showMessageDialog(null, dis_panel, "다음 상품들의 폐기기간을 확인해주세요", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
