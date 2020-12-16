@@ -22,12 +22,9 @@ public class Check_on_Time {
 		
 			 
 			if(!pstmt.executeQuery().next()) {
-				new Add_Commute_On_Time();//insert
-			}else {
-				//delete 
+				new Add_Commute_On_Time();
+			
 			}
-			
-			
 			DatabaseConnect.dbClose(null, pstmt, conn);
 			
 		

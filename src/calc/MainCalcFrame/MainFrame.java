@@ -99,6 +99,7 @@ public class MainFrame extends JFrame implements ActionListener{
 		if (clicked_btn == calcBtnPanel.calc_Btn) {
 			new Calc_Add_Date();
 			JOptionPane.showMessageDialog(null, "[SYSTEM] 금일정산처리되었습니다.", "확인", JOptionPane.CLOSED_OPTION);
+			calcBtnPanel.calc_Btn.setEnabled(false);
 		} 
 		
 	} 
