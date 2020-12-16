@@ -7,38 +7,33 @@ import account.delAccount.Check_PW;
 import account.delAccount.Del_Account;
 import account.delAccount.Secession;
 
-// È¸¿ø Å»Åğ ¾×¼Ç ¸®½º³Ê
+// íšŒì› íƒˆí‡´ì— ëŒ€ì‘í•˜ëŠ” ì•¡ì…˜ ë¦¬ìŠ¤ë„ˆ
 public class Delete_Action implements ActionListener {
-	
 	
 	Secession info;
 	
-	// ¹Ş¾Æ¿Â Á¤º¸°¡ ÀúÀåµÉ ¹è¿­
 	public String [] info_data = new String[2];
 	
-	// »èÁ¦ °¡´É ¿©ºÎ¸¦ ÆÄ¾ÇÇÒ º¯¼ö
-	boolean check_can_del = false;
-	
-	
 	public Delete_Action(Secession info) {
-		// Secession Å¬·¡½º¸¦ ¹Ş¾Æ¿È
+		
 		this.info = info;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// ¹Ş¾Æ¿Â Secession Å¬·¡½ºÀÇ id pw Á¤º¸¸¦ ¹è¿­·Î ÀúÀå
+		
+		
 		for (int i=0; i<info_data.length; i++) {
 			info_data[i] = info.infos[i].getText();
 		}
 		
-		// ¹Ş¾Æ¿Â ID¿Í PW¸¦ Check_PW·Î °ËÁõ(delAccount ÆĞÅ°Áö¿¡ Á¸ÀçÇÏ´Â Å¬·¡½º)
+		// ì…ë ¥ë°›ì€ íšŒì›ì •ë³´ì˜ ì•„ì´ë””ì™€ ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ëŠ”ì§€ë¥¼ í™•ì¸í•œë‹¤
 		Check_PW cp = new Check_PW(info_data[0],info_data[1]);
 		
-		// È¸¿ø ID¿Í PW°¡ ÀÏÄ¡ÇÑ´Ù¸é ÀÛµ¿
+		// ë§Œì•½ ì¼ì¹˜í•œë‹¤ë©´ íƒˆí‡´ë¥¼ ì§„í–‰í•œë‹¤
 		if (cp.check) {
 			new Del_Account(info_data[0]);
-			System.out.println("Å»Åğ ¿Ï·á!!!!");
+			System.out.println("íƒˆí‡´ ì„±ê³µ!!!!");
 		}
 		
 	}

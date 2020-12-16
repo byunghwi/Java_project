@@ -1,15 +1,17 @@
-package commute;
+package commute.List;
 
 import java.awt.Font;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
+import commute.Commute;
 import product.ProductDao;
 
 public class Commute_ListView extends JPanel {
@@ -22,14 +24,28 @@ public class Commute_ListView extends JPanel {
 	public DefaultTableModel tblModel = new DefaultTableModel(colNames, 0);
 	public JTable commuteTable = new JTable(tblModel);
 	public Vector<String> rows;
-	Commute_Dao clist = null;
+	Commute_ListDao clist = null;
+	String start_date;
+	String end_date;
+	String mem_name;
+	
+	public Commute_ListView() {
+		
+		
+	}
 	
 	public Commute_ListView(String start_date,String end_date,String mem_name) {
 		
-		clist = new Commute_Dao(start_date, end_date, mem_name);
+		
+		clist = new Commute_ListDao(start_date, end_date, mem_name);
 		setLayout(null);
 		
-		CommutesScrollPane.setBounds(12, 10, 1133, 532);
+		JLabel lbShowDate = new JLabel("근태목록");
+		lbShowDate.setBounds(12, 0, 101, 37);
+		add(lbShowDate);
+		lbShowDate.setFont(new Font("맑은 고딕", Font.BOLD, 15));
+		
+		CommutesScrollPane.setBounds(12, 40, 500, 550);
 		add(CommutesScrollPane);
 		
 		commuteTable.setRowMargin(10);
@@ -60,7 +76,7 @@ public class Commute_ListView extends JPanel {
 		
 		private Vector<String> getColum() {
 			colNames = new Vector<String>();
-			colNames.add("날짜");
+			colNames.add("출근날짜");
 			colNames.add("사원명");
 			colNames.add("출근시간");
 			colNames.add("퇴근시간");

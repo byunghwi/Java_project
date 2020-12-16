@@ -24,7 +24,8 @@ public class ProdEditFrame extends JFrame{
 	JPanel contentPanel;
 	JPanel pIn;
 	
-	String[] fieldNames = new String[]{"상품명", "제조일", "폐기일", "수량", "가격"};
+	//String[] fieldNames = new String[]{"상품명", "제조일", "폐기일", "수량", "가격"};
+	String[] fieldNames = new String[]{"상품명", "가격"};
 	
 	public JLabel[] labels;
 	public JLabel titleLabel;
@@ -76,25 +77,25 @@ public class ProdEditFrame extends JFrame{
 		tf1 = new JTextField();
 		tf1.setBounds(130, 50, 170 , 30);
 		
-		//제조일
-		dateChooser1.setBounds(130, 100, 170 , 30);
-		
-		//폐기일
-		dateChooser2.setBounds(130, 150, 170 , 30);
-		
-		//수량
-		tf2 = new JTextField();
-		tf2.setBounds(130, 200, 170 , 30);
+//		//제조일
+//		dateChooser1.setBounds(130, 100, 170 , 30);
+//		
+//		//폐기일
+//		dateChooser2.setBounds(130, 150, 170 , 30);
+//		
+//		//수량
+//		tf2 = new JTextField();
+//		tf2.setBounds(130, 200, 170 , 30);
 		
 		//가격
-		tf3 = new JTextField();
-		tf3.setBounds(130, 250, 170 , 30);
+		tf2 = new JTextField();
+		tf2.setBounds(130, 100, 170 , 30);
 		
 		pIn.add(tf1);
-		pIn.add(dateChooser1);
-		pIn.add(dateChooser2);
+//		pIn.add(dateChooser1);
+//		pIn.add(dateChooser2);
 		pIn.add(tf2);
-		pIn.add(tf3);
+//		pIn.add(tf3);
 		
 		compEditBtn = new JButton("수정");
 		compEditBtn.setFont(new Font("맑은 고딕", Font.BOLD, 12));
@@ -113,8 +114,8 @@ public class ProdEditFrame extends JFrame{
 	public void resetText() {
 		tf1.setText("");
 		tf2.setText("");
-		tf3.setText("");
-		dateChooser1.setDate(null);
-		dateChooser2.setDate(null);
+//		tf3.setText("");
+//		dateChooser1.setDate(null);
+//		dateChooser2.setDate(null);
 	}
 }

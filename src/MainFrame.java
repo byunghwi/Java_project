@@ -4,21 +4,36 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.regex.Pattern;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 
+import event.Event;
+import event.EventDao;
+import event.EventPanel;
+import event.EventRegistFrame;
 import product.ProdEditFrame;
 import product.ProdRegistFrame;
 import product.Product;
 import product.ProductDao;
 import product.ProductView;
+import event.EventType;
+import event.FindProductFrame;
+import sale.SaleDao;
+import sale.SalePanel;
+import stock.Stock;
+import stock.StockDao;
+import stock.StockPanel;
 
 public class MainFrame extends JFrame implements ActionListener {
 
@@ -31,33 +46,59 @@ public class MainFrame extends JFrame implements ActionListener {
 
 	// 가운데 상품 보여줄 패널
 	ProductView productView = new ProductView();
+	
+	// 가운데 재고 보여줄 패널
+	StockPanel stockPanel = new StockPanel();
+	
+	// 가운데 판매 보여줄 패널
+	SalePanel salePanel = new SalePanel();
+	
+	// 가운데 이벤트 보여줄 패널
+	EventPanel eventPanel = new EventPanel();
 
 	// 오른쪽 버튼들 보여줄 패널
 	RightBtnPanel rightBtnPanel = new RightBtnPanel();
+	
+	// 하단 버튼들 보여줄 패널
+	BottomPanel bottomPanel = new BottomPanel();
 
 	// 상품 등록 팝업 프레임
 	ProdRegistFrame prodRegistFrame = new ProdRegistFrame();
 
 	// 상품 수정 팝업 프레임
 	ProdEditFrame prodEditFrame = new ProdEditFrame();
-
+	
+	// 이벤트 등록 팝업 프레임
+	EventRegistFrame eventRegistFrame = new EventRegistFrame();
+	
+	// 이벤트 등록 팝업 프레임 -> 상품 찾기 프레임
+	FindProductFrame findProductFrame = new FindProductFrame();
+	
 	// 상품
 	Product product;
+	
+	// 이벤트
+	Event event;
 
 	public CardLayout cardlayout;
-	public CardLayout btn;
+	public CardLayout btnlayout;
 
 	public JPanel contentPanel;
 
-	public JPanel pView;
+	public JPanel centerView;
 	public JPanel pBtnView;
 	public JPanel topView;
+	public JPanel bottomView;
 
 	ProductDao pdao = new ProductDao();
+	SaleDao sdao = new SaleDao();
+	StockDao stockdao = new StockDao();
+	EventDao eventdao = new EventDao();
 
 	public MainFrame() {
 
 		cardlayout = new CardLayout();
+		btnlayout = new CardLayout();
 
 		setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		setTitle("편의점프로그램");
@@ -74,37 +115,71 @@ public class MainFrame extends JFrame implements ActionListener {
 		// 상단 패널부분
 		topView = new JPanel();
 		topView.add(topPanel, "topPanel");
-		topView.setBounds(0, 0, 1326, 50);
+		topView.setBounds(0, 0, 1297, 50);
 		topView.setBackground(new Color(0, 255, 204));
 		topView.setLayout(new BorderLayout());
 		contentPanel.add(topView);
 
-		// 가운데 패널부분
-		pView = new JPanel();
-		pView.add(productView, "productView");
-		pView.setBackground(Color.WHITE);
-		pView.setBounds(0, 50, 1157, 552);
-		pView.setLayout(cardlayout);
-		contentPanel.add(pView);
+		// 가운데 패널부분 - 상품 , 재고
+		centerView = new JPanel();
+		centerView.setLayout(cardlayout);
+		centerView.add(productView, "productView"); // 상품 
+		centerView.add(stockPanel, "stockPanel"); 	// 재고
+		centerView.add(salePanel, "salePanel");		//판매
+		centerView.add(eventPanel, "eventPanel");  	//이벤트
+		centerView.setBackground(Color.WHITE);
+		centerView.setBounds(0, 50, 1157, 552);
+		contentPanel.add(centerView);
+
 
 		// 오른쪽 패널부분
 		pBtnView = new JPanel();
 		pBtnView.setBackground(Color.WHITE);
-		pBtnView.setBounds(1158, 50, 164, 675);
+		pBtnView.setBounds(1158, 50, 142, 675);
 		pBtnView.add(rightBtnPanel, "rightBtnPanel");
-		pBtnView.setLayout(cardlayout);
+		pBtnView.setLayout(btnlayout);
 		contentPanel.add(pBtnView);
+				
+		// 하단 패널부분
+		bottomView = new JPanel();
+		bottomView.setBackground(Color.WHITE);
+		bottomView.setBounds(8, 610, 1145, 100);
+		bottomView.add(bottomPanel, "bottomPanel");
+		bottomView.setLayout(btnlayout);
+		contentPanel.add(bottomView);
 
 		// 버튼들 액션 달기 Start
-		rightBtnPanel.registProdBtn.addActionListener(this); // 우측패널 상품등록 버튼
-		rightBtnPanel.editProdBtn.addActionListener(this); // 우측패널 상품 수정 버튼
-		rightBtnPanel.delProdBtn.addActionListener(this); // 우측패널 상품 삭제 버튼
+		rightBtnPanel.registProdBtn.addActionListener(this); 	// 우측패널 상품등록 버튼
+		rightBtnPanel.editProdBtn.addActionListener(this); 		// 우측패널 상품 수정 버튼
+		rightBtnPanel.delProdBtn.addActionListener(this); 		// 우측패널 상품 삭제 버튼
+		rightBtnPanel.registEventBtn.addActionListener(this);	// 우측패널 이벤트 등록 버튼 
 
-		prodRegistFrame.regBtn.addActionListener(this); // 팝업 상품등록 프레임 등록 버튼
-		prodRegistFrame.cancelBtn.addActionListener(this); // 팝업 상품등록 프레임 취소 버튼
+		prodRegistFrame.regBtn.addActionListener(this); 	//팝업 상품등록 프레임 등록 버튼
+		prodRegistFrame.cancelBtn.addActionListener(this); 	//팝업 상품등록 프레임 취소 버튼
 
-		prodEditFrame.compEditBtn.addActionListener(this);
-		prodEditFrame.cancelEidtBtn.addActionListener(this);
+		prodEditFrame.compEditBtn.addActionListener(this);		//팝업 상품 수정 프레임 수정 버튼
+		prodEditFrame.cancelEidtBtn.addActionListener(this);	//팝업 상품 수정 프레임 취소 버튼
+		
+		eventRegistFrame.regBtn.addActionListener(this); 		//팝업 이벤트 등록 프레임 등록 버튼
+		eventRegistFrame.cancelBtn.addActionListener(this); 	//팝업 이벤트 등록 프레임 취소 버튼
+		eventRegistFrame.searchBtn.addActionListener(this); 	//팝업 이벤트 등록 프레임 상품찾기 버튼
+		
+		bottomPanel.productBtn.addActionListener(this);	// 하단패널 상품 버튼
+		bottomPanel.saleBtn.addActionListener(this);	// 하단패널 판매 버튼
+		bottomPanel.stockBtn.addActionListener(this);	// 하단패널 재고 버튼
+		bottomPanel.disBtn.addActionListener(this);		// 하단패널 폐기 버튼
+		bottomPanel.accountBtn.addActionListener(this); // 하단패널 유저 버튼
+		bottomPanel.commuteBtn.addActionListener(this); // 하단패널 근태 버튼
+		bottomPanel.calcBtn.addActionListener(this);  	// 하단패널 정산 버튼
+		bottomPanel.eventBtn.addActionListener(this); 	// 하단패널 이벤트 버튼
+		
+		salePanel.addBucketBtn.addActionListener(this);
+		salePanel.delBucketBtn.addActionListener(this);
+		salePanel.completeBtn.addActionListener(this);
+		
+		productView.searchBtn.addActionListener(this);					// 상품 검색 버튼
+		findProductFrame.productView.searchBtn.addActionListener(this); // 이벤트 프레임 - 상품찾기 프레임 - 상품검색 버튼
+		findProductFrame.regBtn.addActionListener(this);				// 이벤트 프레임 - 상품찾기 프레임 - 상품코드입력 버튼
 		// 버튼들 액션 달기 End
 	}
 
@@ -114,6 +189,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		Object obb = e.getActionCommand();
 
 		if (ob == rightBtnPanel.registProdBtn) {
+			prodRegistFrame.resetText();
 			prodRegistFrame.setVisible(true);
 		} else if (ob == prodRegistFrame.regBtn) {
 
@@ -121,8 +197,6 @@ public class MainFrame extends JFrame implements ActionListener {
 
 			product.setProduct_id(prodRegistFrame.tf1.getText());
 			product.setProduct_name(prodRegistFrame.tf2.getText());
-			product.setManu_date(prodRegistFrame.dateChooser1.getDate());
-			product.setDis_date(prodRegistFrame.dateChooser2.getDate());
 			product.setPrice(Integer.parseInt(prodRegistFrame.tf3.getText()));
 
 			pdao.productAdd(product);
@@ -142,7 +216,61 @@ public class MainFrame extends JFrame implements ActionListener {
 			// 창 안보이게
 			prodRegistFrame.setVisible(false);
 
-		} else if (ob == prodRegistFrame.cancelBtn) {
+		}else if(ob == productView.searchBtn || ob == findProductFrame.productView.searchBtn) {	//상품 검색을 누를 때
+			//상품리스트화면에서 검색할때
+			if(ob == productView.searchBtn) {
+				String combo = (String) productView.jcombo.getSelectedItem();
+				String searchWord = productView.searchTf.getText();
+				
+				//검색어 없이 검색했을땐 원래 모든 상품리스트 다 보여주기.
+				if(searchWord.equals("검색어를 입력하세요.") || searchWord.equals("")) {
+
+					// 상품목록J테이블 초기화 해주기.
+					productView.tblModel.setNumRows(0);
+					
+					productView.addProductLine(pdao.productAll());
+				}else {
+					if(searchWord.length() < 2) {
+						JOptionPane.showMessageDialog(null, "[SYSTEM] 검색어는 2글자 이상 입력해주세요.", "확인", JOptionPane.CLOSED_OPTION);
+					}else {
+						// 상품목록J테이블 초기화 해주기.
+						productView.tblModel.setNumRows(0);
+
+						// 상품목록J테이블 새로 채우기
+						productView.addProductLine(pdao.searchProduct(combo, searchWord));
+					}		
+				}
+			}
+			//이벤트 프레임에서 상품 검색할 때 
+			else if(ob == findProductFrame.productView.searchBtn) {
+				String combo = (String) findProductFrame.productView.jcombo.getSelectedItem();
+				String searchWord = findProductFrame.productView.searchTf.getText();
+				
+				//검색어 없이 검색했을땐 원래 모든 상품리스트 다 보여주기.
+				if(searchWord.equals("검색어를 입력하세요.") || searchWord.equals("")) {
+
+					// 상품목록J테이블 초기화 해주기.
+					findProductFrame.productView.tblModel.setNumRows(0);
+					
+					findProductFrame.productView.addProductLine(pdao.productAll());
+				}else {
+					if(searchWord.length() < 2) {
+						JOptionPane.showMessageDialog(null, "[SYSTEM] 검색어는 2글자 이상 입력해주세요.", "확인", JOptionPane.CLOSED_OPTION);
+					}
+					else {
+						// 상품목록J테이블 초기화 해주기.
+						findProductFrame.productView.tblModel.setNumRows(0);
+
+						// 상품목록J테이블 새로 채우기
+						findProductFrame.productView.addProductLine(pdao.searchProduct(combo, searchWord));
+					}
+					
+				}
+			}
+				
+		}else if(ob == findProductFrame.regBtn) {
+			
+		}else if (ob == prodRegistFrame.cancelBtn) {
 			prodRegistFrame.resetText();
 			prodRegistFrame.setVisible(false);
 		} else if (ob == rightBtnPanel.editProdBtn) {
@@ -154,27 +282,14 @@ public class MainFrame extends JFrame implements ActionListener {
 
 				// 선택한 행 내용 수정 프레임창에 세팅해주기
 				prodEditFrame.tf1.setText((String) productView.tblModel.getValueAt(row, 1));
-				try {
-					Date date1 = new SimpleDateFormat("yyyy-MM-dd")
-							.parse((String) productView.tblModel.getValueAt(row, 2));			
-					Date date2 = new SimpleDateFormat("yyyy-MM-dd")
-							.parse((String) productView.tblModel.getValueAt(row, 3));
-
-					prodEditFrame.dateChooser1.setDate(date1);
-					prodEditFrame.dateChooser2.setDate(date2);
-				} catch (ParseException e1) {
-					System.out.println("Date Parser error!\n");
-					e1.printStackTrace();
-				}
-
-				prodEditFrame.tf2.setText((String) productView.tblModel.getValueAt(row, 4));
-				prodEditFrame.tf3.setText((String) productView.tblModel.getValueAt(row, 5));
+				prodEditFrame.tf2.setText((String) productView.tblModel.getValueAt(row, 2));
+				//prodEditFrame.tf3.setText((String) productView.tblModel.getValueAt(row, 5));
 
 			} else {
 				JOptionPane.showMessageDialog(null, "[SYSTEM] 수정하시려는 상품을 선택해주세요.", "확인", JOptionPane.CLOSED_OPTION);
 			}
 
-		} else if (ob == rightBtnPanel.delProdBtn) {
+		} else if (ob == rightBtnPanel.delProdBtn) { //우측패널 상품 삭제 버튼 클릭시
 			if (productView.productTable.getSelectedRow() != -1) {
 				int row = productView.productTable.getSelectedRow();
 				String product_id = (String) productView.tblModel.getValueAt(row, 0);
@@ -193,17 +308,20 @@ public class MainFrame extends JFrame implements ActionListener {
 			} else {
 				JOptionPane.showMessageDialog(null, "\t[SYSTEM] 삭제하시려는 상품을 선택해주세요.", "확인", JOptionPane.CLOSED_OPTION);
 			}
-		} else if (ob == prodEditFrame.compEditBtn) {
+		}else if (ob == rightBtnPanel.registEventBtn) { // 이벤트 등록 버튼 클릭시
+			eventRegistFrame.resetText();
+			eventRegistFrame.setVisible(true);	
+		}else if(ob == eventRegistFrame.searchBtn) { // 이벤트 등록 프레임 -> 상품 찾기 프레임 오픈 시
+			findProductFrame.setVisible(true);	
+			
+		}else if (ob == prodEditFrame.compEditBtn) {
 
 			int row = productView.productTable.getSelectedRow();
 			String product_id = (String) productView.tblModel.getValueAt(row, 0);
 			product = new Product();
-			product.setProduct_id(product_id);
+			product.setProduct_id(product_id); 
 			product.setProduct_name(prodEditFrame.tf1.getText());
-			product.setManu_date(prodEditFrame.dateChooser1.getDate());
-			product.setDis_date(prodEditFrame.dateChooser2.getDate());
-			product.setQuantity(Integer.parseInt(prodEditFrame.tf2.getText()));
-			product.setPrice(Integer.parseInt(prodEditFrame.tf3.getText()));
+			product.setPrice(Integer.parseInt(prodEditFrame.tf2.getText()));
 
 			// DB 수정
 			pdao.productEdit(product);
@@ -225,8 +343,187 @@ public class MainFrame extends JFrame implements ActionListener {
 		} else if (ob == prodEditFrame.cancelEidtBtn) {
 			prodEditFrame.resetText();
 			prodEditFrame.setVisible(false);
-		}
+		}else if (ob == bottomPanel.productBtn) {	
+			//메인 버튼 클릭시 색 변경해주기
+			bottomPanel.selectedBtn(bottomPanel.productBtn);			
+			cardlayout.show(centerView, "productView");			
+		}else if (ob == bottomPanel.saleBtn) {
+			//필드 초기화 먼저.
+			salePanel.prodnameTf.setText("");
+			salePanel.prodQt.setText("");
+			//메인 버튼 클릭시 색 변경해주기
+			bottomPanel.selectedBtn(bottomPanel.saleBtn);
+			cardlayout.show(centerView, "salePanel");
+			
+			// 판매 패널의 J테이블에서 로우 선택시 발생하는 이벤트
+			salePanel.stockTable.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					JTable jt = (JTable)e.getSource();
+					int row = jt.getSelectedRow();
+					if(row != -1) {
+						String product_name = (String) salePanel.stockTable.getValueAt(row, 1);
+						salePanel.prodnameTf.setText(product_name);
+						salePanel.prodQt.setText("");
+					}
+				}
+			});
 
+		}else if (ob == salePanel.addBucketBtn) { // 판매화면에서 장바구니 추가 버튼 클릭시
+			int row  = salePanel.stockTable.getSelectedRow();
+
+			if(row == -1) {
+				// 확인 팝업창
+				JOptionPane.showMessageDialog(null, "\t[SYSTEM] 추가할 상품의 행을 선택해주세요.", "확인", JOptionPane.CLOSED_OPTION);
+			}
+			else if(salePanel.prodQt.getText().equals("") || !Pattern.matches("^[1-9]*$", salePanel.prodQt.getText())) {
+				// 확인 팝업창
+				JOptionPane.showMessageDialog(null, "\t[SYSTEM] 정확한 수량을 입력해주세요", "확인", JOptionPane.CLOSED_OPTION);
+			}else if(Integer.parseInt(String.valueOf(salePanel.prodQt.getText())) > Integer.parseInt(String.valueOf(salePanel.stockTblModel.getValueAt(row, 3)))) {
+				// 확인 팝업창
+				JOptionPane.showMessageDialog(null, "\t[SYSTEM] 현 재고 수량보다 많은 양을 구매하실 수 없습니다.", "확인", JOptionPane.CLOSED_OPTION);
+			}else {
+				
+				String eventType = sdao.searchEvent(String.valueOf(salePanel.stockTblModel.getValueAt(row, 0)));
+				//이벤트 상품일 경우 처리메서드
+				if(eventType != null) {
+					for(EventType type : EventType.values()) {
+						if(eventType.equals(type.getValue())) {
+							System.out.println(eventType);
+						}
+							
+					}
+				}
+	
+				String [] arrData = new String[4];
+				arrData[0] = String.valueOf(salePanel.stockTblModel.getValueAt(row, 0));
+				arrData[1] = salePanel.prodnameTf.getText();
+				arrData[2] = salePanel.prodQt.getText();
+				arrData[3] = String.valueOf(salePanel.stockTblModel.getValueAt(row, 2));
+				
+				
+				salePanel.bucketTblModel.addRow(arrData);
+				
+				//재고화면테이블에서 선택한 수량만큼 차감하고 장바구니에 넣기.
+				int rs = Integer.parseInt(String.valueOf(salePanel.stockTblModel.getValueAt(row, 3)))  - Integer.parseInt(String.valueOf(salePanel.prodQt.getText()));
+				salePanel.stockTblModel.setValueAt(rs, row, 3);
+				
+			}
+			
+		}else if (ob == salePanel.delBucketBtn) {
+			int bucketRow  = salePanel.bucketTable.getSelectedRow();
+			
+			//행이 선택되었을 때
+			if(bucketRow != -1) {
+				for(int i =0; i<salePanel.stockTable.getRowCount(); i++) {
+					if(String.valueOf(salePanel.stockTable.getValueAt(i, 0)).equals(String.valueOf(salePanel.bucketTable.getValueAt(bucketRow, 0)))){	
+						int addQT = Integer.parseInt(String.valueOf(salePanel.stockTable.getValueAt(i, 3))) + Integer.parseInt(String.valueOf(salePanel.bucketTable.getValueAt(bucketRow, 2)));
+						salePanel.stockTable.setValueAt(addQT, i, 3);
+						break;
+					}
+				}				
+				salePanel.bucketTblModel.removeRow(bucketRow);
+	
+			}else {
+				// 확인 팝업창
+				JOptionPane.showMessageDialog(null, "\t[SYSTEM] 삭제할 행을 선택해주세요", "확인", JOptionPane.CLOSED_OPTION);
+			}
+
+		}else if (ob == salePanel.completeBtn) {
+			int count = salePanel.bucketTblModel.getRowCount();
+			ArrayList<Stock> stocks = new ArrayList<Stock>();
+			for(int i=0; i<count; i++) {
+				Stock stock = new Stock();
+				stock.setProduct_id(String.valueOf(salePanel.bucketTable.getValueAt(i, 0)));
+				stock.setQuantity(Integer.parseInt(String.valueOf(salePanel.bucketTable.getValueAt(i, 2))));
+				stock.setPrice(Integer.parseInt(String.valueOf(salePanel.bucketTable.getValueAt(i, 3))));
+				
+				stocks.add(stock);
+			}
+			
+			if(sdao.pay(stocks)) {
+				// 확인 팝업창
+				JOptionPane.showMessageDialog(null, "\t[SYSTEM] 결제가 완료 되었습니다!", "확인", JOptionPane.CLOSED_OPTION);
+				// 장바구니 화면테이블 초기화
+				salePanel.bucketTblModel.setNumRows(0);
+				
+				// 재고목록 화면테이블 초기화 해주기.
+				salePanel.stockTblModel.setNumRows(0);
+
+				// 재고목록 화면테이블 새로 채우기
+				salePanel.addStockLine(stockdao.stockAll());
+			}
+			
+		}else if (ob == eventRegistFrame.regBtn) {
+			
+			
+			
+			if(eventRegistFrame.tf1.getText().equals("") 
+					|| eventRegistFrame.tf2.getText().equals("") 
+					|| eventRegistFrame.dateChooser1.toString().equals("")
+					|| eventRegistFrame.dateChooser2.toString().equals("")
+					|| eventRegistFrame.tf2.getText().equals("")) {			
+				// 확인 팝업창
+				JOptionPane.showMessageDialog(null, "[SYSTEM] 모든 항목을 입력해주세요.", "확인", JOptionPane.CLOSED_OPTION);
+			}else {
+				event = new Event();
+				
+				// 시간 설정
+				String start_dt = new SimpleDateFormat("yyyy-MM-dd").format(eventRegistFrame.dateChooser1.getDate());	
+				String end_dt = new SimpleDateFormat("yyyy-MM-dd").format(eventRegistFrame.dateChooser2.getDate());
+
+				event.setProduct_id(eventRegistFrame.tf1.getText()); 
+				event.setEvent_type(eventRegistFrame.tf2.getText());
+				event.setStart_date(start_dt);
+				event.setEnd_date(end_dt);
+				event.setWorker_no("TEST");
+				
+				if(eventdao.eventAdd(event)) {
+					// 이벤트목록 화면테이블 초기화 해주기.
+					eventPanel.tblModel.setNumRows(0);
+
+					// 이벤트목록 화면테이블 새로 채우기
+					eventPanel.addEventLine(eventdao.eventAll());
+
+					// 텍스트 필드에 채워진 값 초기화 해주기.
+					eventRegistFrame.resetText();
+
+					// 확인 팝업창
+					JOptionPane.showMessageDialog(null, "[SYSTEM] 이벤트 등록이 완료되었습니다.", "확인", JOptionPane.CLOSED_OPTION);
+
+					// 창 안보이게
+					eventRegistFrame.setVisible(false);
+				}
+				else {
+					// 확인 팝업창
+					JOptionPane.showMessageDialog(null, "[SYSTEM] 이벤트 등록 중 오류가 발생했습니다.", "확인", JOptionPane.CLOSED_OPTION);
+				}
+			}
+
+		}else if (ob == eventRegistFrame.cancelBtn) {
+			eventRegistFrame.resetText();
+			eventRegistFrame.setVisible(false);
+		}else if (ob == bottomPanel.stockBtn) {
+			//메인 버튼 클릭시 색 변경해주기
+			bottomPanel.selectedBtn(bottomPanel.stockBtn);
+			cardlayout.show(centerView, "stockPanel");
+		}else if (ob == bottomPanel.disBtn) {
+			//메인 버튼 클릭시 색 변경해주기
+			bottomPanel.selectedBtn(bottomPanel.disBtn);
+		}else if (ob == bottomPanel.accountBtn) {
+			//메인 버튼 클릭시 색 변경해주기
+			bottomPanel.selectedBtn(bottomPanel.accountBtn);
+		}else if (ob == bottomPanel.commuteBtn) {
+			//메인 버튼 클릭시 색 변경해주기
+			bottomPanel.selectedBtn(bottomPanel.commuteBtn);
+		}else if (ob == bottomPanel.eventBtn) {
+			//메인 버튼 클릭시 색 변경해주기
+			bottomPanel.selectedBtn(bottomPanel.eventBtn);
+			cardlayout.show(centerView, "eventPanel");	
+		}else if (ob == bottomPanel.calcBtn) {
+			//메인 버튼 클릭시 색 변경해주기
+			bottomPanel.selectedBtn(bottomPanel.calcBtn);
+		}
 	}
 
 	public static void main(String[] args) {

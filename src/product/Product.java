@@ -5,22 +5,20 @@ import java.util.Date;
 public class Product {
 	String product_id;
 	String product_name;
-	Date manu_date;
-	Date dis_date;
-	int quantity;
 	int price;
-	
+	String worker_no;
+	String save_time;
+
 	public Product() {
 	}
 
-	public Product(String product_id, String product_name, Date manu_date, Date dis_date, int quantity, int price) {
+	public Product(String product_id, String product_name, int price, String worker_no, String save_time) {
 		super();
 		this.product_id = product_id;
 		this.product_name = product_name;
-		this.manu_date = manu_date;
-		this.dis_date = dis_date;
-		this.quantity = quantity;
 		this.price = price;
+		this.worker_no = worker_no;
+		this.save_time = save_time;
 	}
 
 	public String getProduct_id() {
@@ -39,30 +37,6 @@ public class Product {
 		this.product_name = product_name;
 	}
 
-	public Date getManu_date() {
-		return manu_date;
-	}
-
-	public void setManu_date(Date manu_date) {
-		this.manu_date = manu_date;
-	}
-
-	public Date getDis_date() {
-		return dis_date;
-	}
-
-	public void setDis_date(Date dis_date) {
-		this.dis_date = dis_date;
-	}
-
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-
 	public int getPrice() {
 		return price;
 	}
@@ -70,6 +44,24 @@ public class Product {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+
+	public String getWorker_no() {
+		return worker_no;
+	}
+
+	public void setWorker_no(String worker_no) {
+		this.worker_no = worker_no;
+	}
+
+	public String getSave_time() {
+		return save_time;
+	}
+
+	public void setSave_time(String save_time) {
+		this.save_time = save_time;
+	}
+	
+	
 	
 	
 	

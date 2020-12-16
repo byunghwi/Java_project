@@ -11,7 +11,7 @@ import javax.swing.JTextField;
 
 import account.action.Join_Action;
 
-// DB·Î º¸³¾ Á¤º¸¸¦ ÀÔ·ÂÇÏ´Â Å¬·¡½º(SwingÀ¸·Î ±¸Çö)
+// íšŒì› ê°€ì…ì„ ì •ë³´ë¥¼ ë°›ì•„ì˜¬ í”„ë ˆì„ í´ë˜ìŠ¤
 public class Join extends JFrame {
 	
 	public JTextField[] infos = new JTextField[8]; 
@@ -21,9 +21,9 @@ public class Join extends JFrame {
 	public JTextField[] phone_infos = new JTextField[3];
 	JLabel minus[] = {new JLabel("-"),new JLabel("-"),new JLabel("-")};
 
-	String [] info_names = {"¾ÆÀÌµğ","ÆĞ½º¿öµå","ÀÌ¸§","ÁÖ¹Îµî·Ï¹øÈ£","ÀüÈ­¹øÈ£","ÁÖ¼Ò","¼ºº°","¸ŞÀÏÁÖ¼Ò"};
+	String [] info_names = {"ì•„ì´ë””","ë¹„ë°€ë²ˆí˜¸","ì´ë¦„","ì£¼ë¯¼ë“±ë¡ë²ˆí˜¸","ì „í™”ë²ˆí˜¸","ì£¼ì†Œ","ì„±ë³„","ë©”ì¼ì£¼ì†Œ"};
 	JLabel[] names = new JLabel[8];
-	JButton join = new JButton("È¸¿ø °¡ÀÔ");
+	JButton join = new JButton("íšŒì› ê°€ì…");
 	
 	
 	public Join() {
@@ -77,7 +77,7 @@ public class Join extends JFrame {
 		
 		join.addActionListener(new Join_Action(this));
 		
-		setTitle("È¸¿ø °¡ÀÔ");
+		setTitle("íšŒì› ê°€ì…");
 		setLayout(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocation(800,100);

@@ -7,11 +7,11 @@ import javax.swing.JFrame;
 
 import account.Login;
 import account.delAccount.Check_PW;
-//import account.fr.MainFrame;
+import stocksub.stockframe.StockFrame;
 
 
 
-// �α��� �׼� ������
+// 로그인에 대응하는 액션 리스너
 public class Login_Action extends JFrame implements ActionListener {
 	
 	Login info;
@@ -22,7 +22,7 @@ public class Login_Action extends JFrame implements ActionListener {
 	}
 
 	
-	// ���̵�� ��й�ȣ�� �´ٸ� �α��� ���� �� ���� ������ �˾�
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		for (int i=0; i<info_data.length; i++) {
@@ -31,11 +31,13 @@ public class Login_Action extends JFrame implements ActionListener {
 		
 		Check_PW cp = new Check_PW(info_data[0],info_data[1]);
 		
+		// 받은 ID와 대응하는 PW정보가 일치한다면 프레임 창을 생성한다
 		if (cp.check) {
-			System.out.println("�α��� ����!!!!");
+			System.out.println("로그인 성공!!!!");
 			info.dispose();
 			
-			//new MainFrame();
+			new StockFrame();
+			
 			
 		}
 		

@@ -6,10 +6,13 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
@@ -24,15 +27,28 @@ public class ProductView extends JPanel {
 	public Vector<String> colNames = getColum();
 	public DefaultTableModel tblModel = new DefaultTableModel(colNames, 0);
 	public JTable productTable = new JTable(tblModel);
+	public String comboArr[] = new String[] {"검색항목을 선택하세요","상품코드", "상품명"};
+	public JComboBox<String> jcombo = new JComboBox<String>(comboArr);
+	public JTextField searchTf;
+	public JButton searchBtn;
+	
 	//행 정보들 담을 벡터
 	public Vector<String> rows;
-	
+
 	public ProductView(){
 		setLayout(null);
-	
-		productsScrollPane.setBounds(12, 10, 1133, 532);
-		add(productsScrollPane);
 		
+		productsScrollPane.setBounds(12, 40, 1133, 532);
+		add(productsScrollPane);
+	
+		jcombo.setBounds(410, 10, 150, 27);
+		searchTf = new HintTextField("검색어를 입력하세요.");
+		searchTf.setBounds(562, 10, 200, 28);
+		searchBtn = new JButton("검색");
+		searchBtn.setBounds(764, 10, 70, 28);
+		add(jcombo);
+		add(searchTf);
+		add(searchBtn);
 		productTable.setRowMargin(10);
 		productTable.setRowHeight(30);		
 		productTable.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
@@ -43,6 +59,7 @@ public class ProductView extends JPanel {
 		addProductLine(pdao.productAll()); 
 		
 		productsScrollPane.setViewportView(productTable);
+		
 	}
 
 	//Jtable에 로우 하나씩 추가하기.
@@ -53,10 +70,9 @@ public class ProductView extends JPanel {
 			rows = new Vector<String>();
 			rows.addElement(products.get(i).getProduct_id());
 			rows.addElement(products.get(i).getProduct_name());
-			rows.addElement(products.get(i).getManu_date().toString());
-			rows.addElement(products.get(i).getDis_date().toString());
-			rows.addElement(Integer.toString(products.get(i).getQuantity()));
 			rows.addElement(Integer.toString(products.get(i).getPrice()));
+			rows.addElement(products.get(i).getWorker_no());
+			rows.addElement(products.get(i).getSave_time());
 
 			//로우마다 테이블에 뿌려주기.
 			tblModel.addRow(rows);
@@ -69,10 +85,9 @@ public class ProductView extends JPanel {
 		colNames = new Vector<String>();
 		colNames.add("상품코드");
 		colNames.add("상품명");
-		colNames.add("제조일");
-		colNames.add("폐기일");
-		colNames.add("수량");
 		colNames.add("가격");
+		colNames.add("등록자");
+		colNames.add("등록일");
 
 		return colNames;
 	}
