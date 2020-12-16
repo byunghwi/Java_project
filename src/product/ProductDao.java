@@ -20,9 +20,6 @@ public class ProductDao {
 
 	ResultSetMetaData rsmd = null;
 
-	String query = null;
-	String query2 = null;
-
 	Product product = null;
 
 	// 상품 전체 목록
@@ -32,7 +29,7 @@ public class ProductDao {
 		// 상품들 담을 ArrayList 생성
 		ArrayList<Product> products = new ArrayList<Product>();
 
-		query = "SELECT product_id as \"상품코드\", product_name as \"상품명\" "
+		String query = "SELECT product_id as \"상품코드\", product_name as \"상품명\" "
 				+ ", price as \"가격\" , worker_no as \"등록자\" ,TO_CHAR(save_time, 'YYYY-MM-dd') as \"등록일\" "
 				+ " FROM product WHERE save_status = 'Y' ORDER BY product_id";
 		try {
@@ -74,10 +71,10 @@ public class ProductDao {
 	public void productAdd(Product product) {
 		conn = DatabaseConnect.getConnection();
 
-		query = "insert into product (product_id, product_name, price, worker_no) values (? ,?, ?, ?)";
+		String query = "insert into product (product_id, product_name, price, worker_no) values (? ,?, ?, ?)";
 		
 		//상품등록하면 수량 0으로 세팅되고 발주승인대기 테이블에 추가된다.
-		query2 =  "insert into order_product values (ORDER_PRODUCT_NO_SEQ.nextval, ?, ?, ?, ?)";
+		String query2 =  "insert into order_product values (ORDER_PRODUCT_NO_SEQ.nextval, ?, ?, ?, ?)";
 
 		try {
 			ps = conn.prepareStatement(query);
@@ -124,8 +121,8 @@ public class ProductDao {
 	public void productEdit(Product product) {
 		conn = DatabaseConnect.getConnection();
 
-		query = "UPDATE product SET product_name = ?, price = ?, worker_no = ?, save_time = ? WHERE product_id = ?";
-		System.out.println(query);
+		String query = "UPDATE product SET product_name = ?, price = ?, worker_no = ?, save_time = ? WHERE product_id = ?";
+
 		try {			
 			ps = conn.prepareStatement(query);
 
@@ -160,7 +157,7 @@ public class ProductDao {
 	public void productDel(String pid) {
 		conn = DatabaseConnect.getConnection();
 
-		query = "UPDATE product SET save_status =\'N\' WHERE product_id = ? ";
+		String query = "UPDATE product SET save_status =\'N\' WHERE product_id = ? ";
 
 		try {
 
@@ -184,6 +181,53 @@ public class ProductDao {
 			System.out.println("[DB] 자원 반납 중 오류 발생\n");
 			e.printStackTrace();
 		}
+	}
+	
+	public ArrayList<Product> searchProduct(String combo, String searchWord) {
+		ArrayList<Product> products = new ArrayList<Product>();
+		conn = DatabaseConnect.getConnection();
+		
+		String code = null;
+		if(combo.equals("상품코드")) {
+			code = "product_id";
+		}else if(combo.equals("상품명")) {
+			code = "product_name";
+		}
+		
+		String query = "SELECT product_id, product_name, price, worker_no, save_time FROM product WHERE save_status = 'Y' and " + code + " LIKE '%" + searchWord + "%' ";
+		
+		try {
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+			rsmd = rs.getMetaData();
+
+			int columCnt = rsmd.getColumnCount();
+
+			while (rs.next()) {
+				product = new Product();
+
+				product.setProduct_id(rs.getString(1));
+				product.setProduct_name(rs.getString(2));
+				product.setPrice(rs.getInt(3));
+				product.setWorker_no(rs.getString(4));
+				product.setSave_time(rs.getString(5));
+				
+				products.add(product);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		// DB사용 종료
+		try {
+			DatabaseConnect.dbClose(rs, ps, conn);
+		} catch (SQLException e) {
+			System.out.println("[DB] 자원 반납 중 오류 발생\n");
+			e.printStackTrace();
+		}
+		
+		return products;
 	}
 	
 	//날짜 변경 메서드
