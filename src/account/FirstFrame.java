@@ -59,11 +59,11 @@ public class FirstFrame extends JFrame {
      	
     	infos[0] = new HintTextField("아이디 입력");
     	infos[0].setBorder(javax.swing.BorderFactory.createEmptyBorder());
-		this.add(infos[0]).setBounds(40, 175 ,100,30);
+		this.add(infos[0]).setBounds(40, 175 ,200,30);
 		
     	infos[1] = new HintPasswordField("패스워드 입력");   
 		infos[1].setBorder(javax.swing.BorderFactory.createEmptyBorder());
-		this.add(infos[1]).setBounds(40, 275, 100, 30);
+		this.add(infos[1]).setBounds(40, 275, 200, 30);
 		
         
 		login.addActionListener(new Login_Action(this));
