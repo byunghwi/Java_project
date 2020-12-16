@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -28,7 +29,12 @@ private static final long serialVersionUID = 1L;
 	
 		setLayout(null);
 		
-		CommutesScrollPane.setBounds(12, 10, 500, 532);
+		JLabel lbShowDate = new JLabel("출퇴근목록");
+		lbShowDate.setBounds(12, 0, 101, 37);
+		add(lbShowDate);
+		lbShowDate.setFont(new Font("맑은 고딕", Font.BOLD, 15));
+		
+		CommutesScrollPane.setBounds(12, 40, 500, 532);
 		add(CommutesScrollPane);
 		
 		commuteTable.setRowMargin(10);

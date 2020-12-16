@@ -100,6 +100,7 @@ public class List_Input extends JFrame {
             String name=mem_name.getText();
             clv.tblModel.setNumRows(0);
 			clv.addCommuteLine(new Commute_ListDao(start_date,end_date,name).commutelist());
+			JOptionPane.showMessageDialog(null, "[SYSTEM] 조회되었습니다.", "확인", JOptionPane.CLOSED_OPTION);
             
 			
 		}  
@@ -116,6 +117,10 @@ public class List_Input extends JFrame {
 		this.setSize(450,450);
 		this.setVisible(true);
 		
+		
+	}
+	public static void main(String[] args) {
+		new List_Input();
 		
 	}
    	

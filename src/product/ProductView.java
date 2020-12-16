@@ -29,6 +29,7 @@ public class ProductView extends JPanel {
 	
 	public ProductView(){
 		setLayout(null);
+		
 	
 		productsScrollPane.setBounds(12, 10, 1133, 532);
 		add(productsScrollPane);
@@ -43,6 +44,7 @@ public class ProductView extends JPanel {
 		addProductLine(pdao.productAll()); 
 		
 		productsScrollPane.setViewportView(productTable);
+		
 	}
 
 	//Jtable에 로우 하나씩 추가하기.
@@ -53,10 +55,9 @@ public class ProductView extends JPanel {
 			rows = new Vector<String>();
 			rows.addElement(products.get(i).getProduct_id());
 			rows.addElement(products.get(i).getProduct_name());
-			rows.addElement(products.get(i).getManu_date().toString());
-			rows.addElement(products.get(i).getDis_date().toString());
-			rows.addElement(Integer.toString(products.get(i).getQuantity()));
 			rows.addElement(Integer.toString(products.get(i).getPrice()));
+			rows.addElement(products.get(i).getWorker_no());
+			rows.addElement(products.get(i).getSave_time());
 
 			//로우마다 테이블에 뿌려주기.
 			tblModel.addRow(rows);
@@ -69,10 +70,9 @@ public class ProductView extends JPanel {
 		colNames = new Vector<String>();
 		colNames.add("상품코드");
 		colNames.add("상품명");
-		colNames.add("제조일");
-		colNames.add("폐기일");
-		colNames.add("수량");
 		colNames.add("가격");
+		colNames.add("등록자");
+		colNames.add("등록일");
 
 		return colNames;
 	}

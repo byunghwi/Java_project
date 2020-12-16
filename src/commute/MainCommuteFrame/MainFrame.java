@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -17,6 +18,7 @@ import commute.TimeDao;
 import commute.TimeView;
 import commute.Action.Add_Commute_Off_Time;
 import commute.Action.Add_Commute_On_Time;
+import commute.Action.Check_on_Time;
 import commute.List.Commute_ListDao;
 import commute.List.Commute_ListView;
 import commute.List.List_Input;
@@ -113,18 +115,20 @@ public class MainFrame extends JFrame implements ActionListener {
 		JButton clicked_btn =(JButton)e.getSource();
 
 		if (clicked_btn == rightBtnPanel.on_timeBtn) {
-			new Add_Commute_On_Time();
+			new Check_on_Time();
 			tv.tblModel.setNumRows(0);
 			tv.addCommuteLine(tdao.commute_Time());
+			JOptionPane.showMessageDialog(null, "[SYSTEM] 출근처리되었습니다.", "확인", JOptionPane.CLOSED_OPTION);
 			
 		} else if (clicked_btn ==  rightBtnPanel.off_timeBtn) {
 			new Add_Commute_Off_Time();
 			tv.tblModel.setNumRows(0);
 			tv.addCommuteLine(tdao.commute_Time());
+			JOptionPane.showMessageDialog(null, "[SYSTEM] 퇴근처리되었습니다.", "확인", JOptionPane.CLOSED_OPTION);
 			
 		} else {
-			List_Input ll  = new List_Input();
-			ll.clv = this.lv;
+			List_Input Ll  = new List_Input();
+			Ll.clv = this.lv;
 		
 		} 
 	}
