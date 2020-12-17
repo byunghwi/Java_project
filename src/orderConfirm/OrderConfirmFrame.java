@@ -1,7 +1,6 @@
 package orderConfirm;
 
 import java.awt.BorderLayout;
-
 import java.awt.CardLayout;
 
 import javax.swing.JButton;
@@ -11,7 +10,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import order.OrderFrame;
+
 public class OrderConfirmFrame extends JFrame {
+	// 주문창 팝업 프레임
+	OrderFrame orderframe = new OrderFrame();
+	OrderConfirmDao orderConfirmDao = new OrderConfirmDao();
+	public OrderConfirmView orderConfirmView = new OrderConfirmView(); // 가운데 들어갈예정
+	
 	private static final long serialVersionUID = 1L;
 	
 	// 주문, 승인, 삭제, 취소, 검색, 새로고침 버튼
@@ -24,7 +30,6 @@ public class OrderConfirmFrame extends JFrame {
 	public JLabel[] labels;
 	public JTextField[] fields;
 	
-	public OrderConfirmView ocv = new OrderConfirmView(); // 가운데 들어갈예정
 	public CardLayout cardlayout;
 	
 	String[] comboName = {"상품id", "상품명"};
@@ -35,7 +40,7 @@ public class OrderConfirmFrame extends JFrame {
 		cardlayout = new CardLayout();
 		
 		tabel_panel = new JPanel();
-		tabel_panel.add(ocv, BorderLayout.CENTER);
+		tabel_panel.add(orderConfirmView, BorderLayout.CENTER);
 		tabel_panel.setLayout(cardlayout);
 		add(tabel_panel);
 		
@@ -79,6 +84,11 @@ public class OrderConfirmFrame extends JFrame {
 		setResizable(true);
 		setBounds(100, 100, 1200, 400);
 		
+		order_btn.addActionListener(new OrderConfirmAction());
+		confirm_btn.addActionListener(new OrderConfirmAction());
+		delete_btn.addActionListener(new OrderConfirmAction());
+		cancel_btn.addActionListener(new OrderConfirmAction());
+		search_btn.addActionListener(new OrderConfirmAction());
 	}
 	
 	//필드값 초기화 해주기.

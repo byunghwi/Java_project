@@ -67,6 +67,10 @@ public class OrderFrame extends JFrame {
 		setTitle("물품목록");
 		setResizable(true);
 		setBounds(100, 100, 1200, 400);
+		
+		order_btn.addActionListener(new OrderAction());
+		cancel_btn.addActionListener(new OrderAction());
+		search_btn.addActionListener(new OrderAction());
 	}
 	
 	//필드값 초기화 해주기.
