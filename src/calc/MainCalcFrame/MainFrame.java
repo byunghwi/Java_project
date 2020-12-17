@@ -13,6 +13,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+
+import calc.Chart.CalcChart;
 import calc.CalcView;
 import calc.add.Calc_Add_Date;
 import commute.Action.Add_Commute_Off_Time;
@@ -34,7 +38,7 @@ public class MainFrame extends JFrame implements ActionListener{
 	public JPanel Calc_Btn;
 	public CalcView clv = null;
 	public JPanel calcBtnView;
-	
+	public ChartPanel chart_p = new ChartPanel(null);
 	
 	Calc_Reference_Btn cb=null;
 	
@@ -45,6 +49,8 @@ public class MainFrame extends JFrame implements ActionListener{
 		cb=new Calc_Reference_Btn();
 		clv=new CalcView(null,null);
 		cb.clv=this.clv;
+		cb.chart_p = this.chart_p ;
+		cb.m1 = this;
 		
 		
 		
@@ -90,6 +96,7 @@ public class MainFrame extends JFrame implements ActionListener{
 		
 		calcBtnPanel.calc_Btn.addActionListener(this);
 		
+		add(chart_p).setBounds(0, 350, 900, 350);
 		
 	}
 	@Override

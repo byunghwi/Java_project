@@ -40,8 +40,8 @@ public class Commute_ListView extends JPanel {
 		clist = new Commute_ListDao(start_date, end_date, mem_name);
 		setLayout(null);
 		
-		JLabel lbShowDate = new JLabel("근태목록");
-		lbShowDate.setBounds(12, 0, 101, 37);
+		JLabel lbShowDate = new JLabel("개인별근태목록");
+		lbShowDate.setBounds(12, 0, 130, 37);
 		add(lbShowDate);
 		lbShowDate.setFont(new Font("맑은 고딕", Font.BOLD, 15));
 		
