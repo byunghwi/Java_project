@@ -23,10 +23,7 @@ public class SaleDao {
  
 	ResultSetMetaData rsmd = null;
 
-
-
 	Product product = null;
-	Stock stock = null;
 	
 	//판매 메서드
 	public ArrayList<Stock> saleComp() {
@@ -40,7 +37,7 @@ public class SaleDao {
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				stock  = new Stock();
+				Stock stock  = new Stock();
 
 				stock.setProduct_id(rs.getString(1));
 				stock.setProduct_name(rs.getString(2));
