@@ -130,9 +130,9 @@ public class SalePanel extends JPanel {
 			//rows.addElement(Integer.toString(stocks.get(i).getStock_no()));
 			rows.addElement(stocks.get(i).getProduct_id());
 			rows.addElement(stocks.get(i).getProduct_name());
-			rows.addElement(Integer.toString(stocks.get(i).getPrice()));
 			rows.addElement(Integer.toString(stocks.get(i).getQuantity()));
-
+			rows.addElement(Integer.toString(stocks.get(i).getPrice()));
+			
 			// 로우마다 테이블에 뿌려주기.
 			stockTblModel.addRow(rows);
 		}
@@ -147,16 +147,18 @@ public class SalePanel extends JPanel {
 			//stockcolNames.add("재고번호");
 			stockcolNames.add("상품코드");
 			stockcolNames.add("상품명");
-			stockcolNames.add("가격");
 			stockcolNames.add("수량");
+			stockcolNames.add("가격");
+			
 			
 			colNames =  stockcolNames;
 		}else if(check.equals("bucket")){
 			bucketcolNames = new Vector<String>();
 			bucketcolNames.add("상품코드");
 			bucketcolNames.add("상품명");
-			bucketcolNames.add("가격");
 			bucketcolNames.add("수량");
+			bucketcolNames.add("가격");
+			
 			
 			colNames =  bucketcolNames;
 		}
