@@ -5,19 +5,19 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+import main.MainFrame;
 import stocksub.stockView.StockInfoView;
 import stocksub.stockView.StockView;
-import stocksub.stockframe.StockFrame;
 import stocksub.stockframe.StockInfoFrame;
 
 // 상세정보에 대응하는 액션 리스너
 public class MoreInfoAction implements ActionListener {
 	
-	StockFrame sf;
+	MainFrame sf;
 	StockInfoView siv = null;
 	StockView stoview = null;
 	
-	public MoreInfoAction(StockFrame sf) {
+	public MoreInfoAction(MainFrame sf) {
 		this.sf = sf;
 	}
 	
@@ -25,14 +25,14 @@ public class MoreInfoAction implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		if (sf.stockView.stockTable.getSelectedRow() != -1) {
-			stoview = sf.stockView;
+		if (sf.stockPanel.stockTable.getSelectedRow() != -1) {
+			stoview = sf.stockPanel;
 
 			
-			int row = sf.stockView.stockTable.getSelectedRow();
+			int row = sf.stockPanel.stockTable.getSelectedRow();
 			
 			// 행에 대한 정보를 받아 상세정보 프레임을 생성한다
-			siv = new StockInfoView((String) sf.stockView.tblModel.getValueAt(row, 0));
+			siv = new StockInfoView((String) sf.stockPanel.tblModel.getValueAt(row, 0));
 			
 			StockInfoFrame stif = new StockInfoFrame(siv);
 			stif.stoview = this.stoview;

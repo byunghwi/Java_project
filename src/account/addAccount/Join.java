@@ -1,8 +1,10 @@
 package account.addAccount;
 
 import java.awt.Color;
+import java.awt.Font;
 
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -20,14 +22,16 @@ public class Join extends JFrame {
 	public JTextField[] res_infos = new JTextField[2];
 	public JTextField[] phone_infos = new JTextField[3];
 	JLabel minus[] = {new JLabel("-"),new JLabel("-"),new JLabel("-")};
+	ImageIcon join_Action_Button = new ImageIcon("C:/Users/Young/git/Java_project/src/회원가입버튼.jpg");
 
 	String [] info_names = {"아이디","비밀번호","이름","주민등록번호","전화번호","주소","성별","메일주소"};
 	JLabel[] names = new JLabel[8];
-	JButton join = new JButton("회원 가입");
+	JButton join = new JButton(join_Action_Button);
 	
-	
+	Font f1 = new Font("맑은 고딕", Font.BOLD, 13);
+
 	public Join() {
-		
+	
 		 rb1 = new JRadioButton("M");
 	     rb2 = new JRadioButton("F");
 	     gb = new ButtonGroup();
@@ -39,51 +43,63 @@ public class Join extends JFrame {
 			names[i] = new JLabel(info_names[i]);
 			
 			if(i != 3 && i != 4 && i != 6) {
-				infos[i].setBounds(120, 20 + i*45,130,20);
+				infos[i].setBounds(150, 35 + i*55,130,20);
 				add(infos[i]);
 			}
 			
-			names[i].setBounds(30, 20 + i*45,100,20);
+			names[i].setFont(f1);
+			names[i].setForeground(Color.gray);
+			names[i].setBounds(30, 35 + i*55,100,20);
 			add(names[i]);
 		}
 		
 		for (int i = 0; i < 2; i++) {
 			res_infos[i] = new JTextField(10);
-			res_infos[i].setBounds(120 + i*70, 155,60,20);
+			res_infos[i].setBounds(150 + i*70, 200,60,20);
 			add(res_infos[i]);
 		}
-		minus[0].setBounds(182, 162, 5, 5);
+		minus[0].setBounds(212, 205, 5, 5);
 		add(minus[0]);
 		
 		for (int i = 0; i < 3; i++) {
 			phone_infos[i] = new JTextField(10);
-			phone_infos[i].setBounds(120 + i*46, 200,40,20);
+			phone_infos[i].setBounds(150 + i*46, 255,40,20);
 			add(phone_infos[i]);
 		}
 		
-		minus[1].setBounds(160, 207, 5, 5);
+		minus[1].setBounds(190, 260, 5, 5);
 		add(minus[1]);
 		
-		minus[2].setBounds(206, 207, 5, 5);
+		minus[2].setBounds(236, 260, 5, 5);
 		add(minus[2]);
 	
-		rb1.setBounds(115, 290,50,20);
-	    rb2.setBounds(180, 290,50,20);
+		rb1.setBounds(150, 365,50,20);
+	    rb2.setBounds(215, 365,50,20);
+	    rb1.setBackground(Color.WHITE);
+	    rb2.setBackground(Color.WHITE);
 	    add(rb1);
 	    add(rb2);
 		
-		join.setBounds(100, 370, 110, 20);
+		join.setBounds(130, 466, 90, 30);
+		join.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		add(join);
 		
 		join.addActionListener(new Join_Action(this));
 		
+		this.getContentPane().setBackground(Color.WHITE);
+		
+		
 		setTitle("회원 가입");
 		setLayout(null);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setLocation(800,100);
-		setSize(310, 450);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		setLocation(1050,300);
+		setSize(350, 550);
 		setVisible(true);
 	
+	}
+	
+	public static void main(String[] args) {
+		new Join();
 	}
 	
 }

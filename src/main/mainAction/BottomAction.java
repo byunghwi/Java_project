@@ -9,8 +9,10 @@ import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 
+
 import main.MainFrame;
 import sale.SalePanel;
+
 
 public class BottomAction implements ActionListener {
 
@@ -56,6 +58,8 @@ public class BottomAction implements ActionListener {
 			System.out.println("재고버튼트느틑");
 			mainFrame.bottomPanel.selectedBtn(mainFrame.bottomPanel.stockBtn);
 			mainFrame.cardlayout.show(mainFrame.centerView, "stockPanel");
+			mainFrame.btnlayout.show(mainFrame.pBtnView, "stockBtnPanel");
+			
 		}else if (ob == mainFrame.bottomPanel.disBtn) {
 			//메인 버튼 클릭시 색 변경해주기
 			mainFrame.bottomPanel.selectedBtn(mainFrame.bottomPanel.disBtn);
