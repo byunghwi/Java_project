@@ -4,10 +4,8 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
 
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
 import javax.swing.border.EmptyBorder;
 
 import event.Event;
@@ -15,6 +13,10 @@ import event.EventBtnPanel;
 import event.EventDao;
 import event.EventPanel;
 import event.EventRegistFrame;
+import event.FindProductFrame;
+import event.eventAction.EventBtnPanelAction;
+import event.eventAction.EventRegistFrameAction;
+import main.mainAction.BottomAction;
 import product.ProdBtnPanel;
 import product.ProdEditFrame;
 import product.ProdRegistFrame;
@@ -24,18 +26,16 @@ import product.ProductView;
 import product.productAction.ProdBtnPanelAction;
 import product.productAction.ProdEditFrameAction;
 import product.productAction.ProductAction;
-
-import event.FindProductFrame;
-import event.eventAction.EventBtnPanelAction;
-import event.eventAction.EventRegistFrameAction;
-import main.mainAction.BottomAction;
 import sale.SaleAction;
 import sale.SaleBtnPanel;
 import sale.SaleDao;
 import sale.SalePanel;
-import stock.Stock;
 import stock.StockDao;
-import stock.StockPanel;
+import stocksub.stockAction.DisposalInfoAction;
+import stocksub.stockAction.Disposal_Action;
+import stocksub.stockAction.MoreInfoAction;
+import stocksub.stockView.StockView;
+import stocksub.stockframe.StockRightBtnPanel;
 
 public class MainFrame extends JFrame{
 
@@ -50,7 +50,7 @@ public class MainFrame extends JFrame{
 	public ProductView productView = new ProductView();
 	
 	// 가운데 재고 보여줄 패널
-	public StockPanel stockPanel = new StockPanel();
+	public StockView stockPanel = new StockView();
 	
 	// 가운데 판매 보여줄 패널
 	public SalePanel salePanel = new SalePanel();
@@ -63,6 +63,9 @@ public class MainFrame extends JFrame{
 	
 	// 오른쪽 판매버튼 보여줄 패널
 	public SaleBtnPanel saleBtnPanel = new SaleBtnPanel();
+	
+	// 오른쪽 재고 버튼 보여줄 패널
+	public StockRightBtnPanel stockBtnPanel = new StockRightBtnPanel();
 	
 	// 오른쪽 이벤트버튼 보여줄 패널
 	public EventBtnPanel eventBtnPanel = new EventBtnPanel();
@@ -103,9 +106,12 @@ public class MainFrame extends JFrame{
 	public StockDao stockdao = new StockDao();
 	public EventDao eventdao = new EventDao();
 	
+	// 로그인 할 회원 정보를 가져올 변수
+	public String mem_id;
+
+	
 	
 	public MainFrame() {
-		
 		
 		cardlayout = new CardLayout();
 		btnlayout = new CardLayout();
@@ -147,8 +153,10 @@ public class MainFrame extends JFrame{
 		pBtnView.setBackground(Color.WHITE);
 		pBtnView.setBounds(1158, 50, 142, 675);
 		pBtnView.add(prodBtnPanel, "prodBtnPanel"); 	// 상품관련 오른쪽 버튼들
+		pBtnView.add(stockBtnPanel, "stockBtnPanel");	// 재고관련 오른쪽 버튼들
 		pBtnView.add(saleBtnPanel, "saleBtnPanel");		// 판매관련 오른쪽 버튼들
 		pBtnView.add(eventBtnPanel, "eventBtnPanel");	// 이벤트 관련 오른쪽 버튼들
+		
 		contentPanel.add(pBtnView);
 				
 		// 하단 패널부분
@@ -165,6 +173,8 @@ public class MainFrame extends JFrame{
 		prodBtnPanel.delProdBtn.addActionListener(new ProdBtnPanelAction(this)); 			//우측패널 상품 삭제 버튼
 		eventBtnPanel.eventRegBtn.addActionListener(new EventBtnPanelAction(this));		//우측패널 이벤트 등록 버튼 
 		eventBtnPanel.eventDelBtn.addActionListener(new EventBtnPanelAction(this));		//우측패널 이벤트 등록 버튼 
+		stockBtnPanel.productMoreInfoBtn.addActionListener(new MoreInfoAction(this));	//우측패널 재고 상세정보 확인 버튼
+		stockBtnPanel.disposalInfoBtn.addActionListener(new DisposalInfoAction(this));
 
 		prodRegistFrame.regBtn.addActionListener(new ProductAction(this)); 					//팝업 상품등록 프레임 등록 버튼
 		prodRegistFrame.cancelBtn.addActionListener(new ProductAction(this)); 				//팝업 상품등록 프레임 취소 버튼
@@ -192,7 +202,7 @@ public class MainFrame extends JFrame{
 		salePanel.delBucketBtn.addActionListener(new SaleAction(this));						//판매패널 장바구니 삭제 버튼
 		salePanel.completeBtn.addActionListener(new SaleAction(this));						//판매패널 결제 버튼
 		
-
+	
 		// 버튼들 액션 달기 End
 	}
 

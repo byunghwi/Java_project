@@ -1,4 +1,4 @@
-package account;
+package main;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -18,7 +18,7 @@ import product.HintPasswordField;
 import product.HintTextField;
 
 
-public class FirstFrame extends JFrame {
+public class Login extends JFrame {
 	
 	public JTextField[] infos = new JTextField[2]; 
 	String [] info_data = new String[2];
@@ -34,7 +34,7 @@ public class FirstFrame extends JFrame {
 	Image backgroundimg = new ImageIcon("C:/Users/Young/git/Java_project/src/로그인틀.jpg").getImage();
 	
 	
-    public FirstFrame() {
+    public Login() {
         //배경 Panel 생성후 컨텐츠페인으로 지정      
     	JPanel background = new JPanel() {
             public void paintComponent(Graphics g) {
@@ -66,7 +66,7 @@ public class FirstFrame extends JFrame {
 		this.add(infos[1]).setBounds(40, 275, 200, 30);
 		
         
-		//login.addActionListener(new Login_Action(this));
+		login.addActionListener(new Login_Action(this));
 		join.addActionListener(new PopJoin_Action());
     	
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -86,6 +86,6 @@ public class FirstFrame extends JFrame {
 
 	
 	public static void main(String[] args) {
-		new FirstFrame();
+		new Login();
 	}
 }

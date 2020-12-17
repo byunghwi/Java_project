@@ -17,7 +17,7 @@ import product.HintTextField;
 import product.ProdRegistFrame;
 
 // 메인 프레임의 우측 버튼목록에 대한 패널
-public class RightBtnPanel extends JPanel{
+public class StockRightBtnPanel extends JPanel{
 	/**
 	 * 
 	 */
@@ -25,7 +25,7 @@ public class RightBtnPanel extends JPanel{
 	public JButton productMoreInfoBtn;
 	public JButton disposalInfoBtn;
 
-	public RightBtnPanel() {
+	public StockRightBtnPanel() {
 		setBackground(Color.WHITE);
 		setLayout(null);
 		productMoreInfoBtn = new JButton("상품정보");
@@ -34,7 +34,7 @@ public class RightBtnPanel extends JPanel{
 		productMoreInfoBtn.setForeground(Color.WHITE);
 		productMoreInfoBtn.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		productMoreInfoBtn.setBackground(new Color(204, 206, 206));
-		productMoreInfoBtn.setBounds(0, 0, 164, 120);
+		productMoreInfoBtn.setBounds(0, 0, 140, 120);
 		
 		add(productMoreInfoBtn);
 		
@@ -42,7 +42,7 @@ public class RightBtnPanel extends JPanel{
 		disposalInfoBtn.setForeground(Color.WHITE);
 		disposalInfoBtn.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		disposalInfoBtn.setBackground(new Color(204, 206, 206));
-		disposalInfoBtn.setBounds(0, 120, 164, 120);
+		disposalInfoBtn.setBounds(0, 120, 140, 120);
 		
 		add(disposalInfoBtn);
 		
