@@ -79,29 +79,22 @@ public class Calc_Reference_Btn extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				Object ob = e.getSource();
-				Object obb = e.getActionCommand();
 				
-				if(ob ==check) {
+				
+				if(st_date.getDate()==null||en_date.getDate()==null) {
+					JOptionPane.showMessageDialog(null, "[SYSTEM] 날짜를 지정해주세요.", "확인", JOptionPane.CLOSED_OPTION);
+				}else {
 					
-				String start_date = dcn.format(st_date.getDate()); 
-				String end_date = dcn.format(en_date.getDate()); 
-				clv.cblModel.setNumRows(0);
-				cl = new CalcDao(start_date,end_date).calclist();
-				clv.addCalcLine(cl);
-				calcg.cl = cl;
-				m1.chart_p.setChart(calcg.getChart());
-				JOptionPane.showMessageDialog(null, "[SYSTEM] 조회되었습니다.", "확인", JOptionPane.CLOSED_OPTION);
-		
-				} else if(ob==check) {
 					String start_date = dcn.format(st_date.getDate()); 
 					String end_date = dcn.format(en_date.getDate()); 
-					
-					if(start_date==null) {
-						JOptionPane.showMessageDialog(null, "날짜를 지정해주세요", "확인", JOptionPane.CLOSED_OPTION);
-					}
+					clv.cblModel.setNumRows(0);
+					cl = new CalcDao(start_date,end_date).calclist();
+					clv.addCalcLine(cl);
+					calcg.cl = cl;
+					m1.chart_p.setChart(calcg.getChart());
+					JOptionPane.showMessageDialog(null, "[SYSTEM] 조회되었습니다.", "확인", JOptionPane.CLOSED_OPTION);
+			
 				}
-				
 			}
 		});
 		

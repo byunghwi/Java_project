@@ -2,6 +2,7 @@ package calc.Chart;
 
 import java.awt.BasicStroke; 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.util.ArrayList;
 
@@ -36,8 +37,6 @@ public class CalcChart{
     public CalcChart() {
     	chart = this.getChart();
 		chart_p = new ChartPanel(chart);
-			
-		
 	}
     
     
@@ -46,10 +45,11 @@ public class CalcChart{
 
         // 데이터 생성
         DefaultCategoryDataset CalcChart = new DefaultCategoryDataset();                // line chart 1
+        
 
         // CalcChart에 데이터 저장   
         for (int i = 0; i < cl.size(); i++) {
-        	CalcChart.addValue(cl.get(i).gettotal_sale_price(), "정산", cl.get(i).getsale_date());
+        	CalcChart.addValue(cl.get(i).gettotal_sale_price(), "매출합계", cl.get(i).getsale_date());
 	      }
  
         // 렌더링 생성 및 세팅
@@ -73,9 +73,11 @@ public class CalcChart{
 
                      );
 
-        Font f = new Font("Gulim", Font.BOLD, 14);
+        Font f = new Font("맑은고딕", Font.PLAIN, 17);//값 표시 텍스트 
 
-        Font axisF = new Font("Gulim", Font.PLAIN, 14);
+        Font axisF = new Font("맑은고딕", Font.PLAIN, 20);//X,Y축 폰트
+        
+        
 
        
 
@@ -90,6 +92,7 @@ public class CalcChart{
         renderer2.setUseFillPaint(true);
         renderer2.setBaseFillPaint(Color.WHITE);
         renderer2.setBaseItemLabelFont(f);
+        renderer2.setBaseItemLabelPaint(Color.WHITE);
         renderer2.setBasePositiveItemLabelPosition(p_below);
         renderer2.setSeriesPaint(0,new Color(219,121,22));
         renderer2.setSeriesStroke(0,new BasicStroke(
@@ -113,8 +116,8 @@ public class CalcChart{
 
         // plot 에 데이터 적재
 
-        plot.setDataset(2, CalcChart);
-        plot.setRenderer(2, renderer2);
+        plot.setDataset(CalcChart);
+        plot.setRenderer(renderer2);
 
  
 
@@ -123,7 +126,9 @@ public class CalcChart{
         plot.setOrientation(PlotOrientation.VERTICAL);             // 그래프 표시 방향
         plot.setRangeGridlinesVisible(true);                       // X축 가이드 라인 표시여부
         plot.setDomainGridlinesVisible(true);                      // Y축 가이드 라인 표시여부
-
+        plot.setBackgroundPaint(Color.DARK_GRAY);								   // 그래프 배경색상 
+        
+        
  
 
         // 렌더링 순서 정의 : CalcChart 등록 순서대로 렌더링 ( 즉, 먼저 등록한게 아래로 깔림 )
@@ -134,18 +139,26 @@ public class CalcChart{
 
         plot.setDomainAxis(new CategoryAxis());              // X축 종류 설정
         plot.getDomainAxis().setTickLabelFont(axisF); // X축 눈금라벨 폰트 조정
-        plot.getDomainAxis().setCategoryLabelPositions(CategoryLabelPositions.STANDARD);       // 카테고리 라벨 위치 조정
+        plot.getDomainAxis().setTickLabelPaint(Color.WHITE);; // X축 눈금라벨 폰트 색상 조정
+        plot.getDomainAxis().setCategoryLabelPositions(CategoryLabelPositions.STANDARD);// 카테고리 라벨 위치 조정
+        
 
- 
+
 
         // Y축 세팅
 
         plot.setRangeAxis(new NumberAxis());                 // Y축 종류 설정
         plot.getRangeAxis().setTickLabelFont(axisF);  // Y축 눈금라벨 폰트 조정
+        plot.getRangeAxis().setTickLabelPaint(Color.WHITE); // Y축 눈금라벨 폰트 색상 조정
 
         // 세팅된 plot을 바탕으로 chart 생성
 
         final JFreeChart chart = new JFreeChart(plot);
+        
+        
+        chart.setBackgroundPaint(Color.DARK_GRAY);
+        
+       
         
         return chart;
 
