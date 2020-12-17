@@ -20,7 +20,7 @@ import javax.swing.border.EmptyBorder;
 
 import com.toedter.calendar.JDateChooser;
 
-import commute.MainCommuteFrame.MainFrame;
+import commute.MainCommuteFrame.CommuteMainFrame;
 import product.HintTextField;
 
 public class List_Input extends JFrame {

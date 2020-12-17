@@ -1,6 +1,6 @@
 package calc;
 
-import java.awt.Font;
+import java.awt.Font; 
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -11,8 +11,7 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
-import commute.Commute;
-import commute.List.Commute_ListDao;
+
 
 public class CalcView extends JPanel{
 
