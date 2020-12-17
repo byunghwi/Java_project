@@ -1,4 +1,4 @@
-package main.mainAction;
+package product.productAction;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,10 +7,10 @@ import javax.swing.JOptionPane;
 
 import main.MainFrame;
 
-public class rightBtnPanelAction implements ActionListener {
+public class ProdBtnPanelAction implements ActionListener {
 	public MainFrame mainFrame;
 
-	public rightBtnPanelAction(MainFrame mainFrame) {
+	public ProdBtnPanelAction(MainFrame mainFrame) {
 		this.mainFrame = mainFrame;
 	}
 
@@ -19,10 +19,10 @@ public class rightBtnPanelAction implements ActionListener {
 		Object ob = e.getSource();
 		Object obb = e.getActionCommand();
 		
-		if (ob == mainFrame.rightBtnPanel.registProdBtn) {
+		if (ob == mainFrame.prodBtnPanel.registProdBtn) {
 			mainFrame.prodRegistFrame.resetText();
 			mainFrame.prodRegistFrame.setVisible(true);
-		} else if (ob == mainFrame.rightBtnPanel.editProdBtn) {
+		} else if (ob == mainFrame.prodBtnPanel.editProdBtn) {
 			if (mainFrame.productView.productTable.getSelectedRow() != -1) {
 				mainFrame.prodEditFrame.setVisible(true);
 
@@ -38,7 +38,7 @@ public class rightBtnPanelAction implements ActionListener {
 				JOptionPane.showMessageDialog(null, "[SYSTEM] 수정하시려는 상품을 선택해주세요.", "확인", JOptionPane.CLOSED_OPTION);
 			}
 
-		} else if (ob == mainFrame.rightBtnPanel.delProdBtn) { // 우측패널 상품 삭제 버튼 클릭시
+		} else if (ob == mainFrame.prodBtnPanel.delProdBtn) { // 우측패널 상품 삭제 버튼 클릭시
 			if (mainFrame.productView.productTable.getSelectedRow() != -1) {
 				int row = mainFrame.productView.productTable.getSelectedRow();
 				String product_id = (String) mainFrame.productView.tblModel.getValueAt(row, 0);
@@ -57,9 +57,6 @@ public class rightBtnPanelAction implements ActionListener {
 			} else {
 				JOptionPane.showMessageDialog(null, "\t[SYSTEM] 삭제하시려는 상품을 선택해주세요.", "확인", JOptionPane.CLOSED_OPTION);
 			}
-		} else if (ob == mainFrame.rightBtnPanel.registEventBtn) { // 이벤트 등록 버튼 클릭시
-			mainFrame.eventRegistFrame.resetText();
-			mainFrame.eventRegistFrame.setVisible(true);
 		}
 	}
 }
