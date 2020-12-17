@@ -26,7 +26,11 @@ public class ProductView extends JPanel {
 	public JScrollPane productsScrollPane = new JScrollPane();
 	public Vector<String> colNames = getColum();
 	public DefaultTableModel tblModel = new DefaultTableModel(colNames, 0);
-	public JTable productTable = new JTable(tblModel);
+	public JTable productTable = new JTable(tblModel){
+		public boolean isCellEditable(int row, int column) {
+			return false;
+		};
+	};
 	public String comboArr[] = new String[] {"검색항목을 선택하세요","상품코드", "상품명"};
 	public JComboBox<String> jcombo = new JComboBox<String>(comboArr);
 	public JTextField searchTf;

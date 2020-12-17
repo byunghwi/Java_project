@@ -38,6 +38,13 @@ public class BottomAction implements ActionListener {
 			mainFrame.salePanel.prodnameTf.setText("");
 			mainFrame.salePanel.prodQt.setText("");
 			
+			//재고화면 장바구니화면 초기화
+			mainFrame.salePanel.bucketTblModel.setNumRows(0);
+			mainFrame.salePanel.stockTblModel.setNumRows(0);
+			
+			//재고화면 로우 새로 받아오기.
+			mainFrame.salePanel.addStockLine(mainFrame.stockdao.stockAll());
+			
 			// 메인 버튼 클릭시 색 변경해주기
 			mainFrame.bottomPanel.selectedBtn(mainFrame.bottomPanel.saleBtn);
 			mainFrame.cardlayout.show(mainFrame.centerView, "salePanel"); // 가운데 화면 변경

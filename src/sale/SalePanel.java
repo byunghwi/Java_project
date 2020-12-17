@@ -35,8 +35,16 @@ public class SalePanel extends JPanel {
 	public DefaultTableModel stockTblModel = new DefaultTableModel(stockcolNames, 0);
 	public DefaultTableModel bucketTblModel = new DefaultTableModel(bucketcolNames, 0);
 	
-	public JTable stockTable = new JTable(stockTblModel);
-	public JTable bucketTable = new JTable(bucketTblModel);
+	public JTable stockTable = new JTable(stockTblModel){
+		public boolean isCellEditable(int row, int column) {
+			return false;
+		};
+	};
+	public JTable bucketTable = new JTable(bucketTblModel){
+		public boolean isCellEditable(int row, int column) {
+			return false;
+		};
+	};
 	
 	public JTextField prodnameTf; 	//상품이름 텍스트필드
 	public JTextField prodQt;		//상품수량 텍스트필드

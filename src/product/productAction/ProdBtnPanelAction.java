@@ -18,7 +18,7 @@ public class ProdBtnPanelAction implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object ob = e.getSource();
 		Object obb = e.getActionCommand();
-		
+
 		if (ob == mainFrame.prodBtnPanel.registProdBtn) {
 			mainFrame.prodRegistFrame.resetText();
 			mainFrame.prodRegistFrame.setVisible(true);
@@ -40,19 +40,25 @@ public class ProdBtnPanelAction implements ActionListener {
 
 		} else if (ob == mainFrame.prodBtnPanel.delProdBtn) { // 우측패널 상품 삭제 버튼 클릭시
 			if (mainFrame.productView.productTable.getSelectedRow() != -1) {
-				int row = mainFrame.productView.productTable.getSelectedRow();
-				String product_id = (String) mainFrame.productView.tblModel.getValueAt(row, 0);
 
-				// DB 삭제
-				mainFrame.pdao.productDel(product_id);
+				int rs = JOptionPane.showConfirmDialog(null, "\t[SYSTEM] 정말 삭제하시겠습니까?", null, JOptionPane.OK_CANCEL_OPTION,
+						JOptionPane.PLAIN_MESSAGE, null);
 
-				// 상품목록 화면테이블 초기화 해주기.
-				mainFrame.productView.tblModel.setNumRows(0);
+				if (rs == 0) {
+					int row = mainFrame.productView.productTable.getSelectedRow();
+					String product_id = (String) mainFrame.productView.tblModel.getValueAt(row, 0);
 
-				// 상품목록 화면테이블 새로 채우기
-				mainFrame.productView.addProductLine(mainFrame.pdao.productAll());
+					// DB 삭제
+					mainFrame.pdao.productDel(product_id);
 
-				JOptionPane.showMessageDialog(null, "\t[SYSTEM] 삭제가 완료되었습니다.", "확인", JOptionPane.CLOSED_OPTION);
+					// 상품목록 화면테이블 초기화 해주기.
+					mainFrame.productView.tblModel.setNumRows(0);
+
+					// 상품목록 화면테이블 새로 채우기
+					mainFrame.productView.addProductLine(mainFrame.pdao.productAll());
+
+					JOptionPane.showMessageDialog(null, "\t[SYSTEM] 삭제가 완료되었습니다.", "확인", JOptionPane.CLOSED_OPTION);
+				}
 
 			} else {
 				JOptionPane.showMessageDialog(null, "\t[SYSTEM] 삭제하시려는 상품을 선택해주세요.", "확인", JOptionPane.CLOSED_OPTION);

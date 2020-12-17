@@ -26,10 +26,13 @@ import product.ProductView;
 import product.productAction.ProdBtnPanelAction;
 import product.productAction.ProdEditFrameAction;
 import product.productAction.ProductAction;
-import sale.SaleAction;
 import sale.SaleBtnPanel;
 import sale.SaleDao;
+import sale.SaleListPanel;
 import sale.SalePanel;
+import sale.saleAction.SaleAction;
+import sale.saleAction.SaleBtnPanelAction;
+import sale.saleAction.SaleListPanelAction;
 import stock.StockDao;
 import stock.stockAction.DisposalInfoAction;
 import stock.stockAction.Disposal_Action;
@@ -54,6 +57,9 @@ public class MainFrame extends JFrame{
 	
 	// 가운데 판매 보여줄 패널
 	public SalePanel salePanel = new SalePanel();
+	
+	// 가운데 판매리스트 보여줄 패널
+	public SaleListPanel saleListPanel = new SaleListPanel();
 	
 	// 가운데 이벤트 보여줄 패널
 	public EventPanel eventPanel = new EventPanel();
@@ -139,10 +145,11 @@ public class MainFrame extends JFrame{
 		// 가운데 패널부분 - 상품 , 재고
 		centerView = new JPanel();
 		centerView.setLayout(cardlayout);
-		centerView.add(productView, "productView"); // 상품 
-		centerView.add(stockPanel, "stockPanel"); 	// 재고
-		centerView.add(salePanel, "salePanel");		//판매
-		centerView.add(eventPanel, "eventPanel");  	//이벤트
+		centerView.add(productView, "productView"); 	//상품 
+		centerView.add(stockPanel, "stockPanel"); 		//재고
+		centerView.add(salePanel, "salePanel");			//판매화면
+		centerView.add(saleListPanel, "saleListPanel");	//판매리스트
+		centerView.add(eventPanel, "eventPanel");  		//이벤트
 		centerView.setBackground(Color.WHITE);
 		centerView.setBounds(0, 50, 1157, 552);
 		contentPanel.add(centerView);
@@ -171,11 +178,15 @@ public class MainFrame extends JFrame{
 		prodBtnPanel.registProdBtn.addActionListener(new ProdBtnPanelAction(this)); 		//우측패널 상품등록 버튼
 		prodBtnPanel.editProdBtn.addActionListener(new ProdBtnPanelAction(this)); 		//우측패널 상품 수정 버튼
 		prodBtnPanel.delProdBtn.addActionListener(new ProdBtnPanelAction(this)); 			//우측패널 상품 삭제 버튼
+		
 		eventBtnPanel.eventRegBtn.addActionListener(new EventBtnPanelAction(this));		//우측패널 이벤트 등록 버튼 
 		eventBtnPanel.eventDelBtn.addActionListener(new EventBtnPanelAction(this));		//우측패널 이벤트 등록 버튼 
 		stockBtnPanel.productMoreInfoBtn.addActionListener(new MoreInfoAction(this));	//우측패널 재고 상세정보 확인 버튼
 		stockBtnPanel.disposalInfoBtn.addActionListener(new DisposalInfoAction(this));	//우측패널 폐기 정보 확인 버튼
 
+		saleBtnPanel.saleListBtn.addActionListener(new SaleBtnPanelAction(this));		//우측패널 판매리스트 버튼
+		saleBtnPanel.saleBtn.addActionListener(new SaleBtnPanelAction(this));			//우측패널 판매 버튼
+		
 		prodRegistFrame.regBtn.addActionListener(new ProductAction(this)); 					//팝업 상품등록 프레임 등록 버튼
 		prodRegistFrame.cancelBtn.addActionListener(new ProductAction(this)); 				//팝업 상품등록 프레임 취소 버튼
 		productView.searchBtn.addActionListener(new ProductAction(this));					//상품 검색 버튼
@@ -202,6 +213,8 @@ public class MainFrame extends JFrame{
 		salePanel.addBucketBtn.addActionListener(new SaleAction(this));						//판매패널 장바구니 추가 버튼
 		salePanel.delBucketBtn.addActionListener(new SaleAction(this));						//판매패널 장바구니 삭제 버튼
 		salePanel.completeBtn.addActionListener(new SaleAction(this));						//판매패널 결제 버튼
+		
+		saleListPanel.searchBtn.addActionListener(new SaleListPanelAction(this));			//판매리스트 패널 검색버튼
 		
 	
 		// 버튼들 액션 달기 End
