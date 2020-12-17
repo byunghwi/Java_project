@@ -25,13 +25,13 @@ public class Login extends JFrame {
 	JLabel[] names = new JLabel[2];
 	
 
-	ImageIcon login_button = new ImageIcon("C:/Users/Young/git/Java_project/src/로그인버튼.jpg");
-	ImageIcon join_button = new ImageIcon("C:/Users/Young/git/Java_project/src/회원가입.jpg");
+	ImageIcon login_button = new ImageIcon("src/로그인버튼.jpg");
+	ImageIcon join_button = new ImageIcon("src/회원가입.jpg");
 	JButton login = new JButton(login_button);
 	JButton join = new JButton(join_button);
     JScrollPane scrollPane;
     
-	Image backgroundimg = new ImageIcon("C:/Users/Young/git/Java_project/src/로그인틀.jpg").getImage();
+	Image backgroundimg = new ImageIcon("src/로그인틀.jpg").getImage();
 	
 	
     public Login() {

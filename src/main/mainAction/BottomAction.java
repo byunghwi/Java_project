@@ -62,6 +62,9 @@ public class BottomAction implements ActionListener {
 			mainFrame.bottomPanel.selectedBtn(mainFrame.bottomPanel.stockBtn);
 			mainFrame.cardlayout.show(mainFrame.centerView, "stockPanel");
 			mainFrame.btnlayout.show(mainFrame.pBtnView, "stockBtnPanel");
+			mainFrame.stockPanel.tblModel.setNumRows(0);
+	        mainFrame.stockPanel.addStockLine(mainFrame.stockdao.stockAll());
+			
 			
 		}else if (ob == mainFrame.bottomPanel.disBtn) {
 			//메인 버튼 클릭시 색 변경해주기
