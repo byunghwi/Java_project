@@ -22,12 +22,13 @@ import javax.swing.border.EmptyBorder;
 import disposal_alert.AlertDao;
 import disposal_alert.AlertFrame;
 import disposal_alert.AlertView;
-import order.OrderConfirmDao;
-import order.OrderConfirmFrame;
-import order.OrderConfirmView;
+
 import order.OrderDao;
 import order.OrderFrame;
 import order.OrderView;
+import orderConfirm.OrderConfirmDao;
+import orderConfirm.OrderConfirmFrame;
+import orderConfirm.OrderConfirmView;
 import product.ProdEditFrame;
 import product.ProdRegistFrame;
 import product.Product;
@@ -137,15 +138,12 @@ public class MainFrame extends JFrame implements ActionListener {
 		// 주문확정버튼, 검색버튼, 새로고침, 취소버튼
 		orderframe.order_btn.addActionListener(this);
 		orderframe.search_btn.addActionListener(this);
-		orderframe.refresh_btn.addActionListener(this);
 		orderframe.cancel_btn.addActionListener(this);
 		
 		// 승인버튼
 		orderConfirmFrame.confirm_btn.addActionListener(this);
 		// 검색버튼
 		orderConfirmFrame.search_btn.addActionListener(this);
-		// 새로고침버튼
-		orderConfirmFrame.refresh_btn.addActionListener(this);
 		// 삭제버튼
 		orderConfirmFrame.delete_btn.addActionListener(this);
 		// 취소버튼
@@ -280,7 +278,6 @@ public class MainFrame extends JFrame implements ActionListener {
 			// 이거 2줄은 그래프 중복현상이 발생해서 넣어둠
 			orderConfirmView.model.setNumRows(0);
 			orderConfirmView.addProductLine(orderConfirmDao.productAll());
-			
 			orderConfirmFrame.setVisible(true);
 			// 그래프 행 선택시
 			orderConfirmFrame.ocv.orderTable.addMouseListener(new MouseAdapter() {
@@ -363,20 +360,12 @@ public class MainFrame extends JFrame implements ActionListener {
     			orderConfirmView.addProductLine(orderConfirmDao.productAll());
             } else {// 검색어를 입력했을경우
             	orderConfirmDao.getUserSearch(orderConfirmView.model, fieldName, orderConfirmFrame.search_jf.getText());
-                if (orderConfirmView.model.getRowCount() > 0) {
-                	orderConfirmView.orderTable.setRowSelectionInterval(0, 0);
-                }
-                else if (orderConfirmView.model.getRowCount() < 2) {
+                if (orderConfirmFrame.search_jf.getText().length() < 2) {
                 	JOptionPane.showMessageDialog(null, "2자이상 입력해주세요", "확인", JOptionPane.CLOSED_OPTION);
                 	orderConfirmView.model.setNumRows(0);
         			orderConfirmView.addProductLine(orderConfirmDao.productAll());
                 }
             }
-		}
-		// 승인대기목록 새로고침버튼
-		else if (ob == orderConfirmFrame.refresh_btn) {
-			orderConfirmView.model.setNumRows(0);
-			orderConfirmView.addProductLine(orderConfirmDao.productAll());
 		}
 		
 		// 승인목록창에서 상품조회버튼 클릭시
@@ -404,10 +393,7 @@ public class MainFrame extends JFrame implements ActionListener {
     			orderView.addProductLine(orderDao.productAll());
             } else {// 검색어를 입력했을경우
                 orderDao.getUserSearch(orderView.model, fieldName, orderframe.search_jf.getText());
-                if (orderView.model.getRowCount() > 0) {
-                	orderView.orderTable.setRowSelectionInterval(0, 0);
-                }
-                else if (orderView.model.getRowCount() < 2) {
+                if (orderframe.search_jf.getText().length() < 2) {
                 	JOptionPane.showMessageDialog(null, "2자이상 입력해주세요", "확인", JOptionPane.CLOSED_OPTION);
                 	orderView.model.setNumRows(0);
          			orderView.addProductLine(orderDao.productAll());
@@ -415,11 +401,6 @@ public class MainFrame extends JFrame implements ActionListener {
             }
 			
 		}	
-		// 주문목록 새로고침
-		else if (ob == orderframe.refresh_btn) {
-			orderView.model.setNumRows(0);
-			orderView.addProductLine(orderDao.productAll());
-		}
 		// 주문 취소버튼
 		else if (ob == orderframe.cancel_btn) {
 			orderframe.setVisible(false);

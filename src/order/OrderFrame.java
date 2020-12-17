@@ -13,7 +13,7 @@ import javax.swing.JTextField;
 public class OrderFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
-	public JButton order_btn, cancel_btn, search_btn, refresh_btn; // 주문, 취소, 검색, 새로고침 버튼
+	public JButton order_btn, cancel_btn, search_btn; // 주문, 취소, 검색, 새로고침 버튼
 	public JPanel tabel_panel, btn_panel, search_panel;
 	
 	String[] fieldNames = new String[] {"상품id", "수량", "사용자"};
@@ -59,11 +59,9 @@ public class OrderFrame extends JFrame {
 		
 		search_panel = new JPanel();
 		search_btn = new JButton("검색");
-		refresh_btn = new JButton("새로고침");
 		search_panel.add(combo);
 		search_panel.add(search_jf);
 		search_panel.add(search_btn);
-		search_panel.add(refresh_btn);
 		add(search_panel, BorderLayout.NORTH);
 		
 		setTitle("물품목록");

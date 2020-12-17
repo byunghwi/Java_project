@@ -1,4 +1,4 @@
-package order;
+package orderConfirm;
 
 import java.awt.BorderLayout;
 
@@ -15,7 +15,7 @@ public class OrderConfirmFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
 	// 주문, 승인, 삭제, 취소, 검색, 새로고침 버튼
-	public JButton order_btn, confirm_btn, delete_btn, cancel_btn, search_btn, refresh_btn;
+	public JButton order_btn, confirm_btn, delete_btn, cancel_btn, search_btn;
 	public JPanel btn_panel, tabel_panel, search_panel;
 	
 	String[] fieldNames = new String[] {"발주번호", "상품명", "물품id", "가격", "수량"};
@@ -64,11 +64,9 @@ public class OrderConfirmFrame extends JFrame {
 		
 		search_panel = new JPanel();
 		search_btn = new JButton("검색");
-		refresh_btn = new JButton("새로고침");
 		search_panel.add(combo);
 		search_panel.add(search_jf);
 		search_panel.add(search_btn);
-		search_panel.add(refresh_btn);
 		add(search_panel, BorderLayout.NORTH);
 		
 		btn_panel.add(order_btn);
@@ -80,6 +78,7 @@ public class OrderConfirmFrame extends JFrame {
 		setTitle("승인대기창");
 		setResizable(true);
 		setBounds(100, 100, 1200, 400);
+		
 	}
 	
 	//필드값 초기화 해주기.
