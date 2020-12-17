@@ -2,10 +2,9 @@ package event;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -21,6 +20,10 @@ public class EventRegistFrame extends JFrame{
 	/**
 	 * 
 	 */
+	private static final long serialVersionUID = 1L;
+
+	EventType eventType;
+	public JComboBox<String> combo;
 	public JButton regBtn;
 	public JButton cancelBtn;
 	public JButton searchBtn;
@@ -35,19 +38,17 @@ public class EventRegistFrame extends JFrame{
 	public Product product = new Product();
 	
 	public JTextField tf1;
-	public JTextField tf2;
-	
+
 	public JDateChooser dateChooser1 = new JDateChooser();
 	public JDateChooser dateChooser2 = new JDateChooser();
 	
 	public EventRegistFrame(){
+		
+		combo = new JComboBox<String>(EventType.getValArr()); 
 
-		titleLabel = new JLabel("[ 이벤트 등록 ]");
-		titleLabel.setFont(new Font("맑은 고딕", Font.BOLD, 20));
-		titleLabel.setBounds(0,20, 100, 50);
-					
+			
 		setFont(new Font("맑은 고딕", Font.BOLD, 20));
-		setTitle("이벤트등록~~");		
+		setTitle("[ 이벤트등록 ]");		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 340, 420);
 		contentPanel = new JPanel(new BorderLayout());
@@ -74,8 +75,7 @@ public class EventRegistFrame extends JFrame{
 		searchBtn.setBounds(242, 50, 60 , 30);
 		
 		//이벤트타입
-		tf2 = new HintTextField(textHints[1]);
-		tf2.setBounds(110, 100, 170 , 30);
+		combo.setBounds(110, 100, 170 , 30);
 			
 		//시작일
 		dateChooser1.setBounds(110, 150, 170 , 30);
@@ -91,7 +91,7 @@ public class EventRegistFrame extends JFrame{
 		}
 		
 		ein.add(tf1);
-		ein.add(tf2);
+		ein.add(combo);
 		ein.add(dateChooser1);
 		ein.add(dateChooser2);
 		ein.add(searchBtn);
@@ -112,7 +112,6 @@ public class EventRegistFrame extends JFrame{
 	//필드값 초기화 해주기.
 	public void resetText() {
 		tf1.setText("");
-		tf2.setText("");
 		dateChooser1.setDate(null);
 		dateChooser2.setDate(null);
 	}

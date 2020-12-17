@@ -5,14 +5,20 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import org.jfree.chart.ChartPanel;
+
 import com.toedter.calendar.JDateChooser;
 
+import calc.Chart.CalcChart;
+import calc.Calc;
 import calc.CalcDao;
 import calc.CalcView;
 import commute.List.Commute_ListDao;
@@ -23,10 +29,13 @@ public class Calc_Reference_Btn extends JPanel{
 	String[] fieldNames = new String[]{"시작날짜", "종료날짜"};
 	public JLabel[] labels;
 	
-	
+	public MainFrame m1 = null;
 	public JButton check;
 	public  JDateChooser st_date = new JDateChooser();
 	public JDateChooser en_date = new JDateChooser();
+	public ArrayList<Calc> cl = null;
+	public CalcChart calcg = new CalcChart() ;
+	public ChartPanel chart_p = null;
 	
 	public CalcView clv = null;
 	
@@ -40,6 +49,7 @@ public class Calc_Reference_Btn extends JPanel{
 		lbShowDate.setBounds(12, 0, 101, 37);
 		add(lbShowDate);
 		lbShowDate.setFont(new Font("맑은 고딕", Font.BOLD, 15));
+		
 		
 		
 		
@@ -68,11 +78,30 @@ public class Calc_Reference_Btn extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
+				Object ob = e.getSource();
+				Object obb = e.getActionCommand();
+				
+				if(ob ==check) {
+					
 				String start_date = dcn.format(st_date.getDate()); 
 				String end_date = dcn.format(en_date.getDate()); 
 				clv.cblModel.setNumRows(0);
-				clv.addCalcLine(new CalcDao(start_date,end_date).calclist());
+				cl = new CalcDao(start_date,end_date).calclist();
+				clv.addCalcLine(cl);
+				calcg.cl = cl;
+				m1.chart_p.setChart(calcg.getChart());
 				JOptionPane.showMessageDialog(null, "[SYSTEM] 조회되었습니다.", "확인", JOptionPane.CLOSED_OPTION);
+		
+				} else if(ob==check) {
+					String start_date = dcn.format(st_date.getDate()); 
+					String end_date = dcn.format(en_date.getDate()); 
+					
+					if(start_date==null) {
+						JOptionPane.showMessageDialog(null, "날짜를 지정해주세요", "확인", JOptionPane.CLOSED_OPTION);
+					}
+				}
+				
 			}
 		});
 		
