@@ -1,3 +1,4 @@
+package stock;
 //package stocksub;
 //
 //import stocksub.stockframe.StockFrame;

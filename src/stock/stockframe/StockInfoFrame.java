@@ -1,4 +1,4 @@
-package stocksub.stockframe;
+package stock.stockframe;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
@@ -9,11 +9,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 
-import stocksub.Stock;
-import stocksub.stockAction.Confirm_Action;
-import stocksub.stockAction.Disposal_Action;
-import stocksub.stockView.StockInfoView;
-import stocksub.stockView.StockView;
+import stock.Stock;
+import stock.stockAction.Confirm_Action;
+import stock.stockAction.Disposal_Action;
+import stock.stockView.StockInfoView;
+import stock.stockView.StockView;
 
 // 상품 상세 정보에 대한 프레임
 public class StockInfoFrame extends JFrame{

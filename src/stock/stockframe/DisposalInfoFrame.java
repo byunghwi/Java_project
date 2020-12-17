@@ -1,4 +1,4 @@
-package stocksub.stockframe;
+package stock.stockframe;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -12,8 +12,8 @@ import javax.swing.JLabel;
 
 import com.toedter.calendar.JDateChooser;
 
-import stocksub.StockDao;
-import stocksub.stockView.DisposalInfoView;
+import stock.StockDao;
+import stock.stockView.DisposalInfoView;
 
 // 폐기 정보에 대한 프레임
 public class DisposalInfoFrame extends JFrame{

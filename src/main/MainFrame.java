@@ -31,11 +31,11 @@ import sale.SaleBtnPanel;
 import sale.SaleDao;
 import sale.SalePanel;
 import stock.StockDao;
-import stocksub.stockAction.DisposalInfoAction;
-import stocksub.stockAction.Disposal_Action;
-import stocksub.stockAction.MoreInfoAction;
-import stocksub.stockView.StockView;
-import stocksub.stockframe.StockRightBtnPanel;
+import stock.stockAction.DisposalInfoAction;
+import stock.stockAction.Disposal_Action;
+import stock.stockAction.MoreInfoAction;
+import stock.stockView.StockView;
+import stock.stockframe.StockRightBtnPanel;
 
 public class MainFrame extends JFrame{
 
@@ -174,14 +174,15 @@ public class MainFrame extends JFrame{
 		eventBtnPanel.eventRegBtn.addActionListener(new EventBtnPanelAction(this));		//우측패널 이벤트 등록 버튼 
 		eventBtnPanel.eventDelBtn.addActionListener(new EventBtnPanelAction(this));		//우측패널 이벤트 등록 버튼 
 		stockBtnPanel.productMoreInfoBtn.addActionListener(new MoreInfoAction(this));	//우측패널 재고 상세정보 확인 버튼
-		stockBtnPanel.disposalInfoBtn.addActionListener(new DisposalInfoAction(this));
+		stockBtnPanel.disposalInfoBtn.addActionListener(new DisposalInfoAction(this));	//우측패널 폐기 정보 확인 버튼
 
 		prodRegistFrame.regBtn.addActionListener(new ProductAction(this)); 					//팝업 상품등록 프레임 등록 버튼
 		prodRegistFrame.cancelBtn.addActionListener(new ProductAction(this)); 				//팝업 상품등록 프레임 취소 버튼
 		productView.searchBtn.addActionListener(new ProductAction(this));					//상품 검색 버튼
 		findProductFrame.productView.searchBtn.addActionListener(new ProductAction(this)); 	//이벤트 프레임 - 상품찾기 프레임 - 상품검색 버튼
 		findProductFrame.regBtn.addActionListener(new ProductAction(this));					//이벤트 프레임 - 상품찾기 프레임 - 상품코드입력 버튼
-
+		
+		
 		prodEditFrame.compEditBtn.addActionListener(new ProdEditFrameAction(this));			//팝업 상품 수정 프레임 수정 버튼
 		prodEditFrame.cancelEidtBtn.addActionListener(new ProdEditFrameAction(this));		//팝업 상품 수정 프레임 취소 버튼
 		

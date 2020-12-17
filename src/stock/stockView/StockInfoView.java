@@ -1,4 +1,4 @@
-package stocksub.stockView;
+package stock.stockView;
 
 import java.awt.Font;
 import java.util.ArrayList;
@@ -10,8 +10,8 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
-import stocksub.StockDao;
-import stocksub.Stock_info;
+import stock.StockDao;
+import stock.Stock_info;
 
 
 // 상품 상세 정보에 대응하는 패널
