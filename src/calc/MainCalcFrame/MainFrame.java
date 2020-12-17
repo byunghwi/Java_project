@@ -58,7 +58,7 @@ public class MainFrame extends JFrame implements ActionListener{
 		setTitle("정산프로그램");
 		setResizable(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1326, 800);
+		setBounds(100, 100, 1326,1800);
 		setVisible(true);
 		
 		contentPanel = new JPanel();
@@ -96,7 +96,7 @@ public class MainFrame extends JFrame implements ActionListener{
 		
 		calcBtnPanel.calc_Btn.addActionListener(this);
 		
-		add(chart_p).setBounds(0, 350, 900, 350);
+		add(chart_p).setBounds(0, 350, 1100, 450);
 		
 	}
 	@Override
@@ -107,6 +107,7 @@ public class MainFrame extends JFrame implements ActionListener{
 			new Calc_Add_Date();
 			JOptionPane.showMessageDialog(null, "[SYSTEM] 금일정산처리되었습니다.", "확인", JOptionPane.CLOSED_OPTION);
 			calcBtnPanel.calc_Btn.setEnabled(false);
+			
 		} 
 		
 	} 
