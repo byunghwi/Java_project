@@ -9,10 +9,10 @@ import javax.swing.JOptionPane;
 import event.Event;
 import main.MainFrame;
 
-public class eventRegistFrameAction implements ActionListener {
+public class EventRegistFrameAction implements ActionListener {
 	public MainFrame mainFrame;
 
-	public eventRegistFrameAction(MainFrame mainFrame) {
+	public EventRegistFrameAction(MainFrame mainFrame) {
 		this.mainFrame = mainFrame;
 	}
 
@@ -70,7 +70,6 @@ public class eventRegistFrameAction implements ActionListener {
 			mainFrame.eventRegistFrame.setVisible(false);
 		} else if (ob == mainFrame.eventRegistFrame.searchBtn) { // 이벤트 등록 프레임 -> 상품 찾기 프레임 오픈 시
 			mainFrame.findProductFrame.setVisible(true);
-
 		}
 	}
 

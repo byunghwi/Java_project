@@ -11,22 +11,26 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import event.Event;
+import event.EventBtnPanel;
 import event.EventDao;
 import event.EventPanel;
 import event.EventRegistFrame;
+import product.ProdBtnPanel;
 import product.ProdEditFrame;
 import product.ProdRegistFrame;
 import product.Product;
 import product.ProductDao;
 import product.ProductView;
+import product.productAction.ProdBtnPanelAction;
 import product.productAction.ProdEditFrameAction;
 import product.productAction.ProductAction;
 
 import event.FindProductFrame;
-import event.eventAction.eventRegistFrameAction;
+import event.eventAction.EventBtnPanelAction;
+import event.eventAction.EventRegistFrameAction;
 import main.mainAction.BottomAction;
-import main.mainAction.rightBtnPanelAction;
 import sale.SaleAction;
+import sale.SaleBtnPanel;
 import sale.SaleDao;
 import sale.SalePanel;
 import stock.Stock;
@@ -54,8 +58,14 @@ public class MainFrame extends JFrame{
 	// 가운데 이벤트 보여줄 패널
 	public EventPanel eventPanel = new EventPanel();
 
-	// 오른쪽 버튼들 보여줄 패널
-	public RightBtnPanel rightBtnPanel = new RightBtnPanel();
+	// 오른쪽 상품버튼 보여줄 패널
+	public ProdBtnPanel prodBtnPanel = new ProdBtnPanel();
+	
+	// 오른쪽 판매버튼 보여줄 패널
+	public SaleBtnPanel saleBtnPanel = new SaleBtnPanel();
+	
+	// 오른쪽 이벤트버튼 보여줄 패널
+	public EventBtnPanel eventBtnPanel = new EventBtnPanel();
 	
 	// 하단 버튼들 보여줄 패널
 	public BottomPanel bottomPanel = new BottomPanel();
@@ -131,10 +141,12 @@ public class MainFrame extends JFrame{
 
 		// 오른쪽 패널부분
 		pBtnView = new JPanel();
+		pBtnView.setLayout(btnlayout);
 		pBtnView.setBackground(Color.WHITE);
 		pBtnView.setBounds(1158, 50, 142, 675);
-		pBtnView.add(rightBtnPanel, "rightBtnPanel");
-		pBtnView.setLayout(btnlayout);
+		pBtnView.add(prodBtnPanel, "prodBtnPanel"); 	// 상품관련 오른쪽 버튼들
+		pBtnView.add(saleBtnPanel, "saleBtnPanel");		// 판매관련 오른쪽 버튼들
+		pBtnView.add(eventBtnPanel, "eventBtnPanel");	// 이벤트 관련 오른쪽 버튼들
 		contentPanel.add(pBtnView);
 				
 		// 하단 패널부분
@@ -146,10 +158,11 @@ public class MainFrame extends JFrame{
 		contentPanel.add(bottomView);
 
 		// 버튼들 액션 달기 Start
-		rightBtnPanel.registProdBtn.addActionListener(new rightBtnPanelAction(this)); 		//우측패널 상품등록 버튼
-		rightBtnPanel.editProdBtn.addActionListener(new rightBtnPanelAction(this)); 		//우측패널 상품 수정 버튼
-		rightBtnPanel.delProdBtn.addActionListener(new rightBtnPanelAction(this)); 			//우측패널 상품 삭제 버튼
-		rightBtnPanel.registEventBtn.addActionListener(new rightBtnPanelAction(this));		//우측패널 이벤트 등록 버튼 
+		prodBtnPanel.registProdBtn.addActionListener(new ProdBtnPanelAction(this)); 		//우측패널 상품등록 버튼
+		prodBtnPanel.editProdBtn.addActionListener(new ProdBtnPanelAction(this)); 		//우측패널 상품 수정 버튼
+		prodBtnPanel.delProdBtn.addActionListener(new ProdBtnPanelAction(this)); 			//우측패널 상품 삭제 버튼
+		eventBtnPanel.eventRegBtn.addActionListener(new EventBtnPanelAction(this));		//우측패널 이벤트 등록 버튼 
+		eventBtnPanel.eventDelBtn.addActionListener(new EventBtnPanelAction(this));		//우측패널 이벤트 등록 버튼 
 
 		prodRegistFrame.regBtn.addActionListener(new ProductAction(this)); 					//팝업 상품등록 프레임 등록 버튼
 		prodRegistFrame.cancelBtn.addActionListener(new ProductAction(this)); 				//팝업 상품등록 프레임 취소 버튼
@@ -160,9 +173,9 @@ public class MainFrame extends JFrame{
 		prodEditFrame.compEditBtn.addActionListener(new ProdEditFrameAction(this));			//팝업 상품 수정 프레임 수정 버튼
 		prodEditFrame.cancelEidtBtn.addActionListener(new ProdEditFrameAction(this));		//팝업 상품 수정 프레임 취소 버튼
 		
-		eventRegistFrame.regBtn.addActionListener(new eventRegistFrameAction(this)); 		//팝업 이벤트 등록 프레임 등록 버튼
-		eventRegistFrame.cancelBtn.addActionListener(new eventRegistFrameAction(this)); 	//팝업 이벤트 등록 프레임 취소 버튼
-		eventRegistFrame.searchBtn.addActionListener(new eventRegistFrameAction(this)); 	//팝업 이벤트 등록 프레임 상품찾기 버튼
+		eventRegistFrame.regBtn.addActionListener(new EventRegistFrameAction(this)); 		//팝업 이벤트 등록 프레임 등록 버튼
+		eventRegistFrame.cancelBtn.addActionListener(new EventRegistFrameAction(this)); 	//팝업 이벤트 등록 프레임 취소 버튼
+		eventRegistFrame.searchBtn.addActionListener(new EventRegistFrameAction(this)); 	//팝업 이벤트 등록 프레임 상품찾기 버튼
 		
 		bottomPanel.productBtn.addActionListener(new BottomAction(this));					//하단패널 상품 버튼
 		bottomPanel.saleBtn.addActionListener(new BottomAction(this));						//하단패널 판매 버튼
