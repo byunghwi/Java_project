@@ -102,9 +102,11 @@ public class MainFrame extends JFrame{
 	public SaleDao sdao = new SaleDao();
 	public StockDao stockdao = new StockDao();
 	public EventDao eventdao = new EventDao();
-
+	
+	
 	public MainFrame() {
-
+		
+		
 		cardlayout = new CardLayout();
 		btnlayout = new CardLayout();
 
