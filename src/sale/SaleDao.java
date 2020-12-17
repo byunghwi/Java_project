@@ -240,20 +240,22 @@ public class SaleDao {
 	public String searchEvent(String product_id) {
 		conn = DatabaseConnect.getConnection();
 		
-		String query = "SELEC event_type, start_date, end_date FROM EVENT WHERE product_id = ? and save_status = 'Y' and start_date <= SYSDATE and end_date >= SYSDATE";
+		String query = "SELECT event_type, start_dt, end_dt FROM EVENT "
+				+ "WHERE product_id = ? and save_status = 'Y' "
+				+ "and to_char(start_dt , 'YYYY-MM-dd') <= to_char(SYSDATE , 'YYYY-MM-dd') "
+				+ "and to_char(end_dt , 'YYYY-MM-dd') >= to_char(SYSDATE , 'YYYY-MM-dd')";
 		String eventType = null;
 
 		try {
 			ps = conn.prepareStatement(query);
 			ps.setString(1, product_id);
-			
+
 			rs = ps.executeQuery();
 			
-			if(rs.next()) {
-				while(rs.next()) {
-					eventType = rs.getString(1);
-				}			
-			}
+			while(rs.next()) {
+				eventType = rs.getString(1);				
+			}			
+	
 		} catch (SQLException e) {
 			System.out.println("[DB] Event 조회 중 에러");
 			e.printStackTrace();	

@@ -31,7 +31,7 @@ public class ProductDao {
 
 		String query = "SELECT product_id as \"상품코드\", product_name as \"상품명\" "
 				+ ", price as \"가격\" , worker_no as \"등록자\" ,TO_CHAR(save_time, 'YYYY-MM-dd') as \"등록일\" "
-				+ " FROM product WHERE save_status = 'Y' ORDER BY product_id";
+				+ " FROM product WHERE save_status = 'Y' ORDER BY save_time DESC";
 		try {
 			ps = conn.prepareStatement(query);
 			rs = ps.executeQuery();

@@ -30,9 +30,9 @@ public class EventDao {
 	public ArrayList<Event> eventAll() {
 		conn = DatabaseConnect.getConnection();
 
-		String query = "SELECT e.event_no, e.event_type, e.product_id, p.product_name, to_char(e.start_dt, 'YYYY-MM-dd'), to_char(e.end_dt, 'YYYY-MM-dd'), e.worker_no, to_char(e.save_time, 'YY-MM-dd HH:mm:ss') "
+		String query = "SELECT e.event_no, e.event_type, e.product_id, p.product_name, to_char(e.start_dt, 'YYYY-MM-dd'), to_char(e.end_dt, 'YYYY-MM-dd'), e.worker_no, to_char(e.save_time, 'YY-MM-dd HH24:Mi:SS') "
 				+ "FROM event e, product p "
-				+ "WHERE e.product_id = p.product_id and p.save_status = 'Y' and e.save_status = 'Y' ";
+				+ "WHERE e.product_id = p.product_id and p.save_status = 'Y' and e.save_status = 'Y' ORDER BY e.save_time DESC";
 
 		ArrayList<Event> eventList = new ArrayList<Event>();
 
