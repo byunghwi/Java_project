@@ -1,10 +1,10 @@
-package stocksub.stockAction;
+package stock.stockAction;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import stocksub.StockDao;
-import stocksub.stockframe.StockInfoFrame;
+import stock.StockDao;
+import stock.stockframe.StockInfoFrame;
 
 // 확인에 대응하는 액션 리스너
 // 창을 닫는 기능

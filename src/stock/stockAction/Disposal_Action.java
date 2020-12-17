@@ -1,4 +1,4 @@
-package stocksub.stockAction;
+package stock.stockAction;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,8 +7,8 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-import stocksub.StockDao;
-import stocksub.stockframe.StockInfoFrame;
+import stock.StockDao;
+import stock.stockframe.StockInfoFrame;
 
 // 폐기에 대응하는 액션 리스너
 public class Disposal_Action implements ActionListener{

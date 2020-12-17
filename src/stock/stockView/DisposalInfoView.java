@@ -1,4 +1,4 @@
-package stocksub.stockView;
+package stock.stockView;
 
 import java.awt.Font;
 import java.util.ArrayList;
@@ -10,9 +10,9 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
-import stocksub.Disposal;
-import stocksub.StockDao;
-import stocksub.Stock_info;
+import stock.Disposal;
+import stock.StockDao;
+import stock.Stock_info;
 
 // 폐기 정보에 테이블에 대응하는 패널
 public class DisposalInfoView extends JPanel {
