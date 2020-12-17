@@ -32,7 +32,7 @@ public class DisposalInfoView extends JPanel {
 	public DisposalInfoView(){
 		setLayout(null);
 	
-		disposalInfosScrollPane.setBounds(12, 10, 640, 300);
+		disposalInfosScrollPane.setBounds(12, 10, 640, 250);
 		add(disposalInfosScrollPane);
 		
 		disposalInfoTable.setRowMargin(10);
