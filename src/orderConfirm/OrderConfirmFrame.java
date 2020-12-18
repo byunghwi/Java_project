@@ -10,12 +10,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import order.OrderFrame;
+import order.OrderAction;
 
 public class OrderConfirmFrame extends JFrame {
-	// 주문창 팝업 프레임
-	OrderFrame orderframe = new OrderFrame();
-	OrderConfirmDao orderConfirmDao = new OrderConfirmDao();
 	public OrderConfirmView orderConfirmView = new OrderConfirmView(); // 가운데 들어갈예정
 	
 	private static final long serialVersionUID = 1L;
@@ -82,13 +79,14 @@ public class OrderConfirmFrame extends JFrame {
 		
 		setTitle("승인대기창");
 		setResizable(true);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 1200, 400);
 		
-		order_btn.addActionListener(new OrderConfirmAction());
-		confirm_btn.addActionListener(new OrderConfirmAction());
-		delete_btn.addActionListener(new OrderConfirmAction());
-		cancel_btn.addActionListener(new OrderConfirmAction());
-		search_btn.addActionListener(new OrderConfirmAction());
+//		order_btn.addActionListener(new OrderConfirmAction());
+//		confirm_btn.addActionListener(new OrderConfirmAction());
+//		delete_btn.addActionListener(new OrderConfirmAction());
+//		cancel_btn.addActionListener(new OrderConfirmAction());
+//		search_btn.addActionListener(new OrderConfirmAction());
 	}
 	
 	//필드값 초기화 해주기.

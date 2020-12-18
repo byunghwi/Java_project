@@ -10,12 +10,11 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 public class OrderConfirmView extends JPanel {
-	private static final long serialVersionUID = 1L;
 	
-	OrderConfirmDao ocd = new OrderConfirmDao();
+	public OrderConfirmDao ocd = new OrderConfirmDao();
 	public JScrollPane scrollpane = new JScrollPane();
 	public static Vector<String> colNames = getColum();
-	public static DefaultTableModel model = new DefaultTableModel(colNames, 0);
+	public DefaultTableModel model = new DefaultTableModel(colNames, 0);
 	public JTable orderTable = new JTable(model);
 	public Vector<String> rows;
 	

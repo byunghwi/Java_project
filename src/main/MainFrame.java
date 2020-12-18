@@ -17,6 +17,13 @@ import event.FindProductFrame;
 import event.eventAction.EventBtnPanelAction;
 import event.eventAction.EventRegistFrameAction;
 import main.mainAction.BottomAction;
+import order.OrderDao;
+import order.OrderFrame;
+import order.OrderView;
+import orderConfirm.OrderConfirmAction;
+import orderConfirm.OrderConfirmDao;
+import orderConfirm.OrderConfirmFrame;
+import orderConfirm.OrderConfirmView;
 import product.ProdBtnPanel;
 import product.ProdEditFrame;
 import product.ProdRegistFrame;
@@ -87,6 +94,13 @@ public class MainFrame extends JFrame{
 	
 	// 상품
 	public Product product;
+	
+//	OrderConfirmFrame orderConfirmFrame = new OrderConfirmFrame();
+//	OrderFrame orderframe = new OrderFrame();
+//	OrderConfirmDao orderConfirmDao = new OrderConfirmDao();
+//	OrderConfirmView orderConfirmView = new OrderConfirmView();
+//	OrderDao orderDao = new OrderDao();
+//	OrderView orderView = new OrderView();
 	
 	// 이벤트
 	public Event event;
@@ -175,6 +189,7 @@ public class MainFrame extends JFrame{
 		eventBtnPanel.eventDelBtn.addActionListener(new EventBtnPanelAction(this));		//우측패널 이벤트 등록 버튼 
 		stockBtnPanel.productMoreInfoBtn.addActionListener(new MoreInfoAction(this));	//우측패널 재고 상세정보 확인 버튼
 		stockBtnPanel.disposalInfoBtn.addActionListener(new DisposalInfoAction(this));
+		stockBtnPanel.orderConfirmBtn.addActionListener(new OrderConfirmAction(this)); // 발주승인목록 버튼
 
 		prodRegistFrame.regBtn.addActionListener(new ProductAction(this)); 					//팝업 상품등록 프레임 등록 버튼
 		prodRegistFrame.cancelBtn.addActionListener(new ProductAction(this)); 				//팝업 상품등록 프레임 취소 버튼

@@ -9,12 +9,19 @@ import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
+import main.MainFrame;
 import order.OrderDao;
 import order.OrderFrame;
 import order.OrderView;
 
 public class OrderConfirmAction implements ActionListener {
+	public MainFrame mainFrame;
+
+	public OrderConfirmAction(MainFrame mainFrame) {
+		this.mainFrame = mainFrame;
+	}
 	
+//	MainFrame mainFrame;
 	OrderConfirmFrame orderConfirmFrame = new OrderConfirmFrame();
 	OrderFrame orderframe = new OrderFrame();
 	OrderConfirmDao orderConfirmDao = new OrderConfirmDao();
@@ -25,6 +32,30 @@ public class OrderConfirmAction implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object ob = e.getSource();
+		if (ob == mainFrame.stockBtnPanel.orderConfirmBtn) {
+			// 이거 2줄은 그래프 중복현상이 발생해서 넣어둠
+//			orderConfirmView.model.setNumRows(0);
+//			orderConfirmView.addProductLine(orderConfirmDao.productAll());
+			orderConfirmFrame.setVisible(true);
+			// 그래프 행 선택시
+			orderConfirmFrame.orderConfirmView.orderTable.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					JTable j = (JTable) e.getSource();
+					int row = j.getSelectedRow();
+					if (row != -1) {
+						String num = (String) orderConfirmFrame.orderConfirmView.orderTable.getValueAt(row, 0);
+						orderConfirmFrame.fields[0].setText(num);
+						String name = (String) orderConfirmFrame.orderConfirmView.orderTable.getValueAt(row, 5);
+						orderConfirmFrame.fields[1].setText(name);
+						String id = (String) orderConfirmFrame.orderConfirmView.orderTable.getValueAt(row, 1);
+						orderConfirmFrame.fields[2].setText(id);
+						String amount = (String) orderConfirmFrame.orderConfirmView.orderTable.getValueAt(row, 2);
+						orderConfirmFrame.fields[4].setText(amount);
+					}
+				}
+			});
+		}
 		// 승인 주문버튼
 		if (ob == orderConfirmFrame.order_btn) { 
 			orderframe.setVisible(true);
@@ -46,7 +77,6 @@ public class OrderConfirmAction implements ActionListener {
 		} 
 		// 승인목록 승인버튼
 		else if (ob == orderConfirmFrame.confirm_btn) {
-//			int row = orderConfirmFrame.ocv.orderTable.getSelectedRow();
 			if(orderConfirmFrame.fields[3].getText().equals("")) {
 				JOptionPane.showMessageDialog(null, "정확히 입력해 주세요", "확인", JOptionPane.CLOSED_OPTION);
 			} else if(orderConfirmFrame.fields[3].getText().equals("") || 
