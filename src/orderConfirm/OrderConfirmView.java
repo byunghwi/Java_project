@@ -15,7 +15,7 @@ public class OrderConfirmView extends JPanel {
 
 	OrderConfirmDao ocd = new OrderConfirmDao();
 	
-	JScrollPane scrollpane = new JScrollPane();
+	public JScrollPane scrollpane = new JScrollPane();
 	public static Vector<String> colNames = getColum();
 	public static DefaultTableModel model = new DefaultTableModel(colNames, 0);
 	public JTable orderTable = new JTable(model);

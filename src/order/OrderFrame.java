@@ -72,9 +72,9 @@ public class OrderFrame extends JFrame {
 	
 	//필드값 초기화 해주기.
 	public void resetText() {
-		fields[0].setText("");
-		fields[1].setText("");
-		fields[2].setText("");
+		fields[0].setText("	");
+		fields[1].setText("	");
+		fields[2].setText("	");
 	}
 	
 }

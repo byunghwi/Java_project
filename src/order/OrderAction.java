@@ -40,12 +40,14 @@ public class OrderAction implements ActionListener {
 				mainFrame.orderframe.search_jf.requestFocus();
 				mainFrame.orderView.model.setNumRows(0);
 				mainFrame.orderView.addProductLine(mainFrame.orderDao.productAll());
+				mainFrame.orderframe.resetText();
             } else {// 검색어를 입력했을경우
             	mainFrame.orderDao.getUserSearch(mainFrame.orderView.model, fieldName, mainFrame.orderframe.search_jf.getText());
                 if (mainFrame.orderframe.search_jf.getText().length() < 2) {
                 	JOptionPane.showMessageDialog(null, "2자이상 입력해주세요", "확인", JOptionPane.CLOSED_OPTION);
                 	mainFrame.orderView.model.setNumRows(0);
                 	mainFrame.orderView.addProductLine(mainFrame.orderDao.productAll());
+                	mainFrame.orderframe.resetText();
                 }
             }
 			
