@@ -86,6 +86,7 @@ public class SaleDetailListFrame extends JFrame {
 			rows.addElement(Integer.toString(saleDetails.get(i).getSales_no()));		// 판매 번호
 			rows.addElement(saleDetails.get(i).getProduct_id()); 						// 상품코드
 			rows.addElement(saleDetails.get(i).getProduct_name()); 						// 상품명
+			rows.addElement(saleDetails.get(i).getEvent_type());						// 이벤트명
 			rows.addElement(Integer.toString(saleDetails.get(i).getQuantity())); 		// 구매 수량
 			rows.addElement(Integer.toString(saleDetails.get(i).getProduct_price()));	// 상품 가격
 			
@@ -102,8 +103,9 @@ public class SaleDetailListFrame extends JFrame {
 		colNames.add("판매번호");
 		colNames.add("상품코드");
 		colNames.add("상품명");
+		colNames.add("이벤트명");
 		colNames.add("구매수량");
-		colNames.add("가격");
+		colNames.add("금액");
 
 		return colNames;
 	}
