@@ -42,14 +42,12 @@ public class SaleAction implements ActionListener{
 				
 				//이벤트 타입 가져오기
 				String eventType = mainFrame.sdao.searchEvent(String.valueOf(mainFrame.salePanel.stockTblModel.getValueAt(row, 0)));
-				
-				
+							
 				int originInput = Integer.parseInt(mainFrame.salePanel.prodQt.getText()); // 원래 입력한 수량
 				int originStock = Integer.parseInt(String.valueOf(mainFrame.salePanel.stockTblModel.getValueAt(row, 2))); //원래 재고의 수량
 				String totalCost = null;
 				
-	
-				//이벤트 상품일 경우 처리메서드
+				//이벤트 상품일 경우 처리프로세스
 				if(eventType != null) {
 					switch (eventType) {
 					case "1+1": 
@@ -74,6 +72,17 @@ public class SaleAction implements ActionListener{
 						}
 						
 						break;
+					case "10% 할인" :
+					case "20% 할인" :
+						double disCount =  (double) ((100 - Integer.parseInt(eventType.substring(0, 2))) * 0.01);
+						
+						JOptionPane.showMessageDialog(null, "\t[SYSTEM] "+eventType+" 이벤트 적용되었습니다.", "확인", JOptionPane.CLOSED_OPTION);
+						totalCost = Integer.toString((int) ((originInput) * (Integer.parseInt(String.valueOf(mainFrame.salePanel.stockTblModel.getValueAt(row, 3))) * disCount)));
+						arrData[2] = Integer.toString(originInput);		//수량
+						arrData[3] = totalCost; 						//가격
+						
+						break;
+					
 					}
 				}else {
 					totalCost = Integer.toString(((originInput) * Integer.parseInt(String.valueOf(mainFrame.salePanel.stockTblModel.getValueAt(row, 3)))));

@@ -16,6 +16,8 @@ import stock.Stock;
 
 public class SaleDao {
 	Connection conn = null;
+	
+	Connection conn2 = null;
 
 	PreparedStatement ps = null;
 
@@ -84,16 +86,8 @@ public class SaleDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally {
-			// DB사용 종료
-			try {
-				DatabaseConnect.dbClose(rs, ps, conn);
-			} catch (SQLException e) {
-				System.out.println("[DB] 자원 반납 중 오류 발생\n");
-				e.printStackTrace();
-			}
 		}
-
+		
 		return originQt;
 	}
 
@@ -103,7 +97,7 @@ public class SaleDao {
 		String query = "insert into sales values (SALES_NO_SEQ.nextval, SYSDATE, SYSDATE, ?)";
 
 		// 판매 상세 테이블
-		String query2 = "insert into sales_detail values (SALE_DETAIL_NO_SEQ.NEXTVAL, SALES_NO_SEQ.currval, ?, ?, ?)";
+		String query2 = "insert into sales_detail values (SALE_DETAIL_NO_SEQ.NEXTVAL, SALES_NO_SEQ.currval, ?, ?, ?, ?)";
 
 		// 판매 테이블 시퀀스 조회
 		String query3 = "SELECT SALES_NO_SEQ.currval FROM dual";
@@ -128,11 +122,14 @@ public class SaleDao {
 
 		try {
 			for (int i = 0; i < stocks.size(); i++) {
+				String eventType = searchEvent(stocks.get(i).getProduct_id());
+				eventType = (eventType!=null)?eventType:"-";
+	
 				ps = conn.prepareStatement(query2);
-				// ps.setInt(1, getSaleSeq());
 				ps.setString(1, stocks.get(i).getProduct_id());
 				ps.setInt(2, stocks.get(i).getQuantity());
 				ps.setInt(3, stocks.get(i).getPrice());
+				ps.setString(4, eventType); // 이벤트 타입 넣어주기.
 				result2 = ps.executeUpdate();
 				if (result2 > 0) {
 					System.out.println("[DB] sale_detail insert (" + i + ") complete");
@@ -163,9 +160,11 @@ public class SaleDao {
 		}
 
 		if (result > 0 && result2 > 0) {
+
 			// 현재 판매된 상품의 판매수량만큼 재고테이블도 업데이트
-			if (payStockUpdate(sales_seq))
+			if (payStockUpdate(sales_seq)) {
 				return true;
+			}		
 			else {
 				System.out.println("[DB] 상품 판매수량 재고 업데이트 중 오류발생");
 				return false;
@@ -222,30 +221,21 @@ public class SaleDao {
 		} catch (SQLException e) {
 			System.out.println("[DB] 판매시 재고테이블 업데이트 오류");
 			e.printStackTrace();
-		} finally {
-			// DB사용 종료
-			try {
-				DatabaseConnect.dbClose(rs, ps, conn);
-			} catch (SQLException e) {
-				System.out.println("[DB] 자원 반납 중 오류 발생\n");
-				e.printStackTrace();
-			}
-		}
-
+		} 
 		return true;
 	}
 
 	// 이벤트 상품 확인 메서드
 	public String searchEvent(String product_id) {
-		conn = DatabaseConnect.getConnection();
+		conn2 = DatabaseConnect.getConnection();
 
-		String query = "SELECT event_type, start_dt, end_dt FROM EVENT " + "WHERE product_id = ? and save_status = 'Y' "
+		String query = "SELECT event_type, start_dt, end_dt FROM (SELECT event_type, start_dt, end_dt FROM EVENT " + "WHERE product_id = ? and save_status = 'Y' "
 				+ "and to_char(start_dt , 'YYYY-MM-dd') <= to_char(SYSDATE , 'YYYY-MM-dd') "
-				+ "and to_char(end_dt , 'YYYY-MM-dd') >= to_char(SYSDATE , 'YYYY-MM-dd')";
+				+ "and to_char(end_dt , 'YYYY-MM-dd') >= to_char(SYSDATE , 'YYYY-MM-dd') ORDER BY SAVE_TIME DESC ) WHERE ROWNUM =1";
 		String eventType = null;
 
 		try {
-			ps = conn.prepareStatement(query);
+			ps = conn2.prepareStatement(query);
 			ps.setString(1, product_id);
 
 			rs = ps.executeQuery();
@@ -260,13 +250,13 @@ public class SaleDao {
 		} finally {
 			// DB사용 종료
 			try {
-				DatabaseConnect.dbClose(rs, ps, conn);
+				DatabaseConnect.dbClose(rs, ps, conn2);
 			} catch (SQLException e) {
 				System.out.println("[DB] 자원 반납 중 오류 발생\n");
 				e.printStackTrace();
 			}
 		}
-
+		
 		return eventType;
 	}
 
@@ -303,14 +293,6 @@ public class SaleDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally {
-			// DB사용 종료
-			try {
-				DatabaseConnect.dbClose(rs, ps, conn);
-			} catch (SQLException e) {
-				System.out.println("[DB] 자원 반납 중 오류 발생\n");
-				e.printStackTrace();
-			}
 		}
 
 		return sales;
@@ -319,7 +301,7 @@ public class SaleDao {
 	public ArrayList<SaleDetail> salesDetailList(String sales_no) {
 		conn = DatabaseConnect.getConnection();
 
-		String query = "SELECT sd.sales_detail_no, sd.sales_no, sd.product_id, p.product_name, sd.quantity, sd.product_price "
+		String query = "SELECT sd.sales_detail_no, sd.sales_no, sd.product_id, p.product_name, sd.quantity, sd.product_price, sd.event_type "
 				+ "FROM sales_detail sd, product p "
 				+ "WHERE sd.product_id = p.product_id AND p.save_status = 'Y' AND sd.sales_no = " + sales_no;
 
@@ -338,21 +320,14 @@ public class SaleDao {
 				saleDetail.setProduct_name(rs.getString(4));
 				saleDetail.setQuantity(Integer.parseInt(rs.getString(5)));
 				saleDetail.setProduct_price(Integer.parseInt(rs.getString(6)));
+				saleDetail.setEvent_type(rs.getString(7));
 
 				saleDetails.add(saleDetail);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally {
-			// DB사용 종료
-			try {
-				DatabaseConnect.dbClose(rs, ps, conn);
-			} catch (SQLException e) {
-				System.out.println("[DB] 자원 반납 중 오류 발생\n");
-				e.printStackTrace();
-			}
-		}
+		} 
 
 		return saleDetails;
 

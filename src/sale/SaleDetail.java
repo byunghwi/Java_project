@@ -7,7 +7,15 @@ public class SaleDetail {
 	String product_name;
 	int quantity;
 	int product_price;
+	String event_type;
 	
+	
+	public String getEvent_type() {
+		return event_type;
+	}
+	public void setEvent_type(String event_type) {
+		this.event_type = event_type;
+	}
 	public int getSales_detail_no() {
 		return sales_detail_no;
 	}
