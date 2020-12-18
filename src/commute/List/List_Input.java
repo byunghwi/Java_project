@@ -1,6 +1,6 @@
 package commute.List;
 
-import java.awt.BorderLayout; 
+import java.awt.BorderLayout;  
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -21,7 +21,7 @@ import javax.swing.border.EmptyBorder;
 import com.toedter.calendar.JDateChooser;
 
 import commute.CommutePanel;
-import commute.MainCommuteFrame.CommuteMainFrame;
+
 import product.HintTextField;
 
 public class List_Input extends JFrame {

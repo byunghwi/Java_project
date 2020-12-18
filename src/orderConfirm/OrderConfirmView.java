@@ -18,7 +18,11 @@ public class OrderConfirmView extends JPanel {
 	public JScrollPane scrollpane = new JScrollPane();
 	public static Vector<String> colNames = getColum();
 	public static DefaultTableModel model = new DefaultTableModel(colNames, 0);
-	public JTable orderTable = new JTable(model);
+	public JTable orderTable = new JTable(model){
+		public boolean isCellEditable(int row, int column) {
+			return false;
+		};
+	};
 	public Vector<String> rows;
 	
 	public OrderConfirmView() {

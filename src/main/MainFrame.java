@@ -13,6 +13,11 @@ import javax.swing.border.EmptyBorder;
 
 import account.action.PopSecession_Action;
 import account.action.UserInfoAction;
+import commute.CommutePanel;
+import commute.TimeDao;
+import commute.BtnAction.CommuteBtnAction;
+import commute.List.Commute_ListDao;
+import commute.MainCommuteFrame.CommuteBtnPanel;
 import event.Event;
 import event.EventBtnPanel;
 import event.EventDao;
@@ -75,6 +80,9 @@ public class MainFrame extends JFrame{
 	
 	// 가운데 이벤트 보여줄 패널
 	public EventPanel eventPanel = new EventPanel();
+	
+	// 가운데 근태 보여줄 패널 
+	public CommutePanel commutePanel= new CommutePanel();
 
 	// 오른쪽 상품버튼 보여줄 패널
 	public ProdBtnPanel prodBtnPanel = new ProdBtnPanel();
@@ -87,6 +95,9 @@ public class MainFrame extends JFrame{
 	
 	// 오른쪽 이벤트버튼 보여줄 패널
 	public EventBtnPanel eventBtnPanel = new EventBtnPanel();
+	
+	// 오른쪽 근태버튼 보여줄 패널
+	public CommuteBtnPanel commuteBtnPanel=new CommuteBtnPanel();
 	
 	// 하단 버튼들 보여줄 패널
 	public BottomPanel bottomPanel = new BottomPanel();
@@ -131,6 +142,8 @@ public class MainFrame extends JFrame{
 	public SaleDao sdao = new SaleDao();
 	public StockDao stockdao = new StockDao();
 	public EventDao eventdao = new EventDao();
+	public TimeDao timedao= new TimeDao();
+	public Commute_ListDao commutelistdao=new Commute_ListDao(null,null,null);
 	
 	// 로그인 할 회원 정보를 가져올 변수
 	public String mem_id;
@@ -183,6 +196,7 @@ public class MainFrame extends JFrame{
 		centerView.add(salePanel, "salePanel");			//판매화면
 		centerView.add(saleListPanel, "saleListPanel");	//판매리스트
 		centerView.add(eventPanel, "eventPanel");  		//이벤트
+		centerView.add(commutePanel,"commutePanel");	//근태
 		centerView.setBackground(Color.WHITE);
 		centerView.setBounds(0, 50, 1157, 552);
 		contentPanel.add(centerView);
@@ -196,6 +210,7 @@ public class MainFrame extends JFrame{
 		pBtnView.add(stockBtnPanel, "stockBtnPanel");	// 재고관련 오른쪽 버튼들
 		pBtnView.add(saleBtnPanel, "saleBtnPanel");		// 판매관련 오른쪽 버튼들
 		pBtnView.add(eventBtnPanel, "eventBtnPanel");	// 이벤트 관련 오른쪽 버튼들
+		pBtnView.add(commuteBtnPanel, "commuteBtnPanel");// 근태관련 오른쪽 버튼들
 		
 		contentPanel.add(pBtnView);
 				
@@ -211,6 +226,10 @@ public class MainFrame extends JFrame{
 		prodBtnPanel.registProdBtn.addActionListener(new ProdBtnPanelAction(this)); 		//우측패널 상품등록 버튼
 		prodBtnPanel.editProdBtn.addActionListener(new ProdBtnPanelAction(this)); 		//우측패널 상품 수정 버튼
 		prodBtnPanel.delProdBtn.addActionListener(new ProdBtnPanelAction(this)); 			//우측패널 상품 삭제 버튼
+		
+		commuteBtnPanel.on_timeBtn.addActionListener(new CommuteBtnAction(this));		//우측패널 출근버튼
+		commuteBtnPanel.off_timeBtn.addActionListener(new CommuteBtnAction(this));		//우측패널 퇴근버튼
+		commuteBtnPanel.commuteBtn.addActionListener(new CommuteBtnAction(this));		//우측패널 근태목록버튼
 		
 		eventBtnPanel.eventRegBtn.addActionListener(new EventBtnPanelAction(this));		//우측패널 이벤트 등록 버튼 
 		eventBtnPanel.eventDelBtn.addActionListener(new EventBtnPanelAction(this));		//우측패널 이벤트 등록 버튼 

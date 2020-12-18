@@ -14,7 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
-public class RightBtnPanel extends JPanel{
+public class CommuteBtnPanel extends JPanel{
 	/**
 	 * 
 	 */
@@ -23,7 +23,7 @@ public class RightBtnPanel extends JPanel{
 	public JButton off_timeBtn;
 	public JButton commuteBtn;
 
-	public RightBtnPanel() {
+	public CommuteBtnPanel() {
 		setBackground(Color.WHITE);
 		setLayout(null);
 		on_timeBtn = new JButton("출근");
