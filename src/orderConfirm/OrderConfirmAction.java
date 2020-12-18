@@ -60,6 +60,7 @@ public class OrderConfirmAction implements ActionListener {
 					if (row != -1) {
 						String id = (String) mainFrame.orderframe.ov.orderTable.getValueAt(row, 0);
 						mainFrame.orderframe.fields[0].setText(id);
+						mainFrame.orderframe.fields[2].setText(mainFrame.mem_id); // 사용자 id가져옴
 					}
 				}
 			});

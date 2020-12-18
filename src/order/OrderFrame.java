@@ -50,6 +50,7 @@ public class OrderFrame extends JFrame {
 		}
 		//입력칸 편집 못하게
 		fields[0].setEditable(false);
+		fields[2].setEditable(false);
 		
 		order_btn = new JButton("주문");
 		cancel_btn = new JButton("취소");
