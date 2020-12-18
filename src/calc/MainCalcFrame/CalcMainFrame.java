@@ -23,6 +23,7 @@ import calc.add.Calc_Add_Date;
 import commute.Action.Add_Commute_Off_Time;
 import commute.Action.Check_on_Time;
 import commute.List.List_Input;
+import main.MainFrame;
 
 
 public class CalcMainFrame extends JFrame {
@@ -48,4 +49,8 @@ public class CalcMainFrame extends JFrame {
 		
 	}
 
+	public static void main(String[] args) {
+		new CalcMainFrame();
+	}
+	
 }
