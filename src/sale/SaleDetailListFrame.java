@@ -103,7 +103,7 @@ public class SaleDetailListFrame extends JFrame {
 		colNames.add("상품코드");
 		colNames.add("상품명");
 		colNames.add("구매수량");
-		colNames.add("상품가격");
+		colNames.add("가격");
 
 		return colNames;
 	}

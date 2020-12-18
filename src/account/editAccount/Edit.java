@@ -121,7 +121,7 @@ public class Edit extends JFrame {
 		
 		setTitle("회원 정보 수정");
 		setLayout(null);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setLocation(800,100);
 		setSize(310, 550);
 		setVisible(true);
