@@ -20,7 +20,7 @@ import javax.swing.border.EmptyBorder;
 
 import com.toedter.calendar.JDateChooser;
 
-import commute.TimeView;
+import commute.CommutePanel;
 import commute.MainCommuteFrame.CommuteMainFrame;
 import product.HintTextField;
 
@@ -41,7 +41,7 @@ public class List_Input extends JFrame {
 	public  JDateChooser st_date = new JDateChooser();
 	public JDateChooser en_date = new JDateChooser();
 	
-	public TimeView cv = null;
+	public CommutePanel cv = null;
 	
 	SimpleDateFormat dcn = new SimpleDateFormat("yyyy-MM-dd"); 
 	

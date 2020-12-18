@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import commute.TimeDao;
-import commute.TimeView;
+import commute.CommutePanel;
 import commute.Action.Add_Commute_Off_Time;
 import commute.Action.Add_Commute_On_Time;
 import commute.Action.Check_on_Time;
@@ -44,7 +44,7 @@ public class CommuteMainFrame extends JFrame{
 	public JPanel topView;
 	public JPanel lView;
 	
-	public TimeView tv = null;
+	public CommutePanel tv = null;
 	public TimeDao tdao = new TimeDao();
 
 	
@@ -53,7 +53,7 @@ public class CommuteMainFrame extends JFrame{
 	
 	public CommuteMainFrame() {
 		
-		tv= new TimeView();
+		tv= new CommutePanel();
 		
 		cardlayout = new CardLayout();
 

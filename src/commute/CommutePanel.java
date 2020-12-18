@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 
 import commute.List.Commute_ListDao;
 
-public class TimeView extends JPanel {
+public class CommutePanel extends JPanel {
 
 private static final long serialVersionUID = 1L;
 	
@@ -49,7 +49,7 @@ private static final long serialVersionUID = 1L;
 	
 	public Commute_ListDao commutelist;
 	
-	public TimeView() {
+	public CommutePanel() {
 		
 		tlist = new TimeDao();
 		clist = new Commute_ListDao(null, null, null);
