@@ -55,7 +55,6 @@ public class StockRightBtnPanel extends JPanel{
 		
 		add(orderConfirmBtn);
 		
-		
 	}
 
 }

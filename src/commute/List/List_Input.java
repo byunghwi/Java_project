@@ -1,6 +1,6 @@
 package commute.List;
 
-import java.awt.BorderLayout;
+import java.awt.BorderLayout; 
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -20,6 +20,7 @@ import javax.swing.border.EmptyBorder;
 
 import com.toedter.calendar.JDateChooser;
 
+import commute.CommutePanel;
 import commute.MainCommuteFrame.CommuteMainFrame;
 import product.HintTextField;
 
@@ -40,7 +41,7 @@ public class List_Input extends JFrame {
 	public  JDateChooser st_date = new JDateChooser();
 	public JDateChooser en_date = new JDateChooser();
 	
-	public Commute_ListView clv = null;
+	public CommutePanel cv = null;
 	
 	SimpleDateFormat dcn = new SimpleDateFormat("yyyy-MM-dd"); 
 	
@@ -98,8 +99,8 @@ public class List_Input extends JFrame {
 			String start_date = dcn.format(st_date.getDate()); 
 			String end_date = dcn.format(en_date.getDate()); 
             String name=mem_name.getText();
-            clv.tblModel.setNumRows(0);
-			clv.addCommuteLine(new Commute_ListDao(start_date,end_date,name).commutelist());
+            cv.IndividualtblModel.setNumRows(0);
+            cv.addCommuteIndividualLine(new Commute_ListDao(start_date,end_date,name).commutelist());
 			JOptionPane.showMessageDialog(null, "[SYSTEM] 조회되었습니다.", "확인", JOptionPane.CLOSED_OPTION);
             
 			

@@ -50,14 +50,14 @@ public class SaleDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-
-		// DB사용 종료
-		try {
-			DatabaseConnect.dbClose(rs, ps, conn);
-		} catch (SQLException e) {
-			System.out.println("[DB] 자원 반납 중 오류 발생\n");
-			e.printStackTrace();
+		} finally {
+			// DB사용 종료
+			try {
+				DatabaseConnect.dbClose(rs, ps, conn);
+			} catch (SQLException e) {
+				System.out.println("[DB] 자원 반납 중 오류 발생\n");
+				e.printStackTrace();
+			}
 		}
 
 		return stocks;
@@ -84,14 +84,14 @@ public class SaleDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-
-		// DB사용 종료
-		try {
-			DatabaseConnect.dbClose(rs, ps, conn);
-		} catch (SQLException e) {
-			System.out.println("[DB] 자원 반납 중 오류 발생\n");
-			e.printStackTrace();
+		} finally {
+			// DB사용 종료
+			try {
+				DatabaseConnect.dbClose(rs, ps, conn);
+			} catch (SQLException e) {
+				System.out.println("[DB] 자원 반납 중 오류 발생\n");
+				e.printStackTrace();
+			}
 		}
 
 		return originQt;
@@ -222,9 +222,17 @@ public class SaleDao {
 		} catch (SQLException e) {
 			System.out.println("[DB] 판매시 재고테이블 업데이트 오류");
 			e.printStackTrace();
+		} finally {
+			// DB사용 종료
+			try {
+				DatabaseConnect.dbClose(rs, ps, conn);
+			} catch (SQLException e) {
+				System.out.println("[DB] 자원 반납 중 오류 발생\n");
+				e.printStackTrace();
+			}
 		}
-		return true;
 
+		return true;
 	}
 
 	// 이벤트 상품 확인 메서드
@@ -249,10 +257,17 @@ public class SaleDao {
 		} catch (SQLException e) {
 			System.out.println("[DB] Event 조회 중 에러");
 			e.printStackTrace();
+		} finally {
+			// DB사용 종료
+			try {
+				DatabaseConnect.dbClose(rs, ps, conn);
+			} catch (SQLException e) {
+				System.out.println("[DB] 자원 반납 중 오류 발생\n");
+				e.printStackTrace();
+			}
 		}
 
 		return eventType;
-
 	}
 
 	// 판매리스트 전체 가져오기
@@ -288,18 +303,25 @@ public class SaleDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			// DB사용 종료
+			try {
+				DatabaseConnect.dbClose(rs, ps, conn);
+			} catch (SQLException e) {
+				System.out.println("[DB] 자원 반납 중 오류 발생\n");
+				e.printStackTrace();
+			}
 		}
 
 		return sales;
 	}
-
+	//판매 상세리스트 보여주기.
 	public ArrayList<SaleDetail> salesDetailList(String sales_no) {
 		conn = DatabaseConnect.getConnection();
 
 		String query = "SELECT sd.sales_detail_no, sd.sales_no, sd.product_id, p.product_name, sd.quantity, sd.product_price "
 				+ "FROM sales_detail sd, product p "
-				+ "WHERE sd.product_id = p.product_id AND p.save_status = 'Y' AND sd.sales_no = "
-				+ sales_no;
+				+ "WHERE sd.product_id = p.product_id AND p.save_status = 'Y' AND sd.sales_no = " + sales_no;
 
 		ArrayList<SaleDetail> saleDetails = new ArrayList<SaleDetail>();
 
@@ -316,12 +338,20 @@ public class SaleDao {
 				saleDetail.setProduct_name(rs.getString(4));
 				saleDetail.setQuantity(Integer.parseInt(rs.getString(5)));
 				saleDetail.setProduct_price(Integer.parseInt(rs.getString(6)));
-				
+
 				saleDetails.add(saleDetail);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			// DB사용 종료
+			try {
+				DatabaseConnect.dbClose(rs, ps, conn);
+			} catch (SQLException e) {
+				System.out.println("[DB] 자원 반납 중 오류 발생\n");
+				e.printStackTrace();
+			}
 		}
 
 		return saleDetails;

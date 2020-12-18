@@ -5,9 +5,14 @@ import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import account.action.PopSecession_Action;
+import account.action.UserInfoAction;
 import event.Event;
 import event.EventBtnPanel;
 import event.EventDao;
@@ -43,7 +48,6 @@ import sale.saleAction.SaleBtnPanelAction;
 import sale.saleAction.SaleListPanelAction;
 import stock.StockDao;
 import stock.stockAction.DisposalInfoAction;
-import stock.stockAction.Disposal_Action;
 import stock.stockAction.MoreInfoAction;
 import stock.stockView.StockView;
 import stock.stockframe.StockRightBtnPanel;
@@ -102,6 +106,9 @@ public class MainFrame extends JFrame{
 	// 상품
 	public Product product;
 	
+	// 이벤트
+	public Event event;
+	
 	// 발주승인, 발주주문 프레임, DB, View
 	public OrderConfirmFrame orderConfirmFrame = new OrderConfirmFrame();
 	public OrderFrame orderframe = new OrderFrame();
@@ -109,9 +116,6 @@ public class MainFrame extends JFrame{
 	public OrderConfirmView orderConfirmView = new OrderConfirmView();
 	public OrderDao orderDao = new OrderDao();
 	public OrderView orderView = new OrderView();
-	
-	// 이벤트
-	public Event event;
 
 	public CardLayout cardlayout;
 	public CardLayout btnlayout;
@@ -130,10 +134,23 @@ public class MainFrame extends JFrame{
 	
 	// 로그인 할 회원 정보를 가져올 변수
 	public String mem_id;
+	
+	// 매뉴바 기본 설정
+	JMenuBar bar = new JMenuBar();
+	JMenu menu = new JMenu("회원정보");
+	JMenuItem i1 = new JMenuItem("확인/수정");
+	JMenuItem i2 = new JMenuItem("탈퇴");
 
 	
 	
 	public MainFrame() {
+		
+		// 매뉴 바 추가
+		bar.add(menu);
+		menu.add(i1);
+		menu.add(i2);
+		this.setJMenuBar(bar);
+		
 		
 		cardlayout = new CardLayout();
 		btnlayout = new CardLayout();
@@ -142,7 +159,7 @@ public class MainFrame extends JFrame{
 		setTitle("편의점프로그램");
 		setResizable(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1326, 753);
+		setBounds(100, 100, 1326, 773);
 		setVisible(true);
 
 		contentPanel = new JPanel();
@@ -198,12 +215,10 @@ public class MainFrame extends JFrame{
 		eventBtnPanel.eventRegBtn.addActionListener(new EventBtnPanelAction(this));		//우측패널 이벤트 등록 버튼 
 		eventBtnPanel.eventDelBtn.addActionListener(new EventBtnPanelAction(this));		//우측패널 이벤트 등록 버튼 
 		stockBtnPanel.productMoreInfoBtn.addActionListener(new MoreInfoAction(this));	//우측패널 재고 상세정보 확인 버튼
-//<<<<<<< HEAD
-		stockBtnPanel.disposalInfoBtn.addActionListener(new DisposalInfoAction(this));
-		stockBtnPanel.orderConfirmBtn.addActionListener(new OrderConfirmAction(this)); // 발주승인목록 버튼
-//=======
 		stockBtnPanel.disposalInfoBtn.addActionListener(new DisposalInfoAction(this));	//우측패널 폐기 정보 확인 버튼
-//>>>>>>> branch 'develop' of https://github.com/byunghwi/Java_project.git
+		stockBtnPanel.orderConfirmBtn.addActionListener(new OrderConfirmAction(this)); // 발주승인목록 버튼
+
+
 
 		saleBtnPanel.saleListBtn.addActionListener(new SaleBtnPanelAction(this));		//우측패널 판매리스트 버튼
 		saleBtnPanel.saleBtn.addActionListener(new SaleBtnPanelAction(this));			//우측패널 판매 버튼
@@ -235,7 +250,15 @@ public class MainFrame extends JFrame{
 		salePanel.delBucketBtn.addActionListener(new SaleAction(this));						//판매패널 장바구니 삭제 버튼
 		salePanel.completeBtn.addActionListener(new SaleAction(this));						//판매패널 결제 버튼
 		
-//<<<<<<< HEAD
+		orderframe.order_btn.addActionListener(new OrderAction(this));
+		orderframe.cancel_btn.addActionListener(new OrderAction(this));
+		orderframe.search_btn.addActionListener(new OrderAction(this));
+		saleListPanel.searchBtn.addActionListener(new SaleListPanelAction(this));			//판매리스트 패널 검색버튼
+		
+
+		i1.addActionListener(new UserInfoAction(this));										// 회원정보 확인/수정 버튼
+		i2.addActionListener(new PopSecession_Action(this));										// 회원탈퇴 버튼
+		
 		// 발주승인목록 버튼
 		orderConfirmFrame.order_btn.addActionListener(new OrderConfirmAction(this));
 		orderConfirmFrame.confirm_btn.addActionListener(new OrderConfirmAction(this));
@@ -246,11 +269,7 @@ public class MainFrame extends JFrame{
 		orderframe.order_btn.addActionListener(new OrderAction(this));
 		orderframe.cancel_btn.addActionListener(new OrderAction(this));
 		orderframe.search_btn.addActionListener(new OrderAction(this));
-//=======
-		saleListPanel.searchBtn.addActionListener(new SaleListPanelAction(this));			//판매리스트 패널 검색버튼
-		
-	
-//>>>>>>> branch 'develop' of https://github.com/byunghwi/Java_project.git
+
 		// 버튼들 액션 달기 End
 	}
 

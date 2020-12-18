@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
+
 import com.zaxxer.hikari.HikariDataSource;
 
 import db.DatabaseConnect;
@@ -40,6 +42,7 @@ public class Check_SaveStatus {
 				check = true;
 			// 회원정보가 존재하지만 Savestatus가 N이라면 이후의 작업은 정상 작동하지 않는다
 			} else {
+				JOptionPane.showMessageDialog(null, "탈퇴한 회원입니다");
 				System.err.println("탈퇴한 회원입니다.");
 			}
 			
@@ -48,6 +51,8 @@ public class Check_SaveStatus {
 		// 아예 회원정보가 없는 경우 아이디가 잘못되었음을 알린다
 		} catch (SQLException e) {
 			System.err.println("잘못된 ID입니다");
+			JOptionPane.showMessageDialog(null, "잘못된 ID 입니다!");
+			JOptionPane.showMessageDialog(null, "잘못된 ID 입니다!");
 		}
 		
 	}

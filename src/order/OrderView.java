@@ -18,7 +18,12 @@ public class OrderView extends JPanel {
 	JScrollPane scrollpane = new JScrollPane();
 	static Vector<String> colNames = getColum();
 	public static DefaultTableModel model = new DefaultTableModel(colNames, 0);
-	public JTable orderTable = new JTable(model);
+	public JTable orderTable = new JTable(model){
+		public boolean isCellEditable(int row, int column) {
+			return false;
+		};
+	};
+
 	public Vector<String> rows;
 	
 	public OrderView() {

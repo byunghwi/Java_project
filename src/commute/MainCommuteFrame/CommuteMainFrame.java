@@ -1,7 +1,7 @@
 package commute.MainCommuteFrame;
 
 
-import java.awt.BorderLayout; 
+import java.awt.BorderLayout;  
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -15,13 +15,13 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import commute.TimeDao;
-import commute.TimeView;
+import commute.CommutePanel;
 import commute.Action.Add_Commute_Off_Time;
 import commute.Action.Add_Commute_On_Time;
 import commute.Action.Check_on_Time;
 import commute.BtnAction.CommuteBtnAction;
 import commute.List.Commute_ListDao;
-import commute.List.Commute_ListView;
+//import commute.List.Commute_ListView;
 import commute.List.List_Input;
 import product.ProductDao;
 import product.ProductView;
@@ -44,18 +44,16 @@ public class CommuteMainFrame extends JFrame{
 	public JPanel topView;
 	public JPanel lView;
 	
-	public TimeView tv = null;
+	public CommutePanel tv = null;
 	public TimeDao tdao = new TimeDao();
 
 	
-	public Commute_ListView lv = null;
+	
 	
 	
 	public CommuteMainFrame() {
 		
-		lv= new Commute_ListView(null,null,null);
-		
-		tv= new TimeView();
+		tv= new CommutePanel();
 		
 		cardlayout = new CardLayout();
 
@@ -82,16 +80,16 @@ public class CommuteMainFrame extends JFrame{
 		tView = new JPanel();
 		tView.add(tv , "TimeView");
 		tView.setBackground(Color.WHITE);
-		tView.setBounds(0, 50, 550, 800);
+		tView.setBounds(0, 50, 1100, 800);
 		tView.setLayout(cardlayout);
 		contentPanel.add(tView);
 		
-		lView = new JPanel();
-		lView.add(lv , "Commuite_ListView");
-		lView.setBackground(Color.WHITE);
-		lView.setBounds(600, 50, 550, 800);
-		lView.setLayout(cardlayout);
-		contentPanel.add(lView);
+//		lView = new JPanel();
+//		lView.add(lv , "Commuite_ListView");
+//		lView.setBackground(Color.WHITE);
+//		lView.setBounds(600, 50, 550, 800);
+//		lView.setLayout(cardlayout);
+//		contentPanel.add(lView);
 		
 		
 
@@ -108,6 +106,10 @@ public class CommuteMainFrame extends JFrame{
 		rightBtnPanel.off_timeBtn.addActionListener(new CommuteBtnAction(this)); // 우측패널 퇴근 버튼
 		rightBtnPanel.commuteBtn.addActionListener(new CommuteBtnAction(this)); // 우측패널 근태목록 버튼
 	
+	}
+	
+	public static void main(String[] args) {
+		new CommuteMainFrame();
 	}
 
 }

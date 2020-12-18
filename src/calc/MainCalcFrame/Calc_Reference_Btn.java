@@ -1,6 +1,6 @@
 package calc.MainCalcFrame;
 
-import java.awt.Color;
+import java.awt.Color; 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,8 +21,7 @@ import calc.Chart.CalcChart;
 import calc.Calc;
 import calc.CalcDao;
 import calc.CalcView;
-import commute.List.Commute_ListDao;
-import commute.List.Commute_ListView;
+
 
 public class Calc_Reference_Btn extends JPanel{
 
