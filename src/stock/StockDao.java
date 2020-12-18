@@ -41,9 +41,7 @@ public class StockDao {
 		try {
 			pstmt = conn.prepareStatement(query1);
 			rs = pstmt.executeQuery();
-			rsmd = rs.getMetaData();
-
-			int columCnt = rsmd.getColumnCount();
+			
 
 			while (rs.next()) {
 				stock = new Stock();
@@ -83,9 +81,7 @@ public class StockDao {
 			pstmt.setString(1, product_id);
 			
 			rs = pstmt.executeQuery();
-			rsmd = rs.getMetaData();
-
-			int columCnt = rsmd.getColumnCount();
+			
 
 			while (rs.next()) {
 				stock_info = new Stock_info();
@@ -188,12 +184,7 @@ public class StockDao {
 			}
 			
 			rs = pstmt.executeQuery();
-			rsmd = rs.getMetaData();
-			
-			
-			
-			int columCnt = rsmd.getColumnCount();
-			
+		
 	
 			while (rs.next()) {
 				disposal = new Disposal();
