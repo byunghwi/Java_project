@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
+import account.action.Find_Action;
 import account.action.Login_Action;
 import account.action.PopJoin_Action;
 import product.HintPasswordField;
@@ -27,8 +28,10 @@ public class Login extends JFrame {
 
 	ImageIcon login_button = new ImageIcon("src/로그인버튼.jpg");
 	ImageIcon join_button = new ImageIcon("src/회원가입.jpg");
+	ImageIcon find_button = new ImageIcon("src/찾기.jpg");
 	JButton login = new JButton(login_button);
 	JButton join = new JButton(join_button);
+	JButton find = new JButton(find_button);
     JScrollPane scrollPane;
     
 	Image backgroundimg = new ImageIcon("src/로그인틀.jpg").getImage();
@@ -48,6 +51,8 @@ public class Login extends JFrame {
     	
     	login.setBorder(javax.swing.BorderFactory.createEmptyBorder());
     	join.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+    	find.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+    	background.add(find).setBounds(128, 552, 71, 19);
     	background.add(join).setBounds(212, 551, 55, 20);
 	 	background.add(login).setBounds(48, 400, 300, 70);
 	 	background.setLayout(null);
@@ -68,6 +73,7 @@ public class Login extends JFrame {
         
 		login.addActionListener(new Login_Action(this));
 		join.addActionListener(new PopJoin_Action());
+		find.addActionListener(new Find_Action());
     	
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(410, 670);

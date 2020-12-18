@@ -5,9 +5,13 @@ import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import account.action.UserInfoAction;
 import event.Event;
 import event.EventBtnPanel;
 import event.EventDao;
@@ -35,7 +39,6 @@ import sale.saleAction.SaleBtnPanelAction;
 import sale.saleAction.SaleListPanelAction;
 import stock.StockDao;
 import stock.stockAction.DisposalInfoAction;
-import stock.stockAction.Disposal_Action;
 import stock.stockAction.MoreInfoAction;
 import stock.stockView.StockView;
 import stock.stockframe.StockRightBtnPanel;
@@ -114,10 +117,17 @@ public class MainFrame extends JFrame{
 	
 	// 로그인 할 회원 정보를 가져올 변수
 	public String mem_id;
+	JMenuBar bar = new JMenuBar();
+	JMenu menu = new JMenu("회원정보");
+	JMenuItem i1 = new JMenuItem("확인/수정");
 
 	
 	
 	public MainFrame() {
+		bar.add(menu);
+		menu.add(i1);
+		this.setJMenuBar(bar);
+		
 		
 		cardlayout = new CardLayout();
 		btnlayout = new CardLayout();
@@ -126,7 +136,7 @@ public class MainFrame extends JFrame{
 		setTitle("편의점프로그램");
 		setResizable(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1326, 753);
+		setBounds(100, 100, 1326, 773);
 		setVisible(true);
 
 		contentPanel = new JPanel();
@@ -216,7 +226,7 @@ public class MainFrame extends JFrame{
 		
 		saleListPanel.searchBtn.addActionListener(new SaleListPanelAction(this));			//판매리스트 패널 검색버튼
 		
-	
+		i1.addActionListener(new UserInfoAction(this));									
 		// 버튼들 액션 달기 End
 	}
 

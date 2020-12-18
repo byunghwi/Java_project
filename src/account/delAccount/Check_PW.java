@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
+
 import com.zaxxer.hikari.HikariDataSource;
 
 import account.check.Check_SaveStatus;
@@ -47,6 +49,7 @@ public class Check_PW {
 					// 올바른 정보라면 true를 반환하여 이후 작업이 정상 작동하도록 한다
 					check = true;
 				} else {
+					JOptionPane.showMessageDialog(null, "잘못된 PW 입니다!");
 					System.err.println("잘못된 PW 입니다!");
 				}
 				
