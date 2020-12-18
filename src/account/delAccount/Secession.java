@@ -1,5 +1,7 @@
 package account.delAccount;
 
+import java.awt.Color;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -15,7 +17,7 @@ public class Secession extends JFrame{
 	String [] info_names = {"ID","PW"};
 	String [] info_data = new String[2];
 	JLabel[] names = new JLabel[2];
-	JButton delete = new JButton("DELETE");
+	JButton delete = new JButton("회원탈퇴");
 	
 	public Secession(String mem_id) {
 		
@@ -32,10 +34,12 @@ public class Secession extends JFrame{
 		
 		infos[0].setText(mem_id);
 		
-		delete.setBounds(110, 90, 90, 20);
+		delete.setBounds(70, 100, 90, 20);
 		add(delete);
 		
 		delete.addActionListener(new Delete_Action(this));
+		
+		this.getContentPane().setBackground(Color.WHITE);
 		
 		setTitle("회원 탈퇴");
 		setLayout(null);
@@ -44,5 +48,8 @@ public class Secession extends JFrame{
 		setSize(250, 180);
 		setVisible(true);
 	}
-
+	
+	public static void main(String[] args) {
+		new Secession(null);
+	}
 }

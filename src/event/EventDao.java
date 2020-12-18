@@ -53,6 +53,9 @@ public class EventDao {
 
 				eventList.add(event);
 			}
+			
+			
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
