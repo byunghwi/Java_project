@@ -19,6 +19,7 @@ import commute.TimeView;
 import commute.Action.Add_Commute_Off_Time;
 import commute.Action.Add_Commute_On_Time;
 import commute.Action.Check_on_Time;
+import commute.BtnAction.CommuteBtnAction;
 import commute.List.Commute_ListDao;
 import commute.List.Commute_ListView;
 import commute.List.List_Input;
@@ -26,13 +27,13 @@ import product.ProductDao;
 import product.ProductView;
 
 
-public class CommuteMainFrame extends JFrame implements ActionListener {
+public class CommuteMainFrame extends JFrame{
 
 	
 	private static final long serialVersionUID = 1L;
 
 	TopPanel topPanel = new TopPanel();
-	RightBtnPanel rightBtnPanel = new RightBtnPanel();
+	public RightBtnPanel rightBtnPanel = new RightBtnPanel();
 
 
 	public CardLayout cardlayout;
@@ -43,11 +44,11 @@ public class CommuteMainFrame extends JFrame implements ActionListener {
 	public JPanel topView;
 	public JPanel lView;
 	
-	TimeView tv = null;
-	TimeDao tdao = new TimeDao();
+	public TimeView tv = null;
+	public TimeDao tdao = new TimeDao();
 
 	
-	Commute_ListView lv = null;
+	public Commute_ListView lv = null;
 	
 	
 	public CommuteMainFrame() {
@@ -103,36 +104,10 @@ public class CommuteMainFrame extends JFrame implements ActionListener {
 		contentPanel.add(cBtnView);
 
 	
-		rightBtnPanel.on_timeBtn.addActionListener(this); // 우측패널 출근 버튼
-		rightBtnPanel.off_timeBtn.addActionListener(this); // 우측패널 퇴근 버튼
-		rightBtnPanel.commuteBtn.addActionListener(this); // 우측패널 근태목록 버튼
-
-		
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		JButton clicked_btn =(JButton)e.getSource();
-
-		if (clicked_btn == rightBtnPanel.on_timeBtn) {
-			new Check_on_Time();
-			tv.tblModel.setNumRows(0);
-			tv.addCommuteLine(tdao.commute_Time());
-			JOptionPane.showMessageDialog(null, "[SYSTEM] 출근처리되었습니다.", "확인", JOptionPane.CLOSED_OPTION);
-			
-		} else if (clicked_btn ==  rightBtnPanel.off_timeBtn) {
-			new Add_Commute_Off_Time();
-			tv.tblModel.setNumRows(0);
-			tv.addCommuteLine(tdao.commute_Time());
-			JOptionPane.showMessageDialog(null, "[SYSTEM] 퇴근처리되었습니다.", "확인", JOptionPane.CLOSED_OPTION);
-			
-		} else {
-			List_Input Ll  = new List_Input();
-			Ll.clv = this.lv;
-		
-		} 
-	}
-
+		rightBtnPanel.on_timeBtn.addActionListener(new CommuteBtnAction(this)); // 우측패널 출근 버튼
+		rightBtnPanel.off_timeBtn.addActionListener(new CommuteBtnAction(this)); // 우측패널 퇴근 버튼
+		rightBtnPanel.commuteBtn.addActionListener(new CommuteBtnAction(this)); // 우측패널 근태목록 버튼
 	
+	}
 
 }
