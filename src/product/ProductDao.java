@@ -74,7 +74,7 @@ public class ProductDao {
 		String query = "insert into product (product_id, product_name, price, worker_no) values (? ,?, ?, ?)";
 		
 		//상품등록하면 수량 0으로 세팅되고 발주승인대기 테이블에 추가된다.
-		String query2 =  "insert into order_product values (ORDER_PRODUCT_NO_SEQ.nextval, ?, ?, ?, ?)";
+		String query2 =  "insert into order_product values (ORDER_PRODUCT_NO_SEQ.nextval, ?, ?, ?, SYSDATE)";
 
 		try {
 			ps = conn.prepareStatement(query);
@@ -89,9 +89,8 @@ public class ProductDao {
 			PreparedStatement ps2 = null;
 			ps2 = conn.prepareStatement(query2);
 			ps2.setString(1, product.getProduct_id());
-			ps2.setInt(2, 0);
-			ps2.setString(3, "TEST"); 			// 추후에 로그인한 작업자 값 받아와서 넣어줄 것.
-			ps2.setString(4, dateToStr(new Date()));
+			ps2.setInt(2, 0);							// 수량은 0으로 세팅
+			ps2.setString(3, "TEST"); 					// 추후에 로그인한 작업자 값 받아와서 넣어줄 것.
 			
 			int rsCnt2 = ps2.executeUpdate();
 			
