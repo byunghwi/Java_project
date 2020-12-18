@@ -53,18 +53,16 @@ public class ProductDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			// DB사용 종료
+			try {
+				DatabaseConnect.dbClose(rs, ps, conn);
+			} catch (SQLException e) {
+				System.out.println("[DB] 자원 반납 중 오류 발생\n");
+				e.printStackTrace();
+			}
 		}
-
-		// DB사용 종료
-		try {
-			DatabaseConnect.dbClose(rs, ps, conn);
-		} catch (SQLException e) {
-			System.out.println("[DB] 자원 반납 중 오류 발생\n");
-			e.printStackTrace();
-		}
-
 		return products;
-
 	}
 
 	// 상품 등록
@@ -104,16 +102,15 @@ public class ProductDao {
 		} catch (SQLException e) {
 			System.out.println("[DB] Insert 중 오류 발생\n");
 			e.printStackTrace();
+		} finally {
+			// DB사용 종료
+			try {
+				DatabaseConnect.dbClose(rs, ps, conn);
+			} catch (SQLException e) {
+				System.out.println("[DB] 자원 반납 중 오류 발생\n");
+				e.printStackTrace();
+			}
 		}
-
-		// DB사용 종료
-		try {
-			DatabaseConnect.dbClose(rs, ps, conn);
-		} catch (SQLException e) {
-			System.out.println("[DB] 자원 반납 중 오류 발생\n");
-			e.printStackTrace();
-		}
-
 	}
 
 	// 상품 수정
@@ -141,14 +138,14 @@ public class ProductDao {
 		} catch (SQLException e) {
 			System.out.println("[DB] Update 중 오류 발생\n");
 			e.printStackTrace();
-		}
-
-		// DB사용 종료
-		try {
-			DatabaseConnect.dbClose(rs, ps, conn);
-		} catch (SQLException e) {
-			System.out.println("[DB] 자원 반납 중 오류 발생\n");
-			e.printStackTrace();
+		} finally {
+			// DB사용 종료
+			try {
+				DatabaseConnect.dbClose(rs, ps, conn);
+			} catch (SQLException e) {
+				System.out.println("[DB] 자원 반납 중 오류 발생\n");
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -171,15 +168,17 @@ public class ProductDao {
 		} catch (SQLException e) {
 			System.out.println("[DB] Update 중 오류 발생\n");
 			e.printStackTrace();
+		} finally {
+			// DB사용 종료
+			try {
+				DatabaseConnect.dbClose(rs, ps, conn);
+			} catch (SQLException e) {
+				System.out.println("[DB] 자원 반납 중 오류 발생\n");
+				e.printStackTrace();
+			}
 		}
 
-		// DB사용 종료
-		try {
-			DatabaseConnect.dbClose(rs, ps, conn);
-		} catch (SQLException e) {
-			System.out.println("[DB] 자원 반납 중 오류 발생\n");
-			e.printStackTrace();
-		}
+		
 	}
 	
 	public ArrayList<Product> searchProduct(String combo, String searchWord) {
@@ -216,16 +215,16 @@ public class ProductDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			// DB사용 종료
+			try {
+				DatabaseConnect.dbClose(rs, ps, conn);
+			} catch (SQLException e) {
+				System.out.println("[DB] 자원 반납 중 오류 발생\n");
+				e.printStackTrace();
+			}
 		}
 
-		// DB사용 종료
-		try {
-			DatabaseConnect.dbClose(rs, ps, conn);
-		} catch (SQLException e) {
-			System.out.println("[DB] 자원 반납 중 오류 발생\n");
-			e.printStackTrace();
-		}
-		
 		return products;
 	}
 	

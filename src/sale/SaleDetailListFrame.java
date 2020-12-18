@@ -82,7 +82,7 @@ public class SaleDetailListFrame extends JFrame {
 		for (int i = 0; i < size; i++) {
 			rows = new Vector<String>();
 
-			rows.addElement(Integer.toString(saleDetails.get(i).getSales_no()));		// 판매 상세 번호
+			rows.addElement(Integer.toString(saleDetails.get(i).getSales_detail_no()));		// 판매 상세 번호
 			rows.addElement(Integer.toString(saleDetails.get(i).getSales_no()));		// 판매 번호
 			rows.addElement(saleDetails.get(i).getProduct_id()); 						// 상품코드
 			rows.addElement(saleDetails.get(i).getProduct_name()); 						// 상품명
@@ -103,7 +103,7 @@ public class SaleDetailListFrame extends JFrame {
 		colNames.add("상품코드");
 		colNames.add("상품명");
 		colNames.add("구매수량");
-		colNames.add("상품가격");
+		colNames.add("가격");
 
 		return colNames;
 	}
