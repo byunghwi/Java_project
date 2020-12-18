@@ -35,6 +35,17 @@ public class BottomAction implements ActionListener {
 			// 필드 초기화 먼저.
 			mainFrame.salePanel.prodnameTf.setText("");
 			mainFrame.salePanel.prodQt.setText("");
+//<<<<<<< HEAD
+//=======
+			
+			//재고화면 장바구니화면 초기화
+			mainFrame.salePanel.bucketTblModel.setNumRows(0);
+			mainFrame.salePanel.stockTblModel.setNumRows(0);
+			
+			//재고화면 로우 새로 받아오기.
+			mainFrame.salePanel.addStockLine(mainFrame.stockdao.stockAll());
+			
+//>>>>>>> branch 'develop' of https://github.com/byunghwi/Java_project.git
 			// 메인 버튼 클릭시 색 변경해주기
 			mainFrame.bottomPanel.selectedBtn(mainFrame.bottomPanel.saleBtn);
 			mainFrame.cardlayout.show(mainFrame.centerView, "salePanel");
@@ -59,6 +70,9 @@ public class BottomAction implements ActionListener {
 			mainFrame.bottomPanel.selectedBtn(mainFrame.bottomPanel.stockBtn);
 			mainFrame.cardlayout.show(mainFrame.centerView, "stockPanel");
 			mainFrame.btnlayout.show(mainFrame.pBtnView, "stockBtnPanel");
+			mainFrame.stockPanel.tblModel.setNumRows(0);
+	        mainFrame.stockPanel.addStockLine(mainFrame.stockdao.stockAll());
+			
 			
 		}else if (ob == mainFrame.bottomPanel.disBtn) {
 			//메인 버튼 클릭시 색 변경해주기

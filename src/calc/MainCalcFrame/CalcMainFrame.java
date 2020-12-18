@@ -18,18 +18,19 @@ import org.jfree.chart.JFreeChart;
 
 import calc.Chart.CalcChart;
 import calc.CalcView;
+import calc.BtnAction.CalcBtnAction;
 import calc.add.Calc_Add_Date;
 import commute.Action.Add_Commute_Off_Time;
 import commute.Action.Check_on_Time;
 import commute.List.List_Input;
 
 
-public class MainFrame extends JFrame implements ActionListener{
+public class CalcMainFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	// 상단 정보 보여줄 패널
 	TopPanel topPanel = new TopPanel();
-	CalcBtnPanel calcBtnPanel = new CalcBtnPanel();
+	public CalcBtnPanel calcBtnPanel = new CalcBtnPanel();
 	public CardLayout cardlayout;
 	public JPanel contentPanel;
 	
@@ -40,9 +41,9 @@ public class MainFrame extends JFrame implements ActionListener{
 	public JPanel calcBtnView;
 	public ChartPanel chart_p = new ChartPanel(null);
 	
-	Calc_Reference_Btn cb=null;
+	public Calc_Reference_Btn cb=null;
 	
-	public MainFrame() {
+	public CalcMainFrame() {
 		
 		cardlayout = new CardLayout();
 		
@@ -94,26 +95,15 @@ public class MainFrame extends JFrame implements ActionListener{
 		contentPanel.add(calcBtnView);
 		
 		
-		calcBtnPanel.calc_Btn.addActionListener(this);
+		calcBtnPanel.calc_Btn.addActionListener(new CalcBtnAction(this));
 		
 		add(chart_p).setBounds(0, 350, 1100, 450);
 		
 	}
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		JButton clicked_btn =(JButton)e.getSource();
-
-		if (clicked_btn == calcBtnPanel.calc_Btn) {
-			new Calc_Add_Date();
-			JOptionPane.showMessageDialog(null, "[SYSTEM] 금일정산처리되었습니다.", "확인", JOptionPane.CLOSED_OPTION);
-			calcBtnPanel.calc_Btn.setEnabled(false);
-			
-		} 
-		
-	} 
+	
 	
 	public static void main(String[] args) {
-		new MainFrame();
+		new CalcMainFrame();
 	}
 	
 	

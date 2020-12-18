@@ -29,7 +29,7 @@ public class Calc_Reference_Btn extends JPanel{
 	String[] fieldNames = new String[]{"시작날짜", "종료날짜"};
 	public JLabel[] labels;
 	
-	public MainFrame m1 = null;
+	public CalcMainFrame m1 = null;
 	public JButton check;
 	public  JDateChooser st_date = new JDateChooser();
 	public JDateChooser en_date = new JDateChooser();

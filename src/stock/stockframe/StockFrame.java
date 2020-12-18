@@ -1,3 +1,4 @@
+package stock.stockframe;
 //package stocksub.stockframe;
 //import java.awt.BorderLayout;
 //import java.awt.CardLayout;

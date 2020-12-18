@@ -1,4 +1,4 @@
-package stocksub.stockAction;
+package stock.stockAction;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -6,9 +6,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import main.MainFrame;
-import stocksub.stockView.StockInfoView;
-import stocksub.stockView.StockView;
-import stocksub.stockframe.StockInfoFrame;
+import stock.stockView.StockInfoView;
+import stock.stockView.StockView;
+import stock.stockframe.StockInfoFrame;
 
 // 상세정보에 대응하는 액션 리스너
 public class MoreInfoAction implements ActionListener {

@@ -1,4 +1,4 @@
-package stocksub.stockframe;
+package stock.stockframe;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
@@ -24,6 +24,7 @@ public class StockRightBtnPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	public JButton productMoreInfoBtn;
 	public JButton disposalInfoBtn;
+	public JButton orderConfirmBtn;
 
 	public StockRightBtnPanel() {
 		setBackground(Color.WHITE);
@@ -43,6 +44,16 @@ public class StockRightBtnPanel extends JPanel{
 		disposalInfoBtn.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		disposalInfoBtn.setBackground(new Color(204, 206, 206));
 		disposalInfoBtn.setBounds(0, 120, 140, 120);
+		
+		add(disposalInfoBtn);
+		
+		orderConfirmBtn = new JButton("발주정보");
+		orderConfirmBtn.setForeground(Color.WHITE);
+		orderConfirmBtn.setFont(new Font("맑은 고딕", Font.BOLD, 20));
+		orderConfirmBtn.setBackground(new Color(204, 206, 206));
+		orderConfirmBtn.setBounds(0, 240, 140, 120);
+		
+		add(orderConfirmBtn);
 		
 		
 	}

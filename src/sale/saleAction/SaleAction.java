@@ -1,4 +1,4 @@
-package sale;
+package sale.saleAction;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

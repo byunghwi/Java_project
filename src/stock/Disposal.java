@@ -1,4 +1,4 @@
-package stocksub;
+package stock;
 
 import java.util.Date;
 

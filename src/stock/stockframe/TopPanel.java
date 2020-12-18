@@ -1,4 +1,4 @@
-package stocksub.stockframe;
+package stock.stockframe;
 import java.awt.Color;
 import java.awt.Font;
 import java.text.SimpleDateFormat;
