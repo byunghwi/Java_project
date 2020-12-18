@@ -17,7 +17,7 @@ public class Secession extends JFrame{
 	JLabel[] names = new JLabel[2];
 	JButton delete = new JButton("DELETE");
 	
-	public Secession() {
+	public Secession(String mem_id) {
 		
 		
 		for (int i = 0; i<2; i++) {
@@ -30,6 +30,8 @@ public class Secession extends JFrame{
 			add(names[i]);
 		}
 		
+		infos[0].setText(mem_id);
+		
 		delete.setBounds(110, 90, 90, 20);
 		add(delete);
 		
@@ -37,7 +39,7 @@ public class Secession extends JFrame{
 		
 		setTitle("회원 탈퇴");
 		setLayout(null);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setLocation(400,80);
 		setSize(250, 180);
 		setVisible(true);
