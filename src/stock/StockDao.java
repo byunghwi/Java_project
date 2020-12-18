@@ -53,13 +53,7 @@ public class StockDao {
 				
 				stocks.add(stock);
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-
-		try {
+			
 			DatabaseConnect.dbClose(rs, pstmt, conn);
 		} catch (SQLException e) {
 			System.out.println("[DB] 자원 반납 중 오류 발생\n");
@@ -94,13 +88,7 @@ public class StockDao {
 				
 				stock_infos.add(stock_info);
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-
-		try {
+		
 			DatabaseConnect.dbClose(rs, pstmt, conn);
 		} catch (SQLException e) {
 			System.out.println("[DB] 자원 반납 중 오류 발생\n");
@@ -121,15 +109,6 @@ public class StockDao {
 			
 			pstmt.executeQuery();
 			
-
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-
-		try {
 			DatabaseConnect.dbClose(null, pstmt, conn);
 		} catch (SQLException e) {
 			System.out.println("[DB] 자원 반납 중 오류 발생\n");
@@ -151,14 +130,6 @@ public class StockDao {
 			pstmt.executeQuery();
 			
 
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-
-		try {
 			DatabaseConnect.dbClose(null, pstmt, conn);
 		} catch (SQLException e) {
 			System.out.println("[DB] 자원 반납 중 오류 발생\n");
@@ -202,13 +173,6 @@ public class StockDao {
 				
 			}
 			
-			
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			DatabaseConnect.dbClose(rs, pstmt, conn);
 		} catch (SQLException e) {
 			System.out.println("[DB] 자원 반납 중 오류 발생\n");

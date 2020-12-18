@@ -105,8 +105,7 @@ public class Read_Account_NAP {
 			pstmt.setString(1, mem_id);
 			pstmt.setString(2, mem_id);
 			ResultSet result = pstmt.executeQuery();
-			ResultSetMetaData result_md = result.getMetaData();
-			int col = result_md.getColumnCount();
+
 			
 			
 			DatabaseConnect.dbClose(result, pstmt, conn);
