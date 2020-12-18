@@ -22,6 +22,14 @@ import event.FindProductFrame;
 import event.eventAction.EventBtnPanelAction;
 import event.eventAction.EventRegistFrameAction;
 import main.mainAction.BottomAction;
+import order.OrderAction;
+import order.OrderDao;
+import order.OrderFrame;
+import order.OrderView;
+import orderConfirm.OrderConfirmAction;
+import orderConfirm.OrderConfirmDao;
+import orderConfirm.OrderConfirmFrame;
+import orderConfirm.OrderConfirmView;
 import product.ProdBtnPanel;
 import product.ProdEditFrame;
 import product.ProdRegistFrame;
@@ -100,6 +108,14 @@ public class MainFrame extends JFrame{
 	
 	// 이벤트
 	public Event event;
+	
+	// 발주승인, 발주주문 프레임, DB, View
+	public OrderConfirmFrame orderConfirmFrame = new OrderConfirmFrame();
+	public OrderFrame orderframe = new OrderFrame();
+	public OrderConfirmDao orderConfirmDao = new OrderConfirmDao();
+	public OrderConfirmView orderConfirmView = new OrderConfirmView();
+	public OrderDao orderDao = new OrderDao();
+	public OrderView orderView = new OrderView();
 
 	public CardLayout cardlayout;
 	public CardLayout btnlayout;
@@ -200,6 +216,7 @@ public class MainFrame extends JFrame{
 		eventBtnPanel.eventDelBtn.addActionListener(new EventBtnPanelAction(this));		//우측패널 이벤트 등록 버튼 
 		stockBtnPanel.productMoreInfoBtn.addActionListener(new MoreInfoAction(this));	//우측패널 재고 상세정보 확인 버튼
 		stockBtnPanel.disposalInfoBtn.addActionListener(new DisposalInfoAction(this));	//우측패널 폐기 정보 확인 버튼
+		stockBtnPanel.orderConfirmBtn.addActionListener(new OrderConfirmAction(this)); // 발주승인목록 버튼
 
 		saleBtnPanel.saleListBtn.addActionListener(new SaleBtnPanelAction(this));		//우측패널 판매리스트 버튼
 		saleBtnPanel.saleBtn.addActionListener(new SaleBtnPanelAction(this));			//우측패널 판매 버튼
@@ -235,6 +252,17 @@ public class MainFrame extends JFrame{
 		
 		i1.addActionListener(new UserInfoAction(this));										// 회원정보 확인/수정 버튼
 		i2.addActionListener(new PopSecession_Action(this));										// 회원탈퇴 버튼
+		
+		// 발주승인목록 버튼
+		orderConfirmFrame.order_btn.addActionListener(new OrderConfirmAction(this));
+		orderConfirmFrame.confirm_btn.addActionListener(new OrderConfirmAction(this));
+		orderConfirmFrame.delete_btn.addActionListener(new OrderConfirmAction(this));
+		orderConfirmFrame.cancel_btn.addActionListener(new OrderConfirmAction(this));
+		orderConfirmFrame.search_btn.addActionListener(new OrderConfirmAction(this));
+		
+		orderframe.order_btn.addActionListener(new OrderAction(this));
+		orderframe.cancel_btn.addActionListener(new OrderAction(this));
+		orderframe.search_btn.addActionListener(new OrderAction(this));
 		// 버튼들 액션 달기 End
 	}
 
