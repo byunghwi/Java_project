@@ -11,6 +11,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import account.action.PopSecession_Action;
 import account.action.UserInfoAction;
 import event.Event;
 import event.EventBtnPanel;
@@ -117,15 +118,21 @@ public class MainFrame extends JFrame{
 	
 	// 로그인 할 회원 정보를 가져올 변수
 	public String mem_id;
+	
+	// 매뉴바 기본 설정
 	JMenuBar bar = new JMenuBar();
 	JMenu menu = new JMenu("회원정보");
 	JMenuItem i1 = new JMenuItem("확인/수정");
+	JMenuItem i2 = new JMenuItem("탈퇴");
 
 	
 	
 	public MainFrame() {
+		
+		// 매뉴 바 추가
 		bar.add(menu);
 		menu.add(i1);
+		menu.add(i2);
 		this.setJMenuBar(bar);
 		
 		
@@ -226,7 +233,8 @@ public class MainFrame extends JFrame{
 		
 		saleListPanel.searchBtn.addActionListener(new SaleListPanelAction(this));			//판매리스트 패널 검색버튼
 		
-		i1.addActionListener(new UserInfoAction(this));									
+		i1.addActionListener(new UserInfoAction(this));										// 회원정보 확인/수정 버튼
+		i2.addActionListener(new PopSecession_Action(this));										// 회원탈퇴 버튼
 		// 버튼들 액션 달기 End
 	}
 
