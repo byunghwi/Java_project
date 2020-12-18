@@ -20,7 +20,6 @@ public class OrderView extends JPanel {
 	public static DefaultTableModel model = new DefaultTableModel(colNames, 0);
 	public JTable orderTable = new JTable(model);
 	public Vector<String> rows;
-	JPanel panel = new JPanel();
 	
 	public OrderView() {
 		setLayout(null);
@@ -36,8 +35,6 @@ public class OrderView extends JPanel {
 		addProductLine(od.productAll()); 
 		scrollpane.setViewportView(orderTable);
 		
-		// 그래프 편집 못하게
-//		orderTable.setEnabled(false);
 	}
 	
 	public void addProductLine(ArrayList<Order> products) {

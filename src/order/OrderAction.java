@@ -6,9 +6,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import main.MainFrame;
-import orderConfirm.OrderConfirmDao;
-import orderConfirm.OrderConfirmFrame;
-import orderConfirm.OrderConfirmView;
 
 public class OrderAction implements ActionListener {
 	public MainFrame mainFrame;

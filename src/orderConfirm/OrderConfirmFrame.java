@@ -10,8 +10,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import order.OrderAction;
-
 public class OrderConfirmFrame extends JFrame {
 	public OrderConfirmView orderConfirmView = new OrderConfirmView(); // 가운데 들어갈예정
 	
@@ -82,11 +80,6 @@ public class OrderConfirmFrame extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 1200, 400);
 		
-//		order_btn.addActionListener(new OrderConfirmAction());
-//		confirm_btn.addActionListener(new OrderConfirmAction());
-//		delete_btn.addActionListener(new OrderConfirmAction());
-//		cancel_btn.addActionListener(new OrderConfirmAction());
-//		search_btn.addActionListener(new OrderConfirmAction());
 	}
 	
 	//필드값 초기화 해주기.

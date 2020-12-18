@@ -11,10 +11,13 @@ import javax.swing.table.DefaultTableModel;
 
 public class OrderConfirmView extends JPanel {
 	
-	public OrderConfirmDao ocd = new OrderConfirmDao();
-	public JScrollPane scrollpane = new JScrollPane();
+	private static final long serialVersionUID = 1L;
+
+	OrderConfirmDao ocd = new OrderConfirmDao();
+	
+	JScrollPane scrollpane = new JScrollPane();
 	public static Vector<String> colNames = getColum();
-	public DefaultTableModel model = new DefaultTableModel(colNames, 0);
+	public static DefaultTableModel model = new DefaultTableModel(colNames, 0);
 	public JTable orderTable = new JTable(model);
 	public Vector<String> rows;
 	
@@ -30,9 +33,6 @@ public class OrderConfirmView extends JPanel {
 		orderTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		addProductLine(ocd.productAll());
 		scrollpane.setViewportView(orderTable);
-		
-		// 그래프 편집 못하게 -> 근데 이러면 그래프 선택안됨 ㅎㅎ..
-//		orderTable.setEnabled(false);
 	}
 	
 	public void addProductLine(ArrayList<OrderConfirm> products) {

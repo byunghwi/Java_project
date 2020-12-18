@@ -23,8 +23,8 @@ public class OrderConfirmAction implements ActionListener {
 		Object ob = e.getSource();
 		if (ob == mainFrame.stockBtnPanel.orderConfirmBtn) {
 			// 이거 2줄은 그래프 중복현상이 발생해서 넣어둠
-//			orderConfirmView.model.setNumRows(0);
-//			orderConfirmView.addProductLine(orderConfirmDao.productAll());
+			mainFrame.orderConfirmView.model.setNumRows(0);
+			mainFrame.orderConfirmView.addProductLine(mainFrame.orderConfirmDao.productAll());
 			mainFrame.orderConfirmFrame.setVisible(true);
 			// 그래프 행 선택시
 			mainFrame.orderConfirmFrame.orderConfirmView.orderTable.addMouseListener(new MouseAdapter() {
