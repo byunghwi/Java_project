@@ -53,18 +53,16 @@ public class ProductDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			// DB사용 종료
+			try {
+				DatabaseConnect.dbClose(rs, ps, conn);
+			} catch (SQLException e) {
+				System.out.println("[DB] 자원 반납 중 오류 발생\n");
+				e.printStackTrace();
+			}
 		}
-
-		// DB사용 종료
-		try {
-			DatabaseConnect.dbClose(rs, ps, conn);
-		} catch (SQLException e) {
-			System.out.println("[DB] 자원 반납 중 오류 발생\n");
-			e.printStackTrace();
-		}
-
 		return products;
-
 	}
 
 	// 상품 등록
@@ -74,7 +72,7 @@ public class ProductDao {
 		String query = "insert into product (product_id, product_name, price, worker_no) values (? ,?, ?, ?)";
 		
 		//상품등록하면 수량 0으로 세팅되고 발주승인대기 테이블에 추가된다.
-		String query2 =  "insert into order_product values (ORDER_PRODUCT_NO_SEQ.nextval, ?, ?, ?, ?)";
+		String query2 =  "insert into order_product values (ORDER_PRODUCT_NO_SEQ.nextval, ?, ?, ?, SYSDATE)";
 
 		try {
 			ps = conn.prepareStatement(query);
@@ -89,9 +87,8 @@ public class ProductDao {
 			PreparedStatement ps2 = null;
 			ps2 = conn.prepareStatement(query2);
 			ps2.setString(1, product.getProduct_id());
-			ps2.setInt(2, 0);
-			ps2.setString(3, "TEST"); 			// 추후에 로그인한 작업자 값 받아와서 넣어줄 것.
-			ps2.setString(4, dateToStr(new Date()));
+			ps2.setInt(2, 0);							// 수량은 0으로 세팅
+			ps2.setString(3, "TEST"); 					// 추후에 로그인한 작업자 값 받아와서 넣어줄 것.
 			
 			int rsCnt2 = ps2.executeUpdate();
 			
@@ -105,16 +102,15 @@ public class ProductDao {
 		} catch (SQLException e) {
 			System.out.println("[DB] Insert 중 오류 발생\n");
 			e.printStackTrace();
+		} finally {
+			// DB사용 종료
+			try {
+				DatabaseConnect.dbClose(rs, ps, conn);
+			} catch (SQLException e) {
+				System.out.println("[DB] 자원 반납 중 오류 발생\n");
+				e.printStackTrace();
+			}
 		}
-
-		// DB사용 종료
-		try {
-			DatabaseConnect.dbClose(rs, ps, conn);
-		} catch (SQLException e) {
-			System.out.println("[DB] 자원 반납 중 오류 발생\n");
-			e.printStackTrace();
-		}
-
 	}
 
 	// 상품 수정
@@ -142,14 +138,14 @@ public class ProductDao {
 		} catch (SQLException e) {
 			System.out.println("[DB] Update 중 오류 발생\n");
 			e.printStackTrace();
-		}
-
-		// DB사용 종료
-		try {
-			DatabaseConnect.dbClose(rs, ps, conn);
-		} catch (SQLException e) {
-			System.out.println("[DB] 자원 반납 중 오류 발생\n");
-			e.printStackTrace();
+		} finally {
+			// DB사용 종료
+			try {
+				DatabaseConnect.dbClose(rs, ps, conn);
+			} catch (SQLException e) {
+				System.out.println("[DB] 자원 반납 중 오류 발생\n");
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -172,15 +168,17 @@ public class ProductDao {
 		} catch (SQLException e) {
 			System.out.println("[DB] Update 중 오류 발생\n");
 			e.printStackTrace();
+		} finally {
+			// DB사용 종료
+			try {
+				DatabaseConnect.dbClose(rs, ps, conn);
+			} catch (SQLException e) {
+				System.out.println("[DB] 자원 반납 중 오류 발생\n");
+				e.printStackTrace();
+			}
 		}
 
-		// DB사용 종료
-		try {
-			DatabaseConnect.dbClose(rs, ps, conn);
-		} catch (SQLException e) {
-			System.out.println("[DB] 자원 반납 중 오류 발생\n");
-			e.printStackTrace();
-		}
+		
 	}
 	
 	public ArrayList<Product> searchProduct(String combo, String searchWord) {
@@ -217,16 +215,16 @@ public class ProductDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			// DB사용 종료
+			try {
+				DatabaseConnect.dbClose(rs, ps, conn);
+			} catch (SQLException e) {
+				System.out.println("[DB] 자원 반납 중 오류 발생\n");
+				e.printStackTrace();
+			}
 		}
 
-		// DB사용 종료
-		try {
-			DatabaseConnect.dbClose(rs, ps, conn);
-		} catch (SQLException e) {
-			System.out.println("[DB] 자원 반납 중 오류 발생\n");
-			e.printStackTrace();
-		}
-		
 		return products;
 	}
 	
