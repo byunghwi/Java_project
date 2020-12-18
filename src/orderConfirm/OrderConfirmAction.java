@@ -10,9 +10,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
 import main.MainFrame;
-import order.OrderDao;
-import order.OrderFrame;
-import order.OrderView;
 
 public class OrderConfirmAction implements ActionListener {
 	public MainFrame mainFrame;
@@ -21,14 +18,6 @@ public class OrderConfirmAction implements ActionListener {
 		this.mainFrame = mainFrame;
 	}
 	
-//	MainFrame mainFrame;
-	OrderConfirmFrame orderConfirmFrame = new OrderConfirmFrame();
-	OrderFrame orderframe = new OrderFrame();
-	OrderConfirmDao orderConfirmDao = new OrderConfirmDao();
-	OrderConfirmView orderConfirmView = new OrderConfirmView();
-	OrderDao orderDao = new OrderDao();
-	OrderView orderView = new OrderView();
-	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object ob = e.getSource();
@@ -36,91 +25,91 @@ public class OrderConfirmAction implements ActionListener {
 			// 이거 2줄은 그래프 중복현상이 발생해서 넣어둠
 //			orderConfirmView.model.setNumRows(0);
 //			orderConfirmView.addProductLine(orderConfirmDao.productAll());
-			orderConfirmFrame.setVisible(true);
+			mainFrame.orderConfirmFrame.setVisible(true);
 			// 그래프 행 선택시
-			orderConfirmFrame.orderConfirmView.orderTable.addMouseListener(new MouseAdapter() {
+			mainFrame.orderConfirmFrame.orderConfirmView.orderTable.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					JTable j = (JTable) e.getSource();
 					int row = j.getSelectedRow();
 					if (row != -1) {
-						String num = (String) orderConfirmFrame.orderConfirmView.orderTable.getValueAt(row, 0);
-						orderConfirmFrame.fields[0].setText(num);
-						String name = (String) orderConfirmFrame.orderConfirmView.orderTable.getValueAt(row, 5);
-						orderConfirmFrame.fields[1].setText(name);
-						String id = (String) orderConfirmFrame.orderConfirmView.orderTable.getValueAt(row, 1);
-						orderConfirmFrame.fields[2].setText(id);
-						String amount = (String) orderConfirmFrame.orderConfirmView.orderTable.getValueAt(row, 2);
-						orderConfirmFrame.fields[4].setText(amount);
+						String num = (String) mainFrame.orderConfirmFrame.orderConfirmView.orderTable.getValueAt(row, 0);
+						mainFrame.orderConfirmFrame.fields[0].setText(num);
+						String name = (String) mainFrame.orderConfirmFrame.orderConfirmView.orderTable.getValueAt(row, 5);
+						mainFrame.orderConfirmFrame.fields[1].setText(name);
+						String id = (String) mainFrame.orderConfirmFrame.orderConfirmView.orderTable.getValueAt(row, 1);
+						mainFrame.orderConfirmFrame.fields[2].setText(id);
+						String amount = (String) mainFrame.orderConfirmFrame.orderConfirmView.orderTable.getValueAt(row, 2);
+						mainFrame.orderConfirmFrame.fields[4].setText(amount);
 					}
 				}
 			});
 		}
 		// 승인 주문버튼
-		if (ob == orderConfirmFrame.order_btn) { 
-			orderframe.setVisible(true);
+		if (ob == mainFrame.orderConfirmFrame.order_btn) { 
+			mainFrame.orderframe.setVisible(true);
 			// 그래프 초기화
-			orderframe.ov.model.setNumRows(0);
-			orderframe.ov.addProductLine(orderDao.productAll());
+			mainFrame.orderframe.ov.model.setNumRows(0);
+			mainFrame.orderframe.ov.addProductLine(mainFrame.orderDao.productAll());
 			// 그래프 행 선택시
-			orderframe.ov.orderTable.addMouseListener(new MouseAdapter() {
+			mainFrame.orderframe.ov.orderTable.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					JTable j = (JTable) e.getSource();
 					int row = j.getSelectedRow();
 					if (row != -1) {
-						String id = (String) orderframe.ov.orderTable.getValueAt(row, 0);
-						orderframe.fields[0].setText(id);
+						String id = (String) mainFrame.orderframe.ov.orderTable.getValueAt(row, 0);
+						mainFrame.orderframe.fields[0].setText(id);
 					}
 				}
 			});
 		} 
 		// 승인목록 승인버튼
-		else if (ob == orderConfirmFrame.confirm_btn) {
-			if(orderConfirmFrame.fields[3].getText().equals("")) {
+		else if (ob == mainFrame.orderConfirmFrame.confirm_btn) {
+			if(mainFrame.orderConfirmFrame.fields[3].getText().equals("")) {
 				JOptionPane.showMessageDialog(null, "정확히 입력해 주세요", "확인", JOptionPane.CLOSED_OPTION);
-			} else if(orderConfirmFrame.fields[3].getText().equals("") || 
-					!Pattern.matches("^[0-9]*$", orderConfirmFrame.fields[3].getText())) {
+			} else if(mainFrame.orderConfirmFrame.fields[3].getText().equals("") || 
+					!Pattern.matches("^[0-9]*$", mainFrame.orderConfirmFrame.fields[3].getText())) {
 				JOptionPane.showMessageDialog(null, "정확히 입력해 주세요", "확인", JOptionPane.CLOSED_OPTION);
 			}  else {
-				orderConfirmDao.confirmCheck(orderConfirmFrame.fields);
+				mainFrame.orderConfirmDao.confirmCheck(mainFrame.orderConfirmFrame.fields);
 				// 그래프 갱신
-				orderConfirmFrame.orderConfirmView.model.setNumRows(0);
-				orderConfirmFrame.orderConfirmView.addProductLine(orderConfirmDao.productAll());
+				mainFrame.orderConfirmFrame.orderConfirmView.model.setNumRows(0);
+				mainFrame.orderConfirmFrame.orderConfirmView.addProductLine(mainFrame.orderConfirmDao.productAll());
 				JOptionPane.showMessageDialog(null, "승인 완료", "확인", JOptionPane.CLOSED_OPTION);
 			}
 			// 초기화
-			orderConfirmFrame.resetText();
+			mainFrame.orderConfirmFrame.resetText();
 		} 
 		// 승인 삭제버튼
-		else if (ob == orderConfirmFrame.delete_btn) { 
-			orderConfirmDao.confirmCancle(orderConfirmFrame.fields);
+		else if (ob == mainFrame.orderConfirmFrame.delete_btn) { 
+			mainFrame.orderConfirmDao.confirmCancle(mainFrame.orderConfirmFrame.fields);
 			// 그래프 갱신
-			orderConfirmFrame.orderConfirmView.model.setNumRows(0);
-			orderConfirmFrame.orderConfirmView.addProductLine(orderConfirmDao.productAll());
+			mainFrame.orderConfirmFrame.orderConfirmView.model.setNumRows(0);
+			mainFrame.orderConfirmFrame.orderConfirmView.addProductLine(mainFrame.orderConfirmDao.productAll());
 		} // 승인 취소버튼
-		else if (ob == orderConfirmFrame.cancel_btn) {
-			orderConfirmFrame.setVisible(false);	
+		else if (ob == mainFrame.orderConfirmFrame.cancel_btn) {
+			mainFrame.orderConfirmFrame.setVisible(false);	
 		}
 		// 승인대기목록 검색버튼
-		else if (ob == orderConfirmFrame.search_btn) {
-			String fieldName = orderConfirmFrame.combo.getSelectedItem().toString();
+		else if (ob == mainFrame.orderConfirmFrame.search_btn) {
+			String fieldName = mainFrame.orderConfirmFrame.combo.getSelectedItem().toString();
 			if (fieldName.equals("상품id")) {
 	        	fieldName = "product_id";
 	        } else if (fieldName.equals("상품명")) {
 	        	fieldName = "product_name";
 	        }
-			if (orderConfirmFrame.search_jf.getText().trim().equals("")) {
+			if (mainFrame.orderConfirmFrame.search_jf.getText().trim().equals("")) {
 				JOptionPane.showMessageDialog(null, "정확히 입력해 주세요", "확인", JOptionPane.CLOSED_OPTION);
-				orderConfirmFrame.search_jf.requestFocus();
-				orderConfirmView.model.setNumRows(0);
-    			orderConfirmView.addProductLine(orderConfirmDao.productAll());
+				mainFrame.orderConfirmFrame.search_jf.requestFocus();
+				mainFrame.orderConfirmView.model.setNumRows(0);
+				mainFrame.orderConfirmView.addProductLine(mainFrame.orderConfirmDao.productAll());
             } else {// 검색어를 입력했을경우
-            	orderConfirmDao.getUserSearch(orderConfirmView.model, fieldName, orderConfirmFrame.search_jf.getText());
-                if (orderConfirmFrame.search_jf.getText().length() < 2) {
+            	mainFrame.orderConfirmDao.getUserSearch(mainFrame.orderConfirmView.model, fieldName, mainFrame.orderConfirmFrame.search_jf.getText());
+                if (mainFrame.orderConfirmFrame.search_jf.getText().length() < 2) {
                 	JOptionPane.showMessageDialog(null, "2자이상 입력해주세요", "확인", JOptionPane.CLOSED_OPTION);
-                	orderConfirmView.model.setNumRows(0);
-        			orderConfirmView.addProductLine(orderConfirmDao.productAll());
+                	mainFrame.orderConfirmView.model.setNumRows(0);
+                	mainFrame.orderConfirmView.addProductLine(mainFrame.orderConfirmDao.productAll());
                 }
             }
 		}

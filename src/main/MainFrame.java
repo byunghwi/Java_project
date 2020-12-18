@@ -17,6 +17,7 @@ import event.FindProductFrame;
 import event.eventAction.EventBtnPanelAction;
 import event.eventAction.EventRegistFrameAction;
 import main.mainAction.BottomAction;
+import order.OrderAction;
 import order.OrderDao;
 import order.OrderFrame;
 import order.OrderView;
@@ -95,12 +96,13 @@ public class MainFrame extends JFrame{
 	// 상품
 	public Product product;
 	
-//	OrderConfirmFrame orderConfirmFrame = new OrderConfirmFrame();
-//	OrderFrame orderframe = new OrderFrame();
-//	OrderConfirmDao orderConfirmDao = new OrderConfirmDao();
-//	OrderConfirmView orderConfirmView = new OrderConfirmView();
-//	OrderDao orderDao = new OrderDao();
-//	OrderView orderView = new OrderView();
+	// 발주승인, 발주주문 프레임, DB, View
+	public OrderConfirmFrame orderConfirmFrame = new OrderConfirmFrame();
+	public OrderFrame orderframe = new OrderFrame();
+	public OrderConfirmDao orderConfirmDao = new OrderConfirmDao();
+	public OrderConfirmView orderConfirmView = new OrderConfirmView();
+	public OrderDao orderDao = new OrderDao();
+	public OrderView orderView = new OrderView();
 	
 	// 이벤트
 	public Event event;
@@ -217,7 +219,16 @@ public class MainFrame extends JFrame{
 		salePanel.delBucketBtn.addActionListener(new SaleAction(this));						//판매패널 장바구니 삭제 버튼
 		salePanel.completeBtn.addActionListener(new SaleAction(this));						//판매패널 결제 버튼
 		
-	
+		// 발주승인목록 버튼
+		orderConfirmFrame.order_btn.addActionListener(new OrderConfirmAction(this));
+		orderConfirmFrame.confirm_btn.addActionListener(new OrderConfirmAction(this));
+		orderConfirmFrame.delete_btn.addActionListener(new OrderConfirmAction(this));
+		orderConfirmFrame.cancel_btn.addActionListener(new OrderConfirmAction(this));
+		orderConfirmFrame.search_btn.addActionListener(new OrderConfirmAction(this));
+		
+		orderframe.order_btn.addActionListener(new OrderAction(this));
+		orderframe.cancel_btn.addActionListener(new OrderAction(this));
+		orderframe.search_btn.addActionListener(new OrderAction(this));
 		// 버튼들 액션 달기 End
 	}
 
