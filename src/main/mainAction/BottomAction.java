@@ -99,6 +99,13 @@ public class BottomAction implements ActionListener {
 		}else if (ob == mainFrame.bottomPanel.calcBtn) {
 			//메인 버튼 클릭시 색 변경해주기
 			mainFrame.bottomPanel.selectedBtn(mainFrame.bottomPanel.calcBtn);
+			
+			mainFrame.cardlayout.show(mainFrame.centerView, "calcPanel");
+			mainFrame.btnlayout.show(mainFrame.pBtnView, "calcBtnPanel");
+			mainFrame.calcPanel.CalcModel.setNumRows(0);
+	        mainFrame.calcPanel.addCalcLine(mainFrame.calcdao.calclist());
+			
+			
 		}
 
 	}

@@ -13,6 +13,10 @@ import javax.swing.border.EmptyBorder;
 
 import account.action.PopSecession_Action;
 import account.action.UserInfoAction;
+import calc.CalcDao;
+import calc.CalcPanel;
+import calc.BtnAction.CalcBtnAction;
+import calc.MainCalcFrame.CalcBtnPanel;
 import commute.CommutePanel;
 import commute.TimeDao;
 import commute.BtnAction.CommuteBtnAction;
@@ -83,6 +87,9 @@ public class MainFrame extends JFrame{
 	
 	// 가운데 근태 보여줄 패널 
 	public CommutePanel commutePanel= new CommutePanel();
+	
+	// 가운데 정산 보여줄 패널
+	public CalcPanel calcPanel=new CalcPanel(null,null);
 
 	// 오른쪽 상품버튼 보여줄 패널
 	public ProdBtnPanel prodBtnPanel = new ProdBtnPanel();
@@ -98,6 +105,9 @@ public class MainFrame extends JFrame{
 	
 	// 오른쪽 근태버튼 보여줄 패널
 	public CommuteBtnPanel commuteBtnPanel=new CommuteBtnPanel();
+	
+	// 오른쪽 정산버튼 보여줄 패널
+	public CalcBtnPanel calcBtnPanel=new CalcBtnPanel();
 	
 	// 하단 버튼들 보여줄 패널
 	public BottomPanel bottomPanel = new BottomPanel();
@@ -144,6 +154,7 @@ public class MainFrame extends JFrame{
 	public EventDao eventdao = new EventDao();
 	public TimeDao timedao= new TimeDao();
 	public Commute_ListDao commutelistdao=new Commute_ListDao(null,null,null);
+	public CalcDao calcdao=new CalcDao(null,null);
 	
 	// 로그인 할 회원 정보를 가져올 변수
 	public String mem_id;
@@ -197,6 +208,7 @@ public class MainFrame extends JFrame{
 		centerView.add(saleListPanel, "saleListPanel");	//판매리스트
 		centerView.add(eventPanel, "eventPanel");  		//이벤트
 		centerView.add(commutePanel,"commutePanel");	//근태
+		centerView.add(calcPanel,"calcPanel");		//정산
 		centerView.setBackground(Color.WHITE);
 		centerView.setBounds(0, 50, 1157, 552);
 		contentPanel.add(centerView);
@@ -211,6 +223,7 @@ public class MainFrame extends JFrame{
 		pBtnView.add(saleBtnPanel, "saleBtnPanel");		// 판매관련 오른쪽 버튼들
 		pBtnView.add(eventBtnPanel, "eventBtnPanel");	// 이벤트 관련 오른쪽 버튼들
 		pBtnView.add(commuteBtnPanel, "commuteBtnPanel");// 근태관련 오른쪽 버튼들
+		pBtnView.add(calcBtnPanel, "calcBtnPanel");		 // 정산관련 오른쪽 버튼
 		
 		contentPanel.add(pBtnView);
 				
@@ -230,6 +243,8 @@ public class MainFrame extends JFrame{
 		commuteBtnPanel.on_timeBtn.addActionListener(new CommuteBtnAction(this));		//우측패널 출근버튼
 		commuteBtnPanel.off_timeBtn.addActionListener(new CommuteBtnAction(this));		//우측패널 퇴근버튼
 		commuteBtnPanel.commuteBtn.addActionListener(new CommuteBtnAction(this));		//우측패널 근태목록버튼
+		
+		calcBtnPanel.calc_Btn.addActionListener(new CalcBtnAction(this));				//우측패널 정산버튼
 		
 		eventBtnPanel.eventRegBtn.addActionListener(new EventBtnPanelAction(this));		//우측패널 이벤트 등록 버튼 
 		eventBtnPanel.eventDelBtn.addActionListener(new EventBtnPanelAction(this));		//우측패널 이벤트 등록 버튼 
