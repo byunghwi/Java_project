@@ -13,10 +13,10 @@ public class Calc_Add_Date {
 	
 		String sql = "INSERT INTO calculate VALUES ("
 				+ "sysdate,(SELECT COUNT(sales_no) AS 총판매건수 fROM sales "
-				+ "WHERE sales_date=TO_CHAR(SYSDATE,'YYYY-MM-DD')),"
-				+ "(SELECT SUM(quantity*product_price) AS 총판매금액 "
+				+ "WHERE TO_CHAR(sales_date, 'YYYY-MM-DD') =TO_CHAR(SYSDATE,'YYYY-MM-DD')),"
+				+ "(SELECT SUM(product_price) AS 총판매금액 "
 				+ "FROM sales_detail WHERE sales_no IN("
-				+ "SELECT sales_no FROM sales WHERE sales_date=TO_CHAR(SYSDATE,'YYYY-MM-DD'))),'test',sysdate)";
+				+ "SELECT sales_no FROM sales WHERE TO_CHAR(sales_date,'YYYY-MM-DD') = TO_CHAR(SYSDATE,'YYYY-MM-DD'))),'test',sysdate)";
 		
 		try {
 			Connection conn = DatabaseConnect.getConnection();
