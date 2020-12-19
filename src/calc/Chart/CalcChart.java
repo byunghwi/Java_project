@@ -1,6 +1,6 @@
 package calc.Chart;
 
-import java.awt.BasicStroke; 
+import java.awt.BasicStroke;  
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
