@@ -55,8 +55,10 @@ public class OrderConfirmDao {
 	}
 	
 	// 발주 승인
-	public void confirmCheck(JTextField[] fields) {
+	public Boolean confirmCheck(JTextField[] fields) {
 		conn = DatabaseConnect.getConnection();
+		
+		Boolean chk = false;
 		
 		String manu_date = Date_manu.randomDOB();
 		String dis_date = Date_dis.randomDOB();
@@ -73,18 +75,27 @@ public class OrderConfirmDao {
 			ps.setInt(6, Integer.parseInt(fields[4].getText())); // 수량
 			ps.executeUpdate();
 			
-			ps2 = conn.prepareStatement(sql2);
-			ps2.setString(1, fields[0].getText()); // 발주번호
-			ps2.setString(2, fields[2].getText()); // 물품id
-			ps2.executeUpdate();
+			ps = conn.prepareStatement(sql2);
+			ps.setString(1, fields[0].getText()); // 발주번호
+			ps.setString(2, fields[2].getText()); // 물품id
+			int rs = ps.executeUpdate();
+			
+			if(rs == 1) {
+				chk = true;
+			}
+			
 		} catch (SQLException e) {
+			System.out.println("[DB] insertr stock error!");
 			e.printStackTrace();
+		} finally {
+			try {
+				DatabaseConnect.dbClose(rs, ps, conn);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-		try {
-			DatabaseConnect.dbClose(rs, ps, conn);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		
+		return chk;
 	}
 	
 	// 발주 삭제

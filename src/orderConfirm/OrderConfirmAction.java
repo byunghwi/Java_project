@@ -75,11 +75,20 @@ public class OrderConfirmAction implements ActionListener {
 					!Pattern.matches("^[0-9]*$", mainFrame.orderConfirmFrame.fields[3].getText())) {
 				JOptionPane.showMessageDialog(null, "정확히 입력해 주세요", "확인", JOptionPane.CLOSED_OPTION);
 			}  else {
-				mainFrame.orderConfirmDao.confirmCheck(mainFrame.orderConfirmFrame.fields);
-				// 그래프 갱신
-				mainFrame.orderConfirmFrame.orderConfirmView.model.setNumRows(0);
-				mainFrame.orderConfirmFrame.orderConfirmView.addProductLine(mainFrame.orderConfirmDao.productAll());
-				JOptionPane.showMessageDialog(null, "승인 완료", "확인", JOptionPane.CLOSED_OPTION);
+				
+				if(mainFrame.orderConfirmDao.confirmCheck(mainFrame.orderConfirmFrame.fields)) {
+					// 그래프 갱신
+					mainFrame.orderConfirmFrame.orderConfirmView.model.setNumRows(0);
+					mainFrame.orderConfirmFrame.orderConfirmView.addProductLine(mainFrame.orderConfirmDao.productAll());
+					JOptionPane.showMessageDialog(null, "승인 완료", "확인", JOptionPane.CLOSED_OPTION);
+					
+					mainFrame.stockPanel.tblModel.setNumRows(0);
+					mainFrame.stockPanel.addStockLine(mainFrame.stockPanel.sdao.stockAll());
+					
+				}else {
+					JOptionPane.showMessageDialog(null, "\t[SYSTEM] 오류가 발생하였습니다.", "확인", JOptionPane.CLOSED_OPTION);
+				}
+				
 			}
 			// 초기화
 			mainFrame.orderConfirmFrame.resetText();
