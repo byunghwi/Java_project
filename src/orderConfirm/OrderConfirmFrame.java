@@ -76,7 +76,7 @@ public class OrderConfirmFrame extends JFrame {
 		add(btn_panel, BorderLayout.SOUTH);
 		
 		setTitle("승인대기창");
-		setResizable(true);
+		setResizable(false); // 창크기 수정못하게
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 1200, 400);
 		

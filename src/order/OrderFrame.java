@@ -66,7 +66,7 @@ public class OrderFrame extends JFrame {
 		add(search_panel, BorderLayout.NORTH);
 		
 		setTitle("물품목록");
-		setResizable(true);
+		setResizable(false);
 		setBounds(100, 100, 1200, 400);
 		
 	}
