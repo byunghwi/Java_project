@@ -38,10 +38,7 @@ public class CalcMainFrame extends JFrame {
 	
 	public CalcMainFrame() {
 		
-		
-		
 		clv=new CalcPanel(null,null);
-		
 		clv.chart_p = this.chart_p ;
 		clv.m1 = this;
 		
