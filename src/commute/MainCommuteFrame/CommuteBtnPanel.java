@@ -33,17 +33,17 @@ public class CommuteBtnPanel extends JPanel{
 		on_timeBtn.setForeground(Color.WHITE);
 		on_timeBtn.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		on_timeBtn.setBackground(new Color(204, 206, 206));
-		on_timeBtn.setBounds(0, 0, 124, 120);
+		on_timeBtn.setBounds(0, 0, 140, 120);
 		
 		off_timeBtn.setForeground(Color.WHITE);
 		off_timeBtn.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		off_timeBtn.setBackground(new Color(204, 206, 206));
-		off_timeBtn.setBounds(0, 120, 124, 120);
+		off_timeBtn.setBounds(0, 120, 140, 120);
 		
 		commuteBtn.setForeground(Color.WHITE);
 		commuteBtn.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		commuteBtn.setBackground(new Color(204, 206, 206));
-		commuteBtn.setBounds(0, 240, 124, 120);
+		commuteBtn.setBounds(0, 240, 140, 120);
 
 		add(on_timeBtn);
 		add(off_timeBtn);

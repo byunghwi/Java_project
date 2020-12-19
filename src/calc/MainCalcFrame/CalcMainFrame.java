@@ -1,6 +1,6 @@
 package calc.MainCalcFrame;
 
-import java.awt.BorderLayout;
+import java.awt.BorderLayout; 
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -20,9 +20,7 @@ import calc.Chart.CalcChart;
 import calc.CalcPanel;
 import calc.BtnAction.CalcBtnAction;
 import calc.add.Calc_Add_Date;
-import commute.Action.Add_Commute_Off_Time;
-import commute.Action.Check_on_Time;
-import commute.List.List_Input;
+
 import main.MainFrame;
 
 

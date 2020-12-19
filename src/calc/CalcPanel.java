@@ -100,7 +100,7 @@ public class CalcPanel extends JPanel{
 		addCalcLine(claclist.calclist()); 
 		CalcListScrollPane.setViewportView(clacTable);
 		
-		
+		//캘린더 위치 설정
 		st_date.setBounds(60, 37, 150 , 24);
 		en_date.setBounds(280, 37, 150 , 24);
 		
@@ -120,7 +120,7 @@ public class CalcPanel extends JPanel{
 		add(check);
 		add(st_date);
 		add(en_date);
-		add(calcg.chart_p).setBounds(0, 350, 1100, 800);
+		add(calcg.chart_p).setBounds(0, 300, 1100, 250);
 		
 		check.addActionListener(new ActionListener() {
 
