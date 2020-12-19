@@ -54,8 +54,8 @@ public class OrderConfirmFrame extends JFrame {
 		fields[0].setEditable(false);
 		fields[1].setEditable(true);
 		fields[2].setEditable(false);
-		fields[3].setEditable(true);
-		fields[4].setEditable(false);
+		fields[3].setEditable(false);
+		fields[4].setEditable(true);
 		
 		order_btn = new JButton("상품조회");
 		confirm_btn = new JButton("승인");

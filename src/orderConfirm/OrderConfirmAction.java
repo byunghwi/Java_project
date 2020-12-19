@@ -39,6 +39,8 @@ public class OrderConfirmAction implements ActionListener {
 						mainFrame.orderConfirmFrame.fields[1].setText(name);
 						String id = (String) mainFrame.orderConfirmFrame.orderConfirmView.orderTable.getValueAt(row, 1);
 						mainFrame.orderConfirmFrame.fields[2].setText(id);
+						String price = (String) mainFrame.orderConfirmFrame.orderConfirmView.orderTable.getValueAt(row, 6);
+						mainFrame.orderConfirmFrame.fields[3].setText(price);
 						String amount = (String) mainFrame.orderConfirmFrame.orderConfirmView.orderTable.getValueAt(row, 2);
 						mainFrame.orderConfirmFrame.fields[4].setText(amount);
 					}

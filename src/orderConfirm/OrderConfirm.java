@@ -9,18 +9,20 @@ public class OrderConfirm { // 발주테이블
 	String worker_no;
 	Date save_time;
 	String product_name;
+	int price;
 	
 	public OrderConfirm() {
 	}
 	
-	public OrderConfirm(int order_product_no, String product_id, int quantity, String worker_no, Date save_time, String product_name) {
+	public OrderConfirm(int order_product_no, String product_id, int quantity, String worker_no, Date save_time, String product_name, int price) {
 		super();
 		this.order_product_no = order_product_no;
 		this.product_id = product_id;
 		this.quantity = quantity;
 		this.worker_no = worker_no;
 		this.save_time = save_time;
-		this.product_name = product_name; // 여기까지함
+		this.product_name = product_name;
+		this.price = price;
 	}
 	
 	public int getOrder_product_no() {
@@ -69,6 +71,14 @@ public class OrderConfirm { // 발주테이블
 
 	public void setProduct_name(String product_name) {
 		this.product_name = product_name;
+	}
+	
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
 	}
 
 }

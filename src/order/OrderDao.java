@@ -28,8 +28,8 @@ public class OrderDao {
 		sql = "SELECT product.product_id, product.product_name, product.price, SUM(stock.quantity)\r\n"
 				+ "FROM product\r\n"
 				+ "INNER JOIN stock\r\n"
-				+ "ON product.product_id = stock.product_id\r\n"
-				+ "WHERE product.save_status = 'Y' group by product.product_id, product.product_name, product.price";
+				+ "ON product.save_status = 'Y' \r\n"
+				+ "group by product.product_id, product.product_name, product.price";
 		try {
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();

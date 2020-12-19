@@ -25,7 +25,7 @@ public class OrderConfirmDao {
 	public ArrayList<OrderConfirm> productAll() {
 		conn = DatabaseConnect.getConnection();
 		ArrayList<OrderConfirm> products = new ArrayList<OrderConfirm>();
-		sql = "SELECT order_product.*, product.product_name "
+		sql = "SELECT order_product.*, product.product_name, product.price "
 				+ "FROM product, order_product WHERE product.product_id = order_product.product_id";
 		try {
 			ps = conn.prepareStatement(sql);
@@ -39,6 +39,7 @@ public class OrderConfirmDao {
 				order.setWorker_no(rs.getString(4));
 				order.setSave_time(rs.getDate(5));
 				order.setProduct_name(rs.getString(6));
+				order.setPrice(rs.getInt(7));
 
 				products.add(order);
 			}
