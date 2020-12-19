@@ -44,6 +44,7 @@ public class OrderFrame extends JFrame {
 		for (int i = 0; i < fieldNames.length; i++) {
 			labels[i] = new JLabel(fieldNames[i]);
 			fields[i] = new HintTextField(textHints[i]);
+			fields[i] = new JTextField(10);
 
 			btn_panel.add(labels[i]);
 			btn_panel.add(fields[i]);

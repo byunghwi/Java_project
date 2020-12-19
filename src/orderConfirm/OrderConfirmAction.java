@@ -22,7 +22,6 @@ public class OrderConfirmAction implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object ob = e.getSource();
 		if (ob == mainFrame.stockBtnPanel.orderConfirmBtn) {
-			mainFrame.orderConfirmFrame.resetText();
 			// 이거 2줄은 그래프 중복현상이 발생해서 넣어둠
 			mainFrame.orderConfirmView.model.setNumRows(0);
 			mainFrame.orderConfirmView.addProductLine(mainFrame.orderConfirmDao.productAll());
@@ -51,7 +50,6 @@ public class OrderConfirmAction implements ActionListener {
 		// 승인 주문버튼
 		if (ob == mainFrame.orderConfirmFrame.order_btn) { 
 			mainFrame.orderframe.setVisible(true);
-			mainFrame.orderframe.resetText();
 			// 그래프 초기화
 			mainFrame.orderframe.ov.model.setNumRows(0);
 			mainFrame.orderframe.ov.addProductLine(mainFrame.orderDao.productAll());
