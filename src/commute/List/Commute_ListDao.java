@@ -37,7 +37,7 @@ public class Commute_ListDao {
 		
 		ArrayList<Commute> commutes = new ArrayList<Commute>();
 		
-		String sql = "SELECT TO_CHAR(dc_date, 'YYYY/MM/DD')as dc_date,mem_no,TO_CHAR(on_time,'HH24:mm:ss')as on_time,TO_CHAR(off_time,'HH24:mm:ss')as off_time FROM daily_check WHERE dc_date between ? and ? and mem_no= ?";
+		String sql = "SELECT TO_CHAR(dc_date, 'YYYY/MM/DD')as dc_date,mem_no,TO_CHAR(on_time,'HH24:Mi:ss')as on_time,TO_CHAR(off_time,'HH24:Mi:ss')as off_time FROM daily_check WHERE dc_date between ? and ? and mem_no= ?";
 		
 		try {
 			Connection conn = DatabaseConnect.getConnection();
