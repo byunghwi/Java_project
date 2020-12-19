@@ -85,7 +85,7 @@ public class CalcPanel extends JPanel{
 		add(referencelbShowDate);
 		
 		
-		CalcListScrollPane.setBounds(0, 150, 550, 150);
+		CalcListScrollPane.setBounds(10, 150, 550, 150);
 		
 		
 		add(CalcListScrollPane);
