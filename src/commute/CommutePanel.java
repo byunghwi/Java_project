@@ -67,8 +67,8 @@ private static final long serialVersionUID = 1L;
 		add(lbShowDate);
 		add(IndividuallbShowDate);
 		
-		CommutesScrollPane.setBounds(12, 40, 500, 532);
-		CommutesIndividualScrollPane.setBounds(550, 40, 550, 532);
+		CommutesScrollPane.setBounds(12, 40, 500, 400);
+		CommutesIndividualScrollPane.setBounds(550, 40, 550, 400);
 		add(CommutesScrollPane);
 		add(CommutesIndividualScrollPane);
 		

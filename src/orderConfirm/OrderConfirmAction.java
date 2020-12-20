@@ -39,6 +39,8 @@ public class OrderConfirmAction implements ActionListener {
 						mainFrame.orderConfirmFrame.fields[1].setText(name);
 						String id = (String) mainFrame.orderConfirmFrame.orderConfirmView.orderTable.getValueAt(row, 1);
 						mainFrame.orderConfirmFrame.fields[2].setText(id);
+						String price = (String) mainFrame.orderConfirmFrame.orderConfirmView.orderTable.getValueAt(row, 6);
+						mainFrame.orderConfirmFrame.fields[3].setText(price);
 						String amount = (String) mainFrame.orderConfirmFrame.orderConfirmView.orderTable.getValueAt(row, 2);
 						mainFrame.orderConfirmFrame.fields[4].setText(amount);
 					}
@@ -60,6 +62,7 @@ public class OrderConfirmAction implements ActionListener {
 					if (row != -1) {
 						String id = (String) mainFrame.orderframe.ov.orderTable.getValueAt(row, 0);
 						mainFrame.orderframe.fields[0].setText(id);
+						mainFrame.orderframe.fields[2].setText(mainFrame.mem_id); // 사용자 id가져옴
 					}
 				}
 			});
@@ -72,11 +75,20 @@ public class OrderConfirmAction implements ActionListener {
 					!Pattern.matches("^[0-9]*$", mainFrame.orderConfirmFrame.fields[3].getText())) {
 				JOptionPane.showMessageDialog(null, "정확히 입력해 주세요", "확인", JOptionPane.CLOSED_OPTION);
 			}  else {
-				mainFrame.orderConfirmDao.confirmCheck(mainFrame.orderConfirmFrame.fields);
-				// 그래프 갱신
-				mainFrame.orderConfirmFrame.orderConfirmView.model.setNumRows(0);
-				mainFrame.orderConfirmFrame.orderConfirmView.addProductLine(mainFrame.orderConfirmDao.productAll());
-				JOptionPane.showMessageDialog(null, "승인 완료", "확인", JOptionPane.CLOSED_OPTION);
+				
+				if(mainFrame.orderConfirmDao.confirmCheck(mainFrame.orderConfirmFrame.fields)) {
+					// 그래프 갱신
+					mainFrame.orderConfirmFrame.orderConfirmView.model.setNumRows(0);
+					mainFrame.orderConfirmFrame.orderConfirmView.addProductLine(mainFrame.orderConfirmDao.productAll());
+					JOptionPane.showMessageDialog(null, "승인 완료", "확인", JOptionPane.CLOSED_OPTION);
+					
+					mainFrame.stockPanel.tblModel.setNumRows(0);
+					mainFrame.stockPanel.addStockLine(mainFrame.stockPanel.sdao.stockAll());
+					
+				}else {
+					JOptionPane.showMessageDialog(null, "\t[SYSTEM] 오류가 발생하였습니다.", "확인", JOptionPane.CLOSED_OPTION);
+				}
+				
 			}
 			// 초기화
 			mainFrame.orderConfirmFrame.resetText();
@@ -107,12 +119,12 @@ public class OrderConfirmAction implements ActionListener {
 				mainFrame.orderConfirmFrame.resetText();
             } else {// 검색어를 입력했을경우
             	mainFrame.orderConfirmDao.getUserSearch(mainFrame.orderConfirmView.model, fieldName, mainFrame.orderConfirmFrame.search_jf.getText());
-                if (mainFrame.orderConfirmFrame.search_jf.getText().length() < 2) {
-                	JOptionPane.showMessageDialog(null, "2자이상 입력해주세요", "확인", JOptionPane.CLOSED_OPTION);
-                	mainFrame.orderConfirmView.model.setNumRows(0);
-                	mainFrame.orderConfirmView.addProductLine(mainFrame.orderConfirmDao.productAll());
-                	mainFrame.orderConfirmFrame.resetText();
-                }
+//                if (mainFrame.orderConfirmFrame.search_jf.getText().length() < 2) {
+//                	JOptionPane.showMessageDialog(null, "2자이상 입력해주세요", "확인", JOptionPane.CLOSED_OPTION);
+//                	mainFrame.orderConfirmView.model.setNumRows(0);
+//                	mainFrame.orderConfirmView.addProductLine(mainFrame.orderConfirmDao.productAll());
+//                	mainFrame.orderConfirmFrame.resetText();
+//                }
             }
 		}
 	}

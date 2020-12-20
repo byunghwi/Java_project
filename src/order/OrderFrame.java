@@ -44,12 +44,14 @@ public class OrderFrame extends JFrame {
 		for (int i = 0; i < fieldNames.length; i++) {
 			labels[i] = new JLabel(fieldNames[i]);
 			fields[i] = new HintTextField(textHints[i]);
+			fields[i] = new JTextField(10);
 
 			btn_panel.add(labels[i]);
 			btn_panel.add(fields[i]);
 		}
 		//입력칸 편집 못하게
 		fields[0].setEditable(false);
+		fields[2].setEditable(false);
 		
 		order_btn = new JButton("주문");
 		cancel_btn = new JButton("취소");
@@ -65,7 +67,7 @@ public class OrderFrame extends JFrame {
 		add(search_panel, BorderLayout.NORTH);
 		
 		setTitle("물품목록");
-		setResizable(true);
+		setResizable(false);
 		setBounds(100, 100, 1200, 400);
 		
 	}

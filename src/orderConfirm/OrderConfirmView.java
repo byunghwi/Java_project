@@ -1,5 +1,6 @@
 package orderConfirm;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -29,7 +30,8 @@ public class OrderConfirmView extends JPanel {
 	public OrderConfirmView() {
 		setLayout(null);
 		
-		scrollpane.setBounds(12, 10, 1133, 532);
+		scrollpane.setBounds(12, 10, 1133, 200);
+		scrollpane.setBackground(Color.WHITE);
 		add(scrollpane);
 		
 		orderTable.setRowMargin(10);
@@ -51,6 +53,7 @@ public class OrderConfirmView extends JPanel {
 			rows.addElement(products.get(i).getWorker_no());
 			rows.addElement(products.get(i).getSave_time().toString());
 			rows.addElement(products.get(i).getProduct_name().toString());
+			rows.addElement(Integer.toString(products.get(i).getPrice()));
 
 			model.addRow(rows);
 		}
@@ -65,6 +68,7 @@ public class OrderConfirmView extends JPanel {
 		colNames.add("처리자");
 		colNames.add("처리시간");
 		colNames.add("상품명");
+		colNames.add("가격");
 
 		return colNames;
 	}

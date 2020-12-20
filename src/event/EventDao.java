@@ -53,9 +53,20 @@ public class EventDao {
 
 				eventList.add(event);
 			}
+			
+			
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			// DB사용 종료
+			try {
+				DatabaseConnect.dbClose(rs, ps, conn);
+			} catch (SQLException e) {
+				System.out.println("[DB] 자원 반납 중 오류 발생\n");
+				e.printStackTrace();
+			}
 		}
 		
 		return eventList;

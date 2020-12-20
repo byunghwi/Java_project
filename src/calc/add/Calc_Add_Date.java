@@ -8,21 +8,25 @@ import db.DatabaseConnect;
 
 public class Calc_Add_Date {
 
-	public Calc_Add_Date() {
+	public String mem_id;
+	
+	public Calc_Add_Date(String mem_id) {
 		
 	
 		String sql = "INSERT INTO calculate VALUES ("
 				+ "sysdate,(SELECT COUNT(sales_no) AS 총판매건수 fROM sales "
-				+ "WHERE sales_date=TO_CHAR(SYSDATE,'YYYY-MM-DD')),"
-				+ "(SELECT SUM(quantity*product_price) AS 총판매금액 "
+				+ "WHERE TO_CHAR(sales_date, 'YYYY-MM-DD') =TO_CHAR(SYSDATE,'YYYY-MM-DD')),"
+				+ "(SELECT SUM(product_price) AS 총판매금액 "
 				+ "FROM sales_detail WHERE sales_no IN("
-				+ "SELECT sales_no FROM sales WHERE sales_date=TO_CHAR(SYSDATE,'YYYY-MM-DD'))),'test',sysdate)";
+				+ "SELECT sales_no FROM sales WHERE TO_CHAR(sales_date,'YYYY-MM-DD') = TO_CHAR(SYSDATE,'YYYY-MM-DD'))),?,sysdate)";
 		
 		try {
 			Connection conn = DatabaseConnect.getConnection();
 			PreparedStatement pstmt = 
 					conn.prepareStatement(sql);
 			
+			
+			pstmt.setString(1, mem_id);
 			pstmt.execute();
 			
 			DatabaseConnect.dbClose(null, pstmt, conn);
@@ -35,6 +39,8 @@ public class Calc_Add_Date {
 		}
 		
 	}
+
+	
 	
 	
 }

@@ -42,7 +42,7 @@ public class ProductView extends JPanel {
 	public ProductView(){
 		setLayout(null);
 		
-		productsScrollPane.setBounds(12, 40, 1133, 532);
+		productsScrollPane.setBounds(12, 40, 1133, 500);
 		add(productsScrollPane);
 	
 		jcombo.setBounds(410, 10, 150, 27);

@@ -1,6 +1,6 @@
 package main.mainAction;
 
-import java.awt.CardLayout;
+import java.awt.CardLayout;  
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -83,6 +83,15 @@ public class BottomAction implements ActionListener {
 		}else if (ob == mainFrame.bottomPanel.commuteBtn) {
 			//메인 버튼 클릭시 색 변경해주기
 			mainFrame.bottomPanel.selectedBtn(mainFrame.bottomPanel.commuteBtn);
+			mainFrame.cardlayout.show(mainFrame.centerView, "commutePanel");
+			mainFrame.btnlayout.show(mainFrame.pBtnView, "commuteBtnPanel");
+			mainFrame.commutePanel.tblModel.setNumRows(0);
+	        mainFrame.commutePanel.addCommuteLine(mainFrame.timedao.commute_Time());
+	        mainFrame.commutePanel.IndividualtblModel.setNumRows(0);
+	        mainFrame.commutePanel.addCommuteIndividualLine(mainFrame.commutelistdao.commutelist());
+			
+			
+			mainFrame.bottomPanel.selectedBtn(mainFrame.bottomPanel.commuteBtn);
 		}else if (ob == mainFrame.bottomPanel.eventBtn) {
 			//메인 버튼 클릭시 색 변경해주기
 			mainFrame.bottomPanel.selectedBtn(mainFrame.bottomPanel.eventBtn);
@@ -90,6 +99,13 @@ public class BottomAction implements ActionListener {
 		}else if (ob == mainFrame.bottomPanel.calcBtn) {
 			//메인 버튼 클릭시 색 변경해주기
 			mainFrame.bottomPanel.selectedBtn(mainFrame.bottomPanel.calcBtn);
+			
+			mainFrame.cardlayout.show(mainFrame.centerView, "calcPanel");
+			mainFrame.btnlayout.show(mainFrame.pBtnView, "calcBtnPanel");
+			mainFrame.calcPanel.CalcModel.setNumRows(0);
+	        mainFrame.calcPanel.addCalcLine(mainFrame.calcdao.calclist());
+			
+			
 		}
 
 	}

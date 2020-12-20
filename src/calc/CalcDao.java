@@ -1,12 +1,12 @@
 package calc;
 
-import java.sql.Connection;
+import java.sql.Connection; 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import commute.Commute;
+
 import db.DatabaseConnect;
 
 public class CalcDao {
@@ -25,7 +25,7 @@ public class CalcDao {
 		
 		ArrayList<Calc> calcs = new ArrayList<Calc>();
 		
-		String sql = "SELECT sale_date,total_sale_quantity,total_sale_price,worker_no,TO_CHAR(save_time, 'YYYY/MM/DD')as save_time FROM calculate WHERE sale_date between to_date(?,'YYYY-MM-dd') and to_date(?,'YYYY-MM-dd')";
+		String sql = "SELECT sale_date,total_sale_quantity,total_sale_price,worker_no,TO_CHAR(save_time, 'YYYY/MM/DD')as save_time FROM calculate WHERE sale_date between to_date(?,'YYYY-MM-dd') and to_date(?,'YYYY-MM-dd') ORDER BY sale_date";
 		
 		try {
 			Connection conn = DatabaseConnect.getConnection();
