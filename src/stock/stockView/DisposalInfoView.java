@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -51,6 +52,7 @@ public class DisposalInfoView extends JPanel {
 		disposalInfoTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
 		addDisposalInfoLine(sdao.disposals("default")); 
+		
 		
 		disposalInfosScrollPane.setViewportView(disposalInfoTable);
 	}

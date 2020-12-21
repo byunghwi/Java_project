@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -37,7 +38,7 @@ private static final long serialVersionUID = 1L;
 		this.product_id = product_id;
 		setLayout(null);
 	
-		stocksScrollPane.setBounds(12, 10, 640, 300);
+		stocksScrollPane.setBounds(12, 25, 640, 280);
 		add(stocksScrollPane);
 		
 		stockTable.setShowGrid(false);
@@ -50,6 +51,11 @@ private static final long serialVersionUID = 1L;
 		stockTable.setFont(new Font("나눔고딕", Font.PLAIN, 15));
 		stockTable.getTableHeader().setBackground(new Color(32, 136, 203));
 		stockTable.getTableHeader().setForeground(new Color(255, 255, 255));
+		
+		JLabel newLabel = new JLabel("재고 상세");
+		newLabel.setFont(new Font("나눔고딕", Font.BOLD, 15));
+		newLabel.setBounds(20, 0, 174, 15);
+		add(newLabel);
 		
 
 		stockTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
