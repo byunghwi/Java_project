@@ -89,9 +89,12 @@ public class List_Input extends JFrame {
 		check.setFont(new Font("맑은 고딕", Font.BOLD, 12));
 		check.setBounds(180, 320, 70, 30);
 		
-	      
+		JFrame j1=this;	  
+		
 		check.addActionListener(new ActionListener() {
 
+		
+			
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			
@@ -102,7 +105,7 @@ public class List_Input extends JFrame {
             cv.IndividualtblModel.setNumRows(0);
             cv.addCommuteIndividualLine(new Commute_ListDao(start_date,end_date,name).commutelist());
 			JOptionPane.showMessageDialog(null, "[SYSTEM] 조회되었습니다.", "확인", JOptionPane.CLOSED_OPTION);
-            
+            j1.dispose();
 			
 		}  
 	  });
@@ -111,7 +114,7 @@ public class List_Input extends JFrame {
 		  pIn.add(check);
 		  pIn.add(st_date);
 		  pIn.add(en_date);
-	  
+		  
 	    this.setVisible(true);
 	    this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setLocation(300,100);
