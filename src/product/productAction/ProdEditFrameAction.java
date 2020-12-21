@@ -3,6 +3,7 @@ package product.productAction;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import main.MainFrame;
@@ -45,10 +46,12 @@ public class ProdEditFrameAction implements ActionListener {
 			JOptionPane.showMessageDialog(null, "\t[SYSTEM] 수정이 완료되었습니다.", "확인", JOptionPane.CLOSED_OPTION);
 
 			// 창 안보이게
-			mainFrame.prodEditFrame.setVisible(false);
+			//mainFrame.prodEditFrame.setVisible(false);
+			mainFrame.prodEditFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		} else if (ob == mainFrame.prodEditFrame.cancelEidtBtn) {
 			mainFrame.prodEditFrame.resetText();
-			mainFrame.prodEditFrame.setVisible(false);
+			//mainFrame.prodEditFrame.setVisible(false);
+			mainFrame.prodEditFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		}
 	}
 

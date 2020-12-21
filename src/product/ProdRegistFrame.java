@@ -107,7 +107,7 @@ public class ProdRegistFrame extends JFrame {
 //		cancelBtn.setIcon(null);
 //		cancelBtn.setForeground(new Color(255, 255, 255));
 //		cancelBtn.setFont(new Font("맑은 고딕 Semilight", Font.BOLD, 12));
-//		cancelBtn.setBounds(211, 324, 57, 24);
+		cancelBtn.setBounds(211, 324, 57, 24);
 		pIn.add(cancelBtn, BorderLayout.SOUTH);
 
 		JLabel lblNewLabel = new JLabel("상품코드");
