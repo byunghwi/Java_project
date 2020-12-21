@@ -4,12 +4,12 @@ import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import account.action.Delete_Action;
+import common.RoundedButton;
 
 
 // 회원 탈퇴 정보를 받아오는 프레임
@@ -19,8 +19,7 @@ public class Secession extends JFrame{
 	String [] info_names = {"ID","PW"};
 	String [] info_data = new String[2];
 	JLabel[] names = new JLabel[2];
-	ImageIcon secession_button = new ImageIcon("src/탈퇴.jpg");
-	JButton secession = new JButton(secession_button);
+	RoundedButton secession = new RoundedButton("회 원 탈 퇴");
 	Font f1 = new Font("나눔고딕", Font.BOLD, 13);
 	
 	public Secession(String mem_id) {

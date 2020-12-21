@@ -5,7 +5,6 @@ import java.awt.Font;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
@@ -14,6 +13,7 @@ import javax.swing.JTextField;
 
 import account.action.Cancel_Action;
 import account.action.Edit_Action;
+import common.RoundedButton;
 
 // 수정할 회원 정보를 받아오는 프레임
 public class Edit extends JFrame {
@@ -35,8 +35,8 @@ public class Edit extends JFrame {
 
 	String [] info_names = {"비밀번호","비밀번호 확인","이름","주민등록번호","전화번호","주소","성별","메일주소"};
 	JLabel[] names = new JLabel[8];
-	JButton edit = new JButton(edit_button);
-	JButton cancel = new JButton(cancle_button);
+	RoundedButton edit = new RoundedButton("수 정");
+	RoundedButton cancel = new RoundedButton("취 소");
 	
 	
 	public Edit(String mem_id) {

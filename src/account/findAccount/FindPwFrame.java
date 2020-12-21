@@ -15,8 +15,7 @@ import common.RoundedButton;
 
 public class FindPwFrame extends JFrame {
 	
-	ImageIcon find_button = new ImageIcon("src/확인.jpg");
-	RoundedButton find = new RoundedButton("확인");
+	RoundedButton find = new RoundedButton("확인",68,68,68);
 	Read_Account_NAP nap = null;
 	
 	public FindPwFrame() {
