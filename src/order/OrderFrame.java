@@ -56,7 +56,7 @@ public class OrderFrame extends JFrame {
 		fields[0].setEditable(false);
 		fields[2].setEditable(false);
 		
-		btn_panel.setBackground(Color.GRAY);
+		btn_panel.setBackground(Color.LIGHT_GRAY);
 //		order_btn = new JButton("주문");
 //		cancel_btn = new JButton("취소");
 		order_btn = new RoundedButton("주문");
@@ -66,7 +66,7 @@ public class OrderFrame extends JFrame {
 		add(btn_panel, BorderLayout.SOUTH);
 		
 		search_panel = new JPanel();
-		search_panel.setBackground(Color.GRAY);
+		search_panel.setBackground(Color.LIGHT_GRAY);
 		search_btn = new RoundedButton("검색");
 		search_panel.add(combo);
 		search_panel.add(search_jf);

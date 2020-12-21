@@ -40,10 +40,17 @@ public class OrderConfirmView extends JPanel {
 		orderTable.setRowMargin(10);
 		orderTable.setRowHeight(30);
 		
+		orderTable.setGridColor(Color.LIGHT_GRAY);
+		orderTable.setSelectionBackground(Color.PINK);
+		orderTable.setBackground(Color.WHITE);
+		orderTable.setShowHorizontalLines(false);
+		orderTable.setForeground(Color.BLACK);
+		orderTable.setShowVerticalLines(false);
+		
 		orderTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		addProductLine(ocd.productAll());
 		scrollpane.setViewportView(orderTable);
-		setBackground(Color.LIGHT_GRAY);
+//		setBackground(Color.LIGHT_GRAY);
 	}
 	
 	public void addProductLine(ArrayList<OrderConfirm> products) {

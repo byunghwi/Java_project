@@ -119,12 +119,6 @@ public class OrderConfirmAction implements ActionListener {
 				mainFrame.orderConfirmFrame.resetText();
             } else {// 검색어를 입력했을경우
             	mainFrame.orderConfirmDao.getUserSearch(mainFrame.orderConfirmView.model, fieldName, mainFrame.orderConfirmFrame.search_jf.getText());
-//                if (mainFrame.orderConfirmFrame.search_jf.getText().length() < 2) {
-//                	JOptionPane.showMessageDialog(null, "2자이상 입력해주세요", "확인", JOptionPane.CLOSED_OPTION);
-//                	mainFrame.orderConfirmView.model.setNumRows(0);
-//                	mainFrame.orderConfirmView.addProductLine(mainFrame.orderConfirmDao.productAll());
-//                	mainFrame.orderConfirmFrame.resetText();
-//                }
             }
 		}
 	}

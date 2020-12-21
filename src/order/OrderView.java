@@ -34,13 +34,19 @@ public class OrderView extends JPanel {
 		add(scrollpane);
 		
 		orderTable.setRowMargin(10);
-		orderTable.setRowHeight(30);		
-		orderTable.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
+		orderTable.setRowHeight(30);	
+		
+		orderTable.setGridColor(Color.LIGHT_GRAY);
+		orderTable.setSelectionBackground(Color.PINK);
+		orderTable.setBackground(Color.WHITE);
+		orderTable.setShowHorizontalLines(false);
+		orderTable.setForeground(Color.BLACK);
+		orderTable.setShowVerticalLines(false);
 		
 		orderTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		addProductLine(od.productAll()); 
 		scrollpane.setViewportView(orderTable);
-		setBackground(Color.LIGHT_GRAY);
+//		setBackground(Color.LIGHT_GRAY);
 		
 	}
 	

@@ -71,14 +71,14 @@ public class OrderConfirmFrame extends JFrame {
 		cancel_btn.setBorderPainted(false);
 		
 		search_panel = new JPanel();
-		search_panel.setBackground(Color.GRAY);
+		search_panel.setBackground(Color.LIGHT_GRAY);
 		search_btn = new RoundedButton("검색");
 		search_panel.add(combo);
 		search_panel.add(search_jf);
 		search_panel.add(search_btn);
 		add(search_panel, BorderLayout.NORTH);
 		
-		btn_panel.setBackground(Color.GRAY);
+		btn_panel.setBackground(Color.LIGHT_GRAY);
 		btn_panel.add(order_btn);
 		btn_panel.add(confirm_btn);
 		btn_panel.add(delete_btn);

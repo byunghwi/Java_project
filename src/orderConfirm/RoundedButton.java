@@ -51,23 +51,12 @@ public class RoundedButton extends JButton {
 		
 		graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON); 
 		
-		// 버튼 클릭, 올리는 action따라 색깔다르게
-//		if (getModel().isArmed()) {
-//			graphics.setColor(getBackground().darker()); 
-//		} else if (getModel().isRollover()) { 
-//			graphics.setColor(getBackground().brighter()); 
-//		} else {
-//			graphics.setColor(getBackground().BLACK); 
-//		} 
-		
-		Color color = new Color(71, 115, 133);
-		
 		if (getModel().isArmed()) {
 			graphics.setColor(getBackground().brighter()); 
 		} else if (getModel().isRollover()) { 
 			graphics.setColor(getBackground().darker()); 
 		} else {
-			graphics.setColor(color); 
+			graphics.setColor(getBackground().GRAY); 
 		} 
 		
 		graphics.fillRoundRect(0, 0, width, height, 10, 10); 
