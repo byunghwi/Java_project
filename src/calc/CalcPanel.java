@@ -75,11 +75,11 @@ public class CalcPanel extends JPanel{
 		
 		JLabel lbShowDate = new JLabel("정산목록");
 		lbShowDate.setBounds(12, 55, 101, 37);
-		lbShowDate.setFont(new Font("맑은 고딕", Font.BOLD, 15));
+		lbShowDate.setFont(new Font("나눔 고딕", Font.BOLD, 15));
 		
 		JLabel referencelbShowDate = new JLabel("조회일자");
 		referencelbShowDate.setBounds(12, 0, 101, 37);
-		referencelbShowDate.setFont(new Font("맑은 고딕", Font.BOLD, 15));
+		referencelbShowDate.setFont(new Font("나눔 고딕", Font.BOLD, 15));
 		
 		add(lbShowDate);
 		add(referencelbShowDate);
@@ -92,7 +92,7 @@ public class CalcPanel extends JPanel{
 		
 		clacTable.setRowMargin(10);
 		clacTable.setRowHeight(30);		
-		clacTable.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
+		clacTable.setFont(new Font("나눔 고딕", Font.PLAIN, 15));
 		
 		//테이블 로우 중 한 줄만 선택 가능.
 		
@@ -108,13 +108,13 @@ public class CalcPanel extends JPanel{
 		
 		for (int j = 0; j < fieldNames.length; j++) {
 			labels[j] = new JLabel(fieldNames[j]);
-			labels[j].setFont(new Font("맑은 고딕", Font.BOLD, 12));
+			labels[j].setFont(new Font("나눔 고딕", Font.BOLD, 12));
 			labels[j].setBounds((j+1)*190, 34, 50 , 30);
 		    add(labels[j]);
 		}
 		
 		check = new JButton("조회");
-		check.setFont(new Font("맑은 고딕", Font.BOLD, 12));
+		check.setFont(new Font("나눔 고딕", Font.BOLD, 12));
 		check.setBounds(465, 34, 70, 30);
 		
 		add(check);

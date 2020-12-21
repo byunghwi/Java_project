@@ -80,13 +80,13 @@ public class List_Input extends JFrame {
 		
 		for (int j = 0; j < fieldNames.length; j++) {
 			labels[j] = new JLabel(fieldNames[j]);
-			labels[j].setFont(new Font("맑은 고딕", Font.BOLD, 12));
+			labels[j].setFont(new Font("나눔 고딕", Font.BOLD, 12));
 			labels[j].setBounds(30, (j+1)*50, 50 , 30);
 			pIn.add(labels[j]);
 		}
 		
 		check = new JButton("확인");
-		check.setFont(new Font("맑은 고딕", Font.BOLD, 12));
+		check.setFont(new Font("나눔 고딕", Font.BOLD, 12));
 		check.setBounds(180, 320, 70, 30);
 		
 		JFrame j1=this;	  

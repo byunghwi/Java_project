@@ -58,11 +58,11 @@ private static final long serialVersionUID = 1L;
 		
 		lbShowDate = new JLabel("출퇴근목록");
 		lbShowDate.setBounds(12, 0, 101, 37);
-		lbShowDate.setFont(new Font("맑은 고딕", Font.BOLD, 15));
+		lbShowDate.setFont(new Font("나눔 고딕", Font.BOLD, 15));
 		
 		IndividuallbShowDate = new JLabel("개인출퇴근목록");
 		IndividuallbShowDate.setBounds(550, 0, 130, 37);
-		IndividuallbShowDate.setFont(new Font("맑은 고딕", Font.BOLD, 15));
+		IndividuallbShowDate.setFont(new Font("나눔 고딕", Font.BOLD, 15));
 		
 		add(lbShowDate);
 		add(IndividuallbShowDate);
@@ -74,11 +74,11 @@ private static final long serialVersionUID = 1L;
 		
 		commuteTable.setRowMargin(10);
 		commuteTable.setRowHeight(30);		
-		commuteTable.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
+		commuteTable.setFont(new Font("나눔 고딕", Font.PLAIN, 15));
 		
 		commuteIndividualTable.setRowMargin(10);
 		commuteIndividualTable.setRowHeight(30);		
-		commuteIndividualTable.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
+		commuteIndividualTable.setFont(new Font("나눔 고딕", Font.PLAIN, 15));
 		
 		
 		
