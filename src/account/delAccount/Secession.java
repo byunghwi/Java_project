@@ -3,6 +3,7 @@ package account.delAccount;
 import java.awt.Color;
 import java.awt.Font;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,7 +19,8 @@ public class Secession extends JFrame{
 	String [] info_names = {"ID","PW"};
 	String [] info_data = new String[2];
 	JLabel[] names = new JLabel[2];
-	JButton delete = new JButton("회원탈퇴");
+	ImageIcon secession_button = new ImageIcon("src/탈퇴.jpg");
+	JButton secession = new JButton(secession_button);
 	Font f1 = new Font("나눔고딕", Font.BOLD, 13);
 	
 	public Secession(String mem_id) {
@@ -29,19 +31,19 @@ public class Secession extends JFrame{
 			names[i] = new JLabel(info_names[i]);
 			names[i].setFont(f1);
 			
-			infos[i].setBounds(100, 20 + i*30,100,20);
-			names[i].setBounds(30, 20 + i*30,100,20);
+			infos[i].setBounds(85, 20 + i*30,100,20);
+			names[i].setBounds(15, 20 + i*30,100,20);
 			add(infos[i]);
 			add(names[i]);
 		}
 		
 		infos[0].setText(mem_id);
 	
+		secession.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+		secession.setBounds(95, 85, 90, 20);
+		add(secession);
 		
-		delete.setBounds(70, 100, 90, 20);
-		add(delete);
-		
-		delete.addActionListener(new Delete_Action(this));
+		secession.addActionListener(new Delete_Action(this));
 		
 		this.getContentPane().setBackground(Color.WHITE);
 		
@@ -49,7 +51,7 @@ public class Secession extends JFrame{
 		setLayout(null);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setLocation(400,80);
-		setSize(250, 180);
+		setSize(220, 160);
 		setVisible(true);
 	}
 	
