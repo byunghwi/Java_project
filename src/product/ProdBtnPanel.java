@@ -27,7 +27,7 @@ public class ProdBtnPanel extends JPanel{
 		//registProdBtn.setForeground(Color.WHITE);
 		registProdBtn.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		//registProdBtn.setBackground(new Color(204, 206, 206));
-		registProdBtn.setBounds(0, 0, 140, 120);
+		registProdBtn.setBounds(0, 10, 140, 120);
 		
 		//editProdBtn.setForeground(Color.WHITE);
 		editProdBtn.setFont(new Font("맑은 고딕", Font.BOLD, 20));
