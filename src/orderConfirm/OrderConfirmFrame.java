@@ -19,7 +19,6 @@ public class OrderConfirmFrame extends JFrame {
 	// 주문, 승인, 삭제, 취소, 검색, 새로고침 버튼
 	public JButton order_btn, confirm_btn, delete_btn, cancel_btn, search_btn;
 	public JPanel btn_panel, tabel_panel, search_panel;
-	RoundedButton test_btn; // 테스트
 	
 	String[] fieldNames = new String[] {"발주번호", "상품명", "물품id", "가격", "수량"};
 	String[] textHints = new String[] {"번호입력	", "상품명입력	", "id입력	", "가격입력	","수량입력	"};
@@ -61,17 +60,10 @@ public class OrderConfirmFrame extends JFrame {
 		fields[3].setEditable(false);
 		fields[4].setEditable(true);
 		
-//		order_btn = new JButton("상품조회");
-//		confirm_btn = new JButton("승인");
-//		delete_btn = new JButton("삭제");
-//		cancel_btn = new JButton("취소");
-//		test_btn = new RoundedButton("테스트버튼"); //테스트
-		
 		order_btn = new RoundedButton("상품조회");
 		confirm_btn = new RoundedButton("승인");
 		delete_btn = new RoundedButton("삭제");
 		cancel_btn = new RoundedButton("취소");
-		test_btn = new RoundedButton("테스트버튼"); //테스트
 		
 		order_btn.setBorderPainted(false);
 		confirm_btn.setBorderPainted(false);
@@ -79,8 +71,8 @@ public class OrderConfirmFrame extends JFrame {
 		cancel_btn.setBorderPainted(false);
 		
 		search_panel = new JPanel();
-		search_panel.setBackground(Color.CYAN);
-		search_btn = new JButton("검색");
+		search_panel.setBackground(Color.GRAY);
+		search_btn = new RoundedButton("검색");
 		search_panel.add(combo);
 		search_panel.add(search_jf);
 		search_panel.add(search_btn);
@@ -91,7 +83,6 @@ public class OrderConfirmFrame extends JFrame {
 		btn_panel.add(confirm_btn);
 		btn_panel.add(delete_btn);
 		btn_panel.add(cancel_btn);
-		btn_panel.add(test_btn); // 테스트
 		add(btn_panel, BorderLayout.SOUTH);
 		
 		setTitle("승인대기창");

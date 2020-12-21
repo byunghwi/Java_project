@@ -11,6 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import orderConfirm.RoundedButton;
+
 public class OrderFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
@@ -55,15 +57,17 @@ public class OrderFrame extends JFrame {
 		fields[2].setEditable(false);
 		
 		btn_panel.setBackground(Color.GRAY);
-		order_btn = new JButton("주문");
-		cancel_btn = new JButton("취소");
+//		order_btn = new JButton("주문");
+//		cancel_btn = new JButton("취소");
+		order_btn = new RoundedButton("주문");
+		cancel_btn = new RoundedButton("취소");
 		btn_panel.add(order_btn);
 		btn_panel.add(cancel_btn);
 		add(btn_panel, BorderLayout.SOUTH);
 		
 		search_panel = new JPanel();
-		search_panel.setBackground(Color.CYAN);
-		search_btn = new JButton("검색");
+		search_panel.setBackground(Color.GRAY);
+		search_btn = new RoundedButton("검색");
 		search_panel.add(combo);
 		search_panel.add(search_jf);
 		search_panel.add(search_btn);
