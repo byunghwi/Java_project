@@ -120,11 +120,13 @@ public class ProdEditFrame extends JFrame{
 		pIn.add(cancelEidtBtn);
 		
 		lblNewLabel = new JLabel("상품명");
+		lblNewLabel.setForeground(new Color(105, 105, 105));
 		lblNewLabel.setFont(new Font("맑은 고딕 Semilight", Font.BOLD, 12));
 		lblNewLabel.setBounds(135, 22, 57, 15);
 		pIn.add(lblNewLabel);
 		
 		lblNewLabel_1 = new JLabel("상품가격");
+		lblNewLabel_1.setForeground(new Color(105, 105, 105));
 		lblNewLabel_1.setFont(new Font("맑은 고딕 Semilight", Font.BOLD, 12));
 		lblNewLabel_1.setBounds(135, 122, 57, 15);
 		pIn.add(lblNewLabel_1);
@@ -140,7 +142,7 @@ public class ProdEditFrame extends JFrame{
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_2.setBounds(0, 20, 109, 30);
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
-		lblNewLabel_2.setFont(new Font("맑은 고딕 Semilight", Font.BOLD, 22));
+		lblNewLabel_2.setFont(new Font("맑은 고딕 Semilight", Font.BOLD, 21));
 		panel.add(lblNewLabel_2);
 
 	}

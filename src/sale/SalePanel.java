@@ -1,6 +1,7 @@
 package sale;
 
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -18,6 +19,11 @@ import javax.swing.table.DefaultTableModel;
 import product.Product;
 import stock.Stock;
 import stock.StockDao;
+import java.awt.Color;
+import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class SalePanel extends JPanel {
 	/**
@@ -66,6 +72,7 @@ public class SalePanel extends JPanel {
 
 	public SalePanel() {
 		setLayout(null);
+
 		
 	
 		prodnameTf = new JTextField();
@@ -73,31 +80,68 @@ public class SalePanel extends JPanel {
 		prodQt = new JTextField();
 		
 		prodnameLb = new JLabel("상품명");
-		prodnameLb.setFont(new Font("굴림체", Font.PLAIN, 13));
+		prodnameLb.setHorizontalAlignment(SwingConstants.CENTER);
+		prodnameLb.setFont(new Font("맑은 고딕 Semilight", Font.BOLD, 13));
 		prodQtLb = new JLabel("상품수량");
-		prodQtLb.setFont(new Font("굴림체", Font.PLAIN, 13));
+		prodQtLb.setHorizontalAlignment(SwingConstants.CENTER);
+		prodQtLb.setFont(new Font("맑은 고딕 Semilight", Font.BOLD, 13));
 		
 		stockTblLb = new JLabel("재고목록");
-		stockTblLb.setFont(new Font("굴림체", Font.BOLD, 15));
+		stockTblLb.setFont(new Font("맑은 고딕 Semilight", Font.BOLD, 15));
 		bucketTblLb = new JLabel("장바구니");
-		bucketTblLb.setFont(new Font("굴림체", Font.BOLD, 15));
+		bucketTblLb.setFont(new Font("맑은 고딕 Semilight", Font.BOLD, 15));
 			
-		addBucketBtn =  new JButton("추가");
-		addBucketBtn.setFont(new Font("굴림체", Font.PLAIN, 12));
-		delBucketBtn = new JButton("삭제");
-		delBucketBtn.setFont(new Font("굴림체", Font.PLAIN, 12));
-		completeBtn = new JButton("결제");
-		completeBtn.setFont(new Font("굴림체", Font.PLAIN, 12));
+		
+		Image img1 = new ImageIcon(SalePanel.class.getResource("/plus.png")).getImage();
+		Image chgimg1 = img1.getScaledInstance(60, 60, img1.SCALE_SMOOTH);
+		ImageIcon icon1= new ImageIcon(chgimg1);
+		
+		Image img2 = new ImageIcon(SalePanel.class.getResource("/minus.png")).getImage();
+		Image chgimg2 = img2.getScaledInstance(60, 60, img2.SCALE_SMOOTH);
+		ImageIcon icon2= new ImageIcon(chgimg2);
+		
+		Image img3 = new ImageIcon(SalePanel.class.getResource("/pay.png")).getImage();
+		Image chgimg3 = img3.getScaledInstance(80, 80, img3.SCALE_SMOOTH);
+		ImageIcon icon3 = new ImageIcon(chgimg3);
+		
+		addBucketBtn =  new JButton(icon1);
+		delBucketBtn = new JButton(icon2);
+		delBucketBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		completeBtn = new JButton(icon3);
+		//addBucketBtn.setFont(new Font("굴림체", Font.PLAIN, 12));
+		
+		
+		//delBucketBtn.setFont(new Font("맑은 고딕 Semilight", Font.BOLD, 12));
+//		completeBtn = new JButton("결제");
+//		completeBtn.setIcon(new ImageIcon(SalePanel.class.getResource("/org/jfree/chart/gorilla.jpg")));
+//		completeBtn.setSelectedIcon(null);
+//		completeBtn.setFont(new Font("굴림체", Font.PLAIN, 12));
+		completeBtn.setBorderPainted(false);
+		completeBtn.setFocusPainted(false);
+		completeBtn.setContentAreaFilled(false);
+		
+		
+		
+		addBucketBtn.setBorderPainted(false);
+		addBucketBtn.setFocusPainted(false);
+		addBucketBtn.setContentAreaFilled(false);
+		
+		delBucketBtn.setBorderPainted(false);
+		delBucketBtn.setFocusPainted(false);
+		delBucketBtn.setContentAreaFilled(false);
 		
 		stockTblLb.setBounds(50, 0, 70, 50);
 		bucketTblLb.setBounds(710, 0, 70, 50);
-		prodnameLb.setBounds(470, 490, 70, 20);
-		prodQtLb.setBounds(560, 490, 70, 20);
-		prodnameTf.setBounds(470, 510, 90, 30);
-		prodQt.setBounds(560, 510, 70, 30);
-		addBucketBtn.setBounds(660, 510, 70, 30);
-		delBucketBtn.setBounds(735, 510, 70, 30);
-		completeBtn.setBounds(810, 510, 70, 30);
+		prodnameLb.setBounds(520, 180, 70, 20);
+		prodQtLb.setBounds(622, 180, 70, 20);
+		prodnameTf.setBounds(520, 210, 90, 30);
+		prodQt.setBounds(622, 210, 70, 30);
+		addBucketBtn.setBounds(582, 250, 49, 50);
+		delBucketBtn.setBounds(582, 299, 49, 50);
+		completeBtn.setBounds(562, 408, 90, 80);
 
 		add(stockTblLb);
 		add(bucketTblLb);
@@ -108,20 +152,33 @@ public class SalePanel extends JPanel {
 		add(addBucketBtn);
 		add(delBucketBtn);
 		add(completeBtn);
+		stockScrollPane.setFont(new Font("맑은 고딕 Semilight", Font.PLAIN, 12));
+		stockScrollPane.setBackground(new Color(255, 255, 255));
 		
-		stockScrollPane.setBounds(12, 44, 600, 444);
-		bucketScrollPane.setBounds(680, 44, 450, 444);
+		stockScrollPane.setBounds(12, 44, 494, 444);
+		bucketScrollPane.setFont(new Font("맑은 고딕 Semilight", Font.PLAIN, 12));
+		bucketScrollPane.setBounds(704, 44, 426, 444);
 		add(stockScrollPane);
 		add(bucketScrollPane);
+		stockTable.setGridColor(new Color(135, 206, 235));
+		stockTable.setShowVerticalLines(false);
+		stockTable.setShowHorizontalLines(false);
+		stockTable.setShowGrid(false);
+		stockTable.setSelectionBackground(new Color(255, 192, 203));
 
 		stockTable.setRowMargin(10);
 		stockTable.setRowHeight(30);
-		stockTable.setFont(new Font("굴림체", Font.PLAIN, 14));
+		stockTable.setFont(new Font("맑은 고딕 Semilight", Font.PLAIN, 13));
+		bucketTable.setGridColor(new Color(135, 206, 235));
+		bucketTable.setShowGrid(false);
+		bucketTable.setShowHorizontalLines(false);
+		bucketTable.setShowVerticalLines(false);
+		bucketTable.setSelectionBackground(new Color(255, 192, 203));
 
 		
 		bucketTable.setRowMargin(10);
 		bucketTable.setRowHeight(30);
-		bucketTable.setFont(new Font("굴림체", Font.PLAIN, 14));
+		bucketTable.setFont(new Font("맑은 고딕 Semilight", Font.PLAIN, 13));
 		
 		// 테이블 로우 중 한 줄만 선택 가능.
 		stockTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -131,6 +188,17 @@ public class SalePanel extends JPanel {
 
 		stockScrollPane.setViewportView(stockTable);
 		bucketScrollPane.setViewportView(bucketTable);
+		
+		
+		stockTable.getTableHeader().setFont(new Font("맑음 고딕", Font.PLAIN, 15));
+		stockTable.getTableHeader().setOpaque(false);
+		stockTable.getTableHeader().setBackground(new Color(32, 136, 203));
+		stockTable.getTableHeader().setForeground(new Color(255, 255, 255));
+		
+		bucketTable.getTableHeader().setFont(new Font("맑음 고딕", Font.PLAIN, 15));
+		bucketTable.getTableHeader().setOpaque(false);
+		bucketTable.getTableHeader().setBackground(new Color(32, 136, 203));
+		bucketTable.getTableHeader().setForeground(new Color(255, 255, 255));
 	}
 
 	// Jtable에 로우 하나씩 추가하기.
