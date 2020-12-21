@@ -57,8 +57,6 @@ public class OrderFrame extends JFrame {
 		fields[2].setEditable(false);
 		
 		btn_panel.setBackground(Color.LIGHT_GRAY);
-//		order_btn = new JButton("주문");
-//		cancel_btn = new JButton("취소");
 		order_btn = new RoundedButton("주문");
 		cancel_btn = new RoundedButton("취소");
 		btn_panel.add(order_btn);
