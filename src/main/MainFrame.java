@@ -60,6 +60,11 @@ import stock.stockAction.DisposalInfoAction;
 import stock.stockAction.MoreInfoAction;
 import stock.stockView.StockView;
 import stock.stockframe.StockRightBtnPanel;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
+import java.awt.Component;
+import java.awt.Rectangle;
 
 public class MainFrame extends JFrame{
 
@@ -165,6 +170,8 @@ public class MainFrame extends JFrame{
 	JMenu menu = new JMenu("회원정보");
 	JMenuItem i1 = new JMenuItem("확인/수정");
 	JMenuItem i2 = new JMenuItem("탈퇴");
+	private final JPanel panel = new JPanel();
+	private final JLabel lblNewLabel = new JLabel("");
 
 	public MainFrame() {
 		
@@ -174,15 +181,23 @@ public class MainFrame extends JFrame{
 		menu.add(i2);
 		this.setJMenuBar(bar);
 		
+		bar.add(panel);
+		panel.setLayout(null);
+		lblNewLabel.setIcon(new ImageIcon(MainFrame.class.getResource("/org/jdatepicker/graphics/clear.png")));
+		lblNewLabel.setBounds(new Rectangle(1220, 0, 34, 21));
+		
+		panel.add(lblNewLabel);
+		
 		
 		cardlayout = new CardLayout();
 		btnlayout = new CardLayout();
 
+		setUndecorated(true);
 		setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		setTitle("편의점프로그램");
 		setResizable(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1326, 773);
+		setBounds(100, 100, 1309, 739);
 		setVisible(true);
 
 		contentPanel = new JPanel();
