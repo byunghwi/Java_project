@@ -49,7 +49,7 @@ public class List_Input extends JFrame {
 		
 		setTitle("월별 근태목록조회");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 340, 420);
+		setBounds(100, 100, 300, 200);
 		contentPanel = new JPanel(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPanel);
@@ -60,7 +60,7 @@ public class List_Input extends JFrame {
 		setVisible(true);
 		
 		pIn = new JPanel();
-		pIn.setBounds(5, 5, 310, 400);
+		pIn.setBounds(5, 5, 300, 200);
 		contentPanel.add(pIn);
 		pIn.setLayout(null);
 		pIn.setFocusable(false);
@@ -68,25 +68,25 @@ public class List_Input extends JFrame {
 		labels = new JLabel[fieldNames.length];
 		
 		//조회시작날짜
-		st_date.setBounds(130, 57, 150 , 24);
+		st_date.setBounds(100, 0, 150 , 24);
 		
 		//조회종료날짜
-		en_date.setBounds(130, 107, 150 , 24);
+		en_date.setBounds(100, 57, 150 , 24);
 		
 		//사원이름
 		mem_name = new HintTextField("사원이름을 입력하세요");
-		mem_name.setBounds(130, 154, 170 , 30);
+		mem_name.setBounds(100, 107, 150 , 24);
 		
 		for (int j = 0; j < fieldNames.length; j++) {
 			labels[j] = new JLabel(fieldNames[j]);
 			labels[j].setFont(new Font("나눔 고딕", Font.BOLD, 12));
-			labels[j].setBounds(30, (j+1)*50, 50 , 30);
+			labels[j].setBounds(30, (j)*50, 50 , 30);
 			pIn.add(labels[j]);
 		}
 		
 		check = new JButton("확인");
 		check.setFont(new Font("나눔 고딕", Font.BOLD, 12));
-		check.setBounds(180, 320, 70, 30);
+		check.setBounds(115, 150, 70, 30);
 		
 		JFrame j1=this;	  
 		
@@ -117,7 +117,7 @@ public class List_Input extends JFrame {
 	    this.setVisible(true);
 	    this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setLocation(300,100);
-		this.setSize(450,450);
+		this.setSize(340,300);
 		this.setVisible(true);
 		
 		
