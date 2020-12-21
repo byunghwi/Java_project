@@ -1,5 +1,6 @@
 package commute;
 
+import java.awt.Color;
 import java.awt.Font; 
 import java.util.ArrayList;
 import java.util.Vector;
@@ -74,11 +75,16 @@ private static final long serialVersionUID = 1L;
 		
 		commuteTable.setRowMargin(10);
 		commuteTable.setRowHeight(30);		
-		commuteTable.setFont(new Font("나눔 고딕", Font.PLAIN, 15));
+		commuteTable.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
+		commuteTable.getTableHeader().setBackground(new Color(32, 136, 203));
+		commuteTable.getTableHeader().setForeground(new Color(255, 255, 255));
+		
 		
 		commuteIndividualTable.setRowMargin(10);
 		commuteIndividualTable.setRowHeight(30);		
-		commuteIndividualTable.setFont(new Font("나눔 고딕", Font.PLAIN, 15));
+		commuteIndividualTable.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
+		commuteIndividualTable.getTableHeader().setBackground(new Color(32, 136, 203));
+		commuteIndividualTable.getTableHeader().setForeground(new Color(255, 255, 255));
 		
 		
 		

@@ -32,6 +32,8 @@ public class List_Input extends JFrame {
 	public JButton check;
 	JPanel contentPanel;
 	JPanel pIn;
+	JPanel pIn2;
+	
 	
 	String[] fieldNames = new String[]{"시작날짜", "종료날짜", "사원이름"};
 	
@@ -67,7 +69,15 @@ public class List_Input extends JFrame {
 		setVisible(false);
 		contentPanel.setLayout(null);
 		setVisible(true);
-		contentPanel.setBackground(Color.DARK_GRAY);
+		contentPanel.setBackground(new Color(128, 128, 128));
+		
+		titleLabel = new JLabel("정보 입력");
+		titleLabel.setFont(new Font("맑은 고딕", Font.BOLD, 20));
+		titleLabel.setBounds(10, 20, 100, 50);
+		titleLabel.setForeground(new Color(255, 255, 255));
+		
+		contentPanel.add(titleLabel);
+		
 		
 		pIn = new JPanel();
 		pIn.setBounds(150, 0, 400, 500);
@@ -75,6 +85,8 @@ public class List_Input extends JFrame {
 		pIn.setBackground(Color.WHITE);
 		pIn.setLayout(null);
 		pIn.setFocusable(false);
+		
+		
 		
 //		titleLabel = new JLabel("정보 입력");
 //		titleLabel.setFont(new Font("맑은 고딕", Font.BOLD, 20));
