@@ -66,7 +66,7 @@ public class DisposalInfoFrame extends JFrame{
 		
 		
 		setLayout(null);
-		setFont(new Font("맑은 고딕", Font.BOLD, 15));
+		setFont(new Font("나눔고딕", Font.BOLD, 15));
 		setTitle("폐기 정보");		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(200, 100, 700, 400);

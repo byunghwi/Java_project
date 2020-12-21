@@ -16,9 +16,7 @@ public class BottomPanel extends JPanel{
 	public JButton productBtn;
 	public JButton saleBtn;
 	public JButton stockBtn;
-	public JButton disBtn;
 	public JButton eventBtn;
-	public JButton accountBtn;
 	public JButton commuteBtn;
 	public JButton calcBtn;
 	
@@ -28,9 +26,7 @@ public class BottomPanel extends JPanel{
 			productBtn = new JButton("상품");
 			saleBtn = new JButton("판매");
 			stockBtn = new JButton("재고");
-			disBtn = new JButton("폐기");
 			eventBtn = new JButton("이벤트");
-			accountBtn = new JButton("유저");
 			commuteBtn = new JButton("근태");
 			calcBtn = new JButton("정산");
 			
@@ -49,37 +45,27 @@ public class BottomPanel extends JPanel{
 			stockBtn.setBackground(new Color(204, 206, 206));
 			stockBtn.setBounds(288, 0, 130, 98);
 			
-			disBtn.setForeground(Color.WHITE);
-			disBtn.setFont(new Font("맑은 고딕", Font.BOLD, 17));
-			disBtn.setBackground(new Color(204, 206, 206));
-			disBtn.setBounds(428, 0, 130, 98);
 			
 			eventBtn.setForeground(Color.WHITE);
 			eventBtn.setFont(new Font("맑은 고딕", Font.BOLD, 17));
 			eventBtn.setBackground(new Color(204, 206, 206));
-			eventBtn.setBounds(568, 0, 130, 98);
+			eventBtn.setBounds(428, 0, 130, 98);
 			
-			accountBtn.setForeground(Color.WHITE);
-			accountBtn.setFont(new Font("맑은 고딕", Font.BOLD, 17));
-			accountBtn.setBackground(new Color(204, 206, 206));
-			accountBtn.setBounds(708, 0, 130, 98);
 			
 			commuteBtn.setForeground(Color.WHITE);
 			commuteBtn.setFont(new Font("맑은 고딕", Font.BOLD, 17));
 			commuteBtn.setBackground(new Color(204, 206, 206));
-			commuteBtn.setBounds(848, 0, 130, 98);
+			commuteBtn.setBounds(568, 0, 130, 98);
 			
 			calcBtn.setForeground(Color.WHITE);
 			calcBtn.setFont(new Font("맑은 고딕", Font.BOLD, 17));
 			calcBtn.setBackground(new Color(204, 206, 206));
-			calcBtn.setBounds(988, 0, 130, 98);
+			calcBtn.setBounds(708, 0, 130, 98);
 
 			add(productBtn);
 			add(saleBtn);
 			add(stockBtn);
-			add(disBtn);
 			add(eventBtn);
-			add(accountBtn);
 			add(commuteBtn);
 			add(calcBtn);
 	}

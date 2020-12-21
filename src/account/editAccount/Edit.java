@@ -1,5 +1,7 @@
 package account.editAccount;
 
+import java.awt.Font;
+
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -24,6 +26,7 @@ public class Edit extends JFrame {
 	public JTextField[] res_infos = new JTextField[2];
 	public JTextField[] phone_infos = new JTextField[3];
 	JLabel minus[] = {new JLabel("-"),new JLabel("-"),new JLabel("-")};
+	Font f1 = new Font("나눔고딕", Font.BOLD, 13);
 
 	String [] info_names = {"비밀번호","비밀번호 확인","이름","주민등록번호","전화번호","주소","성별","메일주소"};
 	JLabel[] names = new JLabel[8];
@@ -37,11 +40,13 @@ public class Edit extends JFrame {
 		
 		ra = new Read_Account(mem_id);
 		id_label = new JLabel(mem_id.toUpperCase() +"님의 회원정보");
+		id_label.setFont(f1);
 		int pnl = ra.read_info[6].length();
 		
 		for (int i = 0; i < info_names.length; i++) {
 			names[i] = new JLabel(info_names[i]);
 			names[i].setBounds(30, 60 + i*50,100,20);
+			names[i].setFont(f1);
 			add(names[i]);
 		}
 		
@@ -127,6 +132,8 @@ public class Edit extends JFrame {
 		setVisible(true);
 	
 	}
-
 	
+	public static void main(String[] args) {
+		new Edit("admin1");
+	}
 }

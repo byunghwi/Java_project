@@ -47,7 +47,7 @@ public class StockView extends JPanel {
 		
 		stockTable.setRowMargin(10);
 		stockTable.setRowHeight(30);		
-		stockTable.setFont(new Font("나눔 고딕", Font.PLAIN, 15));
+		stockTable.setFont(new Font("나눔고딕", Font.PLAIN, 15));
 		
 		stockTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
