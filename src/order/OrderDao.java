@@ -76,28 +76,9 @@ public class OrderDao {
 		}
 	}
 	
-	// 삭제(등록했던 상품삭제) - 필요하면 쓰려고 만들어둠
-//	public void deleteproduct(JTextField[] fields) {
-//		conn = DatabaseConnect.getConnection();
-//		sql = "DELETE FROM product WHERE product_id = ?";
-//		try {
-//			ps = conn.prepareStatement(sql);
-//			ps.setString(1, fields[0].getText());
-//			ps.executeUpdate();
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		try {
-//			DatabaseConnect.dbClose(rs, ps, conn);
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//	}
-	
 	// 주문목록 검색
 	public void getUserSearch(DefaultTableModel dt, String fieldName, String word) {
 		conn = DatabaseConnect.getConnection();
-//        String sql = "SELECT * FROM stock WHERE " + fieldName.trim() + " LIKE '%" + word.trim() + "%'";
         String sql = "SELECT product.product_id, product.product_name, product.price, SUM(stock.quantity)\r\n"
         		+ "FROM product\r\n"
         		+ "INNER JOIN stock\r\n"

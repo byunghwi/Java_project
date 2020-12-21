@@ -11,9 +11,13 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import com.toedter.calendar.JDateChooser;
+
+import common.RoundedButton;
+
 import java.awt.Color;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
+import javax.swing.SwingConstants;
 
 public class ProdEditFrame extends JFrame{
 
@@ -40,6 +44,10 @@ public class ProdEditFrame extends JFrame{
 	
 	public JDateChooser dateChooser1 = new JDateChooser();
 	public JDateChooser dateChooser2 = new JDateChooser();
+	private JLabel lblNewLabel;
+	private JLabel lblNewLabel_1;
+	private JPanel panel;
+	private JLabel lblNewLabel_2;
 	
 	public ProdEditFrame(){
 		
@@ -51,34 +59,35 @@ public class ProdEditFrame extends JFrame{
 		setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		setTitle("상품 수정");		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 340, 400);
-		contentPanel = new JPanel(new BorderLayout());
+		setBounds(100, 100, 290, 317);
+		contentPanel = new JPanel();
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPanel);
 		setResizable(false);
 		setLocationRelativeTo(null);
 		setVisible(false);
 		contentPanel.setLayout(null);
+		contentPanel.setLayout(null);
 		
 		pIn = new JPanel();
-		pIn.setBounds(5, 5, 300, 400);
+		pIn.setBackground(new Color(255, 255, 255));
+		pIn.setBounds(0, 0, 285, 288);
 		contentPanel.add(pIn);
-		pIn.setLayout(null);
 		
 		labels = new JLabel[fieldNames.length];
 	
-		for (int i = 0; i < fieldNames.length; i++) {
-			//System.out.println(fieldNames[i]);
-			labels[i] = new JLabel(fieldNames[i]);
-			labels[i].setFont(new Font("맑은 고딕", Font.BOLD, 12));
-			labels[i].setBounds(30, (i+1)*50, 50 , 30);
-	
-			pIn.add(labels[i]);
-		}
-		
+//		for (int i = 0; i < fieldNames.length; i++) {
+//			//System.out.println(fieldNames[i]);
+//			labels[i] = new JLabel(fieldNames[i]);
+//			labels[i].setFont(new Font("맑은 고딕", Font.BOLD, 12));
+//			labels[i].setBounds(30, (i+1)*50, 50 , 30);
+//	
+//			pIn.add(labels[i]);
+//		}
+//		
 		//상품명
 		tf1 = new JTextField();
-		tf1.setBounds(130, 50, 170 , 30);
+		tf1.setBounds(130, 50, 132, 30);
 		
 //		//제조일
 //		dateChooser1.setBounds(130, 100, 170 , 30);
@@ -92,7 +101,8 @@ public class ProdEditFrame extends JFrame{
 		
 		//가격
 		tf2 = new JTextField();
-		tf2.setBounds(130, 100, 170 , 30);
+		tf2.setBounds(130, 147, 132, 30);
+		pIn.setLayout(null);
 		
 		pIn.add(tf1);
 //		pIn.add(dateChooser1);
@@ -100,22 +110,38 @@ public class ProdEditFrame extends JFrame{
 		pIn.add(tf2);
 //		pIn.add(tf3);
 		
-		compEditBtn = new JButton("수정");
-		compEditBtn.setForeground(Color.WHITE);
-		compEditBtn.setBackground(Color.DARK_GRAY);
-		compEditBtn.setBorder(null);
-		compEditBtn.setFont(new Font("맑은 고딕", Font.BOLD, 12));
-		compEditBtn.setBounds(90, 320, 70, 30);
+		compEditBtn = new RoundedButton("수정");
+		compEditBtn.setBounds(130, 230, 57, 30);
 
-		cancelEidtBtn = new JButton("취소");
-		cancelEidtBtn.setBorder(null);
-		cancelEidtBtn.setBackground(Color.DARK_GRAY);
-		cancelEidtBtn.setForeground(Color.WHITE);
-		cancelEidtBtn.setFont(new Font("맑은 고딕", Font.BOLD, 12));
-		cancelEidtBtn.setBounds(190, 320, 70, 30);
+		cancelEidtBtn = new RoundedButton("취소");
+		cancelEidtBtn.setBounds(205, 230, 57, 30);
+	
+		pIn.add(compEditBtn);
+		pIn.add(cancelEidtBtn);
 		
-		pIn.add(compEditBtn, BorderLayout.SOUTH);
-		pIn.add(cancelEidtBtn, BorderLayout.SOUTH);
+		lblNewLabel = new JLabel("상품명");
+		lblNewLabel.setFont(new Font("맑은 고딕 Semilight", Font.BOLD, 12));
+		lblNewLabel.setBounds(135, 22, 57, 15);
+		pIn.add(lblNewLabel);
+		
+		lblNewLabel_1 = new JLabel("상품가격");
+		lblNewLabel_1.setFont(new Font("맑은 고딕 Semilight", Font.BOLD, 12));
+		lblNewLabel_1.setBounds(135, 122, 57, 15);
+		pIn.add(lblNewLabel_1);
+		
+		panel = new JPanel();
+		panel.setBackground(new Color(128, 128, 128));
+		panel.setForeground(new Color(169, 169, 169));
+		panel.setBounds(0, 0, 109, 288);
+		pIn.add(panel);
+		panel.setLayout(null);
+		
+		lblNewLabel_2 = new JLabel("상품 수정");
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2.setBounds(0, 20, 109, 30);
+		lblNewLabel_2.setForeground(new Color(255, 255, 255));
+		lblNewLabel_2.setFont(new Font("맑은 고딕 Semilight", Font.BOLD, 22));
+		panel.add(lblNewLabel_2);
 
 	}
 	

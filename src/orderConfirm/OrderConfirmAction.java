@@ -95,13 +95,18 @@ public class OrderConfirmAction implements ActionListener {
 		} 
 		// 승인 삭제버튼
 		else if (ob == mainFrame.orderConfirmFrame.delete_btn) { 
-			mainFrame.orderConfirmDao.confirmCancle(mainFrame.orderConfirmFrame.fields);
-			// 그래프 갱신
-			mainFrame.orderConfirmFrame.orderConfirmView.model.setNumRows(0);
-			mainFrame.orderConfirmFrame.orderConfirmView.addProductLine(mainFrame.orderConfirmDao.productAll());
+			if(mainFrame.orderConfirmFrame.fields[3].getText().equals("")) {
+				JOptionPane.showMessageDialog(null, "삭제할 목록을 선택해주세요", "확인", JOptionPane.CLOSED_OPTION);
+			} else {
+				mainFrame.orderConfirmDao.confirmCancle(mainFrame.orderConfirmFrame.fields);
+				// 그래프 갱신
+				mainFrame.orderConfirmFrame.orderConfirmView.model.setNumRows(0);
+				mainFrame.orderConfirmFrame.orderConfirmView.addProductLine(mainFrame.orderConfirmDao.productAll());
+				mainFrame.orderConfirmFrame.resetText();
+			}
 		} // 승인 취소버튼
 		else if (ob == mainFrame.orderConfirmFrame.cancel_btn) {
-			mainFrame.orderConfirmFrame.setVisible(false);	
+			mainFrame.orderConfirmFrame.dispose();
 		}
 		// 승인대기목록 검색버튼
 		else if (ob == mainFrame.orderConfirmFrame.search_btn) {
@@ -119,12 +124,6 @@ public class OrderConfirmAction implements ActionListener {
 				mainFrame.orderConfirmFrame.resetText();
             } else {// 검색어를 입력했을경우
             	mainFrame.orderConfirmDao.getUserSearch(mainFrame.orderConfirmView.model, fieldName, mainFrame.orderConfirmFrame.search_jf.getText());
-//                if (mainFrame.orderConfirmFrame.search_jf.getText().length() < 2) {
-//                	JOptionPane.showMessageDialog(null, "2자이상 입력해주세요", "확인", JOptionPane.CLOSED_OPTION);
-//                	mainFrame.orderConfirmView.model.setNumRows(0);
-//                	mainFrame.orderConfirmView.addProductLine(mainFrame.orderConfirmDao.productAll());
-//                	mainFrame.orderConfirmFrame.resetText();
-//                }
             }
 		}
 	}

@@ -1,5 +1,6 @@
 package order;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -23,22 +24,32 @@ public class OrderView extends JPanel {
 			return false;
 		};
 	};
+
 	public Vector<String> rows;
 	
 	public OrderView() {
 		setLayout(null);
 		
-		scrollpane.setBounds(12, 10, 1133, 200);
+		scrollpane.setBounds(12, 10, 1133, 250);
 		add(scrollpane);
 		
 		orderTable.setRowMargin(10);
-		orderTable.setRowHeight(30);		
-		orderTable.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
+		orderTable.setRowHeight(30);	
+		
+		orderTable.setGridColor(Color.LIGHT_GRAY);
+		orderTable.setSelectionBackground(Color.PINK);
+		orderTable.setBackground(Color.WHITE);
+		orderTable.setShowHorizontalLines(false);
+		orderTable.setForeground(Color.BLACK);
+		orderTable.setShowVerticalLines(false);
+		
+		orderTable.getTableHeader().setOpaque(false);
+		orderTable.getTableHeader().setBackground(new Color(32, 136, 203));
+		orderTable.getTableHeader().setForeground(new Color(255, 255, 255));
 		
 		orderTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		addProductLine(od.productAll()); 
 		scrollpane.setViewportView(orderTable);
-		
 	}
 	
 	public void addProductLine(ArrayList<Order> products) {

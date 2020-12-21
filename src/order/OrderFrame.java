@@ -2,6 +2,7 @@ package order;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Color;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -10,6 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import common.RoundedButton;
+
 public class OrderFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
@@ -17,7 +20,6 @@ public class OrderFrame extends JFrame {
 	public JPanel tabel_panel, btn_panel, search_panel;
 	
 	String[] fieldNames = new String[] {"상품id", "수량", "사용자"};
-	String[] textHints = new String[] {"id입력	", "수량입력	", "사용자id입력	"};
 	
 	public JLabel[] labels;
 	public JTextField[] fields;
@@ -43,7 +45,6 @@ public class OrderFrame extends JFrame {
 		btn_panel = new JPanel();
 		for (int i = 0; i < fieldNames.length; i++) {
 			labels[i] = new JLabel(fieldNames[i]);
-			fields[i] = new HintTextField(textHints[i]);
 			fields[i] = new JTextField(10);
 
 			btn_panel.add(labels[i]);
@@ -53,14 +54,16 @@ public class OrderFrame extends JFrame {
 		fields[0].setEditable(false);
 		fields[2].setEditable(false);
 		
-		order_btn = new JButton("주문");
-		cancel_btn = new JButton("취소");
+		btn_panel.setBackground(Color.LIGHT_GRAY);
+		order_btn = new RoundedButton("주문");
+		cancel_btn = new RoundedButton("취소");
 		btn_panel.add(order_btn);
 		btn_panel.add(cancel_btn);
 		add(btn_panel, BorderLayout.SOUTH);
 		
 		search_panel = new JPanel();
-		search_btn = new JButton("검색");
+		search_panel.setBackground(Color.LIGHT_GRAY);
+		search_btn = new RoundedButton("검색");
 		search_panel.add(combo);
 		search_panel.add(search_jf);
 		search_panel.add(search_btn);
@@ -74,9 +77,9 @@ public class OrderFrame extends JFrame {
 	
 	//필드값 초기화 해주기.
 	public void resetText() {
-		fields[0].setText("	");
-		fields[1].setText("	");
-		fields[2].setText("	");
+		fields[0].setText("");
+		fields[1].setText("");
+		fields[2].setText("");
 	}
 	
 }
