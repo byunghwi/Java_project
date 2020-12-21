@@ -34,7 +34,7 @@ public class OrderConfirmView extends JPanel {
 	public OrderConfirmView() {
 		setLayout(null);
 		
-		scrollpane.setBounds(12, 10, 1133, 200);
+		scrollpane.setBounds(12, 10, 1133, 250);
 		add(scrollpane);
 		
 		orderTable.setRowMargin(10);
@@ -50,7 +50,6 @@ public class OrderConfirmView extends JPanel {
 		orderTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		addProductLine(ocd.productAll());
 		scrollpane.setViewportView(orderTable);
-//		setBackground(Color.LIGHT_GRAY);
 	}
 	
 	public void addProductLine(ArrayList<OrderConfirm> products) {

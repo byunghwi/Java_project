@@ -30,7 +30,7 @@ public class OrderView extends JPanel {
 	public OrderView() {
 		setLayout(null);
 		
-		scrollpane.setBounds(12, 10, 1133, 200);
+		scrollpane.setBounds(12, 10, 1133, 250);
 		add(scrollpane);
 		
 		orderTable.setRowMargin(10);
@@ -46,8 +46,6 @@ public class OrderView extends JPanel {
 		orderTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		addProductLine(od.productAll()); 
 		scrollpane.setViewportView(orderTable);
-//		setBackground(Color.LIGHT_GRAY);
-		
 	}
 	
 	public void addProductLine(ArrayList<Order> products) {
