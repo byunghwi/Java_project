@@ -35,8 +35,8 @@ public class FindIdFrame extends JFrame {
 		add(phone_text).setBounds(100, 70, 100, 20);
 		
 		
-		
-		add(find).setBounds(73, 110, 80, 35);
+		find.setFont(new Font("나눔고딕", Font.BOLD, 15));
+		add(find).setBounds(107, 110, 90, 30);
 		find.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		
 		JFrame j1 = this;

@@ -41,6 +41,7 @@ private static final long serialVersionUID = 1L;
 		stocksScrollPane.setBounds(12, 25, 640, 280);
 		add(stocksScrollPane);
 		
+		
 		stockTable.setShowGrid(false);
 		stockTable.setSelectionBackground(Color.PINK);
 		stockTable.setShowVerticalLines(false);

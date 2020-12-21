@@ -32,10 +32,10 @@ public class Join extends JFrame {
 	RoundedButton join = new RoundedButton("회 원 가 입",68,68,68);
 	
 	Font f1 = new Font("나눔고딕", Font.BOLD, 13);
-	Font f2 = new Font("나눔고딕", Font.BOLD, 30);
+	Font f2 = new Font("나눔고딕", Font.PLAIN, 23);
 
 	public Join() {
-	
+		
 		 rb1 = new JRadioButton("M");
 	     rb2 = new JRadioButton("F");
 	     gb = new ButtonGroup();
@@ -46,9 +46,10 @@ public class Join extends JFrame {
 	    joinText.setForeground(new Color(255, 255, 255));
 	 	pIn = new JPanel();
 		pIn.setBackground(new Color(68, 68, 68));
-		pIn.setBounds(0, 0, 200, 550);
+		pIn.setBounds(0, 0, 140, 550);
 		add(pIn);
-		pIn.add(joinText).setBounds(100, 100, 100, 130);
+		pIn.add(joinText).setBounds(22, 27, 150, 40);
+		pIn.setLayout(null);
 		pIn.setFocusable(false);
 		 
 		for (int i = 0; i<8; i++) {
@@ -56,45 +57,45 @@ public class Join extends JFrame {
 			names[i] = new JLabel(info_names[i]);
 			
 			if(i != 3 && i != 4 && i != 6) {
-				infos[i].setBounds(350, 35 + i*55,130,20);
+				infos[i].setBounds(280, 35 + i*55,130,20);
 				add(infos[i]);
 			}
 			
 			names[i].setFont(f1);
 			names[i].setForeground(Color.gray);
-			names[i].setBounds(230, 35 + i*55,100,20);
+			names[i].setBounds(160, 35 + i*55,100,20);
 			add(names[i]);
 		}
 		
 		for (int i = 0; i < 2; i++) {
 			res_infos[i] = new JTextField(10);
-			res_infos[i].setBounds(350 + i*70, 200,60,20);
+			res_infos[i].setBounds(280 + i*70, 200,60,20);
 			add(res_infos[i]);
 		}
-		minus[0].setBounds(412, 205, 5, 5);
+		minus[0].setBounds(342, 205, 5, 5);
 		add(minus[0]);
 		
 		for (int i = 0; i < 3; i++) {
 			phone_infos[i] = new JTextField(10);
-			phone_infos[i].setBounds(350 + i*46, 255,40,20);
+			phone_infos[i].setBounds(280 + i*46, 255,40,20);
 			add(phone_infos[i]);
 		}
 		
-		minus[1].setBounds(390, 260, 5, 5);
+		minus[1].setBounds(330, 260, 5, 5);
 		add(minus[1]);
 		
-		minus[2].setBounds(436, 260, 5, 5);
+		minus[2].setBounds(366, 260, 5, 5);
 		add(minus[2]);
 	
-		rb1.setBounds(350, 365,50,20);
-	    rb2.setBounds(415, 365,50,20);
+		rb1.setBounds(280, 365,50,20);
+	    rb2.setBounds(355, 365,50,20);
 	    rb1.setBackground(Color.WHITE);
 	    rb2.setBackground(Color.WHITE);
 	    add(rb1);
 	    add(rb2);
 		
 	    join.setFont(f1);
-		join.setBounds(330, 466, 90, 30);
+		join.setBounds(318, 466, 90, 30);
 		join.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		add(join);
 		
@@ -107,7 +108,7 @@ public class Join extends JFrame {
 		setLayout(null);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setLocation(1050,300);
-		setSize(550, 550);
+		setSize(450, 550);
 		setVisible(true);
 	
 	}

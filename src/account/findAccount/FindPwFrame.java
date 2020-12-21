@@ -42,8 +42,8 @@ public class FindPwFrame extends JFrame {
 		add(phone_text).setBounds(100, 115, 100, 20);
 		
 		
-		
-		add(find).setBounds(73, 160, 80, 35);
+		find.setFont(new Font("나눔고딕", Font.BOLD, 15));
+		add(find).setBounds(107, 150, 90, 30);
 		find.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		
 		JFrame j1 = this;
@@ -69,7 +69,7 @@ public class FindPwFrame extends JFrame {
 		this.getContentPane().setBackground(Color.WHITE);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setLocation(600,400);
-		setSize(240, 250);
+		setSize(240, 230);
 		setVisible(true);
 	}
 
