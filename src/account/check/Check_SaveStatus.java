@@ -52,7 +52,6 @@ public class Check_SaveStatus {
 		} catch (SQLException e) {
 			System.err.println("잘못된 ID입니다");
 			JOptionPane.showMessageDialog(null, "잘못된 ID 입니다!");
-			JOptionPane.showMessageDialog(null, "잘못된 ID 입니다!");
 		}
 		
 	}

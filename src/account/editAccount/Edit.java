@@ -1,8 +1,10 @@
 package account.editAccount;
 
+import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -19,6 +21,9 @@ public class Edit extends JFrame {
 	Read_Account ra = null;
 	JLabel id_label = null;
 	
+	
+	ImageIcon edit_button = new ImageIcon("src/수정.jpg");
+	ImageIcon cancle_button = new ImageIcon("src/취소.jpg");
 	public String mem_id;
 	public JTextField[] infos = new JTextField[5]; 
 	ButtonGroup gb;
@@ -30,8 +35,8 @@ public class Edit extends JFrame {
 
 	String [] info_names = {"비밀번호","비밀번호 확인","이름","주민등록번호","전화번호","주소","성별","메일주소"};
 	JLabel[] names = new JLabel[8];
-	JButton edit = new JButton("수정");
-	JButton cancel = new JButton("취소");
+	JButton edit = new JButton(edit_button);
+	JButton cancel = new JButton(cancle_button);
 	
 	
 	public Edit(String mem_id) {
@@ -98,10 +103,12 @@ public class Edit extends JFrame {
 		
 		rb1 = new JRadioButton("M",ra.read_info[8].equals("M"));
 		rb1.setBounds(145, 360,50,20);
+		rb1.setBackground(Color.white);
 		add(rb1);
 		
 		rb2 = new JRadioButton("F",ra.read_info[8].equals("F"));
 		rb2.setBounds(205, 360,50,20);
+		rb2.setBackground(Color.white);
 		add(rb2);
 		
 		gb = new ButtonGroup();
@@ -114,8 +121,8 @@ public class Edit extends JFrame {
 		add(infos[4]);
 		
 		id_label.setBounds(90, 0, 130, 40);
-		edit.setBounds(30, 470, 110, 20);
-		cancel.setBounds(160, 470, 110, 20);
+		edit.setBounds(35, 470, 80, 20);
+		cancel.setBounds(155, 470, 80, 20);
 		
 		add(edit);
 		add(cancel);
@@ -124,11 +131,15 @@ public class Edit extends JFrame {
 		edit.addActionListener(new Edit_Action(this));
 		cancel.addActionListener(new Cancel_Action(this));
 		
+		edit.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+		cancel.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+		
+		this.getContentPane().setBackground(Color.white);
 		setTitle("회원 정보 수정");
 		setLayout(null);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setLocation(800,100);
-		setSize(310, 550);
+		setSize(290, 550);
 		setVisible(true);
 	
 	}
