@@ -97,6 +97,10 @@ public class CalcPanel extends JPanel{
 		clacTable.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
 		clacTable.getTableHeader().setBackground(new Color(32, 136, 203));
 		clacTable.getTableHeader().setForeground(new Color(255, 255, 255));
+		clacTable.setShowGrid(false);
+		clacTable.setSelectionBackground(Color.PINK);
+		clacTable.setShowVerticalLines(false);
+		clacTable.setShowHorizontalLines(false);
 		
 		//테이블 로우 중 한 줄만 선택 가능.
 		

@@ -78,6 +78,10 @@ private static final long serialVersionUID = 1L;
 		commuteTable.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
 		commuteTable.getTableHeader().setBackground(new Color(32, 136, 203));
 		commuteTable.getTableHeader().setForeground(new Color(255, 255, 255));
+		commuteTable.setShowGrid(false);
+		commuteTable.setSelectionBackground(Color.PINK);
+		commuteTable.setShowVerticalLines(false);
+		commuteTable.setShowHorizontalLines(false);
 		
 		
 		commuteIndividualTable.setRowMargin(10);
@@ -85,6 +89,11 @@ private static final long serialVersionUID = 1L;
 		commuteIndividualTable.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
 		commuteIndividualTable.getTableHeader().setBackground(new Color(32, 136, 203));
 		commuteIndividualTable.getTableHeader().setForeground(new Color(255, 255, 255));
+		commuteIndividualTable.setShowGrid(false);
+		commuteIndividualTable.setSelectionBackground(Color.PINK);
+		commuteIndividualTable.setShowVerticalLines(false);
+		commuteIndividualTable.setShowHorizontalLines(false);
+		
 		
 		
 		
