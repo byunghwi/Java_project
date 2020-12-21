@@ -5,13 +5,13 @@ import java.awt.Font;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import account.action.Join_Action;
+import common.RoundedButton;
 
 // 회원 가입을 정보를 받아올 프레임 클래스
 public class Join extends JFrame {
@@ -26,7 +26,7 @@ public class Join extends JFrame {
 
 	String [] info_names = {"아이디","비밀번호","이름","주민등록번호","전화번호","주소","성별","메일주소"};
 	JLabel[] names = new JLabel[8];
-	JButton join = new JButton(join_Action_Button);
+	RoundedButton join = new RoundedButton("회 원 가 입",68,68,68);
 	
 	Font f1 = new Font("나눔고딕", Font.BOLD, 13);
 

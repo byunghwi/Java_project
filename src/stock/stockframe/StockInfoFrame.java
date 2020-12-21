@@ -1,15 +1,10 @@
 package stock.stockframe;
 
-import java.awt.BorderLayout;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JTable;
 
-import stock.Stock;
+import common.RoundedButton;
 import stock.stockAction.Confirm_Action;
 import stock.stockAction.Disposal_Action;
 import stock.stockView.StockInfoView;
@@ -17,8 +12,8 @@ import stock.stockView.StockView;
 
 // 상품 상세 정보에 대한 프레임
 public class StockInfoFrame extends JFrame{
-	JButton confirm = new JButton("확인");
-	JButton disposal = new JButton("폐기");
+	RoundedButton confirm = new RoundedButton("확인");
+	RoundedButton disposal = new RoundedButton("폐기");
 	public StockInfoView stockInfoView = null;
 	public StockView stoview;
 
@@ -38,8 +33,8 @@ public class StockInfoFrame extends JFrame{
 		setBounds(200, 100, 700, 400);
 		setVisible(true);
 		
-		confirm.setBounds(220,330,70,20);
-		disposal.setBounds(420,330,70,20);
+		confirm.setBounds(200,325,80,30);
+		disposal.setBounds(400,325,80,30);
 		stockInfoView.setBounds(12, 10, 700, 350);
 		
 		
@@ -54,4 +49,5 @@ public class StockInfoFrame extends JFrame{
 		
 		
 	}
+	
 }
