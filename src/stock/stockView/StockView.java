@@ -1,9 +1,11 @@
 package stock.stockView;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -45,10 +47,11 @@ public class StockView extends JPanel {
 		
 		stockTable.setRowMargin(10);
 		stockTable.setRowHeight(30);		
-		stockTable.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
+		stockTable.setFont(new Font("나눔고딕", Font.PLAIN, 15));
 		
 		stockTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
+		
+		stockTable.setGridColor(new Color(0,0,0,122));
 		addStockLine(sdao.stockAll()); 
 		
 		stocksScrollPane.setViewportView(stockTable);

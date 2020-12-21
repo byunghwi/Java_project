@@ -33,7 +33,7 @@ public class DisposalInfoFrame extends JFrame{
 	public DisposalInfoFrame() {
 		
 		this_date = new JLabel(transFormat.format(now));
-		this_date.setFont(new Font("맑은 고딕", Font.BOLD, 18));
+		this_date.setFont(new Font("나눔 고딕", Font.BOLD, 18));
 		
 		this_date.setBounds(290, -5, 100, 50);
 		add(this_date);
@@ -66,7 +66,7 @@ public class DisposalInfoFrame extends JFrame{
 		
 		
 		setLayout(null);
-		setFont(new Font("맑은 고딕", Font.BOLD, 15));
+		setFont(new Font("나눔고딕", Font.BOLD, 15));
 		setTitle("폐기 정보");		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(200, 100, 700, 400);

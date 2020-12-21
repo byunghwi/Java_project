@@ -1,6 +1,7 @@
 package account.delAccount;
 
 import java.awt.Color;
+import java.awt.Font;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,6 +19,7 @@ public class Secession extends JFrame{
 	String [] info_data = new String[2];
 	JLabel[] names = new JLabel[2];
 	JButton delete = new JButton("회원탈퇴");
+	Font f1 = new Font("나눔고딕", Font.BOLD, 13);
 	
 	public Secession(String mem_id) {
 		
@@ -25,6 +27,7 @@ public class Secession extends JFrame{
 		for (int i = 0; i<2; i++) {
 			infos[i] = new JTextField(10);
 			names[i] = new JLabel(info_names[i]);
+			names[i].setFont(f1);
 			
 			infos[i].setBounds(100, 20 + i*30,100,20);
 			names[i].setBounds(30, 20 + i*30,100,20);
@@ -33,6 +36,7 @@ public class Secession extends JFrame{
 		}
 		
 		infos[0].setText(mem_id);
+	
 		
 		delete.setBounds(70, 100, 90, 20);
 		add(delete);
