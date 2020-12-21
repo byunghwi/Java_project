@@ -44,7 +44,7 @@ public class Login extends JFrame {
     	JPanel background = new JPanel() {
             public void paintComponent(Graphics g) {
             	
-            	g.drawImage(logoimg,0,0,null);
+            	g.drawImage(logoimg,0,-20,null);
                 g.drawImage(backgroundimg, 540, 0, null);
                
               

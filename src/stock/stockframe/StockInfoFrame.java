@@ -1,5 +1,6 @@
 package stock.stockframe;
 
+import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.JFrame;
@@ -24,6 +25,8 @@ public class StockInfoFrame extends JFrame{
 	
 	public StockInfoFrame(StockInfoView stockInfoView){
 		
+		
+		
 		this.stockInfoView = stockInfoView;
 		
 		setLayout(null);
@@ -37,6 +40,7 @@ public class StockInfoFrame extends JFrame{
 		disposal.setBounds(400,325,80,30);
 		stockInfoView.setBounds(12, 10, 700, 350);
 		
+		this.getContentPane().setBackground(Color.white);
 		
 		add(confirm);
 		add(disposal);
