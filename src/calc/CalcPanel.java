@@ -74,7 +74,7 @@ public class CalcPanel extends JPanel{
 		setLayout(null);
 		
 		JLabel lbShowDate = new JLabel("정산목록");
-		lbShowDate.setBounds(12, 100, 101, 37);
+		lbShowDate.setBounds(12, 55, 101, 37);
 		lbShowDate.setFont(new Font("맑은 고딕", Font.BOLD, 15));
 		
 		JLabel referencelbShowDate = new JLabel("조회일자");
@@ -85,7 +85,7 @@ public class CalcPanel extends JPanel{
 		add(referencelbShowDate);
 		
 		
-		CalcListScrollPane.setBounds(10, 150, 550, 150);
+		CalcListScrollPane.setBounds(10, 90, 550, 150);
 		
 		
 		add(CalcListScrollPane);
@@ -101,26 +101,26 @@ public class CalcPanel extends JPanel{
 		CalcListScrollPane.setViewportView(clacTable);
 		
 		//캘린더 위치 설정
-		st_date.setBounds(60, 37, 150 , 24);
-		en_date.setBounds(280, 37, 150 , 24);
+		st_date.setBounds(60, 37, 120 , 24);
+		en_date.setBounds(250, 37, 120 , 24);
 		
 		labels = new JLabel[fieldNames.length];
 		
 		for (int j = 0; j < fieldNames.length; j++) {
 			labels[j] = new JLabel(fieldNames[j]);
 			labels[j].setFont(new Font("맑은 고딕", Font.BOLD, 12));
-			labels[j].setBounds((j+1)*220, 34, 50 , 30);
+			labels[j].setBounds((j+1)*190, 34, 50 , 30);
 		    add(labels[j]);
 		}
 		
 		check = new JButton("조회");
 		check.setFont(new Font("맑은 고딕", Font.BOLD, 12));
-		check.setBounds(520, 34, 70, 30);
+		check.setBounds(465, 34, 70, 30);
 		
 		add(check);
 		add(st_date);
 		add(en_date);
-		add(calcg.chart_p).setBounds(10, 300, 1300, 250);
+		add(calcg.chart_p).setBounds(10, 250, 1290, 300);
 		
 		check.addActionListener(new ActionListener() {
 
