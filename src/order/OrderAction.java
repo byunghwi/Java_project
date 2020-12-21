@@ -20,12 +20,16 @@ public class OrderAction implements ActionListener {
 		// 승인목록창에서 상품조회버튼 클릭시
 		// 주문 주문버튼
 		if (ob == mainFrame.orderframe.order_btn) {
-			mainFrame.orderDao.moveconfirm(mainFrame.orderframe.fields);
-			JOptionPane.showMessageDialog(null, "주문 완료", "확인", JOptionPane.CLOSED_OPTION);
-			// 그래프 갱신
-			mainFrame.orderConfirmFrame.orderConfirmView.model.setNumRows(0);
-			mainFrame.orderConfirmFrame.orderConfirmView.addProductLine(mainFrame.orderConfirmDao.productAll());
-			mainFrame.orderframe.resetText();
+			if (mainFrame.orderframe.fields[1].getText().equals("")) {
+				JOptionPane.showMessageDialog(null, "수량을 입력해주세요", "확인", JOptionPane.CLOSED_OPTION);
+			} else {
+				mainFrame.orderDao.moveconfirm(mainFrame.orderframe.fields);
+				JOptionPane.showMessageDialog(null, "주문 완료", "확인", JOptionPane.CLOSED_OPTION);
+				// 그래프 갱신
+				mainFrame.orderConfirmFrame.orderConfirmView.model.setNumRows(0);
+				mainFrame.orderConfirmFrame.orderConfirmView.addProductLine(mainFrame.orderConfirmDao.productAll());
+				mainFrame.orderframe.resetText();
+			}
 		} 
 		// 주문 검색버튼
 		else if (ob == mainFrame.orderframe.search_btn) {
@@ -44,11 +48,10 @@ public class OrderAction implements ActionListener {
             } else {// 검색어를 입력했을경우
             	mainFrame.orderDao.getUserSearch(mainFrame.orderView.model, fieldName, mainFrame.orderframe.search_jf.getText());
             }
-			
 		}	
 		// 주문 취소버튼
 		else if (ob == mainFrame.orderframe.cancel_btn) {
-			mainFrame.orderframe.setVisible(false);
+			mainFrame.orderframe.dispose();
 		}
 	}
 

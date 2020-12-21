@@ -280,10 +280,6 @@ public class MainFrame extends JFrame{
 		salePanel.addBucketBtn.addActionListener(new SaleAction(this));						//판매패널 장바구니 추가 버튼
 		salePanel.delBucketBtn.addActionListener(new SaleAction(this));						//판매패널 장바구니 삭제 버튼
 		salePanel.completeBtn.addActionListener(new SaleAction(this));						//판매패널 결제 버튼
-		
-		orderframe.order_btn.addActionListener(new OrderAction(this));
-		orderframe.cancel_btn.addActionListener(new OrderAction(this));
-		orderframe.search_btn.addActionListener(new OrderAction(this));
 		saleListPanel.searchBtn.addActionListener(new SaleListPanelAction(this));			//판매리스트 패널 검색버튼
 		
 

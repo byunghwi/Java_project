@@ -47,6 +47,10 @@ public class OrderConfirmView extends JPanel {
 		orderTable.setForeground(Color.BLACK);
 		orderTable.setShowVerticalLines(false);
 		
+		orderTable.getTableHeader().setOpaque(false);
+		orderTable.getTableHeader().setBackground(new Color(32, 136, 203));
+		orderTable.getTableHeader().setForeground(new Color(255, 255, 255));
+		
 		orderTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		addProductLine(ocd.productAll());
 		scrollpane.setViewportView(orderTable);
