@@ -1,17 +1,18 @@
 package stock.stockframe;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import com.toedter.calendar.JDateChooser;
 
+import common.RoundedButton;
 import stock.StockDao;
 import stock.stockView.DisposalInfoView;
 
@@ -22,7 +23,7 @@ public class DisposalInfoFrame extends JFrame{
 	Date choose_date;
 	Date now = new Date();
 	public JDateChooser dateChooser = new JDateChooser();
-	public JButton go = new JButton("GO");
+	public RoundedButton go = new RoundedButton("GO");
 	JLabel this_date = new JLabel();
 	SimpleDateFormat transFormat = new SimpleDateFormat("YYYY-MM-dd");
 	
@@ -44,7 +45,7 @@ public class DisposalInfoFrame extends JFrame{
 		div.setBounds(12, 30, 700, 350);
 		add(div);
 		
-		go.setBounds(600, 10, 60, 20);
+		go.setBounds(605, 10, 55, 20);
 		add(go);
 		
 		// 액션 리스너 분할 예정
@@ -72,5 +73,9 @@ public class DisposalInfoFrame extends JFrame{
 		setBounds(200, 100, 700, 400);
 		setVisible(true);
 		
+	}
+	
+	public static void main(String[] args) {
+		new DisposalInfoFrame();
 	}
 }

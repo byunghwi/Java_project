@@ -50,6 +50,9 @@ public class Login extends JFrame {
     };
     	
     	login.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+
+    	
+    	
     	join.setBorder(javax.swing.BorderFactory.createEmptyBorder());
     	find.setBorder(javax.swing.BorderFactory.createEmptyBorder());
     	background.add(find).setBounds(128, 552, 71, 19);
