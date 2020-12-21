@@ -59,15 +59,18 @@ public class ProductView extends JPanel {
 		add(jcombo);
 		add(searchTf);
 		add(searchBtn);
-		productTable.setGridColor(Color.LIGHT_GRAY);
+		productTable.setShowGrid(false);
 		productTable.setSelectionBackground(Color.PINK);
-		productTable.setBackground(Color.WHITE);
-		productTable.setShowHorizontalLines(false);
-		productTable.setForeground(Color.BLACK);
 		productTable.setShowVerticalLines(false);
+		productTable.setShowHorizontalLines(false);
 		productTable.setRowMargin(10);
 		productTable.setRowHeight(30);		
-		productTable.setFont(new Font("굴림체", Font.PLAIN, 15));
+		productTable.setFont(new Font("맑음 고딕", Font.PLAIN, 15));
+		productTable.getTableHeader().setFont(new Font("맑음 고딕", Font.PLAIN, 15));
+		productTable.getTableHeader().setOpaque(false);
+		productTable.getTableHeader().setBackground(new Color(32, 136, 203));
+		productTable.getTableHeader().setForeground(new Color(255, 255, 255));
+		productTable.setRowHeight(25);
 		
 		//테이블 로우 중 한 줄만 선택 가능.
 		productTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

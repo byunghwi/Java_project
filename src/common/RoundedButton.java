@@ -60,7 +60,7 @@ public class RoundedButton extends JButton {
 //			graphics.setColor(getBackground().BLACK); 
 //		} 
 		
-		Color color = new Color(71, 115, 133);
+		Color color = new Color(128, 128, 128);
 		
 		if (getModel().isArmed()) {
 			graphics.setColor(getBackground().brighter()); 
