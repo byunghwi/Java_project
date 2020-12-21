@@ -71,9 +71,9 @@ public class List_Input extends JFrame {
 		setVisible(true);
 		contentPanel.setBackground(new Color(128, 128, 128));
 		
-		titleLabel = new JLabel("정보 입력");
-		titleLabel.setFont(new Font("맑은 고딕", Font.BOLD, 20));
-		titleLabel.setBounds(10, 20, 100, 50);
+		titleLabel = new JLabel(" 정보 입력");
+		titleLabel.setFont(new Font("맑은 고딕", Font.BOLD, 23));
+		titleLabel.setBounds(15, 20, 150, 100);
 		titleLabel.setForeground(new Color(255, 255, 255));
 		
 		contentPanel.add(titleLabel);
