@@ -1,5 +1,6 @@
 package stock.stockView;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -35,9 +36,17 @@ public class DisposalInfoView extends JPanel {
 		disposalInfosScrollPane.setBounds(12, 10, 640, 250);
 		add(disposalInfosScrollPane);
 		
+		disposalInfoTable.setShowGrid(false);
+		disposalInfoTable.setSelectionBackground(Color.PINK);
+		disposalInfoTable.setShowVerticalLines(false);
+		disposalInfoTable.setShowHorizontalLines(false);
+		
 		disposalInfoTable.setRowMargin(10);
 		disposalInfoTable.setRowHeight(30);		
 		disposalInfoTable.setFont(new Font("나눔고딕", Font.PLAIN, 15));
+		
+		disposalInfoTable.getTableHeader().setBackground(new Color(32, 136, 203));
+		disposalInfoTable.getTableHeader().setForeground(new Color(255, 255, 255));
 		
 		disposalInfoTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
