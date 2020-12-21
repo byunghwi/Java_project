@@ -69,21 +69,25 @@ public class SalePanel extends JPanel {
 		
 	
 		prodnameTf = new JTextField();
+		prodnameTf.setFont(new Font("굴림체", Font.PLAIN, 12));
 		prodQt = new JTextField();
 		
 		prodnameLb = new JLabel("상품명");
-		prodnameLb.setFont(new Font("맑은 고딕", Font.PLAIN, 13));
+		prodnameLb.setFont(new Font("굴림체", Font.PLAIN, 13));
 		prodQtLb = new JLabel("상품수량");
-		prodQtLb.setFont(new Font("맑은 고딕", Font.PLAIN, 13));
+		prodQtLb.setFont(new Font("굴림체", Font.PLAIN, 13));
 		
 		stockTblLb = new JLabel("재고목록");
-		stockTblLb.setFont(new Font("맑은 고딕", Font.PLAIN, 13));
+		stockTblLb.setFont(new Font("굴림체", Font.BOLD, 15));
 		bucketTblLb = new JLabel("장바구니");
-		bucketTblLb.setFont(new Font("맑은 고딕", Font.PLAIN, 13));
+		bucketTblLb.setFont(new Font("굴림체", Font.BOLD, 15));
 			
 		addBucketBtn =  new JButton("추가");
+		addBucketBtn.setFont(new Font("굴림체", Font.PLAIN, 12));
 		delBucketBtn = new JButton("삭제");
+		delBucketBtn.setFont(new Font("굴림체", Font.PLAIN, 12));
 		completeBtn = new JButton("결제");
+		completeBtn.setFont(new Font("굴림체", Font.PLAIN, 12));
 		
 		stockTblLb.setBounds(50, 0, 70, 50);
 		bucketTblLb.setBounds(710, 0, 70, 50);
@@ -112,12 +116,12 @@ public class SalePanel extends JPanel {
 
 		stockTable.setRowMargin(10);
 		stockTable.setRowHeight(30);
-		stockTable.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
+		stockTable.setFont(new Font("굴림체", Font.PLAIN, 14));
 
 		
 		bucketTable.setRowMargin(10);
 		bucketTable.setRowHeight(30);
-		bucketTable.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
+		bucketTable.setFont(new Font("굴림체", Font.PLAIN, 14));
 		
 		// 테이블 로우 중 한 줄만 선택 가능.
 		stockTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

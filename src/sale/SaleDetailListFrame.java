@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
 
 import com.toedter.calendar.JDateChooser;
 
-import product.HintTextField;
+import common.HintTextField;
 import product.Product;
 import product.ProductView;
 

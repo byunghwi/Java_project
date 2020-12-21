@@ -1,20 +1,18 @@
-package product;
+package common;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
-import javax.swing.JTextField;
+import javax.swing.JPasswordField;
 
-// Swing에 placeholder 기능없어서 따로 만듦
-public class HintTextField extends JTextField {
-	
-	
+public class HintPasswordField extends JPasswordField {
+
 	Font gainFont = new Font("맑은 고딕", Font.PLAIN, 12);
 	Font lostFont = new Font("맑은 고딕", Font.ITALIC, 12);
 
-	public HintTextField(String hint) {
+	public HintPasswordField(String hint) {
 		
 		setText(hint);
 		setFont(lostFont);

@@ -4,6 +4,9 @@ import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import common.RoundedButton;
+import java.awt.SystemColor;
+
 
 public class ProdBtnPanel extends JPanel{
 	/**
@@ -15,26 +18,26 @@ public class ProdBtnPanel extends JPanel{
 	public JButton delProdBtn;
 
 	public ProdBtnPanel() {
-		setBackground(Color.WHITE);
+		setBackground(SystemColor.control);
 		setLayout(null);
-		registProdBtn = new JButton("상품등록");
-		editProdBtn = new JButton("상품수정");
-		delProdBtn = new JButton("상품삭제");
+		registProdBtn = new RoundedButton("상품등록");
+		editProdBtn = new RoundedButton("상품수정");
+		delProdBtn = new RoundedButton("상품삭제");
 
-		registProdBtn.setForeground(Color.WHITE);
+		//registProdBtn.setForeground(Color.WHITE);
 		registProdBtn.setFont(new Font("맑은 고딕", Font.BOLD, 20));
-		registProdBtn.setBackground(new Color(204, 206, 206));
+		//registProdBtn.setBackground(new Color(204, 206, 206));
 		registProdBtn.setBounds(0, 0, 140, 120);
 		
-		editProdBtn.setForeground(Color.WHITE);
+		//editProdBtn.setForeground(Color.WHITE);
 		editProdBtn.setFont(new Font("맑은 고딕", Font.BOLD, 20));
-		editProdBtn.setBackground(new Color(204, 206, 206));
-		editProdBtn.setBounds(0, 120, 140, 120);
+		//editProdBtn.setBackground(new Color(204, 206, 206));
+		editProdBtn.setBounds(0, 150, 140, 120);
 		
-		delProdBtn.setForeground(Color.WHITE);
+		//delProdBtn.setForeground(Color.WHITE);
 		delProdBtn.setFont(new Font("맑은 고딕", Font.BOLD, 20));
-		delProdBtn.setBackground(new Color(204, 206, 206));
-		delProdBtn.setBounds(0, 240, 140, 120);
+		//delProdBtn.setBackground(new Color(204, 206, 206));
+		delProdBtn.setBounds(0, 300, 140, 120);
 
 		add(registProdBtn);
 		add(editProdBtn);

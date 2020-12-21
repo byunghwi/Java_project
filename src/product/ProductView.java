@@ -16,6 +16,12 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
+import common.HintTextField;
+import common.RoundedButton;
+
+import javax.swing.JLabel;
+import java.awt.Color;
+
 public class ProductView extends JPanel {
 	/**
 	 * 
@@ -48,14 +54,20 @@ public class ProductView extends JPanel {
 		jcombo.setBounds(410, 10, 150, 27);
 		searchTf = new HintTextField("검색어를 입력하세요.");
 		searchTf.setBounds(562, 10, 200, 28);
-		searchBtn = new JButton("검색");
+		searchBtn = new RoundedButton("검색");
 		searchBtn.setBounds(764, 10, 70, 28);
 		add(jcombo);
 		add(searchTf);
 		add(searchBtn);
+		productTable.setGridColor(Color.LIGHT_GRAY);
+		productTable.setSelectionBackground(Color.PINK);
+		productTable.setBackground(Color.WHITE);
+		productTable.setShowHorizontalLines(false);
+		productTable.setForeground(Color.BLACK);
+		productTable.setShowVerticalLines(false);
 		productTable.setRowMargin(10);
 		productTable.setRowHeight(30);		
-		productTable.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
+		productTable.setFont(new Font("굴림체", Font.PLAIN, 15));
 		
 		//테이블 로우 중 한 줄만 선택 가능.
 		productTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -63,6 +75,11 @@ public class ProductView extends JPanel {
 		addProductLine(pdao.productAll()); 
 		
 		productsScrollPane.setViewportView(productTable);
+		
+		JLabel lblNewLabel = new JLabel("상품 목록");
+		lblNewLabel.setFont(new Font("굴림체", Font.BOLD, 15));
+		lblNewLabel.setBounds(20, 10, 174, 23);
+		add(lblNewLabel);
 		
 	}
 
