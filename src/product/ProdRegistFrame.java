@@ -11,6 +11,9 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import com.toedter.calendar.JDateChooser;
+
+import main.RoundedButton;
+
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
@@ -97,13 +100,13 @@ public class ProdRegistFrame extends JFrame {
 		pIn.add(dateChooser2);
 		pIn.add(tf3);
 
-		cancelBtn = new JButton("취소");
-		cancelBtn.setBackground(Color.DARK_GRAY);
-		cancelBtn.setBorder(null);
-		cancelBtn.setIcon(null);
-		cancelBtn.setForeground(new Color(255, 255, 255));
-		cancelBtn.setFont(new Font("맑은 고딕 Semilight", Font.BOLD, 12));
-		cancelBtn.setBounds(211, 324, 57, 24);
+		cancelBtn = new RoundedButton("취소");
+//		cancelBtn.setBackground(Color.DARK_GRAY);
+//		cancelBtn.setBorder(null);
+//		cancelBtn.setIcon(null);
+//		cancelBtn.setForeground(new Color(255, 255, 255));
+//		cancelBtn.setFont(new Font("맑은 고딕 Semilight", Font.BOLD, 12));
+//		cancelBtn.setBounds(211, 324, 57, 24);
 		pIn.add(cancelBtn, BorderLayout.SOUTH);
 
 		JLabel lblNewLabel = new JLabel("상품코드");
@@ -142,14 +145,14 @@ public class ProdRegistFrame extends JFrame {
 		lblNewLabel_2.setFont(new Font("맑은 고딕 Semilight", Font.BOLD, 21));
 		panel.add(lblNewLabel_2);
 		
-				regBtn = new JButton("등록");
+				regBtn = new RoundedButton("등록");
 				regBtn.setBounds(132, 324, 57, 24);
 				pIn.add(regBtn);
-				regBtn.setBorder(null);
-				regBtn.setBackground(Color.DARK_GRAY);
-				regBtn.setIcon(null);
-				regBtn.setForeground(new Color(255, 255, 255));
-				regBtn.setFont(new Font("맑은 고딕 Semilight", Font.BOLD, 12));
+				//regBtn.setBorder(null);
+				//regBtn.setBackground(Color.DARK_GRAY);
+				//regBtn.setIcon(null);
+				//regBtn.setForeground(new Color(255, 255, 255));
+				//regBtn.setFont(new Font("맑은 고딕 Semilight", Font.BOLD, 12));
 
 	}
 

@@ -6,6 +6,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+
+
 public class BottomPanel extends JPanel{
 
 	/**
@@ -23,43 +25,43 @@ public class BottomPanel extends JPanel{
 	public BottomPanel() {
 			setBackground(Color.WHITE);
 			setLayout(null);
-			productBtn = new JButton("상품");
-			saleBtn = new JButton("판매");
-			stockBtn = new JButton("재고");
-			eventBtn = new JButton("이벤트");
-			commuteBtn = new JButton("근태");
-			calcBtn = new JButton("정산");
+			productBtn = new RoundedButton("상품");
+			saleBtn = new RoundedButton("판매");
+			stockBtn = new RoundedButton("재고");
+			eventBtn = new RoundedButton("이벤트");
+			commuteBtn = new RoundedButton("근태");
+			calcBtn = new RoundedButton("정산");
 			
-			productBtn.setForeground(Color.WHITE);
+			//productBtn.setForeground(Color.WHITE);
 			productBtn.setFont(new Font("맑은 고딕", Font.BOLD, 17));
-			productBtn.setBackground(new Color(204, 206, 206));
+			//productBtn.setBackground(new Color(204, 206, 206));
 			productBtn.setBounds(8, 0, 130, 98);
 
-			saleBtn.setForeground(Color.WHITE);
+			//saleBtn.setForeground(Color.WHITE);
 			saleBtn.setFont(new Font("맑은 고딕", Font.BOLD, 17));
-			saleBtn.setBackground(new Color(204, 206, 206));
+			//saleBtn.setBackground(new Color(204, 206, 206));
 			saleBtn.setBounds(148, 0, 130, 98);
 			
-			stockBtn.setForeground(Color.WHITE);
+			//stockBtn.setForeground(Color.WHITE);
 			stockBtn.setFont(new Font("맑은 고딕", Font.BOLD, 17));
-			stockBtn.setBackground(new Color(204, 206, 206));
+			//stockBtn.setBackground(new Color(204, 206, 206));
 			stockBtn.setBounds(288, 0, 130, 98);
 			
 			
-			eventBtn.setForeground(Color.WHITE);
+			//eventBtn.setForeground(Color.WHITE);
 			eventBtn.setFont(new Font("맑은 고딕", Font.BOLD, 17));
-			eventBtn.setBackground(new Color(204, 206, 206));
+			//eventBtn.setBackground(new Color(204, 206, 206));
 			eventBtn.setBounds(428, 0, 130, 98);
 			
 			
-			commuteBtn.setForeground(Color.WHITE);
+			//commuteBtn.setForeground(Color.WHITE);
 			commuteBtn.setFont(new Font("맑은 고딕", Font.BOLD, 17));
-			commuteBtn.setBackground(new Color(204, 206, 206));
+			//commuteBtn.setBackground(new Color(204, 206, 206));
 			commuteBtn.setBounds(568, 0, 130, 98);
 			
-			calcBtn.setForeground(Color.WHITE);
+			//calcBtn.setForeground(Color.WHITE);
 			calcBtn.setFont(new Font("맑은 고딕", Font.BOLD, 17));
-			calcBtn.setBackground(new Color(204, 206, 206));
+			//calcBtn.setBackground(new Color(204, 206, 206));
 			calcBtn.setBounds(708, 0, 130, 98);
 
 			add(productBtn);
