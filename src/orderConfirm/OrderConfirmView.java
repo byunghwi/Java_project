@@ -1,9 +1,11 @@
 package orderConfirm;
 
 import java.awt.Color;
+import java.awt.Image;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -24,6 +26,8 @@ public class OrderConfirmView extends JPanel {
 			return false;
 		};
 	};
+	
+	Image backgroundimg = new ImageIcon("C:\\JAVA_SW_PHM\\shop.jpg").getImage();
 
 	public Vector<String> rows;
 	
@@ -31,7 +35,6 @@ public class OrderConfirmView extends JPanel {
 		setLayout(null);
 		
 		scrollpane.setBounds(12, 10, 1133, 200);
-		scrollpane.setBackground(Color.WHITE);
 		add(scrollpane);
 		
 		orderTable.setRowMargin(10);
@@ -40,6 +43,7 @@ public class OrderConfirmView extends JPanel {
 		orderTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		addProductLine(ocd.productAll());
 		scrollpane.setViewportView(orderTable);
+		setBackground(Color.LIGHT_GRAY);
 	}
 	
 	public void addProductLine(ArrayList<OrderConfirm> products) {

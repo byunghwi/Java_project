@@ -2,6 +2,7 @@ package order;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Color;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -53,6 +54,7 @@ public class OrderFrame extends JFrame {
 		fields[0].setEditable(false);
 		fields[2].setEditable(false);
 		
+		btn_panel.setBackground(Color.GRAY);
 		order_btn = new JButton("주문");
 		cancel_btn = new JButton("취소");
 		btn_panel.add(order_btn);
@@ -60,6 +62,7 @@ public class OrderFrame extends JFrame {
 		add(btn_panel, BorderLayout.SOUTH);
 		
 		search_panel = new JPanel();
+		search_panel.setBackground(Color.CYAN);
 		search_btn = new JButton("검색");
 		search_panel.add(combo);
 		search_panel.add(search_jf);

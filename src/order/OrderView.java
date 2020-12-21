@@ -1,5 +1,6 @@
 package order;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -39,6 +40,7 @@ public class OrderView extends JPanel {
 		orderTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		addProductLine(od.productAll()); 
 		scrollpane.setViewportView(orderTable);
+		setBackground(Color.LIGHT_GRAY);
 		
 	}
 	
