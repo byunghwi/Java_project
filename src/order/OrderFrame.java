@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import orderConfirm.RoundedButton;
+import common.RoundedButton;
 
 public class OrderFrame extends JFrame {
 	private static final long serialVersionUID = 1L;

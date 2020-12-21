@@ -11,6 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import common.RoundedButton;
+
 public class OrderConfirmFrame extends JFrame {
 	public OrderConfirmView orderConfirmView = new OrderConfirmView(); // 가운데 들어갈예정
 	
