@@ -41,7 +41,7 @@ private static final long serialVersionUID = 1L;
 		
 		stockTable.setRowMargin(10);
 		stockTable.setRowHeight(30);		
-		stockTable.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
+		stockTable.setFont(new Font("나눔고딕", Font.PLAIN, 15));
 		
 
 		stockTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

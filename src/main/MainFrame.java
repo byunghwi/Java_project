@@ -272,8 +272,6 @@ public class MainFrame extends JFrame{
 		bottomPanel.productBtn.addActionListener(new BottomAction(this));					//하단패널 상품 버튼
 		bottomPanel.saleBtn.addActionListener(new BottomAction(this));						//하단패널 판매 버튼
 		bottomPanel.stockBtn.addActionListener(new BottomAction(this));						//하단패널 재고 버튼
-		bottomPanel.disBtn.addActionListener(new BottomAction(this));						//하단패널 폐기 버튼
-		bottomPanel.accountBtn.addActionListener(new BottomAction(this)); 					//하단패널 유저 버튼
 		bottomPanel.commuteBtn.addActionListener(new BottomAction(this)); 					//하단패널 근태 버튼
 		bottomPanel.calcBtn.addActionListener(new BottomAction(this));  					//하단패널 정산 버튼
 		bottomPanel.eventBtn.addActionListener(new BottomAction(this)); 					//하단패널 이벤트 버튼

@@ -22,13 +22,13 @@ public class Join extends JFrame {
 	public JTextField[] res_infos = new JTextField[2];
 	public JTextField[] phone_infos = new JTextField[3];
 	JLabel minus[] = {new JLabel("-"),new JLabel("-"),new JLabel("-")};
-	ImageIcon join_Action_Button = new ImageIcon("C:/Users/Young/git/Java_project/src/회원가입버튼.jpg");
+	ImageIcon join_Action_Button = new ImageIcon("src/회원가입버튼.jpg");
 
 	String [] info_names = {"아이디","비밀번호","이름","주민등록번호","전화번호","주소","성별","메일주소"};
 	JLabel[] names = new JLabel[8];
 	JButton join = new JButton(join_Action_Button);
 	
-	Font f1 = new Font("맑은 고딕", Font.BOLD, 13);
+	Font f1 = new Font("나눔고딕", Font.BOLD, 13);
 
 	public Join() {
 	
