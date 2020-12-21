@@ -1,5 +1,6 @@
 package commute;
 
+import java.awt.Color;
 import java.awt.Font; 
 import java.util.ArrayList;
 import java.util.Vector;
@@ -58,11 +59,11 @@ private static final long serialVersionUID = 1L;
 		
 		lbShowDate = new JLabel("출퇴근목록");
 		lbShowDate.setBounds(12, 0, 101, 37);
-		lbShowDate.setFont(new Font("맑은 고딕", Font.BOLD, 15));
+		lbShowDate.setFont(new Font("나눔 고딕", Font.BOLD, 15));
 		
 		IndividuallbShowDate = new JLabel("개인출퇴근목록");
 		IndividuallbShowDate.setBounds(550, 0, 130, 37);
-		IndividuallbShowDate.setFont(new Font("맑은 고딕", Font.BOLD, 15));
+		IndividuallbShowDate.setFont(new Font("나눔 고딕", Font.BOLD, 15));
 		
 		add(lbShowDate);
 		add(IndividuallbShowDate);
@@ -75,10 +76,24 @@ private static final long serialVersionUID = 1L;
 		commuteTable.setRowMargin(10);
 		commuteTable.setRowHeight(30);		
 		commuteTable.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
+		commuteTable.getTableHeader().setBackground(new Color(32, 136, 203));
+		commuteTable.getTableHeader().setForeground(new Color(255, 255, 255));
+		commuteTable.setShowGrid(false);
+		commuteTable.setSelectionBackground(Color.PINK);
+		commuteTable.setShowVerticalLines(false);
+		commuteTable.setShowHorizontalLines(false);
+		
 		
 		commuteIndividualTable.setRowMargin(10);
 		commuteIndividualTable.setRowHeight(30);		
 		commuteIndividualTable.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
+		commuteIndividualTable.getTableHeader().setBackground(new Color(32, 136, 203));
+		commuteIndividualTable.getTableHeader().setForeground(new Color(255, 255, 255));
+		commuteIndividualTable.setShowGrid(false);
+		commuteIndividualTable.setSelectionBackground(Color.PINK);
+		commuteIndividualTable.setShowVerticalLines(false);
+		commuteIndividualTable.setShowHorizontalLines(false);
+		
 		
 		
 		

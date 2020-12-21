@@ -1,6 +1,6 @@
 package main.mainAction;
 
-import java.awt.CardLayout;  
+import java.awt.CardLayout;   
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -9,7 +9,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 
-
+import calc.Chart.CalcChart;
 import main.MainFrame;
 import sale.SalePanel;
 
@@ -18,9 +18,12 @@ public class BottomAction implements ActionListener {
 
 	public MainFrame mainFrame;
 
+	public CalcChart  c1=new CalcChart();
+	
 	public BottomAction(MainFrame mainFrame) {
 		this.mainFrame = mainFrame;
 	}
+
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -97,7 +100,7 @@ public class BottomAction implements ActionListener {
 			mainFrame.cardlayout.show(mainFrame.centerView, "calcPanel");
 			mainFrame.btnlayout.show(mainFrame.pBtnView, "calcBtnPanel");
 			mainFrame.calcPanel.CalcModel.setNumRows(0);
-	        mainFrame.calcPanel.addCalcLine(mainFrame.calcdao.calclist());
+			
 			
 			
 		}

@@ -1,5 +1,6 @@
 package calc;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,6 +23,7 @@ import com.toedter.calendar.JDateChooser;
 
 import calc.Chart.CalcChart;
 import calc.MainCalcFrame.CalcMainFrame;
+import common.RoundedButton;
 
 
 
@@ -74,18 +76,18 @@ public class CalcPanel extends JPanel{
 		setLayout(null);
 		
 		JLabel lbShowDate = new JLabel("정산목록");
-		lbShowDate.setBounds(12, 100, 101, 37);
-		lbShowDate.setFont(new Font("맑은 고딕", Font.BOLD, 15));
+		lbShowDate.setBounds(12, 55, 101, 37);
+		lbShowDate.setFont(new Font("나눔 고딕", Font.BOLD, 15));
 		
 		JLabel referencelbShowDate = new JLabel("조회일자");
 		referencelbShowDate.setBounds(12, 0, 101, 37);
-		referencelbShowDate.setFont(new Font("맑은 고딕", Font.BOLD, 15));
+		referencelbShowDate.setFont(new Font("나눔 고딕", Font.BOLD, 15));
 		
 		add(lbShowDate);
 		add(referencelbShowDate);
 		
 		
-		CalcListScrollPane.setBounds(10, 150, 550, 150);
+		CalcListScrollPane.setBounds(10, 90, 550, 150);
 		
 		
 		add(CalcListScrollPane);
@@ -93,6 +95,12 @@ public class CalcPanel extends JPanel{
 		clacTable.setRowMargin(10);
 		clacTable.setRowHeight(30);		
 		clacTable.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
+		clacTable.getTableHeader().setBackground(new Color(32, 136, 203));
+		clacTable.getTableHeader().setForeground(new Color(255, 255, 255));
+		clacTable.setShowGrid(false);
+		clacTable.setSelectionBackground(Color.PINK);
+		clacTable.setShowVerticalLines(false);
+		clacTable.setShowHorizontalLines(false);
 		
 		//테이블 로우 중 한 줄만 선택 가능.
 		
@@ -101,26 +109,28 @@ public class CalcPanel extends JPanel{
 		CalcListScrollPane.setViewportView(clacTable);
 		
 		//캘린더 위치 설정
-		st_date.setBounds(60, 37, 150 , 24);
-		en_date.setBounds(280, 37, 150 , 24);
+		st_date.setBounds(60, 37, 120 , 24);
+		en_date.setBounds(250, 37, 120 , 24);
 		
 		labels = new JLabel[fieldNames.length];
 		
 		for (int j = 0; j < fieldNames.length; j++) {
 			labels[j] = new JLabel(fieldNames[j]);
-			labels[j].setFont(new Font("맑은 고딕", Font.BOLD, 12));
-			labels[j].setBounds((j+1)*220, 34, 50 , 30);
+			labels[j].setFont(new Font("나눔 고딕", Font.BOLD, 12));
+			labels[j].setBounds((j+1)*190, 34, 50 , 30);
 		    add(labels[j]);
 		}
 		
-		check = new JButton("조회");
-		check.setFont(new Font("맑은 고딕", Font.BOLD, 12));
-		check.setBounds(520, 34, 70, 30);
+		check = new RoundedButton("조회");
+		check.setFont(new Font("나눔 고딕", Font.BOLD, 12));
+		check.setBounds(465, 34, 70, 30);
+		check.setBackground(new Color(128, 128, 128));
+		check.setForeground(new Color(255, 255, 255));
 		
 		add(check);
 		add(st_date);
 		add(en_date);
-		add(calcg.chart_p).setBounds(10, 300, 1300, 250);
+		add(calcg.chart_p).setBounds(10, 250, 1290, 300);
 		
 		check.addActionListener(new ActionListener() {
 
@@ -173,5 +183,6 @@ public class CalcPanel extends JPanel{
 		CalclistNames.add("정산날짜");
 		return CalclistNames;
 	}
+	
 	
 }
