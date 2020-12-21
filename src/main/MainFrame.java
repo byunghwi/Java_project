@@ -67,6 +67,7 @@ public class MainFrame extends JFrame{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	// 상단 정보 보여줄 패널
 	public TopPanel topPanel = new TopPanel();
 
@@ -165,8 +166,6 @@ public class MainFrame extends JFrame{
 	JMenuItem i1 = new JMenuItem("확인/수정");
 	JMenuItem i2 = new JMenuItem("탈퇴");
 
-	
-	
 	public MainFrame() {
 		
 		// 매뉴 바 추가

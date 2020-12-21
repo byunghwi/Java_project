@@ -11,6 +11,9 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import com.toedter.calendar.JDateChooser;
+import java.awt.Color;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.BevelBorder;
 
 public class ProdEditFrame extends JFrame{
 
@@ -98,10 +101,16 @@ public class ProdEditFrame extends JFrame{
 //		pIn.add(tf3);
 		
 		compEditBtn = new JButton("수정");
+		compEditBtn.setForeground(Color.WHITE);
+		compEditBtn.setBackground(Color.DARK_GRAY);
+		compEditBtn.setBorder(null);
 		compEditBtn.setFont(new Font("맑은 고딕", Font.BOLD, 12));
 		compEditBtn.setBounds(90, 320, 70, 30);
 
 		cancelEidtBtn = new JButton("취소");
+		cancelEidtBtn.setBorder(null);
+		cancelEidtBtn.setBackground(Color.DARK_GRAY);
+		cancelEidtBtn.setForeground(Color.WHITE);
 		cancelEidtBtn.setFont(new Font("맑은 고딕", Font.BOLD, 12));
 		cancelEidtBtn.setBounds(190, 320, 70, 30);
 		

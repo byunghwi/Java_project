@@ -18,16 +18,20 @@ public class TopPanel extends JPanel {
 
 		setLayout(null);
 		setBounds(0, 0, 1300, 50);
-		setBackground(new Color(051,255,255));
+		setBackground(Color.DARK_GRAY);
 		
 		titleLabel = new JLabel();
-		titleLabel.setFont(new Font("맑은 고딕", Font.BOLD, 18));
-		titleLabel.setBounds(20, 15, 300, 20);
+		titleLabel.setForeground(Color.WHITE);
+		titleLabel.setBackground(Color.WHITE);
+		titleLabel.setFont(new Font("굴림체", Font.BOLD, 18));
+		titleLabel.setBounds(12, 15, 300, 20);
 		titleLabel.setText("편의점 프로그램");
 
 		clockLabel = new JLabel();
-		clockLabel.setFont(new Font("맑은 고딕", Font.BOLD, 13));
+		clockLabel.setFont(new Font("굴림체", Font.BOLD, 13));
 		clockLabel.setBounds(1050, 15, 300, 20);
+		clockLabel.setForeground(Color.WHITE);
+		clockLabel.setBackground(Color.WHITE);
 		
 		add(titleLabel);
 		add(clockLabel);
