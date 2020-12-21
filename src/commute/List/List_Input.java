@@ -20,9 +20,8 @@ import javax.swing.border.EmptyBorder;
 
 import com.toedter.calendar.JDateChooser;
 
+import common.HintTextField;
 import commute.CommutePanel;
-
-import product.HintTextField;
 
 public class List_Input extends JFrame {
 

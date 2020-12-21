@@ -15,8 +15,8 @@ import javax.swing.JTextField;
 import account.action.Find_Action;
 import account.action.Login_Action;
 import account.action.PopJoin_Action;
-import product.HintPasswordField;
-import product.HintTextField;
+import common.HintPasswordField;
+import common.HintTextField;
 
 
 public class Login extends JFrame {

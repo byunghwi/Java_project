@@ -13,7 +13,7 @@ import javax.swing.border.EmptyBorder;
 
 import com.toedter.calendar.JDateChooser;
 
-import product.HintTextField;
+import common.HintTextField;
 import product.Product;
 
 public class EventRegistFrame extends JFrame{

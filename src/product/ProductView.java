@@ -15,6 +15,10 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
+
+import common.HintTextField;
+import common.RoundedButton;
+
 import javax.swing.JLabel;
 import java.awt.Color;
 
@@ -50,7 +54,7 @@ public class ProductView extends JPanel {
 		jcombo.setBounds(410, 10, 150, 27);
 		searchTf = new HintTextField("검색어를 입력하세요.");
 		searchTf.setBounds(562, 10, 200, 28);
-		searchBtn = new JButton("검색");
+		searchBtn = new RoundedButton("검색");
 		searchBtn.setBounds(764, 10, 70, 28);
 		add(jcombo);
 		add(searchTf);

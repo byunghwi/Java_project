@@ -6,6 +6,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import common.RoundedButton;
+import java.awt.SystemColor;
+
 
 
 public class BottomPanel extends JPanel{
@@ -23,46 +26,40 @@ public class BottomPanel extends JPanel{
 	public JButton calcBtn;
 	
 	public BottomPanel() {
-			setBackground(Color.WHITE);
-			setLayout(null);
+			setBackground(SystemColor.control);
 			productBtn = new RoundedButton("상품");
+			productBtn.setBounds(17, 0, 130, 98);
 			saleBtn = new RoundedButton("판매");
+			saleBtn.setBounds(159, 0, 130, 98);
 			stockBtn = new RoundedButton("재고");
+			stockBtn.setBounds(301, 0, 130, 98);
 			eventBtn = new RoundedButton("이벤트");
+			eventBtn.setBounds(443, 0, 130, 98);
 			commuteBtn = new RoundedButton("근태");
+			commuteBtn.setBounds(585, 0, 130, 98);
 			calcBtn = new RoundedButton("정산");
+			calcBtn.setBounds(727, 0, 130, 98);
 			
 			//productBtn.setForeground(Color.WHITE);
 			productBtn.setFont(new Font("맑은 고딕", Font.BOLD, 17));
-			//productBtn.setBackground(new Color(204, 206, 206));
-			productBtn.setBounds(8, 0, 130, 98);
 
 			//saleBtn.setForeground(Color.WHITE);
 			saleBtn.setFont(new Font("맑은 고딕", Font.BOLD, 17));
-			//saleBtn.setBackground(new Color(204, 206, 206));
-			saleBtn.setBounds(148, 0, 130, 98);
 			
 			//stockBtn.setForeground(Color.WHITE);
 			stockBtn.setFont(new Font("맑은 고딕", Font.BOLD, 17));
-			//stockBtn.setBackground(new Color(204, 206, 206));
-			stockBtn.setBounds(288, 0, 130, 98);
 			
 			
 			//eventBtn.setForeground(Color.WHITE);
 			eventBtn.setFont(new Font("맑은 고딕", Font.BOLD, 17));
-			//eventBtn.setBackground(new Color(204, 206, 206));
-			eventBtn.setBounds(428, 0, 130, 98);
 			
 			
 			//commuteBtn.setForeground(Color.WHITE);
 			commuteBtn.setFont(new Font("맑은 고딕", Font.BOLD, 17));
-			//commuteBtn.setBackground(new Color(204, 206, 206));
-			commuteBtn.setBounds(568, 0, 130, 98);
 			
 			//calcBtn.setForeground(Color.WHITE);
 			calcBtn.setFont(new Font("맑은 고딕", Font.BOLD, 17));
-			//calcBtn.setBackground(new Color(204, 206, 206));
-			calcBtn.setBounds(708, 0, 130, 98);
+			setLayout(null);
 
 			add(productBtn);
 			add(saleBtn);

@@ -12,7 +12,8 @@ import javax.swing.border.EmptyBorder;
 
 import com.toedter.calendar.JDateChooser;
 
-import main.RoundedButton;
+import common.HintTextField;
+import common.RoundedButton;
 
 import java.awt.Color;
 import javax.swing.ImageIcon;
