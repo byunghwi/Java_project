@@ -74,12 +74,6 @@ public class BottomAction implements ActionListener {
 	        mainFrame.stockPanel.addStockLine(mainFrame.stockdao.stockAll());
 			
 			
-		}else if (ob == mainFrame.bottomPanel.disBtn) {
-			//메인 버튼 클릭시 색 변경해주기
-			mainFrame.bottomPanel.selectedBtn(mainFrame.bottomPanel.disBtn);
-		}else if (ob == mainFrame.bottomPanel.accountBtn) {
-			//메인 버튼 클릭시 색 변경해주기
-			mainFrame.bottomPanel.selectedBtn(mainFrame.bottomPanel.accountBtn);
 		}else if (ob == mainFrame.bottomPanel.commuteBtn) {
 			//메인 버튼 클릭시 색 변경해주기
 			mainFrame.bottomPanel.selectedBtn(mainFrame.bottomPanel.commuteBtn);

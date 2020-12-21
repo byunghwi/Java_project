@@ -37,7 +37,7 @@ public class DisposalInfoView extends JPanel {
 		
 		disposalInfoTable.setRowMargin(10);
 		disposalInfoTable.setRowHeight(30);		
-		disposalInfoTable.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
+		disposalInfoTable.setFont(new Font("나눔고딕", Font.PLAIN, 15));
 		
 		disposalInfoTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
