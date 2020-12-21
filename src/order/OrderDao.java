@@ -41,7 +41,7 @@ public class OrderDao {
 				order.setProduct_id(rs.getString(1));
 				order.setProduct_name(rs.getString(2));
 				order.setPrice(rs.getInt(3));
-				order.setQuantity(rs.getInt(4));;
+				order.setQuantity(rs.getInt(4));
 
 				products.add(order);
 			}
@@ -94,11 +94,16 @@ public class OrderDao {
 //		}
 //	}
 	
-	
+	// 주문목록 검색
 	public void getUserSearch(DefaultTableModel dt, String fieldName, String word) {
 		conn = DatabaseConnect.getConnection();
-        String sql = "SELECT * FROM stock WHERE " + fieldName.trim()
-                + " LIKE '%" + word.trim() + "%'";
+//        String sql = "SELECT * FROM stock WHERE " + fieldName.trim() + " LIKE '%" + word.trim() + "%'";
+        String sql = "SELECT product.product_id, product.product_name, product.price, SUM(stock.quantity)\r\n"
+        		+ "FROM product\r\n"
+        		+ "INNER JOIN stock\r\n"
+        		+ "ON product.save_status = 'Y' AND product.product_id = stock.product_id\r\n"
+        		+ "WHERE product." + fieldName.trim() + " LIKE '%" + word.trim() + "%'\r\n"
+        		+ "group by product.product_id, product.product_name, product.price";
         try {
         	ps = conn.prepareStatement(sql);
             rs = ps.executeQuery(sql);
@@ -108,10 +113,10 @@ public class OrderDao {
             }
             while (rs.next()) {
                 Object data[] = { 
-                		rs.getString(2), 
-                		rs.getString(3),
-                        rs.getInt(7),
-                        rs.getInt(8) };
+                		rs.getString(1), 
+                		rs.getString(2),
+                        rs.getInt(3),
+                        rs.getInt(4) };
                 dt.addRow(data);
             }
         } catch (SQLException e) {

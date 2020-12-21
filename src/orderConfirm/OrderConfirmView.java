@@ -1,5 +1,6 @@
 package orderConfirm;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -28,7 +29,8 @@ public class OrderConfirmView extends JPanel {
 	public OrderConfirmView() {
 		setLayout(null);
 		
-		scrollpane.setBounds(12, 10, 1133, 532);
+		scrollpane.setBounds(12, 10, 1133, 200);
+		scrollpane.setBackground(Color.WHITE);
 		add(scrollpane);
 		
 		orderTable.setRowMargin(10);
