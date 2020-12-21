@@ -1,5 +1,6 @@
 package calc;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,6 +23,7 @@ import com.toedter.calendar.JDateChooser;
 
 import calc.Chart.CalcChart;
 import calc.MainCalcFrame.CalcMainFrame;
+import common.RoundedButton;
 
 
 
@@ -113,9 +115,11 @@ public class CalcPanel extends JPanel{
 		    add(labels[j]);
 		}
 		
-		check = new JButton("조회");
+		check = new RoundedButton("조회");
 		check.setFont(new Font("나눔 고딕", Font.BOLD, 12));
 		check.setBounds(465, 34, 70, 30);
+		check.setBackground(new Color(128, 128, 128));
+		check.setForeground(new Color(255, 255, 255));
 		
 		add(check);
 		add(st_date);
@@ -173,5 +177,6 @@ public class CalcPanel extends JPanel{
 		CalclistNames.add("정산날짜");
 		return CalclistNames;
 	}
+	
 	
 }
