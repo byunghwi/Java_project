@@ -23,7 +23,6 @@ public class OrderConfirmFrame extends JFrame {
 	public JPanel btn_panel, tabel_panel, search_panel;
 	
 	String[] fieldNames = new String[] {"발주번호", "상품명", "물품id", "가격", "수량"};
-	String[] textHints = new String[] {"번호입력	", "상품명입력	", "id입력	", "가격입력	","수량입력	"};
 
 	public JLabel[] labels;
 	public JTextField[] fields;
@@ -49,7 +48,6 @@ public class OrderConfirmFrame extends JFrame {
 		for (int i = 0; i < fieldNames.length; i++) {
 			labels[i] = new JLabel(fieldNames[i]);
 			labels[i].setForeground(Color.WHITE);
-			fields[i] = new HintTextField(textHints[i]);
 			fields[i] = new JTextField(10);
 
 			btn_panel.add(labels[i]);

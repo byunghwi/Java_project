@@ -20,7 +20,6 @@ public class OrderFrame extends JFrame {
 	public JPanel tabel_panel, btn_panel, search_panel;
 	
 	String[] fieldNames = new String[] {"상품id", "수량", "사용자"};
-	String[] textHints = new String[] {"id입력	", "수량입력	", "사용자id입력	"};
 	
 	public JLabel[] labels;
 	public JTextField[] fields;
@@ -46,7 +45,6 @@ public class OrderFrame extends JFrame {
 		btn_panel = new JPanel();
 		for (int i = 0; i < fieldNames.length; i++) {
 			labels[i] = new JLabel(fieldNames[i]);
-			fields[i] = new HintTextField(textHints[i]);
 			fields[i] = new JTextField(10);
 
 			btn_panel.add(labels[i]);
