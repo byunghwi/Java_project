@@ -12,6 +12,10 @@ import javax.swing.Icon;
 import javax.swing.JButton;
 
 public class RoundedButton extends JButton { 
+	int r = 0;
+	int g = 0;
+	int b = 0;
+	boolean use_color = false;
 	
 	public RoundedButton() {
 		super(); 
@@ -43,11 +47,23 @@ public class RoundedButton extends JButton {
 		setOpaque(false); 
 	} 
 	
+	public RoundedButton(String text,int r, int g, int b) {
+		super(text); 
+		this.r = r;
+		this.g = g;
+		this.b = b;
+		this.use_color = true;
+		decorate(); 
+	} 
+	
+	
 	protected void paintComponent(Graphics g) {
 		int width = getWidth(); 
 		int height = getHeight(); 
 		
 		Graphics2D graphics = (Graphics2D) g; 
+		
+		Color color = new Color(128, 128, 128);
 		
 		graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON); 
 		
@@ -60,7 +76,9 @@ public class RoundedButton extends JButton {
 //			graphics.setColor(getBackground().BLACK); 
 //		} 
 		
-		Color color = new Color(128, 128, 128);
+		if (use_color) {
+			color = new Color(this.r,this.g,this.b);
+		}
 		
 		if (getModel().isArmed()) {
 			graphics.setColor(getBackground().brighter()); 
