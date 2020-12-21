@@ -60,6 +60,8 @@ import stock.stockAction.DisposalInfoAction;
 import stock.stockAction.MoreInfoAction;
 import stock.stockView.StockView;
 import stock.stockframe.StockRightBtnPanel;
+import javax.swing.JLabel;
+
 
 public class MainFrame extends JFrame{
 
@@ -166,6 +168,7 @@ public class MainFrame extends JFrame{
 	JMenuItem i1 = new JMenuItem("확인/수정");
 	JMenuItem i2 = new JMenuItem("탈퇴");
 
+
 	public MainFrame() {
 		
 		// 매뉴 바 추가
@@ -174,15 +177,15 @@ public class MainFrame extends JFrame{
 		menu.add(i2);
 		this.setJMenuBar(bar);
 		
-		
 		cardlayout = new CardLayout();
 		btnlayout = new CardLayout();
 
+		//setUndecorated(true); // 프레임 타이틀 바 안보이게 - 적용하면 프레임 이동에 대한 소스도 구현해주어어야 함.
 		setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		setTitle("편의점프로그램");
 		setResizable(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1326, 773);
+		setBounds(100, 100, 1320, 778);
 		setVisible(true);
 
 		contentPanel = new JPanel();
@@ -216,7 +219,7 @@ public class MainFrame extends JFrame{
 		pBtnView = new JPanel();
 		pBtnView.setLayout(btnlayout);
 		pBtnView.setBackground(Color.WHITE);
-		pBtnView.setBounds(1158, 50, 142, 675);
+		pBtnView.setBounds(1158, 50, 142, 660);
 		pBtnView.add(prodBtnPanel, "prodBtnPanel"); 	// 상품관련 오른쪽 버튼들
 		pBtnView.add(stockBtnPanel, "stockBtnPanel");	// 재고관련 오른쪽 버튼들
 		pBtnView.add(saleBtnPanel, "saleBtnPanel");		// 판매관련 오른쪽 버튼들
@@ -229,7 +232,7 @@ public class MainFrame extends JFrame{
 		// 하단 패널부분
 		bottomView = new JPanel();
 		bottomView.setBackground(Color.WHITE);
-		bottomView.setBounds(8, 610, 1145, 100);
+		bottomView.setBounds(8, 608, 1135, 100);
 		bottomView.add(bottomPanel, "bottomPanel");
 		bottomView.setLayout(btnlayout);
 		contentPanel.add(bottomView);

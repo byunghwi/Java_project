@@ -10,7 +10,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.undo.CannotRedoException;
+
+import common.RoundedButton;
 
 public class OrderConfirmFrame extends JFrame {
 	public OrderConfirmView orderConfirmView = new OrderConfirmView(); // 가운데 들어갈예정
@@ -22,7 +23,6 @@ public class OrderConfirmFrame extends JFrame {
 	public JPanel btn_panel, tabel_panel, search_panel;
 	
 	String[] fieldNames = new String[] {"발주번호", "상품명", "물품id", "가격", "수량"};
-	String[] textHints = new String[] {"번호입력	", "상품명입력	", "id입력	", "가격입력	","수량입력	"};
 
 	public JLabel[] labels;
 	public JTextField[] fields;
@@ -48,7 +48,6 @@ public class OrderConfirmFrame extends JFrame {
 		for (int i = 0; i < fieldNames.length; i++) {
 			labels[i] = new JLabel(fieldNames[i]);
 			labels[i].setForeground(Color.WHITE);
-			fields[i] = new HintTextField(textHints[i]);
 			fields[i] = new JTextField(10);
 
 			btn_panel.add(labels[i]);
@@ -61,14 +60,19 @@ public class OrderConfirmFrame extends JFrame {
 		fields[3].setEditable(false);
 		fields[4].setEditable(true);
 		
-		order_btn = new JButton("상품조회");
-		confirm_btn = new JButton("승인");
-		delete_btn = new JButton("삭제");
-		cancel_btn = new JButton("취소");
+		order_btn = new RoundedButton("상품조회");
+		confirm_btn = new RoundedButton("승인");
+		delete_btn = new RoundedButton("삭제");
+		cancel_btn = new RoundedButton("취소");
+		
+		order_btn.setBorderPainted(false);
+		confirm_btn.setBorderPainted(false);
+		delete_btn.setBorderPainted(false);
+		cancel_btn.setBorderPainted(false);
 		
 		search_panel = new JPanel();
-		search_panel.setBackground(Color.CYAN);
-		search_btn = new JButton("검색");
+		search_panel.setBackground(Color.LIGHT_GRAY);
+		search_btn = new RoundedButton("검색");
 		search_panel.add(combo);
 		search_panel.add(search_jf);
 		search_panel.add(search_btn);
@@ -89,11 +93,11 @@ public class OrderConfirmFrame extends JFrame {
 	
 	//필드값 초기화 해주기.
 	public void resetText() {
-		fields[0].setText("	");
-		fields[1].setText("	");
-		fields[2].setText("	");
-		fields[3].setText("	");
-		fields[4].setText("	");
+		fields[0].setText("");
+		fields[1].setText("");
+		fields[2].setText("");
+		fields[3].setText("");
+		fields[4].setText("");
 	}
 	
 }
