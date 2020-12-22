@@ -2,6 +2,7 @@ package sale;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -49,7 +50,7 @@ public class SaleDetailListFrame extends JFrame {
 	public SaleDetailListFrame(String sales_no) {
 		this.sales_no = sales_no;
 		
-		setFont(new Font("맑은 고딕", Font.BOLD, 20));
+		setFont(new Font("나눔 고딕", Font.BOLD, 20));
 		setTitle("판매 상세 리스트");
 		setResizable(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -60,10 +61,20 @@ public class SaleDetailListFrame extends JFrame {
 		tablePanel.setLayout(null);
 		saleDetailListScrollPane.setBounds(10, 10, 760, 340);
 		tablePanel.add(saleDetailListScrollPane);
+		saleDetailListTable.setShowVerticalLines(false);
+		saleDetailListTable.setShowHorizontalLines(false);
+		saleDetailListTable.setShowGrid(false);
+		saleDetailListTable.setSelectionBackground(Color.PINK);
+		saleDetailListTable.setGridColor(new Color(135, 206, 235));
 		
 		saleDetailListTable.setRowMargin(10);
 		saleDetailListTable.setRowHeight(30);		
-		saleDetailListTable.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
+		saleDetailListTable.setFont(new Font("나눔 고딕", Font.PLAIN, 15));
+		
+		saleDetailListTable.getTableHeader().setFont(new Font("나눔 고딕", Font.PLAIN, 15));
+		saleDetailListTable.getTableHeader().setOpaque(false);
+		saleDetailListTable.getTableHeader().setBackground(new Color(32, 136, 203));
+		saleDetailListTable.getTableHeader().setForeground(new Color(255, 255, 255));
 		
 		//테이블 로우 중 한 줄만 선택 가능.
 		saleDetailListTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -72,7 +83,7 @@ public class SaleDetailListFrame extends JFrame {
 
 		saleDetailListScrollPane.setViewportView(saleDetailListTable);
 		
-		add(tablePanel);
+		getContentPane().add(tablePanel);
 	}
 
 	// Jtable에 로우 하나씩 추가하기.

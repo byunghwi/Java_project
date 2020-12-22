@@ -4,6 +4,10 @@ import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import common.RoundedButton;
+import java.awt.SystemColor;
+import javax.swing.UIManager;
+
 
 public class EventBtnPanel extends JPanel{
 	/**
@@ -14,20 +18,20 @@ public class EventBtnPanel extends JPanel{
 	public JButton eventDelBtn;
 
 	public EventBtnPanel() {
-		setBackground(Color.WHITE);
+		setBackground(UIManager.getColor("Button.background"));
 		setLayout(null);
-		eventRegBtn = new JButton("이벤트등록");
-		eventDelBtn = new JButton("이벤트삭제");
+		eventRegBtn = new RoundedButton("이벤트등록");
+		eventDelBtn = new RoundedButton("이벤트삭제");
 
 		eventRegBtn.setForeground(Color.WHITE);
 		eventRegBtn.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		eventRegBtn.setBackground(new Color(204, 206, 206));
-		eventRegBtn.setBounds(0, 0, 140, 120);
+		eventRegBtn.setBounds(0, 10, 140, 120);
 		
 		eventDelBtn.setForeground(Color.WHITE);
 		eventDelBtn.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		eventDelBtn.setBackground(new Color(204, 206, 206));
-		eventDelBtn.setBounds(0, 120, 140, 120);
+		eventDelBtn.setBounds(0, 150, 140, 120);
 		
 		add(eventRegBtn);
 		add(eventDelBtn);

@@ -72,7 +72,7 @@ public class List_Input extends JFrame {
 		contentPanel.setBackground(new Color(128, 128, 128));
 		
 		titleLabel = new JLabel(" 정보 입력");
-		titleLabel.setFont(new Font("맑은 고딕", Font.BOLD, 23));
+		titleLabel.setFont(new Font("나눔고딕", Font.BOLD, 23));
 		titleLabel.setBounds(15, 20, 150, 100);
 		titleLabel.setForeground(new Color(255, 255, 255));
 		
@@ -86,12 +86,6 @@ public class List_Input extends JFrame {
 		pIn.setLayout(null);
 		pIn.setFocusable(false);
 		
-		
-		
-//		titleLabel = new JLabel("정보 입력");
-//		titleLabel.setFont(new Font("맑은 고딕", Font.BOLD, 20));
-//		titleLabel.setBounds(20, 20, 100, 100);
-//		pIn.add(titleLabel);
 		
 		labels = new JLabel[fieldNames.length];
 		
@@ -107,13 +101,13 @@ public class List_Input extends JFrame {
 		
 		for (int j = 0; j < fieldNames.length; j++) {
 			labels[j] = new JLabel(fieldNames[j]);
-			labels[j].setFont(new Font("나눔 고딕", Font.BOLD, 12));
+			labels[j].setFont(new Font("나눔고딕", Font.BOLD, 12));
 			labels[j].setBounds(50, (j)*100, 50 , 30);
 			pIn.add(labels[j]);
 		}
 		
 		check = new RoundedButton("확인");
-		check.setFont(new Font("나눔 고딕", Font.BOLD, 12));
+		check.setFont(new Font("나눔고딕", Font.BOLD, 13));
 		check.setBounds(80, 320, 70, 30);
 		check.setBackground(new Color(128, 128, 128));
 		check.setForeground(new Color(255, 255, 255));
@@ -147,7 +141,7 @@ public class List_Input extends JFrame {
 	    this.setVisible(true);
 	    this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setLocation(300,100);
-		this.setSize(400,440);
+		this.setSize(400,400);
 		this.setVisible(true);
 		
 		

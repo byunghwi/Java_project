@@ -20,7 +20,7 @@ public class CalcBtnPanel extends JPanel{
 		calc_Btn = new RoundedButton("정산");
 		
 		calc_Btn.setForeground(Color.WHITE);
-		calc_Btn.setFont(new Font("맑은 고딕", Font.BOLD, 20));
+		calc_Btn.setFont(new Font("나눔고딕", Font.BOLD, 20));
 		calc_Btn.setBackground(new Color(204, 206, 206));
 		calc_Btn.setBounds(0, 10, 140, 120);
 
