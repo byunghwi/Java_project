@@ -42,7 +42,7 @@ public class StockView extends JPanel {
 	public StockView(){
 		setLayout(null);
 	
-		stocksScrollPane.setBounds(12, 40, 1133, 500);
+		stocksScrollPane.setBounds(12, 40, 1115, 500);
 		add(stocksScrollPane);
 		
 		stockTable.setShowGrid(false);

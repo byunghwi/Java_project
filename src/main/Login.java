@@ -83,9 +83,11 @@ public class Login extends JFrame {
 		
         
 		login.addActionListener(new Login_Action(this));
+		infos[1].addKeyListener(new Login_Action(this));
 		join.addActionListener(new PopJoin_Action());
 		find.addActionListener(new Find_Action());
-    	
+		
+		
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         setSize(950, 670);
