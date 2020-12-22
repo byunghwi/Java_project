@@ -35,6 +35,7 @@ public class OrderView extends JPanel {
 		
 		orderTable.setRowMargin(10);
 		orderTable.setRowHeight(30);	
+		orderTable.setFont(new Font("맑음 고딕", Font.PLAIN, 15));
 		
 		orderTable.setGridColor(Color.LIGHT_GRAY);
 		orderTable.setSelectionBackground(Color.PINK);
@@ -73,7 +74,6 @@ public class OrderView extends JPanel {
 		colNames.add("상품번호");
 		colNames.add("상품명");
 		colNames.add("가격");
-		// 재고 추가
 		colNames.add("재고");
 
 		return colNames;

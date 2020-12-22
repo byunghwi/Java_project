@@ -1,6 +1,7 @@
 package orderConfirm;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Image;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -39,6 +40,7 @@ public class OrderConfirmView extends JPanel {
 		
 		orderTable.setRowMargin(10);
 		orderTable.setRowHeight(30);
+		orderTable.setFont(new Font("맑음 고딕", Font.PLAIN, 15));
 		
 		orderTable.setGridColor(Color.LIGHT_GRAY);
 		orderTable.setSelectionBackground(Color.PINK);

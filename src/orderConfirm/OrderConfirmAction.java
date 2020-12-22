@@ -47,6 +47,7 @@ public class OrderConfirmAction implements ActionListener {
 				}
 			});
 		}
+		
 		// 승인 주문버튼
 		if (ob == mainFrame.orderConfirmFrame.order_btn) { 
 			mainFrame.orderframe.setVisible(true);
@@ -67,6 +68,7 @@ public class OrderConfirmAction implements ActionListener {
 				}
 			});
 		} 
+		
 		// 승인목록 승인버튼
 		else if (ob == mainFrame.orderConfirmFrame.confirm_btn) {
 			if(mainFrame.orderConfirmFrame.fields[3].getText().equals("")) {
@@ -93,6 +95,7 @@ public class OrderConfirmAction implements ActionListener {
 			// 초기화
 			mainFrame.orderConfirmFrame.resetText();
 		} 
+		
 		// 승인 삭제버튼
 		else if (ob == mainFrame.orderConfirmFrame.delete_btn) { 
 			if(mainFrame.orderConfirmFrame.fields[3].getText().equals("")) {
@@ -104,10 +107,13 @@ public class OrderConfirmAction implements ActionListener {
 				mainFrame.orderConfirmFrame.orderConfirmView.addProductLine(mainFrame.orderConfirmDao.productAll());
 				mainFrame.orderConfirmFrame.resetText();
 			}
-		} // 승인 취소버튼
+		} 
+		
+		// 승인 취소버튼
 		else if (ob == mainFrame.orderConfirmFrame.cancel_btn) {
 			mainFrame.orderConfirmFrame.dispose();
 		}
+	
 		// 승인대기목록 검색버튼
 		else if (ob == mainFrame.orderConfirmFrame.search_btn) {
 			String fieldName = mainFrame.orderConfirmFrame.combo.getSelectedItem().toString();

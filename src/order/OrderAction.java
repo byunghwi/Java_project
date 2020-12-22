@@ -31,6 +31,7 @@ public class OrderAction implements ActionListener {
 				mainFrame.orderframe.resetText();
 			}
 		} 
+		
 		// 주문 검색버튼
 		else if (ob == mainFrame.orderframe.search_btn) {
 			String fieldName = mainFrame.orderframe.combo.getSelectedItem().toString();
@@ -49,6 +50,7 @@ public class OrderAction implements ActionListener {
             	mainFrame.orderDao.getUserSearch(mainFrame.orderView.model, fieldName, mainFrame.orderframe.search_jf.getText());
             }
 		}	
+		
 		// 주문 취소버튼
 		else if (ob == mainFrame.orderframe.cancel_btn) {
 			mainFrame.orderframe.dispose();
