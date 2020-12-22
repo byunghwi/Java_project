@@ -172,10 +172,14 @@ public class MainFrame extends JFrame{
 	public MainFrame() {
 		
 		// 매뉴 바 추가
+		i1.setFont(new Font("나눔고딕", Font.PLAIN, 12));
+		i2.setFont(new Font("나눔고딕", Font.PLAIN, 12));
+		menu.setFont(new Font("나눔고딕", Font.BOLD, 12));
 		bar.add(menu);
 		menu.add(i1);
 		menu.add(i2);
 		this.setJMenuBar(bar);
+		
 		
 		cardlayout = new CardLayout();
 		btnlayout = new CardLayout();
@@ -183,9 +187,9 @@ public class MainFrame extends JFrame{
 		//setUndecorated(true); // 프레임 타이틀 바 안보이게 - 적용하면 프레임 이동에 대한 소스도 구현해주어어야 함.
 		setFont(new Font("나눔고딕", Font.BOLD, 20));
 		setTitle("편의점프로그램");
-		setResizable(true);
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1320, 778);
+		setBounds(100, 100, 1320, 788);
 		setVisible(true);
 
 		contentPanel = new JPanel();
@@ -213,7 +217,7 @@ public class MainFrame extends JFrame{
 		centerView.add(commutePanel,"commutePanel");	//근태
 		centerView.add(calcPanel,"calcPanel");		//정산
 		centerView.setBackground(Color.WHITE);
-		centerView.setBounds(0, 50, 1157, 552);
+		centerView.setBounds(0, 50, 1157, 542);
 		contentPanel.add(centerView);
 
 		// 오른쪽 패널부분
@@ -233,7 +237,7 @@ public class MainFrame extends JFrame{
 		// 하단 패널부분
 		bottomView = new JPanel();
 		bottomView.setBackground(Color.WHITE);
-		bottomView.setBounds(8, 608, 1135, 100);
+		bottomView.setBounds(5, 598, 1135, 125);
 		bottomView.add(bottomPanel, "bottomPanel");
 		bottomView.setLayout(btnlayout);
 		contentPanel.add(bottomView);

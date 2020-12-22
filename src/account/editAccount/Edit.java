@@ -150,6 +150,7 @@ public class Edit extends JFrame {
 		this.getContentPane().setBackground(Color.white);
 		setTitle("회원 정보 수정");
 		setLayout(null);
+		setResizable(false);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setLocation(800,100);
 		setSize(400, 550);

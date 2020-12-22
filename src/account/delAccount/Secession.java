@@ -64,6 +64,7 @@ public class Secession extends JFrame{
 		this.getContentPane().setBackground(Color.WHITE);
 		
 		setTitle("회원 탈퇴");
+		setResizable(false);
 		setLayout(null);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setLocation(400,80);
