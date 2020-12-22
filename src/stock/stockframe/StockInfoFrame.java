@@ -30,6 +30,7 @@ public class StockInfoFrame extends JFrame{
 		this.stockInfoView = stockInfoView;
 		
 		setLayout(null);
+		setResizable(false);
 		setFont(new Font("나눔고딕", Font.BOLD, 20));
 		setTitle("상품 정보");		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

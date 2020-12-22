@@ -60,6 +60,8 @@ public class StockView extends JPanel {
 		add(newLabel);
 		
 		stockTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		stockTable.getTableHeader().setFont(new Font("나눔 고딕", Font.PLAIN, 15));
+		stockTable.getTableHeader().setOpaque(false);
 		stockTable.getTableHeader().setBackground(new Color(32, 136, 203));
 		stockTable.getTableHeader().setForeground(new Color(255, 255, 255));
 		
