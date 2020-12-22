@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
+import main.TopPanel;
 import product.Product;
 import stock.Stock;
 import stock.StockDao;
@@ -92,33 +93,34 @@ public class SalePanel extends JPanel {
 		bucketTblLb.setFont(new Font("나눔고딕", Font.BOLD, 15));
 			
 		
-//		Image img1 = new ImageIcon(SalePanel.class.getResource("/plus.png")).getImage();
-//		Image chgimg1 = img1.getScaledInstance(60, 60, img1.SCALE_SMOOTH);
-//		ImageIcon icon1= new ImageIcon(chgimg1);
+	
+		Image img1 = new ImageIcon("src/plus.png").getImage();
+		Image chgimg1 = img1.getScaledInstance(60, 60, img1.SCALE_SMOOTH);
+		ImageIcon icon1= new ImageIcon(chgimg1);
+		
+		Image img2 = new ImageIcon("src/minus.png").getImage();
+		Image chgimg2 = img2.getScaledInstance(60, 60, img2.SCALE_SMOOTH);
+		ImageIcon icon2= new ImageIcon(chgimg2);
+		
+		Image img3 = new ImageIcon("src/pay.png").getImage();
+		Image chgimg3 = img3.getScaledInstance(80, 80, img3.SCALE_SMOOTH);
+		ImageIcon icon3 = new ImageIcon(chgimg3);
+		
+		addBucketBtn =  new JButton(icon1);
+		delBucketBtn = new JButton(icon2);
+		delBucketBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		completeBtn = new JButton(icon3);
+//		//addBucketBtn.setFont(new Font("굴림체", Font.PLAIN, 12));
 //		
-//		Image img2 = new ImageIcon(SalePanel.class.getResource("/minus.png")).getImage();
-//		Image chgimg2 = img2.getScaledInstance(60, 60, img2.SCALE_SMOOTH);
-//		ImageIcon icon2= new ImageIcon(chgimg2);
 //		
-//		Image img3 = new ImageIcon(SalePanel.class.getResource("/pay.png")).getImage();
-//		Image chgimg3 = img3.getScaledInstance(80, 80, img3.SCALE_SMOOTH);
-//		ImageIcon icon3 = new ImageIcon(chgimg3);
-		
-		addBucketBtn =  new JButton("추가");
-		delBucketBtn = new JButton("삭제");
-//		delBucketBtn.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//			}
-//		});
-		completeBtn = new JButton("결제");
-		//addBucketBtn.setFont(new Font("굴림체", Font.PLAIN, 12));
-		
-		
-		//delBucketBtn.setFont(new Font("맑은 고딕 Semilight", Font.BOLD, 12));
+//		//delBucketBtn.setFont(new Font("맑은 고딕 Semilight", Font.BOLD, 12));
 //		completeBtn = new JButton("결제");
 //		completeBtn.setIcon(new ImageIcon(SalePanel.class.getResource("/org/jfree/chart/gorilla.jpg")));
 //		completeBtn.setSelectedIcon(null);
-//		completeBtn.setFont(new Font("굴림체", Font.PLAIN, 12));
+//		completeBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 12));
 		completeBtn.setBorderPainted(false);
 		completeBtn.setFocusPainted(false);
 		completeBtn.setContentAreaFilled(false);

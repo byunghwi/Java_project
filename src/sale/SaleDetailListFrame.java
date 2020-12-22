@@ -52,7 +52,7 @@ public class SaleDetailListFrame extends JFrame {
 		
 		setFont(new Font("나눔고딕", Font.BOLD, 20));
 		setTitle("판매 상세 리스트");
-		setResizable(true);
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 800, 400);
 		setVisible(false);
