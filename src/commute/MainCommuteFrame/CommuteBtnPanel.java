@@ -27,7 +27,7 @@ public class CommuteBtnPanel extends JPanel{
 	public JButton commuteBtn;
 
 	public CommuteBtnPanel() {
-		setBackground(Color.WHITE);
+		
 		setLayout(null);
 		
 		
