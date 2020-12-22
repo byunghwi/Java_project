@@ -39,6 +39,7 @@ public class TopPanel extends JPanel {
 		clockLabel.setForeground(Color.WHITE);
 		clockLabel.setBackground(Color.WHITE);
 		
+		
 		add(titleLabel);
 		add(clockLabel);
 		
