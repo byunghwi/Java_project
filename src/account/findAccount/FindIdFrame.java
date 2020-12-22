@@ -73,6 +73,7 @@ public class FindIdFrame extends JFrame {
 		
 		setTitle("ID 찾기");
 		setLayout(null);
+		setResizable(false);
 		this.getContentPane().setBackground(Color.WHITE);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setLocation(600,400);

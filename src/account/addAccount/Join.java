@@ -106,6 +106,7 @@ public class Join extends JFrame {
 		
 		setTitle("회원 가입");
 		setLayout(null);
+		setResizable(false);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setLocation(1050,300);
 		setSize(450, 550);
