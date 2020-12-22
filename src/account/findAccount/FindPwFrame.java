@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import common.RoundedButton;
@@ -20,30 +21,41 @@ public class FindPwFrame extends JFrame {
 	
 	public FindPwFrame() {
 		
+		Font f1 = new Font("나눔고딕", Font.BOLD, 15);
+		JPanel pIn;
+		JLabel findPWText = new JLabel("PW 찾기");
+		findPWText.setFont(f1);
 		JLabel id = new JLabel("아이디");
 		JLabel name = new JLabel("이름");
 		JLabel phone_number = new JLabel("전화번호");
 		JTextField id_text = new JTextField(10);
 		JTextField name_text = new JTextField(10);
 		JTextField phone_text = new JTextField(10);
-
+		
+		findPWText.setForeground(new Color(255, 255, 255));
+		pIn = new JPanel();
+		pIn.setLayout(null);
+		pIn.setBackground(new Color(68, 68, 68));
+		pIn.setBounds(0, 0, 80, 550);
+		add(pIn);
+		pIn.add(findPWText).setBounds(12, 7, 60, 40);
 		
 		id.setFont(new Font("나눔고딕", Font.BOLD, 15));
 		name.setFont(new Font("나눔고딕", Font.BOLD, 15));
 		phone_number.setFont(new Font("나눔고딕", Font.BOLD, 15));
 		
-		add(id).setBounds(15, 25, 100, 20);
-		add(name).setBounds(15, 70, 100, 20);
-		add(phone_number).setBounds(15, 115, 100, 20);
+		add(id).setBounds(90, 25, 100, 20);
+		add(name).setBounds(90, 70, 100, 20);
+		add(phone_number).setBounds(90, 115, 100, 20);
 		
 		
-		add(id_text).setBounds(100, 25, 100, 20);
-		add(name_text).setBounds(100, 70, 100, 20);
-		add(phone_text).setBounds(100, 115, 100, 20);
+		add(id_text).setBounds(180, 25, 100, 20);
+		add(name_text).setBounds(180, 70, 100, 20);
+		add(phone_text).setBounds(180, 115, 100, 20);
 		
 		
 		find.setFont(new Font("나눔고딕", Font.BOLD, 15));
-		add(find).setBounds(107, 150, 90, 30);
+		add(find).setBounds(187, 150, 90, 30);
 		find.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		
 		JFrame j1 = this;
@@ -69,7 +81,7 @@ public class FindPwFrame extends JFrame {
 		this.getContentPane().setBackground(Color.WHITE);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setLocation(600,400);
-		setSize(240, 230);
+		setSize(320, 230);
 		setVisible(true);
 	}
 
