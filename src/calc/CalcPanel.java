@@ -130,7 +130,7 @@ public class CalcPanel extends JPanel{
 		add(check);
 		add(st_date);
 		add(en_date);
-		add(calcg.chart_p).setBounds(10, 250, 1290, 300);
+		add(calcg.chart_p).setBounds(10, 250, 1110, 300);
 		
 		check.addActionListener(new ActionListener() {
 
