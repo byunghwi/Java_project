@@ -24,6 +24,7 @@ public class OrderAction implements ActionListener {
 			if (mainFrame.orderframe.fields[1].getText().equals("") || 
 					!Pattern.matches("^[0-9]*$", mainFrame.orderframe.fields[1].getText())) {
 				JOptionPane.showMessageDialog(null, "정확히 입력해 주세요", "확인", JOptionPane.CLOSED_OPTION);
+				mainFrame.orderframe.resetText();
 			} else {
 				mainFrame.orderDao.moveconfirm(mainFrame.orderframe.fields);
 				JOptionPane.showMessageDialog(null, "주문 완료", "확인", JOptionPane.CLOSED_OPTION);
