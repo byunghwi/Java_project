@@ -28,17 +28,17 @@ public class BottomPanel extends JPanel{
 	public BottomPanel() {
 			setBackground(SystemColor.control);
 			productBtn = new RoundedButton("상품");
-			productBtn.setBounds(17, 0, 130, 98);
+			productBtn.setBounds(58, 0, 130, 98);
 			saleBtn = new RoundedButton("판매");
-			saleBtn.setBounds(159, 0, 130, 98);
+			saleBtn.setBounds(228, 0, 130, 98);
 			stockBtn = new RoundedButton("재고");
-			stockBtn.setBounds(301, 0, 130, 98);
+			stockBtn.setBounds(398, 0, 130, 98);
 			eventBtn = new RoundedButton("이벤트");
-			eventBtn.setBounds(443, 0, 130, 98);
+			eventBtn.setBounds(570, 0, 130, 98);
 			commuteBtn = new RoundedButton("근태");
-			commuteBtn.setBounds(585, 0, 130, 98);
+			commuteBtn.setBounds(741, 0, 130, 98);
 			calcBtn = new RoundedButton("정산");
-			calcBtn.setBounds(727, 0, 130, 98);
+			calcBtn.setBounds(907, 0, 130, 98);
 			
 			//productBtn.setForeground(Color.WHITE);
 			productBtn.setFont(new Font("맑은 고딕", Font.BOLD, 17));

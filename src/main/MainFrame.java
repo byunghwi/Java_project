@@ -195,10 +195,11 @@ public class MainFrame extends JFrame{
 
 		// 상단 패널부분
 		topView = new JPanel();
-		topView.add(topPanel, "topPanel");
-		topView.setBounds(0, 0, 1297, 50);
-		topView.setBackground(new Color(0, 255, 204));
-		topView.setLayout(new BorderLayout());
+		topView.setLayout(null);
+		topPanel.setBounds(0, 0, 1302, 50);
+		topView.add(topPanel);
+		topView.setBounds(0, 0, 1367, 50);
+		topView.setBackground(new Color(255, 255, 255));
 		contentPanel.add(topView);
 
 		// 가운데 패널부분 - 상품 , 재고
