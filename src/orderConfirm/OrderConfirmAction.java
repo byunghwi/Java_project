@@ -48,12 +48,14 @@ public class OrderConfirmAction implements ActionListener {
 			});
 		}
 		
-		// 승인 주문버튼
-		if (ob == mainFrame.orderConfirmFrame.order_btn) { 
+		// 승인 상품조회버튼
+		if (ob == mainFrame.orderConfirmFrame.order_btn) {
 			mainFrame.orderframe.setVisible(true);
 			// 그래프 초기화
 			mainFrame.orderframe.ov.model.setNumRows(0);
 			mainFrame.orderframe.ov.addProductLine(mainFrame.orderDao.productAll());
+			// 텍스트필드 초기화
+			mainFrame.orderframe.resetText();
 			// 그래프 행 선택시
 			mainFrame.orderframe.ov.orderTable.addMouseListener(new MouseAdapter() {
 				@Override
@@ -90,7 +92,7 @@ public class OrderConfirmAction implements ActionListener {
 				}
 				
 			}
-			// 초기화
+			// 텍스트필드 초기화
 			mainFrame.orderConfirmFrame.resetText();
 		} 
 		
