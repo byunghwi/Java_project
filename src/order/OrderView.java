@@ -36,6 +36,7 @@ public class OrderView extends JPanel {
 		orderTable.setRowMargin(10);
 		orderTable.setRowHeight(30);	
 		orderTable.setFont(new Font("나눔고딕", Font.BOLD, 13));
+		orderTable.getTableHeader().setFont(new Font("나눔 고딕", Font.PLAIN, 13));
 		
 		orderTable.setGridColor(Color.LIGHT_GRAY);
 		orderTable.setSelectionBackground(Color.PINK);
