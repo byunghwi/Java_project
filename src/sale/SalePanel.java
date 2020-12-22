@@ -92,25 +92,25 @@ public class SalePanel extends JPanel {
 		bucketTblLb.setFont(new Font("맑은 고딕 Semilight", Font.BOLD, 15));
 			
 		
-		Image img1 = new ImageIcon(SalePanel.class.getResource("/plus.png")).getImage();
-		Image chgimg1 = img1.getScaledInstance(60, 60, img1.SCALE_SMOOTH);
-		ImageIcon icon1= new ImageIcon(chgimg1);
+//		Image img1 = new ImageIcon(SalePanel.class.getResource("/plus.png")).getImage();
+//		Image chgimg1 = img1.getScaledInstance(60, 60, img1.SCALE_SMOOTH);
+//		ImageIcon icon1= new ImageIcon(chgimg1);
+//		
+//		Image img2 = new ImageIcon(SalePanel.class.getResource("/minus.png")).getImage();
+//		Image chgimg2 = img2.getScaledInstance(60, 60, img2.SCALE_SMOOTH);
+//		ImageIcon icon2= new ImageIcon(chgimg2);
+//		
+//		Image img3 = new ImageIcon(SalePanel.class.getResource("/pay.png")).getImage();
+//		Image chgimg3 = img3.getScaledInstance(80, 80, img3.SCALE_SMOOTH);
+//		ImageIcon icon3 = new ImageIcon(chgimg3);
 		
-		Image img2 = new ImageIcon(SalePanel.class.getResource("/minus.png")).getImage();
-		Image chgimg2 = img2.getScaledInstance(60, 60, img2.SCALE_SMOOTH);
-		ImageIcon icon2= new ImageIcon(chgimg2);
-		
-		Image img3 = new ImageIcon(SalePanel.class.getResource("/pay.png")).getImage();
-		Image chgimg3 = img3.getScaledInstance(80, 80, img3.SCALE_SMOOTH);
-		ImageIcon icon3 = new ImageIcon(chgimg3);
-		
-		addBucketBtn =  new JButton(icon1);
-		delBucketBtn = new JButton(icon2);
-		delBucketBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		completeBtn = new JButton(icon3);
+		addBucketBtn =  new JButton("추가");
+		delBucketBtn = new JButton("삭제");
+//		delBucketBtn.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//			}
+//		});
+		completeBtn = new JButton("결제");
 		//addBucketBtn.setFont(new Font("굴림체", Font.PLAIN, 12));
 		
 		
