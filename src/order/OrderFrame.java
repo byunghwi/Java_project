@@ -58,8 +58,8 @@ public class OrderFrame extends JFrame {
 		btn_panel.setBackground(Color.LIGHT_GRAY);
 		order_btn = new RoundedButton("주문");
 		cancel_btn = new RoundedButton("취소");
-		order_btn.setFont(new Font("나눔고딕", Font.BOLD, 13));
-		cancel_btn.setFont(new Font("나눔고딕", Font.BOLD, 13));
+		order_btn.setFont(new Font("나눔고딕", Font.PLAIN, 13));
+		cancel_btn.setFont(new Font("나눔고딕", Font.PLAIN, 13));
 		btn_panel.add(order_btn);
 		btn_panel.add(cancel_btn);
 		add(btn_panel, BorderLayout.SOUTH);
@@ -67,7 +67,7 @@ public class OrderFrame extends JFrame {
 		search_panel = new JPanel();
 		search_panel.setBackground(Color.LIGHT_GRAY);
 		search_btn = new RoundedButton("검색");
-		search_btn.setFont(new Font("나눔고딕", Font.BOLD, 13));
+		search_btn.setFont(new Font("나눔고딕", Font.PLAIN, 13));
 		search_panel.add(combo);
 		search_panel.add(search_jf);
 		search_panel.add(search_btn);
