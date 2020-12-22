@@ -30,7 +30,7 @@ public class TopPanel extends JPanel {
 		titleLabel.setForeground(Color.WHITE);
 		titleLabel.setBackground(Color.WHITE);
 		titleLabel.setFont(new Font("나눔고딕", Font.BOLD, 18));
-		titleLabel.setBounds(84, 0, 162, 50);
+		titleLabel.setBounds(50, 0, 162, 50);
 		titleLabel.setText("편의점 프로그램");
 
 		clockLabel = new JLabel();
@@ -42,14 +42,6 @@ public class TopPanel extends JPanel {
 		
 		add(titleLabel);
 		add(clockLabel);
-		
-//		JLabel lblNewLabel = new JLabel("New label");
-//		Image img = new ImageIcon(TopPanel.class.getResource("/mainIcon.png")).getImage();
-//		Image chgimg = img.getScaledInstance(72, 50, img.SCALE_SMOOTH);
-//		ImageIcon icon= new ImageIcon(chgimg);
-//		lblNewLabel.setIcon(icon);
-//		lblNewLabel.setBounds(0, 0, 72, 50);
-//		add(lblNewLabel);
 
 		threadClock();
 

@@ -27,7 +27,7 @@ public class OrderDao {
 		// product테이블, stock테이블 inner Join 같은이름 상품 총재고 나오도록
 		sql = "SELECT product.product_id, product.product_name, product.price, SUM(stock.quantity)\r\n"
 				+ "FROM product\r\n"
-				+ "INNER JOIN stock\r\n"
+				+ "LEFT JOIN stock\r\n"
 				+ "ON product.save_status = 'Y' AND product.product_id = stock.product_id\r\n"
 				+ "group by product.product_id, product.product_name, product.price";
 		try {

@@ -27,39 +27,40 @@ public class BottomPanel extends JPanel{
 	public JButton calcBtn;
 	
 	public BottomPanel() {
-			setBackground(UIManager.getColor("Button.background"));
+
+			//setBackground(UIManager.getColor("Button.background"));
 			productBtn = new RoundedButton("상품");
-			productBtn.setBounds(58, 0, 130, 98);
+			productBtn.setBounds(26, 3, 140, 120);
 			saleBtn = new RoundedButton("판매");
-			saleBtn.setBounds(228, 0, 130, 98);
+			saleBtn.setBounds(220, 3, 140, 120);
 			stockBtn = new RoundedButton("재고");
-			stockBtn.setBounds(398, 0, 130, 98);
+			stockBtn.setBounds(411, 3, 140, 120);
 			eventBtn = new RoundedButton("이벤트");
-			eventBtn.setBounds(570, 0, 130, 98);
+			eventBtn.setBounds(602, 3, 140, 120);
 			commuteBtn = new RoundedButton("근태");
-			commuteBtn.setBounds(741, 0, 130, 98);
+			commuteBtn.setBounds(793, 3, 140, 120);
 			calcBtn = new RoundedButton("정산");
-			calcBtn.setBounds(907, 0, 130, 98);
+			calcBtn.setBounds(981, 2, 140, 120);
 			
 			//productBtn.setForeground(Color.WHITE);
-			productBtn.setFont(new Font("나눔고딕", Font.BOLD, 18));
+			productBtn.setFont(new Font("나눔고딕", Font.BOLD, 21));
 
 			//saleBtn.setForeground(Color.WHITE);
-			saleBtn.setFont(new Font("나눔고딕", Font.BOLD, 18));
+			saleBtn.setFont(new Font("나눔고딕", Font.BOLD, 21));
 			
 			//stockBtn.setForeground(Color.WHITE);
-			stockBtn.setFont(new Font("나눔고딕", Font.BOLD, 18));
+			stockBtn.setFont(new Font("나눔고딕", Font.BOLD, 21));
 			
 			
 			//eventBtn.setForeground(Color.WHITE);
-			eventBtn.setFont(new Font("나눔고딕", Font.BOLD, 18));
+			eventBtn.setFont(new Font("나눔고딕", Font.BOLD, 21));
 			
 			
 			//commuteBtn.setForeground(Color.WHITE);
-			commuteBtn.setFont(new Font("나눔고딕", Font.BOLD, 18));
+			commuteBtn.setFont(new Font("나눔고딕", Font.BOLD, 21));
 			
 			//calcBtn.setForeground(Color.WHITE);
-			calcBtn.setFont(new Font("나눔고딕", Font.BOLD, 18));
+			calcBtn.setFont(new Font("나눔고딕", Font.BOLD, 21));
 			setLayout(null);
 
 			add(productBtn);
