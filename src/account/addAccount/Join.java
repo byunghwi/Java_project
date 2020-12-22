@@ -27,7 +27,7 @@ public class Join extends JFrame {
 	JPanel pIn;
 	JLabel joinText = new JLabel("회원 가입");
 
-	String [] info_names = {"아이디","비밀번호","이름","주민등록번호","전화번호","주소","성별","메일주소"};
+	String [] info_names = {"* 아이디","* 비밀번호","* 이름","* 주민등록번호","전화번호","주소","성별","메일주소"};
 	JLabel[] names = new JLabel[8];
 	RoundedButton join = new RoundedButton("회 원 가 입",68,68,68);
 	
@@ -93,6 +93,7 @@ public class Join extends JFrame {
 	    rb2.setBackground(Color.WHITE);
 	    add(rb1);
 	    add(rb2);
+	    rb1.setSelected(true);
 		
 	    join.setFont(f1);
 		join.setBounds(318, 466, 90, 30);

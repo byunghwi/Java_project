@@ -56,12 +56,12 @@ public class Add_Account{
 			System.out.println("가입 완료!");
 			
 		} catch (SQLException e) {
-			errorCode = e.getMessage();
+			errorCode = e.getMessage().toLowerCase();
 			System.out.println(errorCode);
 			
 			int cnt = 0;
 			for (String errorname : errorNames ) {
-				if (errorCode.contains(errorname)) {
+				if (errorCode.contains(errorname.toLowerCase())) {
 					JOptionPane.showMessageDialog(null, messages[cnt]);
 				}
 				cnt++;
