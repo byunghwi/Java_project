@@ -62,14 +62,14 @@ private static final long serialVersionUID = 1L;
 		lbShowDate.setFont(new Font("나눔고딕", Font.BOLD, 15));
 		
 		IndividuallbShowDate = new JLabel("개인출퇴근목록");
-		IndividuallbShowDate.setBounds(550, 0, 130, 37);
+		IndividuallbShowDate.setBounds(617, 0, 130, 37);
 		IndividuallbShowDate.setFont(new Font("나눔고딕", Font.BOLD, 15));
 		
 		add(lbShowDate);
 		add(IndividuallbShowDate);
 		
-		CommutesScrollPane.setBounds(12, 40, 500, 400);
-		CommutesIndividualScrollPane.setBounds(550, 40, 550, 400);
+		CommutesScrollPane.setBounds(12, 40, 500, 500);
+		CommutesIndividualScrollPane.setBounds(617, 40, 500, 500);
 		add(CommutesScrollPane);
 		add(CommutesIndividualScrollPane);
 		
