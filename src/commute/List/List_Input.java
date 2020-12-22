@@ -107,7 +107,7 @@ public class List_Input extends JFrame {
 		}
 		
 		check = new RoundedButton("확인");
-		check.setFont(new Font("나눔고딕", Font.BOLD, 12));
+		check.setFont(new Font("나눔고딕", Font.BOLD, 13));
 		check.setBounds(80, 320, 70, 30);
 		check.setBackground(new Color(128, 128, 128));
 		check.setForeground(new Color(255, 255, 255));

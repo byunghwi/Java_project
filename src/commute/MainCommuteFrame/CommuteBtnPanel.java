@@ -37,19 +37,15 @@ public class CommuteBtnPanel extends JPanel{
 		off_timeBtn = new RoundedButton("퇴근");
 		commuteBtn = new RoundedButton("근태목록");
 
-		//on_timeBtn.setForeground(Color.WHITE);
 		on_timeBtn.setFont(new Font("나눔고딕", Font.BOLD, 20));
-		//on_timeBtn.setBackground(new Color(204, 206, 206));
 		on_timeBtn.setBounds(0, 10, 140, 120);
 		
-		//off_timeBtn.setForeground(Color.WHITE);
+	
 		off_timeBtn.setFont(new Font("나눔고딕", Font.BOLD, 20));
-		//off_timeBtn.setBackground(new Color(204, 206, 206));
 		off_timeBtn.setBounds(0, 150, 140, 120);
 		
-		//commuteBtn.setForeground(Color.WHITE);
+	
 		commuteBtn.setFont(new Font("나눔고딕", Font.BOLD, 20));
-		//commuteBtn.setBackground(new Color(204, 206, 206));
 		commuteBtn.setBounds(0, 300, 140, 120);
 
 		add(on_timeBtn);
