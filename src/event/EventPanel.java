@@ -1,5 +1,6 @@
 package event;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -9,6 +10,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JLabel;
 
 
 public class EventPanel extends JPanel{
@@ -28,13 +30,22 @@ public class EventPanel extends JPanel{
 	public EventPanel(){
 		setLayout(null);
 		
-	
-		eventScrollPane.setBounds(12, 10, 1133, 532);
+		eventScrollPane.setBounds(12, 40, 1133, 500);
 		add(eventScrollPane);
+		eventTable.setGridColor(new Color(135, 206, 235));
+		eventTable.setShowVerticalLines(false);
+		eventTable.setShowHorizontalLines(false);
+		eventTable.setShowGrid(false);
+		eventTable.setSelectionBackground(Color.PINK);
 		
 		eventTable.setRowMargin(10);
 		eventTable.setRowHeight(30);		
-		eventTable.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
+		eventTable.setFont(new Font("나눔 고딕", Font.PLAIN, 15));
+		
+		eventTable.getTableHeader().setFont(new Font("나늠 고딕", Font.PLAIN, 15));
+		eventTable.getTableHeader().setOpaque(false);
+		eventTable.getTableHeader().setBackground(new Color(32, 136, 203));
+		eventTable.getTableHeader().setForeground(new Color(255, 255, 255));
 		
 		//테이블 로우 중 한 줄만 선택 가능.
 		eventTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -42,6 +53,11 @@ public class EventPanel extends JPanel{
 		addEventLine(eventdao.eventAll()); 
 		
 		eventScrollPane.setViewportView(eventTable);
+		
+		JLabel lblNewLabel = new JLabel("이벤트");
+		lblNewLabel.setFont(new Font("나눔 고딕", Font.BOLD, 15));
+		lblNewLabel.setBounds(20, 10, 174, 23);
+		add(lblNewLabel);
 		
 	}
 

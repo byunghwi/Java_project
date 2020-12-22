@@ -81,15 +81,15 @@ public class SalePanel extends JPanel {
 		
 		prodnameLb = new JLabel("상품명");
 		prodnameLb.setHorizontalAlignment(SwingConstants.CENTER);
-		prodnameLb.setFont(new Font("맑은 고딕 Semilight", Font.BOLD, 13));
+		prodnameLb.setFont(new Font("나눔고딕", Font.BOLD, 13));
 		prodQtLb = new JLabel("상품수량");
 		prodQtLb.setHorizontalAlignment(SwingConstants.CENTER);
-		prodQtLb.setFont(new Font("맑은 고딕 Semilight", Font.BOLD, 13));
+		prodQtLb.setFont(new Font("나눔고딕", Font.BOLD, 13));
 		
 		stockTblLb = new JLabel("재고목록");
-		stockTblLb.setFont(new Font("맑은 고딕 Semilight", Font.BOLD, 15));
+		stockTblLb.setFont(new Font("나눔고딕", Font.BOLD, 15));
 		bucketTblLb = new JLabel("장바구니");
-		bucketTblLb.setFont(new Font("맑은 고딕 Semilight", Font.BOLD, 15));
+		bucketTblLb.setFont(new Font("나눔고딕", Font.BOLD, 15));
 			
 		
 //		Image img1 = new ImageIcon(SalePanel.class.getResource("/plus.png")).getImage();
@@ -133,7 +133,7 @@ public class SalePanel extends JPanel {
 		delBucketBtn.setFocusPainted(false);
 		delBucketBtn.setContentAreaFilled(false);
 		
-		stockTblLb.setBounds(50, 0, 70, 50);
+		stockTblLb.setBounds(22, 2, 70, 50);
 		bucketTblLb.setBounds(710, 0, 70, 50);
 		prodnameLb.setBounds(520, 180, 70, 20);
 		prodQtLb.setBounds(622, 180, 70, 20);
@@ -152,11 +152,11 @@ public class SalePanel extends JPanel {
 		add(addBucketBtn);
 		add(delBucketBtn);
 		add(completeBtn);
-		stockScrollPane.setFont(new Font("맑은 고딕 Semilight", Font.PLAIN, 12));
+		stockScrollPane.setFont(new Font("나눔 고딕", Font.PLAIN, 12));
 		stockScrollPane.setBackground(new Color(255, 255, 255));
 		
 		stockScrollPane.setBounds(12, 44, 494, 444);
-		bucketScrollPane.setFont(new Font("맑은 고딕 Semilight", Font.PLAIN, 12));
+		bucketScrollPane.setFont(new Font("나눔 고딕", Font.PLAIN, 12));
 		bucketScrollPane.setBounds(704, 44, 426, 444);
 		add(stockScrollPane);
 		add(bucketScrollPane);
@@ -168,7 +168,7 @@ public class SalePanel extends JPanel {
 
 		stockTable.setRowMargin(10);
 		stockTable.setRowHeight(30);
-		stockTable.setFont(new Font("맑은 고딕 Semilight", Font.PLAIN, 13));
+		stockTable.setFont(new Font("나눔고딕", Font.PLAIN, 13));
 		bucketTable.setGridColor(new Color(135, 206, 235));
 		bucketTable.setShowGrid(false);
 		bucketTable.setShowHorizontalLines(false);
@@ -178,7 +178,7 @@ public class SalePanel extends JPanel {
 		
 		bucketTable.setRowMargin(10);
 		bucketTable.setRowHeight(30);
-		bucketTable.setFont(new Font("맑은 고딕 Semilight", Font.PLAIN, 13));
+		bucketTable.setFont(new Font("나눔고딕", Font.PLAIN, 13));
 		
 		// 테이블 로우 중 한 줄만 선택 가능.
 		stockTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -190,12 +190,12 @@ public class SalePanel extends JPanel {
 		bucketScrollPane.setViewportView(bucketTable);
 		
 		
-		stockTable.getTableHeader().setFont(new Font("맑음 고딕", Font.PLAIN, 15));
+		stockTable.getTableHeader().setFont(new Font("나늠 고딕", Font.PLAIN, 15));
 		stockTable.getTableHeader().setOpaque(false);
 		stockTable.getTableHeader().setBackground(new Color(32, 136, 203));
 		stockTable.getTableHeader().setForeground(new Color(255, 255, 255));
 		
-		bucketTable.getTableHeader().setFont(new Font("맑음 고딕", Font.PLAIN, 15));
+		bucketTable.getTableHeader().setFont(new Font("나늠 고딕", Font.PLAIN, 15));
 		bucketTable.getTableHeader().setOpaque(false);
 		bucketTable.getTableHeader().setBackground(new Color(32, 136, 203));
 		bucketTable.getTableHeader().setForeground(new Color(255, 255, 255));
