@@ -29,7 +29,6 @@ public class CommuteBtnAction implements ActionListener{
 			new Check_on_Time(mainFrame.mem_id);
 			mainFrame.commutePanel.tblModel.setNumRows(0);
 			mainFrame.commutePanel.addCommuteLine(mainFrame.timedao.commute_Time());
-			JOptionPane.showMessageDialog(null, "[SYSTEM] 출근처리되었습니다.", "확인", JOptionPane.CLOSED_OPTION);
 			
 		} else if (ob ==  mainFrame.commuteBtnPanel.off_timeBtn) {
 			new Add_Commute_Off_Time(mainFrame.mem_id);

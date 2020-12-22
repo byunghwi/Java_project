@@ -39,7 +39,7 @@ public class BottomPanel extends JPanel{
 			eventBtn.setBounds(602, 3, 140, 120);
 			commuteBtn = new RoundedButton("근태");
 			commuteBtn.setBounds(793, 3, 140, 120);
-			calcBtn = new RoundedButton("정산");
+			calcBtn = new RoundedButton("매출");
 			calcBtn.setBounds(981, 2, 140, 120);
 			
 			//productBtn.setForeground(Color.WHITE);

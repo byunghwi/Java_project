@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
+
 import db.DatabaseConnect;
 
 public class Check_on_Time {
@@ -25,7 +27,9 @@ public class Check_on_Time {
 			 
 			if(!pstmt.executeQuery().next()) {
 				new Add_Commute_On_Time(mem_id);
-			
+				JOptionPane.showMessageDialog(null, "[SYSTEM] 출근처리되었습니다.", "확인", JOptionPane.CLOSED_OPTION);
+			}else {
+				JOptionPane.showMessageDialog(null, "[SYSTEM] 이미출근처리되었습니다.", "확인", JOptionPane.CLOSED_OPTION);
 			}
 			DatabaseConnect.dbClose(null, pstmt, conn);
 			
