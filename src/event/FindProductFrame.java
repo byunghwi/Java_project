@@ -19,16 +19,16 @@ public class FindProductFrame extends JFrame{
 	public JButton regBtn;
 	
 	public FindProductFrame() {
-		setFont(new Font("나늠 고딕", Font.BOLD, 20));
+		setFont(new Font("나늠고딕", Font.BOLD, 20));
 		setTitle("상품리스트");
-		setResizable(true);
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 1170, 689);
+		setBounds(100, 100, 1189, 649);
 		setVisible(false);
 		
 		regBtn = new RoundedButton("상품코드입력");
-		regBtn.setFont(new Font("나늠 고딕", Font.PLAIN, 13));
-		regBtn.setBounds(503, 610, 110, 30);
+		regBtn.setFont(new Font("나늠고딕", Font.PLAIN, 13));
+		regBtn.setBounds(524, 570, 110, 30);
 		contentPanel = new JPanel();
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPanel);
@@ -37,7 +37,7 @@ public class FindProductFrame extends JFrame{
 		centerPanel = new JPanel();
 		centerPanel.setLayout(cardlayout);		
 		centerPanel.add(productView);
-		centerPanel.setBounds(0, 0, 1160, 600);
+		centerPanel.setBounds(12, 0, 1148, 560);
 
 		contentPanel.add(centerPanel);
 		contentPanel.add(regBtn);

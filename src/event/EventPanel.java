@@ -23,7 +23,11 @@ public class EventPanel extends JPanel{
 	public JScrollPane eventScrollPane = new JScrollPane();
 	public Vector<String> colNames = getColum();
 	public DefaultTableModel tblModel = new DefaultTableModel(colNames, 0);
-	public JTable eventTable = new JTable(tblModel);
+	public JTable eventTable = new JTable(tblModel){
+		public boolean isCellEditable(int row, int column) {
+			return false;
+		};
+	};
 	//행 정보들 담을 벡터
 	public Vector<String> rows;
 	
@@ -40,9 +44,9 @@ public class EventPanel extends JPanel{
 		
 		eventTable.setRowMargin(10);
 		eventTable.setRowHeight(30);		
-		eventTable.setFont(new Font("나눔 고딕", Font.PLAIN, 15));
+		eventTable.setFont(new Font("나눔고딕", Font.PLAIN, 15));
 		
-		eventTable.getTableHeader().setFont(new Font("나늠 고딕", Font.PLAIN, 15));
+		eventTable.getTableHeader().setFont(new Font("나늠고딕", Font.PLAIN, 15));
 		eventTable.getTableHeader().setOpaque(false);
 		eventTable.getTableHeader().setBackground(new Color(32, 136, 203));
 		eventTable.getTableHeader().setForeground(new Color(255, 255, 255));
@@ -55,7 +59,7 @@ public class EventPanel extends JPanel{
 		eventScrollPane.setViewportView(eventTable);
 		
 		JLabel lblNewLabel = new JLabel("이벤트");
-		lblNewLabel.setFont(new Font("나눔 고딕", Font.BOLD, 15));
+		lblNewLabel.setFont(new Font("나눔고딕", Font.BOLD, 15));
 		lblNewLabel.setBounds(20, 10, 174, 23);
 		add(lblNewLabel);
 		

@@ -42,24 +42,24 @@ public class BottomPanel extends JPanel{
 			calcBtn.setBounds(907, 0, 130, 98);
 			
 			//productBtn.setForeground(Color.WHITE);
-			productBtn.setFont(new Font("나눔 고딕", Font.BOLD, 17));
+			productBtn.setFont(new Font("나눔고딕", Font.BOLD, 18));
 
 			//saleBtn.setForeground(Color.WHITE);
-			saleBtn.setFont(new Font("나눔 고딕", Font.BOLD, 17));
+			saleBtn.setFont(new Font("나눔고딕", Font.BOLD, 18));
 			
 			//stockBtn.setForeground(Color.WHITE);
-			stockBtn.setFont(new Font("나눔 고딕", Font.BOLD, 17));
+			stockBtn.setFont(new Font("나눔고딕", Font.BOLD, 18));
 			
 			
 			//eventBtn.setForeground(Color.WHITE);
-			eventBtn.setFont(new Font("나눔 고딕", Font.BOLD, 17));
+			eventBtn.setFont(new Font("나눔고딕", Font.BOLD, 18));
 			
 			
 			//commuteBtn.setForeground(Color.WHITE);
-			commuteBtn.setFont(new Font("나눔 고딕", Font.BOLD, 17));
+			commuteBtn.setFont(new Font("나눔고딕", Font.BOLD, 18));
 			
 			//calcBtn.setForeground(Color.WHITE);
-			calcBtn.setFont(new Font("나눔 고딕", Font.BOLD, 17));
+			calcBtn.setFont(new Font("나눔고딕", Font.BOLD, 18));
 			setLayout(null);
 
 			add(productBtn);

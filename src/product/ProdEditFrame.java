@@ -53,10 +53,10 @@ public class ProdEditFrame extends JFrame{
 		
 		
 		titleLabel = new JLabel("[ 상품 수정 ]");
-		titleLabel.setFont(new Font("맑은 고딕", Font.BOLD, 20));
+		titleLabel.setFont(new Font("나눔고딕", Font.BOLD, 20));
 		titleLabel.setBounds(0,20, 100, 50);
 		
-		setFont(new Font("나눔 고딕", Font.BOLD, 20));
+		setFont(new Font("나눔고딕", Font.BOLD, 20));
 		setTitle("상품 수정");		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 301, 335);
@@ -111,11 +111,11 @@ public class ProdEditFrame extends JFrame{
 //		pIn.add(tf3);
 		
 		compEditBtn = new RoundedButton("수정");
-		compEditBtn.setFont(new Font("나눔 고딕", Font.PLAIN, 13));
+		compEditBtn.setFont(new Font("나눔고딕", Font.PLAIN, 13));
 		compEditBtn.setBounds(136, 232, 57, 30);
 
 		cancelEidtBtn = new RoundedButton("취소");
-		cancelEidtBtn.setFont(new Font("나눔 고딕", Font.PLAIN, 13));
+		cancelEidtBtn.setFont(new Font("나눔고딕", Font.PLAIN, 13));
 		cancelEidtBtn.setBounds(211, 232, 57, 30);
 	
 		pIn.add(compEditBtn);
@@ -123,13 +123,13 @@ public class ProdEditFrame extends JFrame{
 		
 		lblNewLabel = new JLabel("상품명");
 		lblNewLabel.setForeground(new Color(105, 105, 105));
-		lblNewLabel.setFont(new Font("나눔 고딕", Font.BOLD, 12));
+		lblNewLabel.setFont(new Font("나눔고딕", Font.BOLD, 12));
 		lblNewLabel.setBounds(136, 29, 57, 15);
 		pIn.add(lblNewLabel);
 		
 		lblNewLabel_1 = new JLabel("상품가격");
 		lblNewLabel_1.setForeground(new Color(105, 105, 105));
-		lblNewLabel_1.setFont(new Font("나눔 고딕", Font.BOLD, 12));
+		lblNewLabel_1.setFont(new Font("나눔고딕", Font.BOLD, 12));
 		lblNewLabel_1.setBounds(135, 122, 57, 15);
 		pIn.add(lblNewLabel_1);
 		
@@ -144,7 +144,7 @@ public class ProdEditFrame extends JFrame{
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_2.setBounds(0, 20, 109, 30);
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
-		lblNewLabel_2.setFont(new Font("나눔 고딕", Font.BOLD, 21));
+		lblNewLabel_2.setFont(new Font("나눔고딕", Font.BOLD, 21));
 		panel.add(lblNewLabel_2);
 
 	}

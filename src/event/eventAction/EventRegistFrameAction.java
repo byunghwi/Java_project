@@ -58,7 +58,6 @@ public class EventRegistFrameAction implements ActionListener {
 					JOptionPane.showMessageDialog(null, "[SYSTEM] 이벤트 등록이 완료되었습니다.", "확인", JOptionPane.CLOSED_OPTION);
 
 					// 창 안보이게
-					//mainFrame.eventRegistFrame.setVisible(false);
 					mainFrame.eventRegistFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				} else {
 					// 확인 팝업창

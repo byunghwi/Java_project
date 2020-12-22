@@ -181,7 +181,7 @@ public class MainFrame extends JFrame{
 		btnlayout = new CardLayout();
 
 		//setUndecorated(true); // 프레임 타이틀 바 안보이게 - 적용하면 프레임 이동에 대한 소스도 구현해주어어야 함.
-		setFont(new Font("나눔 고딕", Font.BOLD, 20));
+		setFont(new Font("나눔고딕", Font.BOLD, 20));
 		setTitle("편의점프로그램");
 		setResizable(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

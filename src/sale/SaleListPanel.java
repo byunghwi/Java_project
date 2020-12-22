@@ -83,7 +83,7 @@ public class SaleListPanel extends JPanel{
 			}
 		});
 		
-		saleListTable.getTableHeader().setFont(new Font("나눔 고딕", Font.PLAIN, 15));
+		saleListTable.getTableHeader().setFont(new Font("나눔고딕", Font.PLAIN, 15));
 		saleListTable.getTableHeader().setOpaque(false);
 		saleListTable.getTableHeader().setBackground(new Color(32, 136, 203));
 		saleListTable.getTableHeader().setForeground(new Color(255, 255, 255));

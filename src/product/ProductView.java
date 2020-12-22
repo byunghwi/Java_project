@@ -55,7 +55,7 @@ public class ProductView extends JPanel {
 		searchTf = new HintTextField("검색어를 입력하세요.");
 		searchTf.setBounds(562, 10, 200, 28);
 		searchBtn = new RoundedButton("검색");
-		searchBtn.setFont(new Font("나눔 고딕", Font.PLAIN, 13));
+		searchBtn.setFont(new Font("나눔고딕", Font.PLAIN, 13));
 		searchBtn.setBounds(764, 10, 70, 28);
 		
 		add(jcombo);
@@ -67,7 +67,7 @@ public class ProductView extends JPanel {
 		productTable.setShowHorizontalLines(false);
 		productTable.setRowMargin(10);
 		productTable.setRowHeight(30);		
-		productTable.setFont(new Font("나눔 고딕", Font.PLAIN, 15));
+		productTable.setFont(new Font("나눔고딕", Font.PLAIN, 15));
 		productTable.getTableHeader().setFont(new Font("나눔 고딕", Font.PLAIN, 15));
 		productTable.getTableHeader().setOpaque(false);
 		productTable.getTableHeader().setBackground(new Color(32, 136, 203));
@@ -82,7 +82,7 @@ public class ProductView extends JPanel {
 		productsScrollPane.setViewportView(productTable);
 		
 		JLabel lblNewLabel = new JLabel("상품 목록");
-		lblNewLabel.setFont(new Font("나눔 고딕", Font.BOLD, 15));
+		lblNewLabel.setFont(new Font("나눔고딕", Font.BOLD, 15));
 		lblNewLabel.setBounds(20, 10, 174, 23);
 		add(lblNewLabel);
 		

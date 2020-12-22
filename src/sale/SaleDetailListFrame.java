@@ -50,7 +50,7 @@ public class SaleDetailListFrame extends JFrame {
 	public SaleDetailListFrame(String sales_no) {
 		this.sales_no = sales_no;
 		
-		setFont(new Font("나눔 고딕", Font.BOLD, 20));
+		setFont(new Font("나눔고딕", Font.BOLD, 20));
 		setTitle("판매 상세 리스트");
 		setResizable(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -69,9 +69,9 @@ public class SaleDetailListFrame extends JFrame {
 		
 		saleDetailListTable.setRowMargin(10);
 		saleDetailListTable.setRowHeight(30);		
-		saleDetailListTable.setFont(new Font("나눔 고딕", Font.PLAIN, 15));
+		saleDetailListTable.setFont(new Font("나눔고딕", Font.PLAIN, 15));
 		
-		saleDetailListTable.getTableHeader().setFont(new Font("나눔 고딕", Font.PLAIN, 15));
+		saleDetailListTable.getTableHeader().setFont(new Font("나눔고딕", Font.PLAIN, 15));
 		saleDetailListTable.getTableHeader().setOpaque(false);
 		saleDetailListTable.getTableHeader().setBackground(new Color(32, 136, 203));
 		saleDetailListTable.getTableHeader().setForeground(new Color(255, 255, 255));

@@ -29,12 +29,12 @@ public class TopPanel extends JPanel {
 		titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		titleLabel.setForeground(Color.WHITE);
 		titleLabel.setBackground(Color.WHITE);
-		titleLabel.setFont(new Font("나눔 고딕", Font.BOLD, 18));
+		titleLabel.setFont(new Font("나눔고딕", Font.BOLD, 18));
 		titleLabel.setBounds(84, 0, 162, 50);
 		titleLabel.setText("편의점 프로그램");
 
 		clockLabel = new JLabel();
-		clockLabel.setFont(new Font("나눔 고딕", Font.BOLD, 14));
+		clockLabel.setFont(new Font("나눔고딕", Font.BOLD, 14));
 		clockLabel.setBounds(1050, 15, 300, 20);
 		clockLabel.setForeground(Color.WHITE);
 		clockLabel.setBackground(Color.WHITE);

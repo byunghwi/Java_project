@@ -152,11 +152,11 @@ public class SalePanel extends JPanel {
 		add(addBucketBtn);
 		add(delBucketBtn);
 		add(completeBtn);
-		stockScrollPane.setFont(new Font("나눔 고딕", Font.PLAIN, 12));
+		stockScrollPane.setFont(new Font("나눔고딕", Font.PLAIN, 12));
 		stockScrollPane.setBackground(new Color(255, 255, 255));
 		
 		stockScrollPane.setBounds(12, 44, 494, 444);
-		bucketScrollPane.setFont(new Font("나눔 고딕", Font.PLAIN, 12));
+		bucketScrollPane.setFont(new Font("나눔고딕", Font.PLAIN, 12));
 		bucketScrollPane.setBounds(704, 44, 426, 444);
 		add(stockScrollPane);
 		add(bucketScrollPane);
@@ -190,12 +190,12 @@ public class SalePanel extends JPanel {
 		bucketScrollPane.setViewportView(bucketTable);
 		
 		
-		stockTable.getTableHeader().setFont(new Font("나늠 고딕", Font.PLAIN, 15));
+		stockTable.getTableHeader().setFont(new Font("나늠고딕", Font.PLAIN, 15));
 		stockTable.getTableHeader().setOpaque(false);
 		stockTable.getTableHeader().setBackground(new Color(32, 136, 203));
 		stockTable.getTableHeader().setForeground(new Color(255, 255, 255));
 		
-		bucketTable.getTableHeader().setFont(new Font("나늠 고딕", Font.PLAIN, 15));
+		bucketTable.getTableHeader().setFont(new Font("나늠고딕", Font.PLAIN, 15));
 		bucketTable.getTableHeader().setOpaque(false);
 		bucketTable.getTableHeader().setBackground(new Color(32, 136, 203));
 		bucketTable.getTableHeader().setForeground(new Color(255, 255, 255));

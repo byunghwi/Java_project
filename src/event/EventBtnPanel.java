@@ -24,12 +24,12 @@ public class EventBtnPanel extends JPanel{
 		eventDelBtn = new RoundedButton("이벤트삭제");
 
 		eventRegBtn.setForeground(Color.WHITE);
-		eventRegBtn.setFont(new Font("맑은 고딕", Font.BOLD, 20));
+		eventRegBtn.setFont(new Font("나눔고딕", Font.BOLD, 20));
 		eventRegBtn.setBackground(new Color(204, 206, 206));
 		eventRegBtn.setBounds(0, 10, 140, 120);
 		
 		eventDelBtn.setForeground(Color.WHITE);
-		eventDelBtn.setFont(new Font("맑은 고딕", Font.BOLD, 20));
+		eventDelBtn.setFont(new Font("나눔고딕", Font.BOLD, 20));
 		eventDelBtn.setBackground(new Color(204, 206, 206));
 		eventDelBtn.setBounds(0, 150, 140, 120);
 		
