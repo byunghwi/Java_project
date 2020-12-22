@@ -71,10 +71,8 @@ public class OrderConfirmAction implements ActionListener {
 		
 		// 승인목록 승인버튼
 		else if (ob == mainFrame.orderConfirmFrame.confirm_btn) {
-			if(mainFrame.orderConfirmFrame.fields[3].getText().equals("")) {
-				JOptionPane.showMessageDialog(null, "정확히 입력해 주세요", "확인", JOptionPane.CLOSED_OPTION);
-			} else if(mainFrame.orderConfirmFrame.fields[3].getText().equals("") || 
-					!Pattern.matches("^[0-9]*$", mainFrame.orderConfirmFrame.fields[3].getText())) {
+			if(mainFrame.orderConfirmFrame.fields[4].getText().equals("") || 
+					!Pattern.matches("^[0-9]*$", mainFrame.orderConfirmFrame.fields[4].getText())) {
 				JOptionPane.showMessageDialog(null, "정확히 입력해 주세요", "확인", JOptionPane.CLOSED_OPTION);
 			}  else {
 				
@@ -87,7 +85,7 @@ public class OrderConfirmAction implements ActionListener {
 					mainFrame.stockPanel.tblModel.setNumRows(0);
 					mainFrame.stockPanel.addStockLine(mainFrame.stockPanel.sdao.stockAll());
 					
-				}else {
+				} else {
 					JOptionPane.showMessageDialog(null, "\t[SYSTEM] 오류가 발생하였습니다.", "확인", JOptionPane.CLOSED_OPTION);
 				}
 				

@@ -2,6 +2,7 @@ package order;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.regex.Pattern;
 
 import javax.swing.JOptionPane;
 
@@ -20,8 +21,9 @@ public class OrderAction implements ActionListener {
 		// 승인목록창에서 상품조회버튼 클릭시
 		// 주문 주문버튼
 		if (ob == mainFrame.orderframe.order_btn) {
-			if (mainFrame.orderframe.fields[1].getText().equals("")) {
-				JOptionPane.showMessageDialog(null, "수량을 입력해주세요", "확인", JOptionPane.CLOSED_OPTION);
+			if (mainFrame.orderframe.fields[1].getText().equals("") || 
+					!Pattern.matches("^[0-9]*$", mainFrame.orderframe.fields[1].getText())) {
+				JOptionPane.showMessageDialog(null, "정확히 입력해 주세요", "확인", JOptionPane.CLOSED_OPTION);
 			} else {
 				mainFrame.orderDao.moveconfirm(mainFrame.orderframe.fields);
 				JOptionPane.showMessageDialog(null, "주문 완료", "확인", JOptionPane.CLOSED_OPTION);
