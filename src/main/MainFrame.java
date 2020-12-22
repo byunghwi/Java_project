@@ -172,10 +172,14 @@ public class MainFrame extends JFrame{
 	public MainFrame() {
 		
 		// 매뉴 바 추가
+		i1.setFont(new Font("나눔고딕", Font.PLAIN, 12));
+		i2.setFont(new Font("나눔고딕", Font.PLAIN, 12));
+		menu.setFont(new Font("나눔고딕", Font.BOLD, 12));
 		bar.add(menu);
 		menu.add(i1);
 		menu.add(i2);
 		this.setJMenuBar(bar);
+		
 		
 		cardlayout = new CardLayout();
 		btnlayout = new CardLayout();
