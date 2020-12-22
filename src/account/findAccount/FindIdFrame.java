@@ -34,7 +34,7 @@ public class FindIdFrame extends JFrame {
 		pIn.setBackground(new Color(68, 68, 68));
 		pIn.setBounds(0, 0, 80, 550);
 		add(pIn);
-		pIn.add(findIDText).setBounds(17, 5, 150, 40);
+		pIn.add(findIDText).setBounds(17, 0, 47, 40);
 		
 		
 		pIn.setLayout(null);
