@@ -34,6 +34,7 @@ public class FindSelectFrame extends JFrame{
 		
 		setTitle("회원 정보 찾기");
 		setLayout(null);
+		setResizable(false);
 		this.getContentPane().setBackground(Color.WHITE);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setLocation(600,400);

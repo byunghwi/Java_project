@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
+
 import db.DatabaseConnect;
 
 // 실제 DB에 수정된 회원 정보를 업데이트 하는 클래스
@@ -12,7 +14,16 @@ public class Edit_Account {
 	String [] edit_data = new String[8];
 	public boolean edit_suc = false;
 	
+	String errorCode;
+	String[] errorNames = new String[7];
+	String[] messages = new String[7];
+	
 	public Edit_Account(String[] edit_data) {
+		
+		String[] errorNames = {"ID","PW","_NM","res","phone","SEX","MAIL"};
+		String[] messages = {
+				"아이디를 확인해주세요!!","패스워드를 확인해주세요!","이름을 확인해주세요!","주민등록번호를 확인해주세요!",
+				"전화번호를 확인해주세요!","성별을 확인해주세요!","메일 주소를 확인해주세요!"};
 		
 		this.edit_data = edit_data;
 		
@@ -47,7 +58,17 @@ public class Edit_Account {
 			DatabaseConnect.dbClose(null, pstmt, conn);
 			
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			errorCode = e.getMessage().toLowerCase();
+			System.out.println(errorCode);
+			
+			int cnt = 0;
+			for (String errorname : errorNames ) {
+				if (errorCode.contains(errorname.toLowerCase())) {
+					JOptionPane.showMessageDialog(null, messages[cnt]);
+				}
+				cnt++;
+			}
+			cnt = 0;
 			try {
 				DatabaseConnect.dbClose(null, pstmt, conn);
 			} catch (SQLException e1) {

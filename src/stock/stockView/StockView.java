@@ -42,7 +42,7 @@ public class StockView extends JPanel {
 	public StockView(){
 		setLayout(null);
 	
-		stocksScrollPane.setBounds(12, 40, 1133, 500);
+		stocksScrollPane.setBounds(12, 40, 1115, 500);
 		add(stocksScrollPane);
 		
 		stockTable.setShowGrid(false);
@@ -60,6 +60,8 @@ public class StockView extends JPanel {
 		add(newLabel);
 		
 		stockTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		stockTable.getTableHeader().setFont(new Font("나눔 고딕", Font.PLAIN, 15));
+		stockTable.getTableHeader().setOpaque(false);
 		stockTable.getTableHeader().setBackground(new Color(32, 136, 203));
 		stockTable.getTableHeader().setForeground(new Color(255, 255, 255));
 		
