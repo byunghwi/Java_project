@@ -129,28 +129,27 @@ public class CalcChart{
         plot.setBackgroundPaint(Color.DARK_GRAY);								   // 그래프 배경색상 
         
         
- 
 
+ 
         // 렌더링 순서 정의 : CalcChart 등록 순서대로 렌더링 ( 즉, 먼저 등록한게 아래로 깔림 )
 
         plot.setDatasetRenderingOrder(DatasetRenderingOrder.FORWARD);
 
         // X축 세팅
-
+        
         plot.setDomainAxis(new CategoryAxis());              // X축 종류 설정
         plot.getDomainAxis().setTickLabelFont(axisF); // X축 눈금라벨 폰트 조정
         plot.getDomainAxis().setTickLabelPaint(Color.WHITE);; // X축 눈금라벨 폰트 색상 조정
         plot.getDomainAxis().setCategoryLabelPositions(CategoryLabelPositions.STANDARD);// 카테고리 라벨 위치 조정
-        
+         
 
-
-
+       
         // Y축 세팅
 
         plot.setRangeAxis(new NumberAxis());                 // Y축 종류 설정
         plot.getRangeAxis().setTickLabelFont(axisF);  // Y축 눈금라벨 폰트 조정
         plot.getRangeAxis().setTickLabelPaint(Color.WHITE); // Y축 눈금라벨 폰트 색상 조정
-
+        
         // 세팅된 plot을 바탕으로 chart 생성
 
         final JFreeChart chart = new JFreeChart(plot);
