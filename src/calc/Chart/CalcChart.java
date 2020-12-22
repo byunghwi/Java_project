@@ -73,9 +73,9 @@ public class CalcChart{
 
                      );
 
-        Font f = new Font("나눔 고딕", Font.PLAIN, 17);//값 표시 텍스트 
+        Font f = new Font("나눔고딕", Font.PLAIN, 17);//값 표시 텍스트 
 
-        Font axisF = new Font("나눔 고딕", Font.PLAIN, 20);//X,Y축 폰트
+        Font axisF = new Font("나눔고딕", Font.PLAIN, 20);//X,Y축 폰트
         
         
 
