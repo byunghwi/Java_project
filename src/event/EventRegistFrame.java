@@ -47,9 +47,8 @@ public class EventRegistFrame extends JFrame{
 	
 	public EventRegistFrame(){
 		
-		//combo = new JComboBox<String>(EventType.getValArr()); 
-
-			
+		combo = new JComboBox<String>(EventType.getValArr()); 
+		
 		setFont(new Font("나눔 고딕", Font.BOLD, 20));
 		setTitle("[ 이벤트등록 ]");		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -72,34 +71,34 @@ public class EventRegistFrame extends JFrame{
 	
 		//상품코드
 		tf1 = new HintTextField(textHints[0]);
-		tf1.setBounds(202, 88, 134 , 30);
+		tf1.setBounds(199, 55, 134 , 30);
 		
 		searchBtn = new RoundedButton("찾기");
 		searchBtn.setFont(new Font("나눔 고딕", Font.PLAIN, 13));
-		searchBtn.setBounds(345, 88, 60 , 30);
+		searchBtn.setBounds(345, 55, 60 , 30);
 		
 		//이벤트타입
-		//combo.setBounds(110, 100, 170 , 30);
+		combo.setBounds(202, 160, 203 , 30);
 			
 		//시작일
-		dateChooser1.setBounds(202, 193, 203 , 30);
+		dateChooser1.setBounds(202, 262, 203 , 30);
 		
 		//종료일
-		dateChooser2.setBounds(202, 305, 203 , 30);
+		dateChooser2.setBounds(202, 360, 203 , 30);
 		
 		ein.add(tf1);
-		//ein.add(combo);
+		ein.add(combo);
 		ein.add(dateChooser1);
 		ein.add(dateChooser2);
 		ein.add(searchBtn);
 
 		regBtn = new RoundedButton("등록");
-		regBtn.setFont(new Font("나눔 고딕", Font.PLAIN, 13));
-		regBtn.setBounds(221, 404, 70, 30);
+		regBtn.setFont(new Font("나눔고딕", Font.PLAIN, 13));
+		regBtn.setBounds(218, 417, 70, 30);
 
 		cancelBtn = new RoundedButton("취소");
-		cancelBtn.setFont(new Font("나눔 고딕", Font.PLAIN, 13));
-		cancelBtn.setBounds(316, 404, 70, 30);
+		cancelBtn.setFont(new Font("나눔고딕", Font.PLAIN, 13));
+		cancelBtn.setBounds(311, 417, 70, 30);
 		
 		ein.add(regBtn, BorderLayout.SOUTH);
 		ein.add(cancelBtn, BorderLayout.SOUTH);
@@ -119,17 +118,22 @@ public class EventRegistFrame extends JFrame{
 		
 		JLabel lblNewLabel = new JLabel("상품코드");
 		lblNewLabel.setFont(new Font("나눔고딕", Font.BOLD, 12));
-		lblNewLabel.setBounds(202, 54, 70, 24);
+		lblNewLabel.setBounds(199, 20, 70, 24);
 		ein.add(lblNewLabel);
+		
+		JLabel lblNewLabel_0 = new JLabel("이벤트 타입");
+		lblNewLabel_0.setFont(new Font("나눔고딕", Font.BOLD, 12));
+		lblNewLabel_0.setBounds(199, 120, 70, 24);
+		ein.add(lblNewLabel_0);
 		
 		JLabel lblNewLabel_1 = new JLabel("이벤트 시작일");
 		lblNewLabel_1.setFont(new Font("나눔고딕", Font.BOLD, 12));
-		lblNewLabel_1.setBounds(202, 159, 106, 24);
+		lblNewLabel_1.setBounds(202, 228, 106, 24);
 		ein.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("이벤트 종료일");
 		lblNewLabel_2.setFont(new Font("나눔고딕", Font.BOLD, 12));
-		lblNewLabel_2.setBounds(202, 265, 87, 30);
+		lblNewLabel_2.setBounds(202, 326, 87, 24);
 		ein.add(lblNewLabel_2);
 
 	}

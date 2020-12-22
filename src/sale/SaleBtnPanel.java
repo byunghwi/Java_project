@@ -23,12 +23,12 @@ public class SaleBtnPanel extends JPanel{
 		saleListBtn = new RoundedButton("판매리스트");
 
 		saleBtn.setForeground(Color.WHITE);
-		saleBtn.setFont(new Font("나눔 고딕", Font.BOLD, 20));
+		saleBtn.setFont(new Font("나눔고딕", Font.BOLD, 20));
 		saleBtn.setBackground(new Color(204, 206, 206));
 		saleBtn.setBounds(0, 10, 140, 120);
 		
 		saleListBtn.setForeground(Color.WHITE);
-		saleListBtn.setFont(new Font("나눔 고딕", Font.BOLD, 20));
+		saleListBtn.setFont(new Font("나눔고딕", Font.BOLD, 20));
 		saleListBtn.setBackground(new Color(204, 206, 206));
 		saleListBtn.setBounds(0, 150, 140, 120);
 		
