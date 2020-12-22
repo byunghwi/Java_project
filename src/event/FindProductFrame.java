@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import common.RoundedButton;
 import product.ProductView;
 
 public class FindProductFrame extends JFrame{
@@ -18,15 +19,16 @@ public class FindProductFrame extends JFrame{
 	public JButton regBtn;
 	
 	public FindProductFrame() {
-		setFont(new Font("맑은 고딕", Font.BOLD, 20));
+		setFont(new Font("나늠 고딕", Font.BOLD, 20));
 		setTitle("상품리스트");
 		setResizable(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 1170, 680);
+		setBounds(100, 100, 1170, 689);
 		setVisible(false);
 		
-		regBtn = new JButton("상품코드입력");
-		regBtn.setBounds(500, 600, 110, 30);
+		regBtn = new RoundedButton("상품코드입력");
+		regBtn.setFont(new Font("나늠 고딕", Font.PLAIN, 13));
+		regBtn.setBounds(503, 610, 110, 30);
 		contentPanel = new JPanel();
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPanel);

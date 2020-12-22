@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 
 import common.RoundedButton;
 import java.awt.SystemColor;
+import javax.swing.UIManager;
 
 
 
@@ -26,7 +27,7 @@ public class BottomPanel extends JPanel{
 	public JButton calcBtn;
 	
 	public BottomPanel() {
-			setBackground(SystemColor.control);
+			setBackground(UIManager.getColor("Button.background"));
 			productBtn = new RoundedButton("상품");
 			productBtn.setBounds(58, 0, 130, 98);
 			saleBtn = new RoundedButton("판매");
@@ -41,24 +42,24 @@ public class BottomPanel extends JPanel{
 			calcBtn.setBounds(907, 0, 130, 98);
 			
 			//productBtn.setForeground(Color.WHITE);
-			productBtn.setFont(new Font("맑은 고딕", Font.BOLD, 17));
+			productBtn.setFont(new Font("나눔 고딕", Font.BOLD, 17));
 
 			//saleBtn.setForeground(Color.WHITE);
-			saleBtn.setFont(new Font("맑은 고딕", Font.BOLD, 17));
+			saleBtn.setFont(new Font("나눔 고딕", Font.BOLD, 17));
 			
 			//stockBtn.setForeground(Color.WHITE);
-			stockBtn.setFont(new Font("맑은 고딕", Font.BOLD, 17));
+			stockBtn.setFont(new Font("나눔 고딕", Font.BOLD, 17));
 			
 			
 			//eventBtn.setForeground(Color.WHITE);
-			eventBtn.setFont(new Font("맑은 고딕", Font.BOLD, 17));
+			eventBtn.setFont(new Font("나눔 고딕", Font.BOLD, 17));
 			
 			
 			//commuteBtn.setForeground(Color.WHITE);
-			commuteBtn.setFont(new Font("맑은 고딕", Font.BOLD, 17));
+			commuteBtn.setFont(new Font("나눔 고딕", Font.BOLD, 17));
 			
 			//calcBtn.setForeground(Color.WHITE);
-			calcBtn.setFont(new Font("맑은 고딕", Font.BOLD, 17));
+			calcBtn.setFont(new Font("나눔 고딕", Font.BOLD, 17));
 			setLayout(null);
 
 			add(productBtn);

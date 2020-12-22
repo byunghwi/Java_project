@@ -46,10 +46,10 @@ public class ProdRegistFrame extends JFrame {
 	public ProdRegistFrame() {
 
 		titleLabel = new JLabel("[ 상품 등록 ]");
-		titleLabel.setFont(new Font("맑은 고딕", Font.BOLD, 20));
+		titleLabel.setFont(new Font("나늠 고딕", Font.BOLD, 20));
 		titleLabel.setBounds(0, 20, 100, 50);
 
-		setFont(new Font("맑은 고딕", Font.BOLD, 20));
+		setFont(new Font("나눔 고딕", Font.BOLD, 20));
 		setTitle("상품등록");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 311, 409);
@@ -103,7 +103,7 @@ public class ProdRegistFrame extends JFrame {
 		JLabel lblNewLabel = new JLabel("상품코드");
 		lblNewLabel.setBackground(new Color(255, 255, 255));
 		lblNewLabel.setForeground(Color.DARK_GRAY);
-		lblNewLabel.setFont(new Font("맑은 고딕 Semilight", Font.BOLD, 12));
+		lblNewLabel.setFont(new Font("나눔 고딕", Font.BOLD, 12));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNewLabel.setBounds(132, 27, 57, 24);
 		pIn.add(lblNewLabel);
@@ -111,14 +111,14 @@ public class ProdRegistFrame extends JFrame {
 		JLabel lblNewLabel_1 = new JLabel("상품명");
 		lblNewLabel_1.setBackground(new Color(128, 128, 128));
 		lblNewLabel_1.setForeground(Color.DARK_GRAY);
-		lblNewLabel_1.setFont(new Font("맑은 고딕 Semilight", Font.BOLD, 12));
+		lblNewLabel_1.setFont(new Font("나눔 고딕", Font.BOLD, 12));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNewLabel_1.setBounds(132, 117, 57, 24);
 		pIn.add(lblNewLabel_1);
 
 		JLabel lblNewLabel_1_1 = new JLabel("가격");
 		lblNewLabel_1_1.setForeground(Color.DARK_GRAY);
-		lblNewLabel_1_1.setFont(new Font("맑은 고딕 Semilight", Font.BOLD, 12));
+		lblNewLabel_1_1.setFont(new Font("나눔 고딕", Font.BOLD, 12));
 		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNewLabel_1_1.setBounds(132, 211, 57, 24);
 		pIn.add(lblNewLabel_1_1);
@@ -133,17 +133,17 @@ public class ProdRegistFrame extends JFrame {
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_2.setBounds(0, 10, 103, 43);
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
-		lblNewLabel_2.setFont(new Font("맑은 고딕 Semilight", Font.BOLD, 21));
+		lblNewLabel_2.setFont(new Font("나눔 고딕", Font.BOLD, 21));
 		panel.add(lblNewLabel_2);
 
 		regBtn = new RoundedButton("등록");
-		regBtn.setFont(new Font("맑은 고딕 Semilight", Font.BOLD, 13));
+		regBtn.setFont(new Font("나눔 고딕", Font.BOLD, 13));
 		regBtn.setBounds(132, 318, 57, 30);
 		pIn.add(regBtn);
 		
 		cancelBtn = new RoundedButton("취소");
 		cancelBtn.setBounds(211, 318, 57, 30);
-		cancelBtn.setFont(new Font("맑은 고딕 Semilight", Font.BOLD, 13));
+		cancelBtn.setFont(new Font("나눔 고딕", Font.BOLD, 13));
 		pIn.add(cancelBtn, BorderLayout.SOUTH);
 		
 

@@ -4,6 +4,9 @@ import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import common.RoundedButton;
+import javax.swing.UIManager;
+
 
 public class SaleBtnPanel extends JPanel{
 	/**
@@ -14,20 +17,20 @@ public class SaleBtnPanel extends JPanel{
 	public JButton saleListBtn;
 
 	public SaleBtnPanel() {
-		setBackground(Color.WHITE);
+		setBackground(UIManager.getColor("Button.background"));
 		setLayout(null);
-		saleBtn = new JButton("판매");
-		saleListBtn = new JButton("판매리스트");
+		saleBtn = new RoundedButton("판매");
+		saleListBtn = new RoundedButton("판매리스트");
 
 		saleBtn.setForeground(Color.WHITE);
-		saleBtn.setFont(new Font("맑은 고딕", Font.BOLD, 20));
+		saleBtn.setFont(new Font("나눔 고딕", Font.BOLD, 20));
 		saleBtn.setBackground(new Color(204, 206, 206));
-		saleBtn.setBounds(0, 0, 140, 120);
+		saleBtn.setBounds(0, 10, 140, 120);
 		
 		saleListBtn.setForeground(Color.WHITE);
-		saleListBtn.setFont(new Font("맑은 고딕", Font.BOLD, 20));
+		saleListBtn.setFont(new Font("나눔 고딕", Font.BOLD, 20));
 		saleListBtn.setBackground(new Color(204, 206, 206));
-		saleListBtn.setBounds(0, 120, 140, 120);
+		saleListBtn.setBounds(0, 150, 140, 120);
 		
 		add(saleBtn);
 		add(saleListBtn);

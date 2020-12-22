@@ -15,8 +15,10 @@ import javax.swing.table.DefaultTableModel;
 
 import com.toedter.calendar.JDateChooser;
 
+import common.RoundedButton;
 import event.Event;
 import event.EventDao;
+import java.awt.Color;
 
 public class SaleListPanel extends JPanel{
 	/**
@@ -49,16 +51,22 @@ public class SaleListPanel extends JPanel{
 		add(dateChooser1);
 		add(dateChooser2);
 		
-		searchBtn = new JButton("검색");
+		searchBtn = new RoundedButton("검색");
+		searchBtn.setFont(new Font("나눔고딕", Font.PLAIN, 12));
 		searchBtn.setBounds(630, 10, 70, 27);
 		add(searchBtn);
 		
 		saleListScrollPane.setBounds(12, 40, 1133, 500);
 		add(saleListScrollPane);
+		saleListTable.setGridColor(new Color(135, 206, 235));
+		saleListTable.setSelectionBackground(Color.PINK);
+		saleListTable.setShowVerticalLines(false);
+		saleListTable.setShowHorizontalLines(false);
+		saleListTable.setShowGrid(false);
 		
 		saleListTable.setRowMargin(10);
 		saleListTable.setRowHeight(30);		
-		saleListTable.setFont(new Font("맑은 고딕", Font.PLAIN, 15));
+		saleListTable.setFont(new Font("나눔고딕", Font.PLAIN, 15));
 		
 		//테이블 로우 중 한 줄만 선택 가능.
 		saleListTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -74,6 +82,11 @@ public class SaleListPanel extends JPanel{
 				}
 			}
 		});
+		
+		saleListTable.getTableHeader().setFont(new Font("나눔 고딕", Font.PLAIN, 15));
+		saleListTable.getTableHeader().setOpaque(false);
+		saleListTable.getTableHeader().setBackground(new Color(32, 136, 203));
+		saleListTable.getTableHeader().setForeground(new Color(255, 255, 255));
 
 		addSaleLine(saledao.salesList(null, null)); 
 		
