@@ -33,7 +33,7 @@ public class check_Calc {
 				new Calc_Add_Date(mem_id);
 				JOptionPane.showMessageDialog(null, "[SYSTEM] 정산처리되었습니다.", "확인", JOptionPane.CLOSED_OPTION);
 			}else {
-				JOptionPane.showMessageDialog(null, "[SYSTEM] 이미정산처리되었습니다.", "확인", JOptionPane.CLOSED_OPTION);
+				JOptionPane.showMessageDialog(null, "[SYSTEM] 이미 정산처리되었습니다.", "확인", JOptionPane.CLOSED_OPTION);
 			}
 			DatabaseConnect.dbClose(null, pstmt, conn);
 			
