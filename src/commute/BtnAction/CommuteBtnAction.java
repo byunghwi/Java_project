@@ -37,7 +37,7 @@ public class CommuteBtnAction implements ActionListener{
 			JOptionPane.showMessageDialog(null, "[SYSTEM] 퇴근처리되었습니다.", "확인", JOptionPane.CLOSED_OPTION);
 			
 		} else {
-			List_Input Li  = new List_Input();
+			List_Input Li  = new List_Input(mainFrame);
 			Li.cv = this.mainFrame.commutePanel;
 			
 		
