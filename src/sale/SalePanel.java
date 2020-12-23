@@ -113,20 +113,10 @@ public class SalePanel extends JPanel {
 			}
 		});
 		completeBtn = new JButton(icon3);
-//		//addBucketBtn.setFont(new Font("굴림체", Font.PLAIN, 12));
-//		
-//		
-//		//delBucketBtn.setFont(new Font("맑은 고딕 Semilight", Font.BOLD, 12));
-//		completeBtn = new JButton("결제");
-//		completeBtn.setIcon(new ImageIcon(SalePanel.class.getResource("/org/jfree/chart/gorilla.jpg")));
-//		completeBtn.setSelectedIcon(null);
-//		completeBtn.setFont(new Font("맑은 고딕", Font.PLAIN, 12));
 		completeBtn.setBorderPainted(false);
 		completeBtn.setFocusPainted(false);
 		completeBtn.setContentAreaFilled(false);
-		
-		
-		
+
 		addBucketBtn.setBorderPainted(false);
 		addBucketBtn.setFocusPainted(false);
 		addBucketBtn.setContentAreaFilled(false);
@@ -137,10 +127,10 @@ public class SalePanel extends JPanel {
 		
 		stockTblLb.setBounds(22, 2, 70, 50);
 		bucketTblLb.setBounds(710, 0, 70, 50);
-		prodnameLb.setBounds(520, 180, 70, 20);
-		prodQtLb.setBounds(622, 180, 70, 20);
-		prodnameTf.setBounds(520, 210, 90, 30);
-		prodQt.setBounds(622, 210, 70, 30);
+		prodnameLb.setBounds(520, 180, 107, 20);
+		prodQtLb.setBounds(632, 180, 60, 20);
+		prodnameTf.setBounds(520, 210, 107, 30);
+		prodQt.setBounds(632, 210, 60, 30);
 		addBucketBtn.setBounds(582, 250, 49, 50);
 		delBucketBtn.setBounds(582, 299, 49, 50);
 		completeBtn.setBounds(562, 408, 90, 80);
@@ -177,7 +167,6 @@ public class SalePanel extends JPanel {
 		bucketTable.setShowVerticalLines(false);
 		bucketTable.setSelectionBackground(new Color(255, 192, 203));
 
-		
 		bucketTable.setRowMargin(10);
 		bucketTable.setRowHeight(30);
 		bucketTable.setFont(new Font("나눔고딕", Font.PLAIN, 13));
