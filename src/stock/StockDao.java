@@ -37,7 +37,7 @@ public class StockDao {
 
 		ArrayList<Stock> stocks = new ArrayList<Stock>();
 
-		query1 = "SELECT product_id AS 상품코드 ,product_name AS 상품명,sum(quantity) AS 수량, price AS 가격 FROM stock WHERE save_status = 'Y' GROUP BY product_id, product_name, price";
+		query1 = "SELECT product_id AS 상품코드 ,product_name AS 상품명,sum(quantity) AS 수량, price AS 가격 FROM stock WHERE save_status = 'Y' GROUP BY product_id, product_name, price ORDER BY product_id";
 		try {
 			pstmt = conn.prepareStatement(query1);
 			rs = pstmt.executeQuery();
@@ -69,7 +69,7 @@ public class StockDao {
 		
 		ArrayList<Stock_info> stock_infos = new ArrayList<Stock_info>();
 		
-		query2 = "SELECT product_id AS 상품코드,product_name AS 상품명, quantity AS 수량,manu_date AS 제조일, dis_date AS 폐기일 FROM stock where product_id = ? AND save_status = 'Y'";
+		query2 = "SELECT product_id AS 상품코드,product_name AS 상품명, quantity AS 수량,manu_date AS 제조일, dis_date AS 폐기일 FROM stock where product_id = ? AND save_status = 'Y' ORDER BY dis_date";
 		try {
 			pstmt = conn.prepareStatement(query2);
 			pstmt.setString(1, product_id);
@@ -142,8 +142,8 @@ public class StockDao {
 		ArrayList<Disposal> disposals = new ArrayList<Disposal>();
 		
 		conn = DatabaseConnect.getConnection();
-		query5 = "select * from dis_product WHERE TO_DATE(save_time) = TO_DATE(sysdate,'YY-MM-DD')";
-		query5_sub = "select * from dis_product WHERE TO_DATE(save_time) = TO_DATE(? ,'YYYY-MM-DD')";
+		query5 = "select * from dis_product WHERE TO_DATE(save_time) = TO_DATE(sysdate,'YY-MM-DD') ORDER BY Save_time desc";
+		query5_sub = "select * from dis_product WHERE TO_DATE(save_time) = TO_DATE(? ,'YYYY-MM-DD') ORDER BY Save_time desc";
 		try {
 			
 			if (save_time.equals("default"))
