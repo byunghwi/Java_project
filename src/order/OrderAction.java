@@ -22,11 +22,11 @@ public class OrderAction implements ActionListener {
 		if (ob == mainFrame.orderframe.order_btn) {
 			if (mainFrame.orderframe.fields[1].getText().equals("") || 
 					!Pattern.matches("^[0-9]*$", mainFrame.orderframe.fields[1].getText())) {
-				JOptionPane.showMessageDialog(null, "정확히 입력해 주세요", "확인", JOptionPane.CLOSED_OPTION);
+				JOptionPane.showMessageDialog(null, "[SYSTEM]  정확히 입력해 주세요", "확인", JOptionPane.CLOSED_OPTION);
 				mainFrame.orderframe.resetText();
 			} else {
 				mainFrame.orderDao.moveconfirm(mainFrame.orderframe.fields);
-				JOptionPane.showMessageDialog(null, "주문 완료", "확인", JOptionPane.CLOSED_OPTION);
+				JOptionPane.showMessageDialog(null, "[SYSTEM]  발주주문 등록 완료", "확인", JOptionPane.CLOSED_OPTION);
 				// 그래프 갱신
 				mainFrame.orderConfirmFrame.orderConfirmView.model.setNumRows(0);
 				mainFrame.orderConfirmFrame.orderConfirmView.addProductLine(mainFrame.orderConfirmDao.productAll());
@@ -43,7 +43,7 @@ public class OrderAction implements ActionListener {
 	        	fieldName = "product_name";
 	        }
 			if (mainFrame.orderframe.search_jf.getText().trim().equals("")) {
-				JOptionPane.showMessageDialog(null, "정확히 입력해 주세요", "확인", JOptionPane.CLOSED_OPTION);
+				JOptionPane.showMessageDialog(null, "[SYSTEM]  정확히 입력해 주세요", "확인", JOptionPane.CLOSED_OPTION);
 				mainFrame.orderframe.search_jf.requestFocus();
 				mainFrame.orderView.model.setNumRows(0);
 				mainFrame.orderView.addProductLine(mainFrame.orderDao.productAll());

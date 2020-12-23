@@ -26,7 +26,8 @@ public class OrderConfirmDao {
 		conn = DatabaseConnect.getConnection();
 		ArrayList<OrderConfirm> products = new ArrayList<OrderConfirm>();
 		sql = "SELECT order_product.*, product.product_name, product.price "
-				+ "FROM product, order_product WHERE product.product_id = order_product.product_id";
+				+ "FROM product, order_product WHERE product.product_id = order_product.product_id "
+				+ "ORDER BY order_product.save_time DESC";
 		try {
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
