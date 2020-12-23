@@ -92,7 +92,7 @@ public class SaleDao {
 	}
 
 	// 결제시 판매, 판매상세 테이블 인서트
-	public Boolean pay(ArrayList<Stock> stocks) {
+	public Boolean pay(ArrayList<Stock> stocks, String mem_id) {
 		// 판매 테이블
 		String query = "insert into sales values (SALES_NO_SEQ.nextval, SYSDATE, SYSDATE, ?)";
 
@@ -110,7 +110,7 @@ public class SaleDao {
 		// 판매 테이블 인서트
 		try {
 			ps = conn.prepareStatement(query);
-			ps.setString(1, "TEST");
+			ps.setString(1, mem_id);
 			result = ps.executeUpdate();
 			if (result > 0) {
 				System.out.println("[DB] sale insert complete");

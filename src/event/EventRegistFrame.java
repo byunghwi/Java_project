@@ -34,7 +34,6 @@ public class EventRegistFrame extends JFrame{
 	JPanel ein;
 	
 	String[] fieldNames = new String[]{"상품코드", "이벤트타입", "시작일", "종료일"};
-	String[] textHints = new String[] {"상품코드를 입력하세요.",  "상품명을 입력하세요.", "가격을 입력하세요"};
 	
 	public JLabel[] labels;
 	public JLabel titleLabel;
@@ -70,8 +69,9 @@ public class EventRegistFrame extends JFrame{
 		ein.setFocusable(false);
 	
 		//상품코드
-		tf1 = new HintTextField(textHints[0]);
+		tf1 = new HintTextField("상품코드를 입력하세요");
 		tf1.setBounds(199, 55, 134 , 30);
+		tf1.setEditable(false);
 		
 		searchBtn = new RoundedButton("찾기");
 		searchBtn.setFont(new Font("나눔 고딕", Font.PLAIN, 13));

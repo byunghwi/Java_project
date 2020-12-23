@@ -118,35 +118,53 @@ public class ProductDao {
 		conn = DatabaseConnect.getConnection();
 
 		String query = "UPDATE product SET product_name = ?, price = ?, worker_no = ?, save_time = ? WHERE product_id = ?";
+		String query2 = "UPDATE stock SET product_name = ?, price = ? WHERE product_id = ?";
 
 		try {			
 			ps = conn.prepareStatement(query);
 
-			
 			ps.setString(1, product.getProduct_name());
 			ps.setInt(2, product.getPrice());
-			ps.setString(3, "TEST_EDIT");
+			ps.setString(3, product.getWorker_no());
 			ps.setString(4, dateToStr(new Date()));
 			ps.setString(5, product.getProduct_id());
 		
 			int rsCnt = ps.executeUpdate();
 			
 			if(rsCnt == 1) {
-				System.out.println("[DB] Complete\n");
+				System.out.println("[DB] product Update Complete");
 			}
 
 		} catch (SQLException e) {
-			System.out.println("[DB] Update 중 오류 발생\n");
+			System.out.println("[DB] product Update 중 오류 발생");
 			e.printStackTrace();
-		} finally {
-			// DB사용 종료
-			try {
-				DatabaseConnect.dbClose(rs, ps, conn);
-			} catch (SQLException e) {
-				System.out.println("[DB] 자원 반납 중 오류 발생\n");
-				e.printStackTrace();
+		} 
+		
+		try {
+			ps = conn.prepareStatement(query2);
+			
+			ps.setString(1, product.getProduct_name());
+			ps.setInt(2, product.getPrice());
+			ps.setString(3, product.getProduct_id());
+		
+			int rsCnt = ps.executeUpdate();
+			
+			if(rsCnt >= 0) {
+				System.out.println("[DB] stock Update Complete");
 			}
+		} catch (SQLException e) {
+			System.out.println("[DB] stock Update 중 오류 발생");
+			e.printStackTrace();
 		}
+
+		// DB사용 종료
+		try {
+			DatabaseConnect.dbClose(rs, ps, conn);
+		} catch (SQLException e) {
+			System.out.println("[DB] 자원 반납 중 오류 발생\n");
+			e.printStackTrace();
+		}
+
 	}
 
 	// 상품 삭제

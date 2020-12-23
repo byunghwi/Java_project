@@ -129,7 +129,7 @@ public class EventDao {
 			ps.setString(1, event.getEvent_type());
 			ps.setString(2, event.getStart_date());
 			ps.setString(3, event.getEnd_date());
-			ps.setString(4, "TEST");
+			ps.setString(4, event.getWorker_no());
 			ps.setString(5, event.getSave_time());
 			ps.setString(6, event.getEvent_no());
 

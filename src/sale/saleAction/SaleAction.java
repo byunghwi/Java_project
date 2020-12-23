@@ -7,13 +7,14 @@ import java.util.regex.Pattern;
 
 import javax.swing.JOptionPane;
 
-
+import common.CheckValid;
 import main.MainFrame;
 import stock.Stock;
 
 public class SaleAction implements ActionListener{
 	
 	public MainFrame mainFrame;
+	CheckValid chkValid = new CheckValid();
 
 	public SaleAction(MainFrame mainFrame) {
 		this.mainFrame = mainFrame;
@@ -26,15 +27,21 @@ public class SaleAction implements ActionListener{
 		
 		if (ob == mainFrame.salePanel.addBucketBtn) { // 판매화면에서 장바구니 추가 버튼 클릭시
 			int row  = mainFrame.salePanel.stockTable.getSelectedRow();
+			
+			//장바구니에 추가할 수량
+			String prodQt = String.valueOf(mainFrame.salePanel.prodQt.getText());
+			
+			//원래 재고의 수량
+			String stockQt = String.valueOf(mainFrame.salePanel.stockTblModel.getValueAt(row, 2));
 
 			if(row == -1) {
 				// 확인 팝업창
 				JOptionPane.showMessageDialog(null, "\t[SYSTEM] 추가할 상품의 행을 선택해주세요.", "확인", JOptionPane.CLOSED_OPTION);
 			}
-			else if(mainFrame.salePanel.prodQt.getText().equals("") || !Pattern.matches("^[1-9]*$", mainFrame.salePanel.prodQt.getText())) {
+			else if(!chkValid.isQtChk(prodQt)) {
 				// 확인 팝업창
 				JOptionPane.showMessageDialog(null, "\t[SYSTEM] 정확한 수량을 입력해주세요", "확인", JOptionPane.CLOSED_OPTION);
-			}else if(Integer.parseInt(String.valueOf(mainFrame.salePanel.prodQt.getText())) > Integer.parseInt(String.valueOf(mainFrame.salePanel.stockTblModel.getValueAt(row, 2)))) {
+			}else if(Integer.parseInt(prodQt) > Integer.parseInt(stockQt)) {
 				// 확인 팝업창
 				JOptionPane.showMessageDialog(null, "\t[SYSTEM] 현 재고 수량보다 많은 양을 구매하실 수 없습니다.", "확인", JOptionPane.CLOSED_OPTION);
 			}else {
@@ -43,8 +50,8 @@ public class SaleAction implements ActionListener{
 				//이벤트 타입 가져오기
 				String eventType = mainFrame.sdao.searchEvent(String.valueOf(mainFrame.salePanel.stockTblModel.getValueAt(row, 0)));
 							
-				int originInput = Integer.parseInt(mainFrame.salePanel.prodQt.getText()); // 원래 입력한 수량
-				int originStock = Integer.parseInt(String.valueOf(mainFrame.salePanel.stockTblModel.getValueAt(row, 2))); //원래 재고의 수량
+				int originInput = Integer.parseInt(prodQt); // 원래 입력한 수량
+				int originStock = Integer.parseInt(stockQt); //원래 재고의 수량
 				String totalCost = null;
 				
 				//이벤트 상품일 경우 처리프로세스
@@ -55,7 +62,7 @@ public class SaleAction implements ActionListener{
 						//짝수 갯수 구매시
 						if(originInput%2==0) {
 							totalCost = Integer.toString((originInput/2) * Integer.parseInt(String.valueOf(mainFrame.salePanel.stockTblModel.getValueAt(row, 3))));
-							arrData[2] = mainFrame.salePanel.prodQt.getText(); //수량
+							arrData[2] = prodQt; //수량
 							arrData[3] = totalCost; //가격
 						}else { //짝수 갯수 구매시
 							if(originInput == originStock){ 
@@ -133,7 +140,7 @@ public class SaleAction implements ActionListener{
 				stocks.add(stock);
 			}
 			
-			if(mainFrame.sdao.pay(stocks)) {
+			if(mainFrame.sdao.pay(stocks, mainFrame.mem_id)) {
 				// 확인 팝업창
 				JOptionPane.showMessageDialog(null, "\t[SYSTEM] 결제가 완료 되었습니다!", "확인", JOptionPane.CLOSED_OPTION);
 				// 장바구니 화면테이블 초기화
