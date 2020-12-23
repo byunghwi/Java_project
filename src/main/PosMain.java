@@ -1,7 +1,10 @@
+package main;
 
-public class Main{
+public class PosMain {
 	
 	public static void main(String[] args) {
+		
+		new Login();
 		
 	}
 }

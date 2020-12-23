@@ -1,24 +1,21 @@
-package product;
+package order;
 
-import java.util.Date;
-
-public class Product {
+public class Order {
 	String product_id;
 	String product_name;
 	int price;
-	String worker_no;
-	String save_time;
-
-	public Product() {
+	
+	int quantity;
+	
+	public Order() {
 	}
-
-	public Product(String product_id, String product_name, int price, String worker_no, String save_time) {
+	
+	public Order(String product_id, String product_name, int price, int quantity) {
 		super();
 		this.product_id = product_id;
 		this.product_name = product_name;
 		this.price = price;
-		this.worker_no = worker_no;
-		this.save_time = save_time;
+		this.quantity = quantity;
 	}
 
 	public String getProduct_id() {
@@ -44,26 +41,13 @@ public class Product {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-
-	public String getWorker_no() {
-		return worker_no;
+	
+	public int getQuantity() {
+		return quantity;
 	}
 
-	public void setWorker_no(String worker_no) {
-		this.worker_no = worker_no;
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
-
-	public String getSave_time() {
-		return save_time;
-	}
-
-	public void setSave_time(String save_time) {
-		this.save_time = save_time;
-	}
-	
-	
-	
-	
-	
 	
 }
