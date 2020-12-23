@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import account.delAccount.Check_PW;
 import account.delAccount.Del_Account;
 import account.delAccount.Secession;
+import main.Login;
 
 // 회원 탈퇴에 대응하는 액션 리스너
 public class Delete_Action implements ActionListener {
@@ -34,6 +35,10 @@ public class Delete_Action implements ActionListener {
 		if (cp.check) {
 			new Del_Account(info_data[0]);
 			System.out.println("탈퇴 성공!!!!");
+			info.m1.dispose();
+			info.dispose();
+			new Login();
+			
 		}
 		
 	}

@@ -11,6 +11,7 @@ import javax.swing.JTextField;
 
 import account.action.Delete_Action;
 import common.RoundedButton;
+import main.MainFrame;
 
 
 // 회원 탈퇴 정보를 받아오는 프레임
@@ -24,6 +25,7 @@ public class Secession extends JFrame{
 	Font f1 = new Font("나눔고딕", Font.BOLD, 13);
 	JPanel pIn;
 	JLabel secessionText = new JLabel("회원 탈퇴");
+	public MainFrame m1 = null;
 	
 	public Secession(String mem_id) {
 		
@@ -53,6 +55,7 @@ public class Secession extends JFrame{
 		}
 		
 		infos[0].setText(mem_id);
+		infos[0].disable();
 	
 		secession.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		secession.setBounds(165, 85, 90, 20);

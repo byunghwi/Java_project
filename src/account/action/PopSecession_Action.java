@@ -8,7 +8,8 @@ import main.MainFrame;
 
 public class PopSecession_Action implements ActionListener{
 	
-	MainFrame m1 = null;
+	public MainFrame m1 = null;
+	public Secession s1 = null;
 	
 	public PopSecession_Action(MainFrame m1) {
 		this.m1 = m1;
@@ -16,7 +17,8 @@ public class PopSecession_Action implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		new Secession(m1.mem_id);
+		s1 = new Secession(m1.mem_id);
+		s1.m1 = this.m1;
 		
 	}
 

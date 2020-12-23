@@ -22,6 +22,7 @@ public class Add_Account{
 	String errorCode;
 	String[] errorNames = new String[7];
 	String[] messages = new String[7];
+	public boolean check = false;
 	
 	public Add_Account(Member new_mem) {
 		// Member new_mem = new Member("mem_issd", "mem_pw", "mem_nm", "res_no", "phone", "address", 's', "mail");
@@ -54,6 +55,8 @@ public class Add_Account{
 			pstmt.execute();
 			
 			System.out.println("가입 완료!");
+			JOptionPane.showMessageDialog(null, "가입이 완료되었습니다!" );
+			check = true;
 			
 		} catch (SQLException e) {
 			errorCode = e.getMessage().toLowerCase();
