@@ -128,30 +128,38 @@ public class SaleAction implements ActionListener{
 				JOptionPane.showMessageDialog(null, "\t[SYSTEM] 삭제할 행을 선택해주세요", "확인", JOptionPane.CLOSED_OPTION);
 			}
 
-		}else if (ob == mainFrame.salePanel.completeBtn) {
+		}else if (ob == mainFrame.salePanel.completeBtn) { // 결제이미지버튼 눌렀을때 결제 처리
 			int count = mainFrame.salePanel.bucketTblModel.getRowCount();
-			ArrayList<Stock> stocks = new ArrayList<Stock>();
-			for(int i=0; i<count; i++) {
-				Stock stock = new Stock();
-				stock.setProduct_id(String.valueOf(mainFrame.salePanel.bucketTable.getValueAt(i, 0)));
-				stock.setQuantity(Integer.parseInt(String.valueOf(mainFrame.salePanel.bucketTable.getValueAt(i, 2))));
-				stock.setPrice(Integer.parseInt(String.valueOf(mainFrame.salePanel.bucketTable.getValueAt(i, 3))));
+			
+			//장바구니에 1개이상의 로우가 있을 때만 결제 가능
+			if(count > 0) {
+				ArrayList<Stock> stocks = new ArrayList<Stock>();
+				for(int i=0; i<count; i++) {
+					Stock stock = new Stock();
+					stock.setProduct_id(String.valueOf(mainFrame.salePanel.bucketTable.getValueAt(i, 0)));
+					stock.setQuantity(Integer.parseInt(String.valueOf(mainFrame.salePanel.bucketTable.getValueAt(i, 2))));
+					stock.setPrice(Integer.parseInt(String.valueOf(mainFrame.salePanel.bucketTable.getValueAt(i, 3))));
+					
+					stocks.add(stock);
+				}
 				
-				stocks.add(stock);
+				if(mainFrame.sdao.pay(stocks, mainFrame.mem_id)) {
+					// 확인 팝업창
+					JOptionPane.showMessageDialog(null, "\t[SYSTEM] 결제가 완료 되었습니다!", "확인", JOptionPane.CLOSED_OPTION);
+					// 장바구니 화면테이블 초기화
+					mainFrame.salePanel.bucketTblModel.setNumRows(0);
+					
+					// 재고목록 화면테이블 초기화 해주기.
+					mainFrame.salePanel.stockTblModel.setNumRows(0);
+
+					// 재고목록 화면테이블 새로 채우기
+					mainFrame.salePanel.addStockLine(mainFrame.stockdao.stockAll());
+				}
+			}else {
+				// 확인 팝업창
+				JOptionPane.showMessageDialog(null, "\t[SYSTEM] 결제할 상품이 없습니다.", "확인", JOptionPane.CLOSED_OPTION);
 			}
 			
-			if(mainFrame.sdao.pay(stocks, mainFrame.mem_id)) {
-				// 확인 팝업창
-				JOptionPane.showMessageDialog(null, "\t[SYSTEM] 결제가 완료 되었습니다!", "확인", JOptionPane.CLOSED_OPTION);
-				// 장바구니 화면테이블 초기화
-				mainFrame.salePanel.bucketTblModel.setNumRows(0);
-				
-				// 재고목록 화면테이블 초기화 해주기.
-				mainFrame.salePanel.stockTblModel.setNumRows(0);
-
-				// 재고목록 화면테이블 새로 채우기
-				mainFrame.salePanel.addStockLine(mainFrame.stockdao.stockAll());
-			}
 			
 		}
 		

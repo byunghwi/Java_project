@@ -95,8 +95,9 @@ public class BottomAction implements ActionListener {
 			
 			mainFrame.bottomPanel.selectedBtn(mainFrame.bottomPanel.commuteBtn);
 		}else if (ob == mainFrame.bottomPanel.eventBtn) {
-			//메인 버튼 클릭시 색 변경해주기
-			//mainFrame.bottomPanel.selectedBtn(mainFrame.bottomPanel.eventBtn);
+			mainFrame.eventPanel.tblModel.setNumRows(0);
+	        mainFrame.eventPanel.addEventLine(mainFrame.eventdao.eventAll());
+	        
 			mainFrame.cardlayout.show(mainFrame.centerView, "eventPanel");	// 가운데 화면 변경
 			mainFrame.btnlayout.show(mainFrame.pBtnView, "eventBtnPanel");	 // 우측 버튼 변경
 		}else if (ob == mainFrame.bottomPanel.calcBtn) {
