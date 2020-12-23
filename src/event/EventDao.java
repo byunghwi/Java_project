@@ -88,7 +88,7 @@ public class EventDao {
 			ps.setString(2, event.getProduct_id());
 			ps.setString(3, event.getStart_date());
 			ps.setString(4, event.getEnd_date());
-			ps.setString(5, "TEST"); // 추후에 로그인한 작업자 값 받아와서 넣어줄 것.
+			ps.setString(5, event.getWorker_no()); // 추후에 로그인한 작업자 값 받아와서 넣어줄 것.
 
 
 			rsCnt = ps.executeUpdate();
