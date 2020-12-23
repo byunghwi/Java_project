@@ -32,7 +32,7 @@ public class BottomAction implements ActionListener {
 
 		if (ob == mainFrame.bottomPanel.productBtn) {
 			// 메인 버튼 클릭시 색 변경해주기
-			//mainFrame.bottomPanel.selectedBtn(mainFrame.bottomPanel.productBtn);
+			mainFrame.bottomPanel.selectedBtn(mainFrame.bottomPanel.productBtn);
 			
 			// 상품목록J테이블 초기화 해주기.
 			mainFrame.productView.tblModel.setNumRows(0);
@@ -55,7 +55,7 @@ public class BottomAction implements ActionListener {
 			mainFrame.salePanel.addStockLine(mainFrame.stockdao.stockAll());
 			
 			// 메인 버튼 클릭시 색 변경해주기
-			//mainFrame.bottomPanel.selectedBtn(mainFrame.bottomPanel.saleBtn);
+			mainFrame.bottomPanel.selectedBtn(mainFrame.bottomPanel.saleBtn);
 			mainFrame.cardlayout.show(mainFrame.centerView, "salePanel"); // 가운데 화면 변경
 			mainFrame.btnlayout.show(mainFrame.pBtnView, "saleBtnPanel"); // 우측 버튼 변경		
 
@@ -75,7 +75,7 @@ public class BottomAction implements ActionListener {
 
 		}else if (ob == mainFrame.bottomPanel.stockBtn) {
 			//메인 버튼 클릭시 색 변경해주기
-			//mainFrame.bottomPanel.selectedBtn(mainFrame.bottomPanel.stockBtn);
+			mainFrame.bottomPanel.selectedBtn(mainFrame.bottomPanel.stockBtn);
 			mainFrame.cardlayout.show(mainFrame.centerView, "stockPanel");
 			mainFrame.btnlayout.show(mainFrame.pBtnView, "stockBtnPanel");
 			mainFrame.stockPanel.tblModel.setNumRows(0);
@@ -84,17 +84,19 @@ public class BottomAction implements ActionListener {
 			
 		}else if (ob == mainFrame.bottomPanel.commuteBtn) {
 			//메인 버튼 클릭시 색 변경해주기
-			//mainFrame.bottomPanel.selectedBtn(mainFrame.bottomPanel.commuteBtn);
+			mainFrame.bottomPanel.selectedBtn(mainFrame.bottomPanel.commuteBtn);
+			
 			mainFrame.cardlayout.show(mainFrame.centerView, "commutePanel");
 			mainFrame.btnlayout.show(mainFrame.pBtnView, "commuteBtnPanel");
 			mainFrame.commutePanel.tblModel.setNumRows(0);
 	        mainFrame.commutePanel.addCommuteLine(mainFrame.timedao.commute_Time());
 	        mainFrame.commutePanel.IndividualtblModel.setNumRows(0);
 	        mainFrame.commutePanel.addCommuteIndividualLine(mainFrame.commutelistdao.commutelist());
-			
-			
-			mainFrame.bottomPanel.selectedBtn(mainFrame.bottomPanel.commuteBtn);
+
 		}else if (ob == mainFrame.bottomPanel.eventBtn) {
+			//메인 버튼 클릭시 색 변경해주기
+			mainFrame.bottomPanel.selectedBtn(mainFrame.bottomPanel.eventBtn);
+			
 			mainFrame.eventPanel.tblModel.setNumRows(0);
 	        mainFrame.eventPanel.addEventLine(mainFrame.eventdao.eventAll());
 	        
@@ -102,7 +104,7 @@ public class BottomAction implements ActionListener {
 			mainFrame.btnlayout.show(mainFrame.pBtnView, "eventBtnPanel");	 // 우측 버튼 변경
 		}else if (ob == mainFrame.bottomPanel.calcBtn) {
 			//메인 버튼 클릭시 색 변경해주기
-			//mainFrame.bottomPanel.selectedBtn(mainFrame.bottomPanel.calcBtn);
+			mainFrame.bottomPanel.selectedBtn(mainFrame.bottomPanel.calcBtn);
 			
 			mainFrame.cardlayout.show(mainFrame.centerView, "calcPanel");
 			mainFrame.btnlayout.show(mainFrame.pBtnView, "calcBtnPanel");
