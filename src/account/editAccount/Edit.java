@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 
 import account.action.Cancel_Action;
 import account.action.Edit_Action;
+import account.util.JTextFieldLimit;
 import common.RoundedButton;
 
 // 수정할 회원 정보를 받아오는 프레임
@@ -81,33 +82,44 @@ public class Edit extends JFrame {
 		infos[2].setBounds(255, 160,100,20);
 		add(infos[2]);
 		
-		res_infos[0] = new JTextField(ra.read_info[5].substring(0,6));
+		res_infos[0] = new JTextField();
 		res_infos[0].setBounds(255, 210,48,20);
+		res_infos[0].setDocument(new JTextFieldLimit(6));
+		res_infos[0].setText(ra.read_info[5].substring(0,6));
 		add(res_infos[0]);
+		
 		
 		minus[0].setBounds(302, 210,53,20);
 		add(minus[0]);
 		
-		res_infos[1] = new JTextField(ra.read_info[5].substring(6));
+		res_infos[1] = new JTextField();
 		res_infos[1].setBounds(308, 210,53,20);
+		res_infos[1].setDocument(new JTextFieldLimit(7));
+		res_infos[1].setText(ra.read_info[5].substring(6));
 		add(res_infos[1]);
 		
-		phone_infos[0] = new JTextField(ra.read_info[6].substring(0, 3));
+		phone_infos[0] = new JTextField();
 		phone_infos[0].setBounds(255, 260,30,20);
+		phone_infos[0].setDocument(new JTextFieldLimit(3));
+		phone_infos[0].setText(ra.read_info[6].substring(0, 3));
 		add(phone_infos[0]);
 		
 		minus[1].setBounds(285, 260,53,20);
 		add(minus[1]);
 		
-		phone_infos[1] = new JTextField(ra.read_info[6].substring(3,pnl-4));
+		phone_infos[1] = new JTextField();
 		phone_infos[1].setBounds(290, 260,35,20);
+		phone_infos[1].setDocument(new JTextFieldLimit(4));
+		phone_infos[1].setText(ra.read_info[6].substring(3,pnl-4));
 		add(phone_infos[1]);
 		
 		minus[2].setBounds(325, 260,53,20);
 		add(minus[2]);
 		
-		phone_infos[2] = new JTextField(ra.read_info[6].substring(pnl-4));
+		phone_infos[2] = new JTextField();
 		phone_infos[2].setBounds(330, 260,35,20);
+		phone_infos[2].setDocument(new JTextFieldLimit(4));
+		phone_infos[2].setText(ra.read_info[6].substring(pnl-4));
 		add(phone_infos[2]);
 		
 		infos[3] = new JTextField(ra.read_info[7]);
@@ -159,6 +171,6 @@ public class Edit extends JFrame {
 	}
 	
 	public static void main(String[] args) {
-		new Edit("admin1");
+		new Edit("admin");
 	}
 }

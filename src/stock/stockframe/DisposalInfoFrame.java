@@ -58,14 +58,21 @@ public class DisposalInfoFrame extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				choose_date = new Date();
-				choose_date = dateChooser.getDate();
-				String choose = transFormat.format(choose_date);
 				
-				
-				div.tblModel.setNumRows(0);
-				div.addDisposalInfoLine(sd.disposals(choose));
-				this_date.setText(choose);
+				if ((Object)dateChooser.getDate() == null) {
+					
+					div.tblModel.setNumRows(0);
+					div.addDisposalInfoLine(sd.disposals("default"));
+					this_date.setText(transFormat.format(now));
+				} else {
+					choose_date = new Date();
+					choose_date = dateChooser.getDate();
+					String choose = transFormat.format(choose_date);
+					
+					div.tblModel.setNumRows(0);
+					div.addDisposalInfoLine(sd.disposals(choose));
+					this_date.setText(choose);
+				}
 				
 			}
 		});

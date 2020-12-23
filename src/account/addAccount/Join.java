@@ -12,6 +12,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import account.action.Join_Action;
+import account.util.JTextFieldLimit;
 import common.RoundedButton;
 
 // 회원 가입을 정보를 받아올 프레임 클래스
@@ -27,7 +28,7 @@ public class Join extends JFrame {
 	JPanel pIn;
 	JLabel joinText = new JLabel("회원 가입");
 
-	String [] info_names = {"* 아이디","* 비밀번호","* 이름","* 주민등록번호","전화번호","주소","성별","메일주소"};
+	String [] info_names = {"* 아이디","* 비밀번호","* 이름","* 주민등록번호","* 전화번호","주소","성별","메일주소"};
 	JLabel[] names = new JLabel[8];
 	RoundedButton join = new RoundedButton("회 원 가 입",68,68,68);
 	
@@ -66,12 +67,15 @@ public class Join extends JFrame {
 			names[i].setBounds(160, 35 + i*55,100,20);
 			add(names[i]);
 		}
-		
-		for (int i = 0; i < 2; i++) {
+
+		for (int i = 0; i < 2; i++) {	
 			res_infos[i] = new JTextField(10);
 			res_infos[i].setBounds(280 + i*70, 200,60,20);
 			add(res_infos[i]);
 		}
+		res_infos[0].setDocument(new JTextFieldLimit(6));
+		res_infos[1].setDocument(new JTextFieldLimit(7));
+		
 		minus[0].setBounds(342, 205, 5, 5);
 		add(minus[0]);
 		
@@ -80,6 +84,9 @@ public class Join extends JFrame {
 			phone_infos[i].setBounds(280 + i*46, 255,40,20);
 			add(phone_infos[i]);
 		}
+		phone_infos[0].setDocument(new JTextFieldLimit(3));
+		phone_infos[1].setDocument(new JTextFieldLimit(4));
+		phone_infos[2].setDocument(new JTextFieldLimit(4));
 		
 		minus[1].setBounds(330, 260, 5, 5);
 		add(minus[1]);

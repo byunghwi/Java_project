@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import account.action.Delete_Action;
@@ -42,9 +43,11 @@ public class Secession extends JFrame{
 		
 		pIn.setLayout(null);
 		pIn.setFocusable(false);
+		infos[0] = new JTextField(10);
+		infos[1] = new JPasswordField(10);
 		
 		for (int i = 0; i<2; i++) {
-			infos[i] = new JTextField(10);
+			
 			names[i] = new JLabel(info_names[i]);
 			names[i].setFont(f1);
 			
@@ -56,6 +59,8 @@ public class Secession extends JFrame{
 		
 		infos[0].setText(mem_id);
 		infos[0].disable();
+		
+		
 	
 		secession.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		secession.setBounds(165, 85, 90, 20);
