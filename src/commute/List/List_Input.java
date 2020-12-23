@@ -24,6 +24,7 @@ import com.toedter.calendar.JDateChooser;
 import common.HintTextField;
 import common.RoundedButton;
 import commute.CommutePanel;
+import main.MainFrame;
 
 public class List_Input extends JFrame {
 
@@ -49,8 +50,9 @@ public class List_Input extends JFrame {
 	
 	SimpleDateFormat dcn = new SimpleDateFormat("yyyy-MM-dd"); 
 	
+	public MainFrame mainframe;
 	
-	public List_Input() {
+	public List_Input(MainFrame mainframe) {
 		
 		
 		
@@ -96,9 +98,10 @@ public class List_Input extends JFrame {
 		en_date.setBounds(50, 140, 150 , 30);
 		
 		//사원이름
-		mem_name = new HintTextField("사원이름을 입력하세요");
+		mem_name = new JTextField(mainframe.mem_id);
+		mem_name.disable();
 		mem_name.setBounds(50, 240, 150 , 30);
-		
+	
 		for (int j = 0; j < fieldNames.length; j++) {
 			labels[j] = new JLabel(fieldNames[j]);
 			labels[j].setFont(new Font("나눔고딕", Font.BOLD, 12));
@@ -121,15 +124,20 @@ public class List_Input extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			
-			//JDateChooser이용해 나온 날짜 문자열로 바꿈
-			String start_date = dcn.format(st_date.getDate()); 
-			String end_date = dcn.format(en_date.getDate()); 
-            String name=mem_name.getText();
-            cv.IndividualtblModel.setNumRows(0);
-            cv.addCommuteIndividualLine(new Commute_ListDao(start_date,end_date,name).commutelist());
-			JOptionPane.showMessageDialog(null, "[SYSTEM] 조회되었습니다.", "확인", JOptionPane.CLOSED_OPTION);
-            j1.dispose();
 			
+			if(st_date.getDate()==null||en_date.getDate()==null) {
+				JOptionPane.showMessageDialog(null, "[SYSTEM] 날짜를 입력해주세요.", "확인", JOptionPane.CLOSED_OPTION);
+			}else {
+				
+				//JDateChooser이용해 나온 날짜 문자열로 바꿈
+				String start_date = dcn.format(st_date.getDate()); 
+				String end_date = dcn.format(en_date.getDate()); 
+	            String name=mem_name.getText();
+	            cv.IndividualtblModel.setNumRows(0);
+	            cv.addCommuteIndividualLine(new Commute_ListDao(start_date,end_date,name).commutelist());
+				JOptionPane.showMessageDialog(null, "[SYSTEM] 조회되었습니다.", "확인", JOptionPane.CLOSED_OPTION);
+	            j1.dispose();	
+			}
 		}  
 	  });
 	  
@@ -146,11 +154,7 @@ public class List_Input extends JFrame {
 		
 		
 	}
-	public static void main(String[] args) {
-		new List_Input();
-		
-	}
-   	
+ 	
 }
 
 	
