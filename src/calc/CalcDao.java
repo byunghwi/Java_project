@@ -25,7 +25,7 @@ public class CalcDao {
 		
 		ArrayList<Calc> calcs = new ArrayList<Calc>();
 		
-		String sql = "SELECT sale_date,total_sale_quantity,total_sale_price,worker_no,TO_CHAR(save_time, 'YYYY/MM/DD')as save_time FROM calculate WHERE sale_date between to_date(?,'YYYY-MM-dd') and to_date(?,'YYYY-MM-dd') ORDER BY sale_date";
+		String sql = "SELECT sale_date,total_sale_quantity,total_sale_price,worker_no,TO_CHAR(save_time, 'YYYY/MM/DD')as save_time FROM calculate WHERE sale_date between to_date(?,'YYYY-MM-dd') and to_date(?,'YYYY-MM-dd') ORDER BY sale_date DESC";
 		
 		try {
 			Connection conn = DatabaseConnect.getConnection();
