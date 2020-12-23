@@ -14,6 +14,7 @@ public class Join_Action implements ActionListener {
 	Join new_join;
 	public String [] new_join_data = new String[8];
 	Member new_mem = null;
+	Add_Account ac = null;
 	
 	public Join_Action(Join new_join) {
 		this.new_join = new_join;
@@ -58,7 +59,9 @@ public class Join_Action implements ActionListener {
 		);
 		
 		// 맴버 객채를 사용해 회원을 생성한다
-		new Add_Account(this.new_mem);
+		ac = new Add_Account(this.new_mem);
+		if (ac.check)
+			new_join.dispose();
 		
 	}
 	

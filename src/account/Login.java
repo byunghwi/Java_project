@@ -57,7 +57,7 @@ public class Login extends JFrame {
 		
 		setTitle("로그인");
 		setLayout(null);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setLocation(400,80);
 		setSize(250, 180);
 		setVisible(true);
