@@ -78,8 +78,8 @@ public class OrderConfirmView extends JPanel {
 		colNames.add("발주번호");
 		colNames.add("상품id");
 		colNames.add("수량");
-		colNames.add("처리자");
-		colNames.add("처리시간");
+		colNames.add("등록자");
+		colNames.add("등록일");
 		colNames.add("상품명");
 		colNames.add("가격");
 
