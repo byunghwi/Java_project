@@ -76,7 +76,8 @@ public class ProductDao {
 			ps = conn.prepareStatement(query_s);
 			ps.setString(1, product.getProduct_id());
 			rs = ps.executeQuery();
-			cnt = rs.getInt(1);
+			if(rs.next())
+				cnt = rs.getInt(1);
 
 		} catch (SQLException e1) {
 			System.out.println("[DB] 상품코드 존재여부 쿼리 에러");
@@ -84,8 +85,17 @@ public class ProductDao {
 		}
 		
 		if(cnt > 0) {
-			System.out.println("이미 존재하는 상품코드입니다.!");
-			return false;
+			System.out.println("[DB] product이미 존재하는 상품코드");
+			
+			try {
+				DatabaseConnect.dbClose(rs, ps, conn);
+			} catch (SQLException e) {
+				System.out.println("[DB] 자원 반납 중 오류 발생\n");
+				e.printStackTrace();
+			}
+		
+			return false; // 이미 존재하는 상품코드
+			
 		}else {
 			String query = "insert into product (product_id, product_name, price, worker_no) values (? ,?, ?, ?)";
 			
