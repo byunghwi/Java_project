@@ -66,51 +66,73 @@ public class ProductDao {
 	}
 
 	// 상품 등록
-	public void productAdd(Product product) {
+	public Boolean productAdd(Product product) {
 		conn = DatabaseConnect.getConnection();
-
-		String query = "insert into product (product_id, product_name, price, worker_no) values (? ,?, ?, ?)";
 		
-		//상품등록하면 수량 0으로 세팅되고 발주승인대기 테이블에 추가된다.
-		String query2 =  "insert into order_product values (ORDER_PRODUCT_NO_SEQ.nextval, ?, ?, ?, SYSDATE)";
-
+		String query_s = "SELECT count(product_id) as cnt FROM product WHERE product_id = ?";
+		int cnt = 0;
+		
 		try {
-			ps = conn.prepareStatement(query);
-
+			ps = conn.prepareStatement(query_s);
 			ps.setString(1, product.getProduct_id());
-			ps.setString(2, product.getProduct_name());			
-			ps.setInt(3, product.getPrice());
-			ps.setString(4, "TEST"); 	// 추후에 로그인한 작업자 값 받아와서 넣어줄 것.
+			rs = ps.executeQuery();
+			cnt = rs.getInt(1);
 
-			int rsCnt = ps.executeUpdate();
+		} catch (SQLException e1) {
+			System.out.println("[DB] 상품코드 존재여부 쿼리 에러");
+			e1.printStackTrace();
+		}
+		
+		if(cnt > 0) {
+			System.out.println("이미 존재하는 상품코드입니다.!");
+			return false;
+		}else {
+			String query = "insert into product (product_id, product_name, price, worker_no) values (? ,?, ?, ?)";
+			
+			//상품등록하면 수량 0으로 세팅되고 발주승인대기 테이블에 추가된다.
+			String query2 =  "insert into order_product values (ORDER_PRODUCT_NO_SEQ.nextval, ?, ?, ?, SYSDATE)";
 
-			PreparedStatement ps2 = null;
-			ps2 = conn.prepareStatement(query2);
-			ps2.setString(1, product.getProduct_id());
-			ps2.setInt(2, 0);							// 수량은 0으로 세팅
-			ps2.setString(3, "TEST"); 					// 추후에 로그인한 작업자 값 받아와서 넣어줄 것.
-			
-			int rsCnt2 = ps2.executeUpdate();
-			
-			if(rsCnt==1 && rsCnt2==1) {
-				System.out.println("[DB] 상품, 발주승인대기 insert 완료\n");
-				if(ps2 != null) {
-					ps2.close();
+			try {
+				ps = conn.prepareStatement(query);
+
+				ps.setString(1, product.getProduct_id());
+				ps.setString(2, product.getProduct_name());			
+				ps.setInt(3, product.getPrice());
+				ps.setString(4, product.getWorker_no());
+
+				int rsCnt = ps.executeUpdate();
+
+				PreparedStatement ps2 = null;
+				ps2 = conn.prepareStatement(query2);
+				ps2.setString(1, product.getProduct_id());
+				ps2.setInt(2, 0);							// 수량은 0으로 세팅
+				ps2.setString(3, product.getWorker_no());
+				
+				int rsCnt2 = ps2.executeUpdate();
+				
+				if(rsCnt==1 && rsCnt2==1) {
+					System.out.println("[DB] 상품, 발주승인대기 insert 완료\n");
+					if(ps2 != null) {
+						ps2.close();
+					}
+				}
+
+			} catch (SQLException e) {
+				System.out.println("[DB] Insert 중 오류 발생\n");
+				e.printStackTrace();
+			} finally {
+				// DB사용 종료
+				try {
+					DatabaseConnect.dbClose(rs, ps, conn);
+				} catch (SQLException e) {
+					System.out.println("[DB] 자원 반납 중 오류 발생\n");
+					e.printStackTrace();
 				}
 			}
-
-		} catch (SQLException e) {
-			System.out.println("[DB] Insert 중 오류 발생\n");
-			e.printStackTrace();
-		} finally {
-			// DB사용 종료
-			try {
-				DatabaseConnect.dbClose(rs, ps, conn);
-			} catch (SQLException e) {
-				System.out.println("[DB] 자원 반납 중 오류 발생\n");
-				e.printStackTrace();
-			}
 		}
+		
+		return true;
+
 	}
 
 	// 상품 수정

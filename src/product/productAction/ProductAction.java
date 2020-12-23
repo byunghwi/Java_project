@@ -38,22 +38,28 @@ public class ProductAction implements ActionListener {
 				mainFrame.product.setPrice(Integer.parseInt(price));
 				mainFrame.product.setWorker_no(mainFrame.mem_id);
 				
-				mainFrame.pdao.productAdd(mainFrame.product);
+				//상품코드 이미 존재하는 것인지 확인
+				if(mainFrame.pdao.productAdd(mainFrame.product)) {
+					// 상품목록J테이블 초기화 해주기.
+					mainFrame.productView.tblModel.setNumRows(0);
 
-				// 상품목록J테이블 초기화 해주기.
-				mainFrame.productView.tblModel.setNumRows(0);
+					// 상품목록J테이블 새로 채우기
+					mainFrame.productView.addProductLine(mainFrame.pdao.productAll());
 
-				// 상품목록J테이블 새로 채우기
-				mainFrame.productView.addProductLine(mainFrame.pdao.productAll());
+					// 텍스트 필드에 채워진 값 초기화 해주기.
+					mainFrame.prodRegistFrame.resetText();
 
-				// 텍스트 필드에 채워진 값 초기화 해주기.
-				mainFrame.prodRegistFrame.resetText();
+					// 확인 팝업창
+					JOptionPane.showMessageDialog(null, "[SYSTEM] 등록이 완료되었습니다.", "확인", JOptionPane.CLOSED_OPTION);
 
-				// 확인 팝업창
-				JOptionPane.showMessageDialog(null, "[SYSTEM] 등록이 완료되었습니다.", "확인", JOptionPane.CLOSED_OPTION);
+					// 창 안보이게
+					mainFrame.prodRegistFrame.dispose();
+				}else {
+					// 확인 팝업창
+					JOptionPane.showMessageDialog(null, "[SYSTEM] 이미 존재하는 상품코드입니다.", "확인", JOptionPane.CLOSED_OPTION);
+				}
 
-				// 창 안보이게
-				mainFrame.prodRegistFrame.dispose();
+				
 			}else {
 				// 확인 팝업창
 				JOptionPane.showMessageDialog(null, "[SYSTEM] 정확한 값을 입력해주세요.", "확인", JOptionPane.CLOSED_OPTION);
