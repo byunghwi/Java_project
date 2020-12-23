@@ -22,10 +22,7 @@ public class Calc_Add_Date {
 		String sql2 = "INSERT INTO calculate VALUES (sysdate,0,0,?,sysdate)";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		
-		String sql2 = "INSERT INTO calculate VALUES (sysdate,0,0,?,sysdate)";
-		Connection conn = null;
-		PreparedStatement pstmt = null;
+
 		
 		try {
 			conn = DatabaseConnect.getConnection();
