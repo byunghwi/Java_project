@@ -56,7 +56,7 @@ public class OrderConfirmFrame extends JFrame {
 		}
 		// 입력칸 편집못하게
 		fields[0].setEditable(false);
-		fields[1].setEditable(true);
+		fields[1].setEditable(false);
 		fields[2].setEditable(false);
 		fields[3].setEditable(false);
 		fields[4].setEditable(true);
