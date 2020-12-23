@@ -304,8 +304,4 @@ public class MainFrame extends JFrame{
 		orderframe.search_btn.addActionListener(new OrderAction(this));
 		// 버튼들 액션 달기 End
 	}
-
-	public static void main(String[] args) {
-		new MainFrame();
-	}
 }

@@ -54,12 +54,12 @@ public class SaleDetailListFrame extends JFrame {
 		setTitle("판매 상세 리스트");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 800, 400);
+		setBounds(100, 100, 879, 400);
 		setVisible(false);
 		
 		tablePanel = new JPanel();
 		tablePanel.setLayout(null);
-		saleDetailListScrollPane.setBounds(10, 10, 760, 340);
+		saleDetailListScrollPane.setBounds(10, 10, 851, 340);
 		tablePanel.add(saleDetailListScrollPane);
 		saleDetailListTable.setShowVerticalLines(false);
 		saleDetailListTable.setShowHorizontalLines(false);
