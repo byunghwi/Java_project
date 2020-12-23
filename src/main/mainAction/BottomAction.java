@@ -33,6 +33,12 @@ public class BottomAction implements ActionListener {
 		if (ob == mainFrame.bottomPanel.productBtn) {
 			// 메인 버튼 클릭시 색 변경해주기
 			//mainFrame.bottomPanel.selectedBtn(mainFrame.bottomPanel.productBtn);
+			
+			// 상품목록J테이블 초기화 해주기.
+			mainFrame.productView.tblModel.setNumRows(0);
+			// 상품목록J테이블 새로 채우기
+			mainFrame.productView.addProductLine(mainFrame.pdao.productAll());
+			
 			mainFrame.cardlayout.show(mainFrame.centerView, "productView");	// 가운데 화면 변경
 			mainFrame.btnlayout.show(mainFrame.pBtnView, "prodBtnPanel");	 // 우측 버튼 변경
 			
