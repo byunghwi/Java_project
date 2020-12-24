@@ -38,7 +38,7 @@ public class StockRightBtnPanel extends JPanel{
 		
 		add(disposalInfoBtn);
 		
-		orderConfirmBtn = new RoundedButton("발주정보");
+		orderConfirmBtn = new RoundedButton("발주");
 		orderConfirmBtn.setForeground(Color.WHITE);
 		orderConfirmBtn.setFont(new Font("나눔고딕", Font.BOLD, 20));
 		orderConfirmBtn.setBackground(new Color(204, 206, 206));

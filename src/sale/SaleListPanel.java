@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -91,6 +92,11 @@ public class SaleListPanel extends JPanel{
 		addSaleLine(saledao.salesList(null, null)); 
 		
 		saleListScrollPane.setViewportView(saleListTable);
+		
+		JLabel lblNewLabel = new JLabel("판매 리스트");
+		lblNewLabel.setFont(new Font("나눔고딕", Font.BOLD, 15));
+		lblNewLabel.setBounds(20, 10, 174, 23);
+		add(lblNewLabel);
 		
 	}
 
