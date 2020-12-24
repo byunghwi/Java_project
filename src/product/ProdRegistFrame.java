@@ -21,6 +21,8 @@ import javax.swing.SwingConstants;
 
 //상품 등록 버튼 누를시 Sub 프레임 생성 및 입력해주기.
 public class ProdRegistFrame extends JFrame {
+
+	private static final long serialVersionUID = 1L;
 	/**
 	 * 
 	 */
@@ -78,21 +80,9 @@ public class ProdRegistFrame extends JFrame {
 		tf2 = new HintTextField(textHints[1]);
 		tf2.setBounds(132, 147, 136, 30);
 
-//			//제조일
-//			dateChooser1.setBounds(130, 150, 170 , 30);
-//			//폐기일
-//			dateChooser2.setBounds(130, 200, 170 , 30);
-
 		// 가격
 		tf3 = new HintTextField(textHints[2]);
 		tf3.setBounds(132, 245, 136, 30);
-
-//			for (int j = 0; j < fieldNames.length; j++) {
-//				labels[j] = new JLabel(fieldNames[j]);
-//				labels[j].setFont(new Font("맑은 고딕", Font.BOLD, 12));
-//				labels[j].setBounds(30, (j+1)*50, 50 , 30);
-//				pIn.add(labels[j]);
-//			}
 
 		pIn.add(tf1);
 		pIn.add(tf2);
@@ -146,8 +136,6 @@ public class ProdRegistFrame extends JFrame {
 		cancelBtn.setFont(new Font("나눔고딕", Font.BOLD, 13));
 		pIn.add(cancelBtn, BorderLayout.SOUTH);
 		
-
-
 	}
 
 	// 필드값 초기화 해주기.
