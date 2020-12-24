@@ -49,7 +49,7 @@ public class CalcChart{
 
         // CalcChart에 데이터 저장   
         for (int i = 0; i < cl.size(); i++) {
-        	CalcChart.addValue(cl.get(i).gettotal_sale_price(), "매출합계", cl.get(i).getsale_date());
+        	CalcChart.addValue(cl.get(i).gettotal_sale_price(), "매출합계", cl.get(i).getsale_date().substring(3));
 	      }
  
         // 렌더링 생성 및 세팅
